@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { templates } from "../data/templates";
 export default function HomePage() {
 
   return (
@@ -422,35 +424,9 @@ export default function HomePage() {
 
           <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
 
-            {[
-              {
-                title: "Encanto",
-                category: "XV Años",
-                image:
-                  "https://images.unsplash.com/photo-1524504388940-b1c1722653e1",
-              },
-
-              {
-                title: "Golden Love",
-                category: "Bodas",
-                image:
-                  "https://images.unsplash.com/photo-1519741497674-611481863552",
-              },
-
-              {
-                title: "Dream Party",
-                category: "Cumpleaños",
-                image:
-                  "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
-              },
-
-              {
-                title: "Blessing",
-                category: "Religiosa",
-                image:
-                  "https://images.unsplash.com/photo-1511285560929-80b456fea0bc",
-              },
-            ].map((template, index) => (
+            
+        
+               {templates.map((template, index) => (
 
               <div
                 key={index}
