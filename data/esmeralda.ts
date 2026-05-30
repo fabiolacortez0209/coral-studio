@@ -25,11 +25,11 @@ export const invitation = {
   },
 
   photos: {
-    portada: "/esmeralda/foto1.png",
-    foto2: "/esmeralda/foto2.png",
-    foto3: "/esmeralda/foto3.png",
-    foto4: "/esmeralda/foto4.png",
-    foto5: "/esmeralda/foto5.png",
+    portada: "/esmeralda/foto1.webp",
+    foto2: "/esmeralda/foto2.webp",
+    foto3: "/esmeralda/foto3.webp",
+    foto4: "/esmeralda/foto4.webp",
+    foto5: "/esmeralda/foto5.webp",
   },
 
   fonts: {
