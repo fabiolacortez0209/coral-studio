@@ -32,7 +32,7 @@ export const invitation = {
 
   photos: {
 
-    portada: "/carmin/foto1.png",
+    portada: "/carmin/portada.png",
 
     foto1: "/carmin/foto2.png",
 
