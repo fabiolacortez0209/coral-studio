@@ -306,7 +306,7 @@ export default function HomePage() {
 
       </section>
 
-      {/* CATEGORIAS */}
+            {/* CATEGORIAS */}
 
       <section
         id="categorias"
@@ -338,15 +338,16 @@ export default function HomePage() {
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 
             {[
-              ["◎", "Bodas"],
-              ["♛", "XV Años"],
-              ["✧", "Cumpleaños"],
-              ["△", "Graduación"],
-              ["✝", "Ceremonias religiosas"],
-              ["☾", "Infantiles"],
+              ["◎", "Bodas", "/bodas"],
+              ["♛", "XV Años", "/xv-anos"],
+              ["✧", "Fiestas", "/fiestas"],
+              ["△", "Graduación", "/graduacion"],
+              ["✝", "Ceremonias religiosas", "/ceremonias-religiosas"],
+              ["☾", "Infantiles", "/infantiles"],
             ].map((item, index) => (
 
-              <div
+              <Link
+                href={item[2]}
                 key={index}
                 className="
                   group
@@ -383,7 +384,7 @@ export default function HomePage() {
                   {item[1]}
                 </h3>
 
-              </div>
+              </Link>
 
             ))}
 
@@ -392,7 +393,6 @@ export default function HomePage() {
         </div>
 
       </section>
-
       {/* PLANTILLAS DESTACADAS */}
 
       <section
