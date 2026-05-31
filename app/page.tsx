@@ -423,7 +423,7 @@ export default function HomePage() {
 
           </div>
 
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 justify-items-center xl:grid-cols-4">
 
             
         
@@ -441,23 +441,23 @@ export default function HomePage() {
 
                 {/* PHONE */}
 
-                <div
-                  className="
-                    relative
-                    h-[520px]
-                    w-[250px]
-                    overflow-hidden
-                    rounded-[40px]
-                    border-[8px]
-                    border-[#1f1f1f]
-                    bg-black
-                    shadow-2xl
-                    transition
-                    duration-500
-                    group-hover:-translate-y-3
-                    group-hover:rotate-1
-                  "
-                >
+               <div
+  className="
+    relative
+    h-[420px]
+    w-[180px]
+    overflow-hidden
+    rounded-[40px]
+    border-[8px]
+    border-[#1f1f1f]
+    bg-black
+    shadow-2xl
+    transition
+    duration-500
+    group-hover:-translate-y-3
+    group-hover:rotate-1
+  "
+>
 
                   <img
                     src={template.image}
@@ -486,7 +486,7 @@ export default function HomePage() {
                   <div
                     className="
                       absolute
-                      bottom-10
+                      bottom-6
                       left-0
                       w-full
                       px-6
@@ -507,7 +507,7 @@ export default function HomePage() {
                       {template.category}
                     </p>
 
-                    <h3 className="text-4xl italic">
+                    <h3 className="text-2xl italic">
                       {template.title}
                     </h3>
 
