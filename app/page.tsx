@@ -423,11 +423,11 @@ export default function HomePage() {
 
           </div>
 
-          <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">
 
             
         
-               {templates.map((template, index) => (
+               {templates.slice(0, 4).map((template, index) => (
 
               <div
                 key={index}
@@ -550,7 +550,7 @@ export default function HomePage() {
 
       <h2 className="text-5xl md:text-6xl">
  ¿Cómo funciona?
- S      </h2>
+       </h2>
 
     </div>
 
@@ -562,11 +562,11 @@ export default function HomePage() {
 
       <div
         className="
-          rounded-[40px]
+          rounded-[30px]
           border
           border-[#f1d8d7]
           bg-white/60
-          p-10
+          p-8
           transition
           hover:-translate-y-2
           hover:shadow-xl
