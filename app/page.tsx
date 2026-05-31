@@ -8,106 +8,112 @@ export default function HomePage() {
       {/* NAVBAR */}
 
       <header
-        className="
-          fixed
-          left-0
-          top-0
-          z-50
-          w-full
-          border-b
-          border-[#f1d8d7]
-          bg-[#f8f5f2]/85
-          backdrop-blur-xl
-        "
+  className="
+    fixed
+    left-0
+    top-0
+    z-50
+    w-full
+    border-b
+    border-[#f1d8d7]
+    bg-[#f8f5f2]/85
+    backdrop-blur-xl
+  "
+>
+  <div
+    className="
+      mx-auto
+      flex
+      max-w-7xl
+      items-center
+      justify-between
+      px-6
+      py-5
+    "
+  >
+
+    <h1 className="text-3xl font-light tracking-wide">
+      Coral Studio
+    </h1>
+
+    {/* MENU ESCRITORIO */}
+
+    <nav className="hidden items-center gap-10 lg:flex">
+
+      <a
+        href="#disenos"
+        className="text-sm tracking-[0.18em] transition hover:text-[#d58e8d]"
       >
+        Diseños
+      </a>
 
-        <div
-          className="
-            mx-auto
-            flex
-            max-w-7xl
-            items-center
-            justify-between
-            px-6
-            py-5
-          "
-        >
+      <a
+        href="#categorias"
+        className="text-sm tracking-[0.18em] transition hover:text-[#d58e8d]"
+      >
+        Categorías
+      </a>
 
-          <h1 className="text-3xl font-light tracking-wide">
-            Coral Studio
-          </h1>
+      <a
+        href="#planes"
+        className="text-sm tracking-[0.18em] transition hover:text-[#d58e8d]"
+      >
+        Planes
+      </a>
 
-          <nav className="hidden items-center gap-10 lg:flex">
+      <a
+        href="#faq"
+        className="text-sm tracking-[0.18em] transition hover:text-[#d58e8d]"
+      >
+        FAQ
+      </a>
 
-            <a
-              href="#disenos"
-              className="text-sm tracking-[0.18em] transition hover:text-[#d58e8d]"
-            >
-              Diseños
-            </a>
+    </nav>
 
-            <a
-              href="#categorias"
-              className="text-sm tracking-[0.18em] transition hover:text-[#d58e8d]"
-            >
-              Categorías
-            </a>
+    {/* WHATSAPP ESCRITORIO */}
 
-            <a
-              href="#planes"
-              className="text-sm tracking-[0.18em] transition hover:text-[#d58e8d]"
-            >
-              Planes
-            </a>
+    <a
+      href="https://wa.me/5210000000000"
+      target="_blank"
+      className="
+        hidden
+        rounded-full
+        border
+        border-[#EDA4A3]
+        bg-white/80
+        px-5
+        py-2.5
+        text-sm
+        transition
+        hover:bg-[#EDA4A3]
+        hover:text-white
+        lg:flex
+      "
+    >
+      WhatsApp
+    </a>
 
-            <a
-              href="#faq"
-              className="text-sm tracking-[0.18em] transition hover:text-[#d58e8d]"
-            >
-              FAQ
-            </a>
+    {/* MENU MOVIL */}
 
-          </nav>
+    <button
+      className="
+        flex
+        h-10
+        w-10
+        items-center
+        justify-center
+        rounded-full
+        border
+        border-[#f1d8d7]
+        bg-white
+        lg:hidden
+      "
+    >
+      ☰
+    </button>
 
-          <div className="hidden items-center gap-4 lg:flex">
-
-            <button
-              className="
-                rounded-full
-                border
-                border-[#f1d8d7]
-                bg-white/80
-                px-5
-                py-2.5
-                text-sm
-                transition
-                hover:border-[#EDA4A3]
-              "
-            >
-              Iniciar sesión
-            </button>
-
-            <button
-              className="
-                rounded-full
-                border
-                border-[#f1d8d7]
-                bg-white/80
-                px-5
-                py-2.5
-                text-sm
-                transition
-                hover:border-[#EDA4A3]
-              "
-            >
-              MX
-            </button>
-
-          </div>
-
-        </div>
-
-      </header>
+  </div>
+</header>
 
       {/* HERO */}
 
@@ -167,49 +173,44 @@ export default function HomePage() {
           <div className="relative z-10">
 
             <p
-              className="
-                mb-6
-                text-sm
-                uppercase
-                tracking-[0.35em]
-                text-[#d58e8d]
-              "
-            >
-              Invitaciones digitales premium
-            </p>
+  className="
+    mb-6
+    text-sm
+    uppercase
+    tracking-[0.35em]
+    text-[#d58e8d]
+  "
+>
+  Entrega inmediata
+</p>
 
-            <h2
-              className="
-                mb-8
-                text-6xl
-                font-semibold
-                leading-[1.05]
-                md:text-8xl
-              "
-            >
+<h2
+  className="
+    mb-8
+   text-4xl md:text-7xl
+    font-semibold
+    leading-[1.05]
+    md:text-7xl
+  "
+>
+  Invitaciones digitales
+  <span className="block italic text-[#d58e8d]">
+    para momentos únicos
+  </span>
+</h2>
 
-              Diseña momentos
-              <span className="italic text-[#d58e8d]">
-                {" "}inolvidables
-              </span>
-
-            </h2>
-
-            <p
-              className="
-                mb-12
-                max-w-xl
-                text-[20px]
-                leading-relaxed
-                text-[#5c5c5c]
-              "
-            >
-
-              Invitaciones digitales elegantes,
-              modernas y completamente personalizables
-              para bodas, XV años y eventos únicos.
-
-            </p>
+<p
+  className="
+    mb-12
+    max-w-xl
+    text-[20px]
+    leading-relaxed
+    text-[#5c5c5c]
+  "
+>
+  Personaliza tu diseño, realiza tu compra y
+  recibe tu invitación lista para compartir al instante.
+</p>
 
             <div className="flex flex-wrap gap-5">
 
@@ -226,7 +227,7 @@ export default function HomePage() {
                   hover:scale-105
                 "
               >
-                Crear invitación
+                Personalizar diseño
               </button>
 
               <button
@@ -323,7 +324,7 @@ export default function HomePage() {
                 text-sm
                 uppercase
                 tracking-[0.35em]
-                text-[#d58e8d]
+                text-[#cfa09f]
               "
             >
               Categorías
@@ -548,8 +549,8 @@ export default function HomePage() {
       </p>
 
       <h2 className="text-5xl md:text-6xl">
-        Crear tu invitación es fácil
-      </h2>
+ ¿Cómo funciona?
+ S      </h2>
 
     </div>
 
@@ -680,7 +681,7 @@ export default function HomePage() {
         </div>
 
         <h3 className="mb-5 text-3xl italic">
-          Comparte tu evento
+          Realiza tu compra
         </h3>
 
         <p className="leading-relaxed text-[#5c5c5c]">
@@ -703,10 +704,7 @@ export default function HomePage() {
   id="planes"
   className="px-6 pb-40"
 >
-
   <div className="mx-auto max-w-7xl">
-
-    {/* TITULO */}
 
     <div className="mb-20 text-center">
 
@@ -728,8 +726,6 @@ export default function HomePage() {
 
     </div>
 
-    {/* GRID */}
-
     <div className="grid gap-8 lg:grid-cols-3">
 
       {/* BASICO */}
@@ -741,36 +737,29 @@ export default function HomePage() {
           border-[#f1d8d7]
           bg-white/70
           p-10
-          backdrop-blur
-          transition
-          hover:-translate-y-2
-          hover:shadow-2xl
         "
       >
 
-        <p
-          className="
-            mb-5
-            text-sm
-            uppercase
-            tracking-[0.3em]
-            text-[#d58e8d]
-          "
-        >
+        <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#d58e8d]">
           Básico
         </p>
 
-        <h3 className="mb-8 text-5xl">
-          $399
+        <h3 className="mb-2 text-5xl">
+          $199
         </h3>
 
-        <ul className="space-y-5 text-[#5c5c5c]">
+        <p className="mb-8 text-[#6b6b6b]">
+          Invitación Web Esencial
+        </p>
 
-          <li>• Invitación digital</li>
-          <li>• Música personalizada</li>
-          <li>• Cuenta regresiva</li>
-          <li>• Galería básica</li>
-          <li>• Confirmación RSVP</li>
+        <ul className="space-y-4 text-[#5c5c5c]">
+
+          <li>✔ Nombre del festejado</li>
+          <li>✔ Datos del evento</li>
+          <li>✔ Ubicación</li>
+          <li>✔ Confirmación por WhatsApp</li>
+          <li>✔ Entrega inmediata</li>
+          <li>✔ Enlace para compartir</li>
 
         </ul>
 
@@ -802,13 +791,8 @@ export default function HomePage() {
           p-10
           text-white
           shadow-2xl
-          shadow-[#EDA4A3]/30
-          transition
-          hover:-translate-y-2
         "
       >
-
-        {/* BADGE */}
 
         <div
           className="
@@ -824,34 +808,66 @@ export default function HomePage() {
             tracking-[0.3em]
           "
         >
-          Popular
+          Más popular
         </div>
 
-        <p
-          className="
-            mb-5
-            text-sm
-            uppercase
-            tracking-[0.3em]
-          "
-        >
+        <p className="mb-4 text-sm uppercase tracking-[0.3em]">
           Premium
         </p>
 
-        <h3 className="mb-8 text-5xl">
-          $699
+        <h3 className="mb-2 text-5xl">
+          $599
         </h3>
+        <div className="mb-8">
 
-        <ul className="space-y-5 opacity-90">
+  <p className="mb-3 opacity-90">
+    Invitación Web Interactiva
+  </p>
 
-          <li>• Todo lo del básico</li>
-          <li>• Galería premium</li>
-          <li>• Timeline elegante</li>
-          <li>• Animaciones suaves</li>
-          <li>• Dress code</li>
-          <li>• Mesa de regalos</li>
+  <p className="text-sm opacity-80 leading-relaxed">
+   Ideal para XV años, bodas y eventos que merecen una experiencia única.
+  </p>
 
-        </ul>
+</div>
+
+       <ul className="space-y-4 opacity-90">
+
+  <li>✔ Hasta 4 fotografías</li>
+
+  <li>✔ Música personalizada</li>
+
+  <li>✔ Entrega inmediata</li>
+
+  <li>✔ Cuenta regresiva</li>
+
+  <li>✔ Confirmación por WhatsApp</li>
+  <li>✔ Personalización avanzada</li>
+
+<li>✔ Bloques y complementos opcionales</li>
+
+</ul>
+
+<button
+  className="
+    mt-6
+    text-sm
+    underline
+    underline-offset-4
+  "
+>
+  
+</button>
+
+<button
+  className="
+    mt-6
+    text-sm
+    underline
+    underline-offset-4
+  "
+>
+  Ver mas características →
+</button>
 
         <button
           className="
@@ -861,16 +877,14 @@ export default function HomePage() {
             bg-white
             py-4
             text-[#2d2d2d]
-            transition
-            hover:scale-105
           "
         >
-          Elegir plan
+          Personalizar invitación
         </button>
 
       </div>
 
-      {/* PLANNER */}
+      {/* EXCLUSIVO */}
 
       <div
         className="
@@ -879,37 +893,28 @@ export default function HomePage() {
           border-[#f1d8d7]
           bg-white/70
           p-10
-          backdrop-blur
-          transition
-          hover:-translate-y-2
-          hover:shadow-2xl
         "
       >
 
-        <p
-          className="
-            mb-5
-            text-sm
-            uppercase
-            tracking-[0.3em]
-            text-[#d58e8d]
-          "
-        >
-          Planner
+        <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#d58e8d]">
+          Exclusivo
         </p>
 
-        <h3 className="mb-8 text-5xl">
-          $999
+        <h3 className="mb-2 text-5xl">
+          Desde $999
         </h3>
 
-        <ul className="space-y-5 text-[#5c5c5c]">
+        <p className="mb-8 text-[#6b6b6b]">
+          Experiencia completamente personalizada
+        </p>
 
-          <li>• Invitaciones ilimitadas</li>
-          <li>• Dashboard premium</li>
-          <li>• Personalización total</li>
-          <li>• Gestión de clientes</li>
-          <li>• Branding personalizado</li>
-          <li>• Acceso prioritario</li>
+        <ul className="space-y-4 text-[#5c5c5c]">
+
+          <li>✔ Diseño exclusivo</li>
+          <li>✔ Secciones personalizadas</li>
+          <li>✔ Animaciones especiales</li>
+          <li>✔ Atención prioritaria</li>
+          <li>✔ Funciones premium</li>
 
         </ul>
 
@@ -921,90 +926,58 @@ export default function HomePage() {
             border
             border-[#EDA4A3]
             py-4
-            transition
-            hover:bg-[#EDA4A3]
-            hover:text-white
           "
         >
-          Elegir plan
+          Solicitar diseño
         </button>
 
       </div>
 
     </div>
 
-    {/* BLOQUES EXTRA */}
+  
+
+    {/* MEMORIES */}
 
     <div
       className="
-        mt-20
+        mt-16
         rounded-[40px]
         border
         border-[#f1d8d7]
         bg-white/60
-        p-10
+        p-12
+        text-center
       "
     >
 
-      <div className="mb-10 text-center">
+      <p className="mb-4 text-sm uppercase tracking-[0.35em] text-[#d58e8d]">
+        Próximamente
+      </p>
 
-        <p
-          className="
-            mb-4
-            text-sm
-            uppercase
-            tracking-[0.35em]
-            text-[#d58e8d]
-          "
-        >
-          Extras
-        </p>
+      <h3 className="mb-6 text-4xl">
+        📸 Coral Studio Memories
+      </h3>
 
-        <h3 className="text-4xl">
-          Agrega bloques premium
-        </h3>
+      <p className="mx-auto max-w-2xl text-[#6b6b6b]">
+        Tus invitados podrán compartir fotos y videos mediante un código QR exclusivo del evento.
+      </p>
+<div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
 
-      </div>
+  <div>✔ Galería colaborativa</div>
 
-      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+  <div>✔ Subida de fotos</div>
 
-        {[
-          ["Timeline", "+$49"],
-          ["Spotify", "+$39"],
-          ["Video", "+$59"],
-          ["Hospedaje", "+$49"],
-        ].map((extra, index) => (
+  <div>✔ Subida de videos</div>
 
-          <div
-            key={index}
-            className="
-              rounded-[24px]
-              border
-              border-[#f1d8d7]
-              bg-white
-              p-6
-              text-center
-            "
-          >
+  <div>✔ Descarga de recuerdos</div>
 
-            <h4 className="mb-3 text-2xl italic">
-              {extra[0]}
-            </h4>
+  <div>✔ Acceso privado</div>
 
-            <p className="text-[#d58e8d]">
-              {extra[1]}
-            </p>
-
-          </div>
-
-        ))}
-
-      </div>
-
+</div>
     </div>
 
   </div>
-
 </section>
 {/* FAQ */}
 
