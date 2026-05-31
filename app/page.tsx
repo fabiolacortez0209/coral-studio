@@ -336,7 +336,7 @@ export default function HomePage() {
 
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid grid-cols-2 gap-4 justify-items-center">
 
             {[
               ["◎", "Bodas", "/bodas"],
@@ -350,28 +350,29 @@ export default function HomePage() {
               <Link
                 href={item[2]}
                 key={index}
-                className="
-                  group
-                  flex
-                  flex-col
-                  items-center
-                  justify-center
-                  rounded-[28px]
-                  border
-                  border-[#f1d8d7]
-                  bg-white/50
-                  py-8 md:py-12
-                  transition
-                  hover:-translate-y-1
-                  hover:bg-white
-                  hover:shadow-lg
-                "
+               className="
+  group
+  flex
+  h-[180px]
+  w-[150px]
+  flex-col
+  items-center
+  justify-center
+  rounded-[35px]
+  border-[6px]
+  border-[#1f1f1f]
+  bg-white
+  shadow-xl
+  transition
+  duration-300
+  hover:-translate-y-2
+"
               >
 
                 <div
                   className="
                     mb-5
-                    text-4xl md:text-5xl
+                    text-5xl
                     font-light
                     text-[#d9b1af]
                     transition
