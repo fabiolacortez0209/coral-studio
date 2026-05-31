@@ -181,7 +181,7 @@ export default function HomePage() {
     text-[#d58e8d]
   "
 >
-  Entrega inmediata
+  
 </p>
 
 <h2
@@ -210,6 +210,8 @@ export default function HomePage() {
 >
   Personaliza tu diseño, realiza tu compra y
   recibe tu invitación lista para compartir al instante.
+  
+  Entrega inmediata
 </p>
 
 
@@ -259,8 +261,8 @@ export default function HomePage() {
   className="
     relative
     z-10
-    h-[320px]
-    w-[150px]
+    h-[360px]
+    w-[180px]
     md:h-[620px]
     md:w-[290px]
     overflow-hidden
@@ -268,7 +270,7 @@ export default function HomePage() {
     border-[10px]
     border-[#1f1f1f]
     shadow-2xl
-    rotate-[-8deg]
+    rotate-[-12deg]
   "
 >
 
@@ -283,10 +285,10 @@ export default function HomePage() {
             <div
  className="
   absolute
-  right-6
-  top-10
-  h-[280px]
-  w-[130px]
+  right-[-20px]
+top-[-10px]
+  h-[340px]
+  w-[170px]
   md:h-[580px]
   md:w-[270px]
   overflow-hidden
@@ -294,7 +296,7 @@ export default function HomePage() {
   border-[10px]
   border-[#1f1f1f]
   shadow-2xl
-  rotate-[10deg]
+  rotate-[14deg]
 "
 >
               <img
