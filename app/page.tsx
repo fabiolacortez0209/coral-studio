@@ -187,8 +187,8 @@ export default function HomePage() {
 <h2
   className="
     mb-8
-   text-4xl md:text-7xl
-    font-semibold
+  text-4xl md:text-6xl
+font-light
     leading-[1.05]
     md:text-7xl
   "
@@ -211,6 +211,7 @@ export default function HomePage() {
   Personaliza tu diseño, realiza tu compra y
   recibe tu invitación lista para compartir al instante.
 </p>
+
 
             <div className="flex flex-wrap gap-5">
 
@@ -336,7 +337,7 @@ export default function HomePage() {
 
           </div>
 
-          <div className="grid grid-cols-2 gap-4 justify-items-center">
+         <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-10 justify-items-center">
 
             {[
               ["◎", "Bodas", "/bodas"],
@@ -353,14 +354,16 @@ export default function HomePage() {
                className="
   group
   flex
-  h-[180px]
-  w-[150px]
+  h-[170px]
+  w-[160px]
+  md:h-[180px]
+  md:w-[280px]
   flex-col
   items-center
   justify-center
   rounded-[35px]
-  border-[6px]
-  border-[#1f1f1f]
+  border
+  border-[#f1d8d7]
   bg-white
   shadow-xl
   transition
@@ -382,7 +385,7 @@ export default function HomePage() {
                   {item[0]}
                 </div>
 
-                <h3 className="text-xl md:text-2xl italic">
+                <h3 className="text-xl italic text-center px-2">
                   {item[1]}
                 </h3>
 
@@ -441,11 +444,13 @@ export default function HomePage() {
 
                 {/* PHONE */}
 
-               <div
+   <div
   className="
     relative
     h-[300px]
     w-[140px]
+    md:h-[520px]
+    md:w-[250px]
     overflow-hidden
     rounded-[40px]
     border-[8px]
