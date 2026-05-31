@@ -1005,7 +1005,7 @@ export default function HomePage() {
       </p>
 
       <h2 className="text-5xl md:text-6xl">
-        Preguntas frecuentes
+        Resolvemos tus dudas
       </h2>
 
     </div>
@@ -1017,36 +1017,36 @@ export default function HomePage() {
       {/* ITEM */}
 
       {[
-        {
-          question: "¿Puedo personalizar mi invitación?",
-          answer:
-            "Sí, puedes cambiar nombres, fotografías, colores, música y agregar bloques premium.",
-        },
+  {
+    question: "¿Cómo recibo mi invitación?",
+    answer:
+      "Una vez completado tu pago, tu invitación se genera automáticamente y recibirás tu enlace listo para compartir en minutos.",
+  },
 
-        {
-          question: "¿Cómo comparto mi invitación?",
-          answer:
-            "Puedes compartirla mediante WhatsApp, redes sociales o código QR.",
-        },
+  {
+    question: "¿Puedo personalizar mi invitación?",
+    answer:
+      "Sí. Puedes modificar textos, fotografías, música y elegir entre diferentes opciones disponibles para cada diseño.",
+  },
 
-        {
-          question: "¿La invitación tiene límite de invitados?",
-          answer:
-            "No, puedes compartir tu invitación con todos tus invitados sin límites.",
-        },
+  {
+    question: "¿La invitación se entrega al instante?",
+    answer:
+      "Sí. Los planes Básico y Premium se entregan automáticamente después de completar tu compra.",
+  },
 
-        {
-          question: "¿Puedo agregar extras después?",
-          answer:
-            "Sí, puedes agregar bloques premium como timeline, hospedaje, Spotify y más.",
-        },
+  {
+    question: "¿Puedo agregar funciones adicionales?",
+    answer:
+      "Sí. Puedes complementar tu invitación con Animación Luxury, Mesa de Regalos, Galería Ampliada, Spotify, Video, Hospedaje y más.",
+  },
 
-        {
-          question: "¿Cuánto tarda la entrega?",
-          answer:
-            "En el instante para planes Básico y Premium. Las invitaciones personalizadas tienen un tiempo estimado de 7 días.",
-        },
-      ].map((faq, index) => (
+  {
+    question: "¿Qué es el Control de Invitados Premium?",
+    answer:
+      "Es un sistema avanzado de confirmación de asistencia que permite controlar pases, registrar asistentes y visualizar confirmaciones en tiempo real.",
+  },
+].map((faq, index) => (
 
         <div
           key={index}
