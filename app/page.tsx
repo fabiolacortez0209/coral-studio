@@ -261,8 +261,8 @@ export default function HomePage() {
   className="
     relative
     z-10
-    h-[360px]
-    w-[180px]
+    h-[240px]
+    w-[120px]
     md:h-[620px]
     md:w-[290px]
     overflow-hidden
@@ -287,8 +287,8 @@ export default function HomePage() {
   absolute
   right-[0px]
 top-[10px]
-  h-[340px]
-  w-[170px]
+  h-[220px]
+  w-[110px]
   md:h-[580px]
   md:w-[270px]
   overflow-hidden
