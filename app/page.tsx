@@ -123,7 +123,7 @@ export default function HomePage() {
           overflow-hidden
           px-6
           pt-44
-          pb-28
+          pb-16
         "
       >
 
@@ -261,16 +261,16 @@ export default function HomePage() {
   className="
     relative
     z-10
-    h-[240px]
+    h-[220px]
     w-[120px]
     md:h-[620px]
     md:w-[290px]
     overflow-hidden
-    rounded-[50px]
-    border-[10px]
+    rounded-[28px]
+    border-[8px]
     border-[#1f1f1f]
     shadow-2xl
-    rotate-[-12deg]
+    rotate-[-7deg]
   "
 >
 
@@ -285,18 +285,18 @@ export default function HomePage() {
             <div
  className="
   absolute
-  right-[0px]
-top-[10px]
-  h-[220px]
-  w-[110px]
+  right-[15px]
+top-[15px]
+  h-[250px]
+  w-[140px]
   md:h-[580px]
   md:w-[270px]
   overflow-hidden
-  rounded-[50px]
-  border-[10px]
+  rounded-[32px]
+  border-[8px]
   border-[#1f1f1f]
   shadow-2xl
-  rotate-[14deg]
+  rotate-[7deg]
 "
 >
               <img
@@ -342,7 +342,7 @@ top-[10px]
 
           </div>
 
-         <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-10 justify-items-center">
+         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-10 justify-items-center">
 
             {[
               ["◎", "Bodas", "/bodas"],
@@ -360,7 +360,7 @@ top-[10px]
   group
   flex
   h-[170px]
-  w-[160px]
+  w-[145px]
   md:h-[180px]
   md:w-[280px]
   flex-col
@@ -1132,16 +1132,17 @@ top-[10px]
   "
 >
 
-  <div
-    className="
-      mx-auto
-      grid
-      max-w-7xl
-      gap-16
-      md:grid-cols-2
-      xl:grid-cols-4
-    "
-  >
+ <div
+  className="
+    mx-auto
+    grid
+    max-w-7xl
+    items-center
+    gap-8
+    md:gap-16
+    md:grid-cols-2
+  "
+>
 
     {/* MARCA */}
 
