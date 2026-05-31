@@ -444,8 +444,8 @@ export default function HomePage() {
                <div
   className="
     relative
-    h-[420px]
-    w-[180px]
+    h-[320px]
+    w-[120px]
     overflow-hidden
     rounded-[40px]
     border-[8px]
