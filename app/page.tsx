@@ -186,11 +186,11 @@ export default function HomePage() {
 
 <h2
   className="
+    elegant-title
     mb-8
-  text-4xl md:text-6xl
-font-light
+    text-4xl
+    md:text-6xl
     leading-[1.05]
-    md:text-7xl
   "
 >
   Invitaciones digitales
@@ -375,7 +375,7 @@ font-light
                 <div
                   className="
                     mb-5
-                    text-5xl
+                    text-4xl
                     font-light
                     text-[#d9b1af]
                     transition

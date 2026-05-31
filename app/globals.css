@@ -16,3 +16,8 @@ body {
   margin: 0;
   padding: 0;
 }
+.elegant-title {
+  font-family: var(--font-cormorant);
+  font-style: italic;
+  font-weight: 400;
+}

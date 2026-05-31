@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import {
   Allura,
   Montserrat,
+  Cormorant_Garamond,
 } from "next/font/google";
 
 import "./globals.css";
@@ -15,6 +16,11 @@ const allura = Allura({
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "500"],
+});
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-cormorant",
 });
 
 export const metadata: Metadata = {
@@ -32,18 +38,27 @@ export default function RootLayout({
 
     <html lang="es">
 
-      <body className={montserrat.className}>
+    <body
+  className={`${montserrat.className} ${cormorant.variable}`}
+>
 
-        <div
-          style={{
-            fontFamily: allura.style.fontFamily,
-          }}
-          id="allura-font"
-        />
+  <div
+    style={{
+      fontFamily: allura.style.fontFamily,
+    }}
+    id="allura-font"
+  />
 
-        {children}
+  <div
+    style={{
+      fontFamily: cormorant.style.fontFamily,
+    }}
+    id="cormorant-font"
+  />
 
-      </body>
+  {children}
+
+</body>
 
     </html>
 
