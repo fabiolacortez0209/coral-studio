@@ -360,7 +360,7 @@ export default function HomePage() {
                   border
                   border-[#f1d8d7]
                   bg-white/50
-                  py-12
+                  py-8 md:py-12
                   transition
                   hover:-translate-y-1
                   hover:bg-white
@@ -371,7 +371,7 @@ export default function HomePage() {
                 <div
                   className="
                     mb-5
-                    text-5xl
+                    text-4xl md:text-5xl
                     font-light
                     text-[#d9b1af]
                     transition
@@ -381,7 +381,7 @@ export default function HomePage() {
                   {item[0]}
                 </div>
 
-                <h3 className="text-2xl italic">
+                <h3 className="text-xl md:text-2xl italic">
                   {item[1]}
                 </h3>
 
@@ -424,7 +424,6 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-2 gap-4 justify-items-center xl:grid-cols-4">
-
             
         
                {templates.slice(0, 4).map((template, index) => (
@@ -482,40 +481,9 @@ export default function HomePage() {
                       to-black/60
                     "
                   />
+</div>
 
-                  <div
-                    className="
-                      absolute
-                      bottom-6
-                      left-0
-                      w-full
-                      px-6
-                      text-center
-                      text-white
-                    "
-                  >
-
-                    <p
-                      className="
-                        mb-3
-                        text-xs
-                        uppercase
-                        tracking-[0.35em]
-                        opacity-80
-                      "
-                    >
-                      {template.category}
-                    </p>
-
-                    <h3 className="text-2xl italic">
-                      {template.title}
-                    </h3>
-
-                  </div>
-
-                </div>
-
-              </div>
+</div>
 
             ))}
 
@@ -524,17 +492,15 @@ export default function HomePage() {
         </div>
 
       </section>
-      {/* COMO FUNCIONA */}
+                  
+      
+{/* COMO FUNCIONA */}
 
-<section
-  className="px-6 pb-36"
->
+<section className="px-6 pb-36">
 
-  <div className="mx-auto max-w-7xl">
+  <div className="mx-auto max-w-5xl">
 
-    {/* TITULO */}
-
-    <div className="mb-20 text-center">
+    <div className="mb-24 text-center">
 
       <p
         className="
@@ -548,148 +514,198 @@ export default function HomePage() {
         Experiencia
       </p>
 
-      <h2 className="text-5xl md:text-6xl">
- ¿Cómo funciona?
-       </h2>
+      <h2
+        className="
+          text-6xl
+          italic
+          font-light
+        "
+      >
+        ¿Cómo funciona?
+      </h2>
 
     </div>
 
-    {/* GRID */}
-
-    <div className="grid gap-8 lg:grid-cols-3">
-
-      {/* PASO 1 */}
+    <div className="relative">
 
       <div
         className="
-          rounded-[30px]
-          border
-          border-[#f1d8d7]
-          bg-white/60
-          p-8
-          transition
-          hover:-translate-y-2
-          hover:shadow-xl
+          absolute
+          left-[23px]
+          top-0
+          h-full
+          w-[2px]
+          bg-[#f1d8d7]
         "
-      >
+      />
+
+      {/* PASO 1 */}
+
+      <div className="relative mb-16 flex gap-8">
 
         <div
           className="
-            mb-8
+            z-10
             flex
-            h-16
-            w-16
+            h-12
+            w-12
             items-center
             justify-center
             rounded-full
-            bg-[#FDECEC]
-            text-2xl
-            text-[#d58e8d]
+            bg-[#EDA4A3]
+            text-white
           "
         >
-          01
+          ✓
         </div>
 
-        <h3 className="mb-5 text-3xl italic">
-          Elige tu diseño
-        </h3>
+        <div>
 
-        <p className="leading-relaxed text-[#5c5c5c]">
+          <h3 className="mb-3 text-3xl font-medium">
+            Elige tu diseño
+          </h3>
 
-          Explora nuestras categorías y selecciona
-          la plantilla perfecta para tu evento.
+          <p className="max-w-xl text-[#6b6b6b] leading-relaxed">
+            Explora nuestras categorías y selecciona la plantilla perfecta para tu evento.
+          </p>
 
-        </p>
+        </div>
 
       </div>
 
       {/* PASO 2 */}
 
-      <div
-        className="
-          rounded-[40px]
-          border
-          border-[#f1d8d7]
-          bg-white/60
-          p-10
-          transition
-          hover:-translate-y-2
-          hover:shadow-xl
-        "
-      >
+      <div className="relative mb-16 flex gap-8">
 
         <div
           className="
-            mb-8
+            z-10
             flex
-            h-16
-            w-16
+            h-12
+            w-12
             items-center
             justify-center
             rounded-full
-            bg-[#FDECEC]
-            text-2xl
+            bg-[#F5E7E6]
             text-[#d58e8d]
           "
         >
-          02
+          2
         </div>
 
-        <h3 className="mb-5 text-3xl italic">
-          Personaliza
-        </h3>
+        <div>
 
-        <p className="leading-relaxed text-[#5c5c5c]">
+          <h3 className="mb-3 text-3xl font-medium">
+            Personaliza tu invitación
+          </h3>
 
-          Cambia nombres, música, colores,
-          fotografías y agrega bloques premium.
+          <p className="max-w-xl text-[#6b6b6b] leading-relaxed">
+            Modifica textos, fotografías, música y agrega complementos opcionales.
+          </p>
 
-        </p>
+        </div>
 
       </div>
 
       {/* PASO 3 */}
 
-      <div
-        className="
-          rounded-[40px]
-          border
-          border-[#f1d8d7]
-          bg-white/60
-          p-10
-          transition
-          hover:-translate-y-2
-          hover:shadow-xl
-        "
-      >
+      <div className="relative mb-16 flex gap-8">
 
         <div
           className="
-            mb-8
+            z-10
             flex
-            h-16
-            w-16
+            h-12
+            w-12
             items-center
             justify-center
             rounded-full
-            bg-[#FDECEC]
-            text-2xl
+            bg-[#F5E7E6]
             text-[#d58e8d]
           "
         >
-          03
+          3
         </div>
 
-        <h3 className="mb-5 text-3xl italic">
-          Realiza tu compra
-        </h3>
+        <div>
 
-        <p className="leading-relaxed text-[#5c5c5c]">
+          <h3 className="mb-3 text-3xl font-medium">
+            Realiza tu compra
+          </h3>
 
-          Envía tu invitación por WhatsApp,
-          redes sociales o código QR.
+          <p className="max-w-xl text-[#6b6b6b] leading-relaxed">
+            Completa tu pedido de forma rápida y segura.
+          </p>
 
-        </p>
+        </div>
+
+      </div>
+
+      {/* PASO 4 */}
+
+      <div className="relative mb-16 flex gap-8">
+
+        <div
+          className="
+            z-10
+            flex
+            h-12
+            w-12
+            items-center
+            justify-center
+            rounded-full
+            bg-[#F5E7E6]
+            text-[#d58e8d]
+          "
+        >
+          4
+        </div>
+
+        <div>
+
+          <h3 className="mb-3 text-3xl font-medium">
+            Recibe tu invitación
+          </h3>
+
+          <p className="max-w-xl text-[#6b6b6b] leading-relaxed">
+            Tu invitación se genera automáticamente y queda lista para compartir.
+          </p>
+
+        </div>
+
+      </div>
+
+      {/* PASO 5 */}
+
+      <div className="relative flex gap-8">
+
+        <div
+          className="
+            z-10
+            flex
+            h-12
+            w-12
+            items-center
+            justify-center
+            rounded-full
+            bg-[#F5E7E6]
+            text-[#d58e8d]
+          "
+        >
+          5
+        </div>
+
+        <div>
+
+          <h3 className="mb-3 text-3xl font-medium">
+            Comparte tu evento
+          </h3>
+
+          <p className="max-w-xl text-[#6b6b6b] leading-relaxed">
+            Envía tu invitación por WhatsApp, redes sociales o mediante tu enlace personalizado.
+          </p>
+
+        </div>
 
       </div>
 
