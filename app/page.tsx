@@ -253,14 +253,14 @@ export default function HomePage() {
 
           {/* CELULARES */}
 
-          <div className="relative flex items-center justify-center">
+          <div className="relative flex items-center justify-center py-8">
 
             <div
   className="
     relative
     z-10
-    h-[420px]
-    w-[200px]
+    h-[320px]
+    w-[150px]
     md:h-[620px]
     md:w-[290px]
     overflow-hidden
@@ -281,21 +281,21 @@ export default function HomePage() {
             </div>
 
             <div
-  className="
-    absolute
-    right-0
-    top-20
-    h-[380px]
-    w-[180px]
-    md:h-[580px]
-    md:w-[270px]
-    overflow-hidden
-    rounded-[50px]
-    border-[10px]
-    border-[#1f1f1f]
-    shadow-2xl
-    rotate-[10deg]
-  "
+ className="
+  absolute
+  right-6
+  top-10
+  h-[280px]
+  w-[130px]
+  md:h-[580px]
+  md:w-[270px]
+  overflow-hidden
+  rounded-[50px]
+  border-[10px]
+  border-[#1f1f1f]
+  shadow-2xl
+  rotate-[10deg]
+"
 >
               <img
                 src="https://images.unsplash.com/photo-1525258946800-98cfd641d0de"
