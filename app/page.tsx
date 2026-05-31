@@ -445,7 +445,7 @@ export default function HomePage() {
   className="
     relative
     h-[320px]
-    w-[120px]
+    w-[150px]
     overflow-hidden
     rounded-[40px]
     border-[8px]
