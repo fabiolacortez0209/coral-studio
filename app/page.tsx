@@ -331,9 +331,9 @@ export default function HomePage() {
               Categorías
             </p>
 
-            <h2 className="text-5xl md:text-6xl">
-              Diseños para cada ocasión
-            </h2>
+            <h2 className="elegant-title text-4xl md:text-6xl">
+  Diseños para cada ocasión
+</h2>
 
           </div>
 
@@ -421,9 +421,9 @@ export default function HomePage() {
               Plantillas
             </p>
 
-            <h2 className="text-5xl md:text-6xl">
-              Diseños destacados
-            </h2>
+            <h2 className="elegant-title text-4xl md:text-6xl">
+  Diseños destacados
+</h2>
 
           </div>
 
@@ -521,15 +521,14 @@ export default function HomePage() {
       </p>
 
       <h2
-        className="
-          text-6xl
-          italic
-          font-light
-        "
-      >
-        ¿Cómo funciona?
-      </h2>
-
+  className="
+    elegant-title
+    text-4xl
+    md:text-6xl
+  "
+>
+  ¿Cómo funciona?
+</h2>
     </div>
 
     <div className="relative">
@@ -742,9 +741,9 @@ export default function HomePage() {
         Planes
       </p>
 
-      <h2 className="text-5xl md:text-6xl">
-        Elige tu experiencia
-      </h2>
+      <h2 className="elegant-title text-4xl md:text-6xl">
+  Elige tu experiencia
+</h2>
 
     </div>
 
@@ -1026,9 +1025,9 @@ export default function HomePage() {
         FAQ
       </p>
 
-      <h2 className="text-5xl md:text-6xl">
-        Resolvemos tus dudas
-      </h2>
+      <h2 className="elegant-title text-4xl md:text-6xl">
+  Resolvemos tus dudas
+</h2>
 
     </div>
 
