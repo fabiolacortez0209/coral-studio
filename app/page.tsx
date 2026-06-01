@@ -294,7 +294,7 @@ export default function HomePage() {
            <div
   className="
     absolute
-    left-[45%]
+    left-[40%]
     top-[15px]
     h-[280px]
     w-[125px]
