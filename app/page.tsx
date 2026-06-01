@@ -32,9 +32,17 @@ export default function HomePage() {
     "
   >
 
-    <h1 className="text-3xl font-light tracking-wide">
-      Coral Studio
-    </h1>
+ <h1
+  className="
+    elegant-title
+    text-[38px]
+    italic
+    leading-none
+    text-[#2d2d2d]
+  "
+>
+  Coral Studio
+</h1>
 
     {/* MENU ESCRITORIO */}
 
@@ -343,7 +351,7 @@ top-[15px]
 
           </div>
 
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-10 justify-items-center">
+       <div className="grid grid-cols-2 gap-x-10 gap-y-6 md:grid-cols-3 md:gap-10 justify-items-center">
 
             {[
               ["◎", "Bodas", "/bodas"],
@@ -360,8 +368,8 @@ top-[15px]
                className="
   group
   flex
-  h-[170px]
-  w-[145px]
+  h-[155px]
+  w-[140px]
   md:h-[180px]
   md:w-[280px]
   flex-col
@@ -405,15 +413,14 @@ top-[15px]
 
       </section>
       {/* PLANTILLAS DESTACADAS */}
-
-      <section
-        id="disenos"
-        className="px-6 pb-36"
-      >
+<section
+  id="disenos"
+  className="px-6 pb-12"
+>
 
         <div className="mx-auto max-w-7xl">
 
-          <div className="mb-16 text-center">
+          <div className="mb-8 text-center">
 
             <p
               className="
@@ -450,15 +457,15 @@ top-[15px]
 
                 {/* PHONE */}
 
-   <div
+<div
   className="
     relative
-    h-[300px]
-    w-[140px]
-    md:h-[520px]
-    md:w-[250px]
+    h-[260px]
+    w-[190px]
+    md:h-[500px]
+    md:w-[300px]
     overflow-hidden
-    rounded-[40px]
+    rounded-[24px]
     border-[8px]
     border-[#1f1f1f]
     bg-black
@@ -508,11 +515,11 @@ top-[15px]
       
 {/* COMO FUNCIONA */}
 
-<section className="px-6 pb-36">
+<section className="px-6 pb-12">
 
   <div className="mx-auto max-w-5xl">
 
-    <div className="mb-24 text-center">
+    <div className="mb-12 text-center">
 
       <p
         className="
