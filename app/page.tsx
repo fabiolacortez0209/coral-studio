@@ -294,7 +294,7 @@ export default function HomePage() {
            <div
   className="
     absolute
-    left-[40%]
+    left-[35%]
     top-[15px]
     h-[280px]
     w-[125px]
@@ -309,7 +309,7 @@ export default function HomePage() {
   "
 >
   <img
-    src="encanto.png"
+    src="https://images.unsplash.com/photo-1525258946800-98cfd641d0de"
     alt=""
     className="h-full w-full object-cover"
   />
