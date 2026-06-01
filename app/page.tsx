@@ -118,14 +118,14 @@ export default function HomePage() {
       {/* HERO */}
 
       <section
-        className="
-          relative
-          overflow-hidden
-          px-6
-          pt-44
-          pb-16
-        "
-      >
+  className="
+    relative
+    overflow-hidden
+    px-6
+    pt-28
+    pb-8
+  "
+>
 
         {/* DEGRADADOS */}
 
@@ -202,7 +202,7 @@ export default function HomePage() {
 
 <p
   className="
-    mb-12
+    mb-8
     max-w-xl
     text-[20px]
     leading-relaxed
@@ -318,12 +318,12 @@ top-[15px]
 
       <section
         id="categorias"
-        className="px-6 pb-32"
+        className="px-6 pb-20"
       >
 
         <div className="mx-auto max-w-6xl">
 
-          <div className="mb-16 text-center">
+          <div className="mb-10 text-center">
 
             <p
               className="
@@ -343,7 +343,7 @@ top-[15px]
 
           </div>
 
-         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-10 justify-items-center">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-10 justify-items-center">
 
             {[
               ["◎", "Bodas", "/bodas"],
