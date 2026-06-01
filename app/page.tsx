@@ -1016,14 +1016,14 @@ export default function HomePage() {
 
 <section
   id="faq"
-  className="px-6 pb-36"
+  className="px-6 pt-8 pb-24"
 >
 
   <div className="mx-auto max-w-4xl">
 
     {/* TITULO */}
 
-    <div className="mb-20 text-center">
+    <div className="mb-12 text-center">
 
       <p
         className="
@@ -1037,15 +1037,15 @@ export default function HomePage() {
         FAQ
       </p>
 
-      <h2 className="elegant-title text-4xl md:text-6xl">
-  Resolvemos tus dudas
+      <h2 className="elegant-title text-5xl md:text-6xl leading-none">
+  Todo lo que necesitas saber
 </h2>
 
     </div>
 
     {/* PREGUNTAS */}
 
-    <div className="space-y-5">
+   <div className="space-y-3">
 
       {/* ITEM */}
 
@@ -1081,26 +1081,26 @@ export default function HomePage() {
   },
 ].map((faq, index) => (
 
-        <div
-          key={index}
-          className="
-            rounded-[24px]
-            border
-            border-[#f3dede]
-            bg-white/50
-            px-8
-            py-7
-            backdrop-blur
-            transition
-            hover:bg-white/80
-            hover:shadow-md
-          "
-        >
+       <div
+  key={index}
+  className="
+    rounded-[24px]
+    border
+    border-[#f3dede]
+    bg-white/50
+    px-7
+    py-5
+    backdrop-blur
+    transition
+    hover:bg-white/80
+    hover:shadow-md
+  "
+>
 
           <h3
             className="
               mb-3
-              text-[26px]
+              text-[22px]
               italic
               text-[#2d2d2d]
             "
