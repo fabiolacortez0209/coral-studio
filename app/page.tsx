@@ -264,7 +264,7 @@ export default function HomePage() {
 
           {/* CELULARES */}
 
-          <div className="relative flex items-center justify-center py-8">
+          <div className="relative flex items-center justify-center items-center py-8">
 
             <div
   className="
@@ -297,7 +297,7 @@ export default function HomePage() {
   right-[15px]
 top-[15px]
   h-[320px]
-  w-[165px]
+  w-[145px]
   md:h-[580px]
   md:w-[270px]
   overflow-hidden
