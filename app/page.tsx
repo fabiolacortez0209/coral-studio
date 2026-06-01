@@ -270,13 +270,13 @@ export default function HomePage() {
   className="
     relative
     z-10
-    h-[220px]
+    h-[260px]
     w-[120px]
-    md:h-[620px]
-    md:w-[290px]
+    md:h-[470px]
+    md:w-[190px]
     overflow-hidden
     rounded-[28px]
-    border-[8px]
+    border-[6px]
     border-[#1f1f1f]
     shadow-2xl
     rotate-[-7deg]
@@ -296,10 +296,10 @@ export default function HomePage() {
   absolute
   right-[15px]
 top-[15px]
-  h-[320px]
-  w-[145px]
-  md:h-[580px]
-  md:w-[225px]
+  h-[280px]
+  w-[130px]
+  md:h-[510px]
+  md:w-[210px]
   overflow-hidden
   rounded-[28px]
   border-[6px]
@@ -461,9 +461,9 @@ top-[15px]
   className="
     relative
     h-[300px]
-    w-[155px]
+    w-[170px]
     md:h-[500px]
-    md:w-[250px]
+    md:w-[260px]
     overflow-hidden
     rounded-[28px]
     border-[6px]
