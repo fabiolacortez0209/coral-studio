@@ -735,7 +735,7 @@ export default function HomePage() {
 
 <section
   id="planes"
-  className="px-6 pb-40"
+  className="px-6 pb-16"
 >
   <div className="mx-auto max-w-7xl">
 
@@ -844,9 +844,9 @@ export default function HomePage() {
           Más popular
         </div>
 
-        <p className="mb-4 text-sm uppercase tracking-[0.3em]">
-          Premium
-        </p>
+       <p className="mb-4 mt-14 text-sm uppercase tracking-[0.3em]">
+  Premium
+</p>
 
         <h3 className="mb-2 text-5xl">
           $599
@@ -973,9 +973,9 @@ export default function HomePage() {
     {/* MEMORIES */}
 
     <div
-      className="
-        mt-16
-        rounded-[40px]
+  className="
+    mt-6
+    rounded-[40px]
         border
         border-[#f1d8d7]
         bg-white/60
@@ -1016,9 +1016,8 @@ export default function HomePage() {
 
 <section
   id="faq"
-  className="px-6 pt-8 pb-24"
+  className="px-6 pt-0 pb-24"
 >
-
   <div className="mx-auto max-w-4xl">
 
     {/* TITULO */}
@@ -1038,7 +1037,7 @@ export default function HomePage() {
       </p>
 
       <h2 className="elegant-title text-4xl md:text-6xl leading-tight">
-  Todo lo que necesitas saber
+  Resolvemos tus dudas
 </h2>
 
     </div>
