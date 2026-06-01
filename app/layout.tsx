@@ -24,8 +24,15 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Invitación XV",
-  description: "Invitación digital premium",
+  title: "CORAL STUDIO",
+  description: "Invitaciones digitales premium",
+
+  openGraph: {
+    title: "CORAL STUDIO",
+    description: "Invitaciones digitales premium",
+    url: "https://coralstudio.com.mx",
+    siteName: "CORAL STUDIO",
+  },
 };
 
 export default function RootLayout({

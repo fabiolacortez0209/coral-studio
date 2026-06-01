@@ -1037,7 +1037,7 @@ export default function HomePage() {
         FAQ
       </p>
 
-      <h2 className="elegant-title text-5xl md:text-6xl leading-none">
+      <h2 className="elegant-title text-4xl md:text-6xl leading-tight">
   Todo lo que necesitas saber
 </h2>
 
