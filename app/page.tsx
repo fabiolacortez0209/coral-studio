@@ -158,15 +158,16 @@ export default function HomePage() {
         />
 
         <div
-          className="
-            mx-auto
-            grid
-            max-w-7xl
-            items-center
-            gap-24
-            md:grid-cols-2
-          "
-        >
+  className="
+    mx-auto
+    grid
+    max-w-7xl
+    items-center
+    gap-8
+    md:gap-16
+    md:grid-cols-2
+  "
+>
 
           {/* TEXTO */}
 
