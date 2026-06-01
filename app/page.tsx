@@ -296,13 +296,13 @@ export default function HomePage() {
   absolute
   right-[15px]
 top-[15px]
-  h-[250px]
-  w-[140px]
+  h-[320px]
+  w-[165px]
   md:h-[580px]
   md:w-[270px]
   overflow-hidden
-  rounded-[32px]
-  border-[8px]
+  rounded-[28px]
+  border-[6px]
   border-[#1f1f1f]
   shadow-2xl
   rotate-[7deg]
@@ -440,7 +440,7 @@ top-[15px]
 
           </div>
 
-          <div className="grid grid-cols-2 gap-4 justify-items-center xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-8 justify-items-center xl:grid-cols-4">
             
         
                {templates.slice(0, 4).map((template, index) => (
@@ -460,8 +460,8 @@ top-[15px]
 <div
   className="
     relative
-    h-[260px]
-    w-[190px]
+    h-[250px]
+    w-[185px]
     md:h-[500px]
     md:w-[300px]
     overflow-hidden
