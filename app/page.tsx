@@ -292,30 +292,29 @@ export default function HomePage() {
             </div>
 
             <div
- className="
-  absolute
-  right-[15px]
-top-[15px]
-  h-[280px]
-  w-[130px]
-  md:h-[510px]
-  md:w-[210px]
-  overflow-hidden
-  rounded-[28px]
-  border-[6px]
-  border-[#1f1f1f]
-  shadow-2xl
-  rotate-[7deg]
-"
+<div
+  className="
+    absolute
+    left-[53%]
+    top-[15px]
+    h-[280px]
+    w-[130px]
+    md:h-[510px]
+    md:w-[210px]
+    overflow-hidden
+    rounded-[28px]
+    border-[6px]
+    border-[#1f1f1f]
+    shadow-2xl
+    rotate-[7deg]
+  "
 >
-              <img
-                src="https://images.unsplash.com/photo-1525258946800-98cfd641d0de"
-                alt=""
-                className="h-full w-full object-cover"
-              />
-
-            </div>
-
+  <img
+    src="https://images.unsplash.com/photo-1525258946800-98cfd641d0de"
+    alt=""
+    className="h-full w-full object-cover"
+  />
+</div>
           </div>
 
         </div>
