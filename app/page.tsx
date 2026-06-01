@@ -299,7 +299,7 @@ top-[15px]
   h-[320px]
   w-[145px]
   md:h-[580px]
-  md:w-[270px]
+  md:w-[225px]
   overflow-hidden
   rounded-[28px]
   border-[6px]
@@ -460,13 +460,13 @@ top-[15px]
 <div
   className="
     relative
-    h-[250px]
-    w-[185px]
+    h-[300px]
+    w-[155px]
     md:h-[500px]
-    md:w-[300px]
+    md:w-[250px]
     overflow-hidden
-    rounded-[24px]
-    border-[8px]
+    rounded-[28px]
+    border-[6px]
     border-[#1f1f1f]
     bg-black
     shadow-2xl
