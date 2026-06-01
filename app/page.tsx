@@ -294,10 +294,10 @@ export default function HomePage() {
            <div
   className="
     absolute
-    left-[50%]
+    left-[45%]
     top-[15px]
     h-[280px]
-    w-[130px]
+    w-[125px]
     md:h-[510px]
     md:w-[210px]
     overflow-hidden
