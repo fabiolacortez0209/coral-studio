@@ -309,7 +309,7 @@ export default function HomePage() {
   "
 >
   <img
-    src="https://images.unsplash.com/photo-1525258946800-98cfd641d0de"
+    src="encanto.png"
     alt=""
     className="h-full w-full object-cover"
   />
