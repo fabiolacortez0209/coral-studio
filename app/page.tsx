@@ -461,12 +461,12 @@ top-[15px]
   className="
     relative
     h-[300px]
-    w-[155px]
+    w-[150px]
     md:h-[500px]
     md:w-[260px]
     overflow-hidden
     rounded-[28px]
-    border-[6px]
+    border-[5px]
     border-[#1f1f1f]
     bg-black
     shadow-2xl
