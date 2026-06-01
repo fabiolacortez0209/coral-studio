@@ -291,8 +291,7 @@ export default function HomePage() {
 
             </div>
 
-            <div
-<div
+           <div
   className="
     absolute
     left-[53%]
@@ -315,6 +314,7 @@ export default function HomePage() {
     className="h-full w-full object-cover"
   />
 </div>
+
           </div>
 
         </div>
