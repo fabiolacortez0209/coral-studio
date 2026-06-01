@@ -1138,15 +1138,14 @@ export default function HomePage() {
   "
 >
 
- <div
+<div
   className="
     mx-auto
     grid
     max-w-7xl
-    items-center
-    gap-8
-    md:gap-16
+    gap-10
     md:grid-cols-2
+    lg:grid-cols-4
   "
 >
 
@@ -1154,9 +1153,9 @@ export default function HomePage() {
 
     <div>
 
-      <h2 className="mb-6 text-4xl italic">
-        Coral Studio
-      </h2>
+   <h2 className="elegant-title text-4xl md:text-5xl">
+  Coral Studio
+</h2>
 
       <p
         className="
@@ -1165,9 +1164,9 @@ export default function HomePage() {
           text-[#6b6b6b]
         "
       >
-        Invitaciones digitales premium
-        diseñadas para momentos únicos
-        e inolvidables.
+        Creamos experiencias digitales
+que transforman cada celebración
+en un recuerdo inolvidable.
       </p>
 
     </div>
@@ -1333,7 +1332,7 @@ export default function HomePage() {
 
   <div
     className="
-      mt-20
+      mt-12
       border-t
       border-[#f1d8d7]
       pt-8
