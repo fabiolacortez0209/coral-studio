@@ -440,7 +440,7 @@ top-[15px]
 
           </div>
 
-          <div className="grid grid-cols-2 gap-8 justify-items-center xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-x-14 gap-y-8 justify-items-center xl:grid-cols-4">
             
         
                {templates.slice(0, 4).map((template, index) => (
@@ -461,7 +461,7 @@ top-[15px]
   className="
     relative
     h-[300px]
-    w-[170px]
+    w-[160px]
     md:h-[500px]
     md:w-[260px]
     overflow-hidden
