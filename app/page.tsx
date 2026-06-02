@@ -85,16 +85,22 @@ export default function HomePage() {
 
     {/* WHATSAPP ESCRITORIO */}
 
-    <a
+  <a
   href="https://wa.me/526131248062"
-  onClick={() => setMenuOpen(false)}
+  target="_blank"
   className="
-    mt-4
+    hidden
     rounded-full
-    bg-[#EDA4A3]
-    py-3
-    text-center
-    text-white
+    border
+    border-[#EDA4A3]
+    bg-white/80
+    px-5
+    py-2.5
+    text-sm
+    transition
+    hover:bg-[#EDA4A3]
+    hover:text-white
+    lg:flex
   "
 >
   WhatsApp
