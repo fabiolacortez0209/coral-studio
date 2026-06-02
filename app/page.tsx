@@ -147,6 +147,7 @@ export default function HomePage() {
 
       <a
         href="#disenos"
+        onClick={() => setMenuOpen(false)}
         className="py-4 text-center"
       >
         Diseños
@@ -154,6 +155,7 @@ export default function HomePage() {
 
       <a
         href="#categorias"
+        onClick={() => setMenuOpen(false)}
         className="py-4 text-center"
       >
         Categorías
@@ -161,20 +163,25 @@ export default function HomePage() {
 
       <a
         href="#planes"
+        onClick={() => setMenuOpen(false)}
         className="py-4 text-center"
       >
         Planes
       </a>
 
       <a
-        href="#faq"
-        className="py-4 text-center"
-      >
-        FAQ
-      </a>
+  href="#faq"
+  onClick={() => {
+    setMenuOpen(false);
+  }}
+  className="py-4 text-center"
+>
+  FAQ
+</a>
 
       <a
         href="https://wa.me/5210000000000"
+        onClick={() => setMenuOpen(false)}
         className="
           mt-4
           rounded-full
