@@ -1,6 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { templates } from "../data/templates";
 export default function HomePage() {
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#f8f5f2] text-[#2d2d2d]">
@@ -104,6 +109,7 @@ export default function HomePage() {
     {/* MENU MOVIL */}
 
     <button
+     onClick={() => setMenuOpen(!menuOpen)}
       className="
         flex
         h-10
@@ -122,6 +128,68 @@ export default function HomePage() {
 
   </div>
 </header>
+{menuOpen && (
+  <div
+    className="
+      fixed
+      top-[72px]
+      left-0
+      z-40
+      w-full
+      border-b
+      border-[#f1d8d7]
+      bg-[#f8f5f2]
+      shadow-xl
+      lg:hidden
+    "
+  >
+    <div className="flex flex-col px-6 py-6">
+
+      <a
+        href="#disenos"
+        className="py-4 text-center"
+      >
+        Diseños
+      </a>
+
+      <a
+        href="#categorias"
+        className="py-4 text-center"
+      >
+        Categorías
+      </a>
+
+      <a
+        href="#planes"
+        className="py-4 text-center"
+      >
+        Planes
+      </a>
+
+      <a
+        href="#faq"
+        className="py-4 text-center"
+      >
+        FAQ
+      </a>
+
+      <a
+        href="https://wa.me/5210000000000"
+        className="
+          mt-4
+          rounded-full
+          bg-[#EDA4A3]
+          py-3
+          text-center
+          text-white
+        "
+      >
+        WhatsApp
+      </a>
+
+    </div>
+  </div>
+)}
 
       {/* HERO */}
 
