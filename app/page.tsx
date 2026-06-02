@@ -242,21 +242,22 @@ export default function HomePage() {
                 Personalizar diseño
               </button>
 
-              <button
-                className="
-                  rounded-full
-                  border
-                  border-[#EDA4A3]
-                  bg-white/80
-                  px-9
-                  py-4
-                  transition
-                  hover:bg-[#EDA4A3]
-                  hover:text-white
-                "
-              >
-                Ver diseños
-              </button>
+              <a
+  href="#disenos"
+  className="
+    rounded-full
+    border
+    border-[#EDA4A3]
+    bg-white/80
+    px-9
+    py-4
+    transition
+    hover:bg-[#EDA4A3]
+    hover:text-white
+  "
+>
+  Ver diseños
+</a>
 
             </div>
 
