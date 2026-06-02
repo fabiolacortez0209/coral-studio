@@ -444,15 +444,17 @@ export default function HomePage() {
         
                {templates.slice(0, 4).map((template, index) => (
 
-              <div
-                key={index}
-                className="
-                  group
-                  flex
-                  flex-col
-                  items-center
-                "
-              >
+  <Link
+    href={template.href}
+    key={index}
+    className="
+      group
+      flex
+      flex-col
+      items-center
+      cursor-pointer
+    "
+  >
 
                 {/* PHONE */}
 
@@ -501,7 +503,7 @@ export default function HomePage() {
                   />
 </div>
 
-</div>
+</Link>
 
             ))}
 
