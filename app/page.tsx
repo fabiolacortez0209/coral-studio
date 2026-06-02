@@ -86,25 +86,19 @@ export default function HomePage() {
     {/* WHATSAPP ESCRITORIO */}
 
     <a
-      href="https://wa.me/5210000000000"
-      target="_blank"
-      className="
-        hidden
-        rounded-full
-        border
-        border-[#EDA4A3]
-        bg-white/80
-        px-5
-        py-2.5
-        text-sm
-        transition
-        hover:bg-[#EDA4A3]
-        hover:text-white
-        lg:flex
-      "
-    >
-      WhatsApp
-    </a>
+  href="https://wa.me/526131248062"
+  onClick={() => setMenuOpen(false)}
+  className="
+    mt-4
+    rounded-full
+    bg-[#EDA4A3]
+    py-3
+    text-center
+    text-white
+  "
+>
+  WhatsApp
+</a>
 
     {/* MENU MOVIL */}
 
@@ -1259,49 +1253,37 @@ en un recuerdo inolvidable.
 
       <div className="space-y-4">
 
-        <a
-          href="#disenos"
-          className="
-            block
-            transition
-            hover:text-[#d58e8d]
-          "
-        >
-          Diseños
-        </a>
+       <a
+  href="#disenos"
+  onClick={() => setMenuOpen(false)}
+  className="py-4 text-center"
+>
+  Diseños
+</a>
 
         <a
-          href="#categorias"
-          className="
-            block
-            transition
-            hover:text-[#d58e8d]
-          "
-        >
-          Categorías
-        </a>
+  href="#categorias"
+  onClick={() => setMenuOpen(false)}
+  className="py-4 text-center"
+>
+  Categorías
+</a>
 
         <a
-          href="#planes"
-          className="
-            block
-            transition
-            hover:text-[#d58e8d]
-          "
-        >
-          Planes
-        </a>
+  href="#planes"
+  onClick={() => setMenuOpen(false)}
+  className="py-4 text-center"
+>
+  Planes
+</a>
 
         <a
-          href="#faq"
-          className="
-            block
-            transition
-            hover:text-[#d58e8d]
-          "
-        >
-          FAQ
-        </a>
+  href="#faq"
+  onClick={() => setMenuOpen(false)}
+  className="py-4 text-center"
+>
+  FAQ
+</a>
 
       </div>
 
