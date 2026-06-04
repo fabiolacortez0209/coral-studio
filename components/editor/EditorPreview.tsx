@@ -6,7 +6,11 @@ export default function EditorPreview() {
   const {
     nombre,
     fecha,
+    photos,
   } = useEditor();
+
+  const portada =
+    photos[0] || "/templates/encanto.png";
 
   return (
     <div className="flex justify-center">
@@ -24,7 +28,7 @@ export default function EditorPreview() {
         "
       >
         <img
-          src="/templates/encanto.png"
+          src={portada}
           alt="preview"
           className="
             absolute
@@ -44,6 +48,7 @@ export default function EditorPreview() {
             items-center
             justify-center
             text-white
+            bg-black/20
           "
         >
           <p className="mb-3 text-sm tracking-[6px]">
