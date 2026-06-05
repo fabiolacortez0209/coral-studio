@@ -1,6 +1,7 @@
 "use client";
 
 import { useEditor } from "./EditorContext";
+import EditorTemplates from "./EditorTemplates";
 
 export default function EditorStyle() {
   const {
@@ -12,6 +13,8 @@ export default function EditorStyle() {
 
   return (
     <div className="space-y-6">
+
+      <EditorTemplates />
 
       <div>
         <h3 className="mb-3 font-medium">

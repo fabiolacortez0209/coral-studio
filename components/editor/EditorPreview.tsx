@@ -7,10 +7,21 @@ export default function EditorPreview() {
     nombre,
     fecha,
     photos,
+    template,
   } = useEditor();
 
+  const templates = {
+    encanto: "/templates/encanto.png",
+    carmin: "/templates/carmin.png",
+    esmeralda: "/templates/esmeralda.png",
+  };
+
   const portada =
-    photos[0] || "/templates/encanto.png";
+    photos[0] ||
+    templates[
+      template as keyof typeof templates
+    ] ||
+    "/templates/encanto.png";
 
   return (
     <div className="flex justify-center">
@@ -20,11 +31,12 @@ export default function EditorPreview() {
           relative
           w-[360px]
           h-[720px]
-          overflow-hidden
+          overflow-y-auto
           rounded-[40px]
           border-[8px]
           border-black
           shadow-2xl
+          bg-white
         "
       >
         <img

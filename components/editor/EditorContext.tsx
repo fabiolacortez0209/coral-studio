@@ -31,8 +31,14 @@ type EditorContextType = {
 
   font: string;
   setFont: (value: string) => void;
+
   photos: string[];
-setPhotos: (value: string[]) => void;
+  setPhotos: (value: string[]) => void;
+
+  template: string;
+  setTemplate: (value: string) => void;
+
+  invitationData: any;
 };
 
 const EditorContext =
@@ -66,8 +72,47 @@ export function EditorProvider({
 
   const [font, setFont] =
     useState("Great Vibes");
-    const [photos, setPhotos] =
-  useState<string[]>([]);
+
+  const [photos, setPhotos] =
+    useState<string[]>([]);
+
+  const [template, setTemplate] =
+    useState("encanto");
+
+  const invitationData = {
+    name: nombre,
+
+    eventDate: fecha,
+
+    reception: lugar,
+
+    churchTime: hora,
+
+    photos: {
+      portada:
+        photos[0] || "/portada.png",
+
+      foto1:
+        photos[0] || "/foto1.png",
+
+      foto2:
+        photos[1] || "/foto2.png",
+
+      foto3:
+        photos[2] || "/foto3.png",
+
+      foto4:
+        photos[3] || "/foto4.png",
+    },
+
+    fonts: {
+      title: font,
+    },
+
+    theme: {
+      primary: color,
+    },
+  };
 
   return (
     <EditorContext.Provider
@@ -95,8 +140,14 @@ export function EditorProvider({
 
         font,
         setFont,
+
         photos,
-setPhotos,
+        setPhotos,
+
+        template,
+        setTemplate,
+
+        invitationData,
       }}
     >
       {children}
