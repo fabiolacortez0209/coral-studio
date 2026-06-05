@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 
-import { invitation } from "../../../../data/encanto";
+import { useEditor } from "../../../../../components/editor/EditorContext";
+import { invitation as defaultInvitation } from "../../../../data/encanto";
 
 type HeroProps = {
   onOpen: () => void;
@@ -11,6 +12,17 @@ type HeroProps = {
 export default function Hero({
   onOpen,
 }: HeroProps) {
+  const editor = (() => {
+  try {
+    return useEditor();
+  } catch {
+    return null;
+  }
+})();
+
+const invitation =
+  editor?.invitationData ||
+  defaultInvitation;
 
   return (
 
