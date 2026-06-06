@@ -4,12 +4,14 @@ import { useState } from "react";
 
 import { useEditor } from "./EditorContext";
 
+import TemplateRenderer from "./TemplateRenderer";
+
 import EditorInformation from "./EditorInformation";
 import EditorStyle from "./EditorStyle";
 import EditorPhotos from "./EditorPhotos";
 import EditorExtras from "./EditorExtras";
 import EditorSummary from "./EditorSummary";
-import EditorPreview from "./EditorPreview";
+
 
 export default function EditorContent() {
   const [tab, setTab] = useState("informacion");
@@ -98,7 +100,7 @@ export default function EditorContent() {
 
           </div>
 
-          <EditorPreview />
+          <TemplateRenderer />
 
           <EditorSummary />
 

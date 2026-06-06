@@ -2,34 +2,22 @@
 
 import { motion } from "framer-motion";
 
-import { useEditor } from "../../../../../components/editor/EditorContext";
 import { invitation as defaultInvitation } from "../../../../data/encanto";
 
 type HeroProps = {
   onOpen: () => void;
+  invitation?: any;
 };
 
 export default function Hero({
   onOpen,
+  invitation = defaultInvitation,
 }: HeroProps) {
-  const editor = (() => {
-  try {
-    return useEditor();
-  } catch {
-    return null;
-  }
-})();
-
-const invitation =
-  editor?.invitationData ||
-  defaultInvitation;
-
   return (
-
     <section
-    style={{
-      ["--primary" as any]:
-       invitation.theme.primary,
+      style={{
+        ["--primary" as any]:
+          invitation.theme.primary,
       }}
       className="
         relative
@@ -41,7 +29,6 @@ const invitation =
         text-center
       "
     >
-
       <motion.img
         initial={{
           scale: 1.03,
@@ -93,7 +80,6 @@ const invitation =
           text-white
         "
       >
-
         <p
           className="
             mb-5
@@ -107,7 +93,9 @@ const invitation =
 
         <h1
           style={{
-            fontFamily: "Allura",
+            fontFamily:
+              invitation.fonts?.title ||
+              "Allura",
           }}
           className="
             mb-5
@@ -126,7 +114,7 @@ const invitation =
             text-white/80
           "
         >
-          26 / 09 / 26
+          {invitation.eventDate}
         </p>
 
         <motion.button
@@ -153,10 +141,7 @@ const invitation =
         >
           Abrir invitación
         </motion.button>
-
       </motion.div>
-
     </section>
-
   );
 }

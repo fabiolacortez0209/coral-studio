@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { invitation } from "../../../../data/encanto";
+import { invitation as defaultInvitation } from "../../../../data/encanto";
 
 type CountdownProps = {
+  invitation?: any;
   dias: number;
   horas: number;
   minutos: number;
@@ -11,6 +12,7 @@ type CountdownProps = {
 };
 
 export default function Countdown({
+  invitation = defaultInvitation,
   dias,
   horas,
   minutos,
