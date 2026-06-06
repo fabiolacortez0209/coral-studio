@@ -19,7 +19,20 @@ type EditorContextType = {
 
   lugar: string;
   setLugar: (value: string) => void;
+church: string;
+setChurch: (value: string) => void;
 
+churchTime: string;
+setChurchTime: (value: string) => void;
+
+city: string;
+setCity: (value: string) => void;
+
+dresscode: string;
+setDresscode: (value: string) => void;
+
+gift: string;
+setGift: (value: string) => void;
   plan: string;
   setPlan: (value: string) => void;
 
@@ -60,7 +73,20 @@ export function EditorProvider({
 
   const [lugar, setLugar] =
     useState("Salón Encanto");
+const [church, setChurch] =
+  useState("Parroquia San José");
 
+const [churchTime, setChurchTime] =
+  useState("5:00 PM");
+
+const [city, setCity] =
+  useState("La Paz, BCS");
+
+const [dresscode, setDresscode] =
+  useState("Formal");
+
+const [gift, setGift] =
+  useState("Lluvia de sobres");
   const [plan, setPlan] =
     useState("premium");
 
@@ -83,10 +109,17 @@ export function EditorProvider({
     name: nombre,
 
     eventDate: fecha,
+reception: lugar,
 
-    reception: lugar,
+church,
 
-    churchTime: hora,
+churchTime,
+
+city,
+
+dresscode,
+
+gift,
 
     photos: {
       portada:
@@ -128,7 +161,20 @@ export function EditorProvider({
 
         lugar,
         setLugar,
+church,
+setChurch,
 
+churchTime,
+setChurchTime,
+
+city,
+setCity,
+
+dresscode,
+setDresscode,
+
+gift,
+setGift,
         plan,
         setPlan,
 

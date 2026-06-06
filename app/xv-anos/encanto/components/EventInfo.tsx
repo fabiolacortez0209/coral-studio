@@ -1,9 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { invitation } from "../../../../data/encanto";
-
-export default function EventInfo() {
+import { invitation as defaultInvitation } from "../../../../data/encanto";
+type EventInfoProps = {
+  invitation?: any;
+};
+export default function EventInfo({
+  invitation = defaultInvitation,
+}: EventInfoProps) {
 
   return (
 

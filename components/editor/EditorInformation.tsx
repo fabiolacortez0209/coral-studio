@@ -12,6 +12,20 @@ export default function EditorInformation() {
     setHora,
     lugar,
     setLugar,
+    church,
+setChurch,
+
+churchTime,
+setChurchTime,
+
+city,
+setCity,
+
+dresscode,
+setDresscode,
+
+gift,
+setGift,
     plan,
     setPlan,
     setExtras,
@@ -67,7 +81,65 @@ export default function EditorInformation() {
           className="w-full rounded-xl border p-3"
         />
       </div>
+<div>
+  <label className="mb-2 block text-sm">
+    Iglesia
+  </label>
 
+  <input
+    value={church}
+    onChange={(e) => setChurch(e.target.value)}
+    className="w-full rounded-xl border p-3"
+  />
+</div>
+
+<div>
+  <label className="mb-2 block text-sm">
+    Hora ceremonia
+  </label>
+
+  <input
+    value={churchTime}
+    onChange={(e) => setChurchTime(e.target.value)}
+    className="w-full rounded-xl border p-3"
+  />
+</div>
+
+<div>
+  <label className="mb-2 block text-sm">
+    Ciudad
+  </label>
+
+  <input
+    value={city}
+    onChange={(e) => setCity(e.target.value)}
+    className="w-full rounded-xl border p-3"
+  />
+</div>
+
+<div>
+  <label className="mb-2 block text-sm">
+    Código de vestimenta
+  </label>
+
+  <input
+    value={dresscode}
+    onChange={(e) => setDresscode(e.target.value)}
+    className="w-full rounded-xl border p-3"
+  />
+</div>
+
+<div>
+  <label className="mb-2 block text-sm">
+    Regalo sugerido
+  </label>
+
+  <input
+    value={gift}
+    onChange={(e) => setGift(e.target.value)}
+    className="w-full rounded-xl border p-3"
+  />
+</div>
       <div>
         <label className="mb-2 block text-sm">
           Plan

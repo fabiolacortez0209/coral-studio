@@ -31,7 +31,9 @@ export default function EncantoEditor() {
 
     <Parents />
 
-    <EventInfo />
+   <EventInfo
+  invitation={invitationData}
+/>
 
     <RSVP />
   </div>
