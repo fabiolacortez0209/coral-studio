@@ -29,13 +29,16 @@ export default function EncantoEditor() {
   segundos={20}
 />
 
-    <Parents />
-
+   <Parents
+  invitation={invitationData}
+/>
    <EventInfo
   invitation={invitationData}
 />
 
-    <RSVP />
+   <RSVP
+  invitation={invitationData}
+/>
   </div>
 );
 }

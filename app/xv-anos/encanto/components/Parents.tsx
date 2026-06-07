@@ -1,9 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { invitation } from "../../../../data/encanto";
-
-export default function Parents() {
+import { invitation as defaultInvitation } from "../../../../data/encanto";
+type ParentsProps = {
+  invitation?: any;
+};
+export default function Parents({
+  invitation = defaultInvitation,
+}: ParentsProps) {
 
   return (
 

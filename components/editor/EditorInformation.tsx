@@ -26,6 +26,11 @@ setDresscode,
 
 gift,
 setGift,
+parents,
+setParents,
+
+godparents,
+setGodparents,
     plan,
     setPlan,
     setExtras,
@@ -137,6 +142,30 @@ setGift,
   <input
     value={gift}
     onChange={(e) => setGift(e.target.value)}
+    className="w-full rounded-xl border p-3"
+  />
+</div>
+
+<div>
+  <label className="mb-2 block text-sm">
+    Padres
+  </label>
+
+  <input
+    value={parents}
+    onChange={(e) => setParents(e.target.value)}
+    className="w-full rounded-xl border p-3"
+  />
+</div> 
+
+<div>
+  <label className="mb-2 block text-sm">
+    Padrinos
+  </label>
+
+  <input
+    value={godparents}
+    onChange={(e) => setGodparents(e.target.value)}
     className="w-full rounded-xl border p-3"
   />
 </div>

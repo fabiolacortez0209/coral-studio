@@ -1,9 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { invitation } from "../../../../data/encanto";
-
-export default function RSVP() {
+import { invitation as defaultInvitation } from "../../../../data/encanto";
+type RSVPProps = {
+  invitation?: any;
+};
+export default function RSVP({
+  invitation = defaultInvitation,
+}: RSVPProps) {
 
   return (
 

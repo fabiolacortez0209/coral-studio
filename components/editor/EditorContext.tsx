@@ -33,6 +33,11 @@ setDresscode: (value: string) => void;
 
 gift: string;
 setGift: (value: string) => void;
+parents: string;
+setParents: (value: string) => void;
+
+godparents: string;
+setGodparents: (value: string) => void;
   plan: string;
   setPlan: (value: string) => void;
 
@@ -87,6 +92,11 @@ const [dresscode, setDresscode] =
 
 const [gift, setGift] =
   useState("Lluvia de sobres");
+  const [parents, setParents] =
+  useState("Juan Pérez y María López");
+
+const [godparents, setGodparents] =
+  useState("Carlos Pérez y Ana Torres");
   const [plan, setPlan] =
     useState("premium");
 
@@ -120,6 +130,9 @@ city,
 dresscode,
 
 gift,
+parents,
+
+godparents,
 
     photos: {
       portada:
@@ -175,7 +188,14 @@ setDresscode,
 
 gift,
 setGift,
-        plan,
+
+parents,
+setParents,
+
+godparents,
+setGodparents,
+
+plan,
         setPlan,
 
         extras,
