@@ -2,14 +2,20 @@
 
 import { motion } from "framer-motion";
 
-export default function Gallery() {
+type GalleryProps = {
+  invitation?: any;
+};
 
-  const photos = [
-    "/foto1.png",
-    "/foto2.png",
-    "/foto3.png",
-    "/foto4.png",
-  ];
+export default function Gallery({
+  invitation,
+}: GalleryProps) {
+
+const photos = [
+  invitation?.photos?.foto1,
+  invitation?.photos?.foto2,
+  invitation?.photos?.foto3,
+  invitation?.photos?.foto4,
+];
 
   return (
 
@@ -71,7 +77,7 @@ export default function Gallery() {
               text-[#d6a3a1]
             "
           >
-            Valentina
+            {invitation?.name}
           </h2>
 
         </motion.div>

@@ -1,7 +1,11 @@
-export default function DressCode() {
+export type DressCodeProps = {
+  invitation?: any;
+};
 
+export default function DressCode({
+  invitation,
+}: DressCodeProps) {
   return (
-
     <section className="px-6 pb-32">
 
       <div className="mx-auto max-w-5xl text-center">
@@ -37,7 +41,7 @@ export default function DressCode() {
           </div>
 
           <h3 className="mb-5 text-4xl italic">
-            Formal Elegante
+            {invitation?.dresscode}
           </h3>
 
           <p
@@ -58,6 +62,5 @@ export default function DressCode() {
       </div>
 
     </section>
-
   );
 }

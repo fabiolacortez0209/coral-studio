@@ -4,11 +4,27 @@ import {
   Allura,
   Montserrat,
   Cormorant_Garamond,
+  Great_Vibes,
+  Playfair_Display,
+  Parisienne,
 } from "next/font/google";
 
 import "./globals.css";
 
 const allura = Allura({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+const greatVibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+});
+
+const parisienne = Parisienne({
   subsets: ["latin"],
   weight: ["400"],
 });
@@ -55,7 +71,26 @@ export default function RootLayout({
     }}
     id="allura-font"
   />
+<div
+  style={{
+    fontFamily: greatVibes.style.fontFamily,
+  }}
+  id="greatvibes-font"
+/>
 
+<div
+  style={{
+    fontFamily: playfair.style.fontFamily,
+  }}
+  id="playfair-font"
+/>
+
+<div
+  style={{
+    fontFamily: parisienne.style.fontFamily,
+  }}
+  id="parisienne-font"
+/>
   <div
     style={{
       fontFamily: cormorant.style.fontFamily,

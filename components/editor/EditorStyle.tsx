@@ -56,10 +56,12 @@ export default function EditorStyle() {
           }
           className="w-full rounded-xl border p-3"
         >
-          <option>Great Vibes</option>
-          <option>Playfair Display</option>
-          <option>Cormorant Garamond</option>
-          <option>Montserrat</option>
+        <option>Allura</option>
+<option>Great Vibes</option>
+<option>Parisienne</option>
+<option>Playfair Display</option>
+<option>Cormorant Garamond</option>
+<option>Montserrat</option>
         </select>
       </div>
 

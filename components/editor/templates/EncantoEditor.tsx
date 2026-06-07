@@ -3,9 +3,9 @@
 import Hero from "@/app/xv-anos/encanto/components/Hero";
 import Countdown from "@/app/xv-anos/encanto/components/Countdown";
 import EventInfo from "@/app/xv-anos/encanto/components/EventInfo";
-import Gallery from "@/app/xv-anos/encanto/components/Gallery";
-import Location from "@/app/xv-anos/encanto/components/Location";
-import DressCode from "@/app/xv-anos/encanto/components/DressCode";
+
+
+
 import Parents from "@/app/xv-anos/encanto/components/Parents";
 import RSVP from "@/app/xv-anos/encanto/components/RSVP";
 
@@ -29,10 +29,13 @@ export default function EncantoEditor() {
   segundos={20}
 />
 
-   <Parents
+<Parents
   invitation={invitationData}
 />
-   <EventInfo
+
+
+
+<EventInfo
   invitation={invitationData}
 />
 
