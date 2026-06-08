@@ -2,22 +2,28 @@
 
 import { motion } from "framer-motion";
 
-import { invitation } from "../../../../data/encanto";
+import {
+  formatDate,
+} from "@/app/lib/formatters";
+
+import { invitation as defaultInvitation } from "../../../../data/encanto";
 
 type HeroProps = {
   onOpen: () => void;
+  invitation?: any;
 };
 
 export default function Hero({
   onOpen,
+  invitation = defaultInvitation,
 }: HeroProps) {
 
   return (
 
     <section
-    style={{
-      ["--primary" as any]:
-       invitation.theme.primary,
+      style={{
+        ["--primary" as any]:
+          invitation.theme.primary,
       }}
       className="
         relative
@@ -83,6 +89,10 @@ export default function Hero({
       >
 
         <p
+          style={{
+            fontFamily:
+              invitation.fonts.titles,
+          }}
           className="
             mb-5
             text-[11px]
@@ -90,12 +100,13 @@ export default function Hero({
             tracking-[0.5em]
           "
         >
-          Mis XV Años
+          PRUEBA HERO
         </p>
 
         <h1
           style={{
-            fontFamily: "Allura",
+            
+              fontFamily: "Comic Sans MS",
           }}
           className="
             mb-5
@@ -107,6 +118,10 @@ export default function Hero({
         </h1>
 
         <p
+          style={{
+            fontFamily:
+              invitation.fonts.body,
+          }}
           className="
             mb-10
             text-sm
@@ -114,7 +129,9 @@ export default function Hero({
             text-white/80
           "
         >
-          26 / 09 / 26
+          {formatDate(
+            invitation.eventDate
+          )}
         </p>
 
         <motion.button
@@ -125,6 +142,10 @@ export default function Hero({
             scale: 0.96,
           }}
           onClick={onOpen}
+          style={{
+            fontFamily:
+              invitation.fonts.body,
+          }}
           className="
             rounded-full
             border

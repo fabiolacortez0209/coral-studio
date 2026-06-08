@@ -46,9 +46,14 @@ setGodparents: (value: string) => void;
   color: string;
   setColor: (value: string) => void;
 
-  font: string;
-  setFont: (value: string) => void;
+nameFont: string;
+setNameFont: (value: string) => void;
 
+titleFont: string;
+setTitleFont: (value: string) => void;
+
+bodyFont: string;
+setBodyFont: (value: string) => void;
   photos: string[];
   setPhotos: (value: string[]) => void;
 
@@ -103,9 +108,14 @@ const [godparents, setGodparents] =
 
   const [color, setColor] =
     useState("#d8a4a6");
+const [nameFont, setNameFont] =
+  useState("Allura");
 
-  const [font, setFont] =
-    useState("Great Vibes");
+const [titleFont, setTitleFont] =
+  useState("Cormorant Garamond");
+
+const [bodyFont, setBodyFont] =
+  useState("Montserrat");
 
   const [photos, setPhotos] =
     useState<string[]>([]);
@@ -150,10 +160,11 @@ godparents,
         photos[3] || "/foto4.png",
     },
 
-    fonts: {
-      title: font,
-    },
-
+fonts: {
+  names: nameFont,
+  titles: titleFont,
+  body: bodyFont,
+},
     theme: {
       primary: color,
     },
@@ -202,8 +213,14 @@ plan,
         color,
         setColor,
 
-        font,
-        setFont,
+ nameFont,
+setNameFont,
+
+titleFont,
+setTitleFont,
+
+bodyFont,
+setBodyFont,
 
         photos,
         setPhotos,

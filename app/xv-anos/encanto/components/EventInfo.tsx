@@ -90,18 +90,18 @@ export default function EventInfo({
             "
           />
 
-          <h2
-            style={{
-              fontFamily: invitation.fonts.title,
-            }}
-            className="
-              text-2xl
-              leading-none
-              text-[var(--primary)]
-            "
-          >
-            {formatDate(invitation.eventDate)}
-          </h2>
+     <h2
+  style={{
+    fontFamily: invitation.fonts.body,
+  }}
+  className="
+    text-2xl
+    leading-none
+    text-[var(--primary)]
+  "
+>
+  {formatDate(invitation.eventDate)}
+</h2>
 
         </div>
 
@@ -144,8 +144,8 @@ export default function EventInfo({
 
           <h2
             style={{
-              fontFamily: invitation.fonts.title,
-            }}
+  fontFamily: invitation.fonts.titles
+}}
             className="
               mb-2
               text-4xl
@@ -226,18 +226,18 @@ export default function EventInfo({
           />
 
           <h2
-            style={{
-              fontFamily: invitation.fonts.title,
-            }}
-            className="
-              mb-2
-              text-4xl
-              leading-none
-              text-[var(--primary)]
-            "
-          >{invitation.reception}
-            
-          </h2>
+  style={{
+    fontFamily: invitation.fonts.titles,
+  }}
+  className="
+    mb-2
+    text-4xl
+    leading-none
+    text-[var(--primary)]
+  "
+>
+  {invitation.reception}
+</h2>
 
         <p
   className="
@@ -310,8 +310,8 @@ export default function EventInfo({
 
           <h2
             style={{
-              fontFamily: invitation.fonts.title,
-            }}
+  fontFamily: invitation.fonts.titles
+}}
             className="
               mb-2
               text-4xl
@@ -372,9 +372,9 @@ export default function EventInfo({
           />
 
           <h2
-            style={{
-              fontFamily: invitation.fonts.title,
-            }}
+           style={{
+  fontFamily: invitation.fonts.titles
+}}
             className="
               mb-2
               text-4xl
