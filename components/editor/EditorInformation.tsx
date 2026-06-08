@@ -8,29 +8,31 @@ export default function EditorInformation() {
     setNombre,
     fecha,
     setFecha,
-    hora,
-    setHora,
+
     lugar,
     setLugar,
+
     church,
-setChurch,
+    setChurch,
 
-churchTime,
-setChurchTime,
+    churchTime,
+    setChurchTime,
 
-city,
-setCity,
+    receptionTime,
+    setReceptionTime,
 
-dresscode,
-setDresscode,
+    dresscode,
+    setDresscode,
 
-gift,
-setGift,
-parents,
-setParents,
+    gift,
+    setGift,
 
-godparents,
-setGodparents,
+    parents,
+    setParents,
+
+    godparents,
+    setGodparents,
+
     plan,
     setPlan,
     setExtras,
@@ -57,6 +59,7 @@ setGodparents,
         </label>
 
         <input
+          type="date"
           value={fecha}
           onChange={(e) => setFecha(e.target.value)}
           className="w-full rounded-xl border p-3"
@@ -65,19 +68,56 @@ setGodparents,
 
       <div>
         <label className="mb-2 block text-sm">
-          Hora
+          Padres
         </label>
 
         <input
-          value={hora}
-          onChange={(e) => setHora(e.target.value)}
+          value={parents}
+          onChange={(e) => setParents(e.target.value)}
           className="w-full rounded-xl border p-3"
         />
       </div>
 
       <div>
         <label className="mb-2 block text-sm">
-          Lugar
+          Padrinos
+        </label>
+
+        <input
+          value={godparents}
+          onChange={(e) => setGodparents(e.target.value)}
+          className="w-full rounded-xl border p-3"
+        />
+      </div>
+
+      <div>
+        <label className="mb-2 block text-sm">
+          Iglesia
+        </label>
+
+        <input
+          value={church}
+          onChange={(e) => setChurch(e.target.value)}
+          className="w-full rounded-xl border p-3"
+        />
+      </div>
+
+      <div>
+        <label className="mb-2 block text-sm">
+          Hora ceremonia
+        </label>
+
+        <input
+          type="time"
+          value={churchTime}
+          onChange={(e) => setChurchTime(e.target.value)}
+          className="w-full rounded-xl border p-3"
+        />
+      </div>
+
+      <div>
+        <label className="mb-2 block text-sm">
+          Lugar de recepción
         </label>
 
         <input
@@ -86,89 +126,46 @@ setGodparents,
           className="w-full rounded-xl border p-3"
         />
       </div>
-<div>
-  <label className="mb-2 block text-sm">
-    Iglesia
-  </label>
 
-  <input
-    value={church}
-    onChange={(e) => setChurch(e.target.value)}
-    className="w-full rounded-xl border p-3"
-  />
-</div>
+      <div>
+        <label className="mb-2 block text-sm">
+          Hora recepción
+        </label>
 
-<div>
-  <label className="mb-2 block text-sm">
-    Hora ceremonia
-  </label>
+        <input
+          type="time"
+          value={receptionTime}
+          onChange={(e) =>
+            setReceptionTime(e.target.value)
+          }
+          className="w-full rounded-xl border p-3"
+        />
+      </div>
 
-  <input
-    value={churchTime}
-    onChange={(e) => setChurchTime(e.target.value)}
-    className="w-full rounded-xl border p-3"
-  />
-</div>
+      <div>
+        <label className="mb-2 block text-sm">
+          Código de vestimenta
+        </label>
 
-<div>
-  <label className="mb-2 block text-sm">
-    Ciudad
-  </label>
+        <input
+          value={dresscode}
+          onChange={(e) => setDresscode(e.target.value)}
+          className="w-full rounded-xl border p-3"
+        />
+      </div>
 
-  <input
-    value={city}
-    onChange={(e) => setCity(e.target.value)}
-    className="w-full rounded-xl border p-3"
-  />
-</div>
+      <div>
+        <label className="mb-2 block text-sm">
+          Regalo sugerido
+        </label>
 
-<div>
-  <label className="mb-2 block text-sm">
-    Código de vestimenta
-  </label>
+        <input
+          value={gift}
+          onChange={(e) => setGift(e.target.value)}
+          className="w-full rounded-xl border p-3"
+        />
+      </div>
 
-  <input
-    value={dresscode}
-    onChange={(e) => setDresscode(e.target.value)}
-    className="w-full rounded-xl border p-3"
-  />
-</div>
-
-<div>
-  <label className="mb-2 block text-sm">
-    Regalo sugerido
-  </label>
-
-  <input
-    value={gift}
-    onChange={(e) => setGift(e.target.value)}
-    className="w-full rounded-xl border p-3"
-  />
-</div>
-
-<div>
-  <label className="mb-2 block text-sm">
-    Padres
-  </label>
-
-  <input
-    value={parents}
-    onChange={(e) => setParents(e.target.value)}
-    className="w-full rounded-xl border p-3"
-  />
-</div> 
-
-<div>
-  <label className="mb-2 block text-sm">
-    Padrinos
-  </label>
-
-  <input
-    value={godparents}
-    onChange={(e) => setGodparents(e.target.value)}
-    className="w-full rounded-xl border p-3"
-  />
-</div>
       <div>
         <label className="mb-2 block text-sm">
           Plan

@@ -1,10 +1,17 @@
 "use client";
 
+import {
+  formatDate,
+  formatTime,
+} from "@/app/lib/formatters";
+
 import { motion } from "framer-motion";
 import { invitation as defaultInvitation } from "../../../../data/encanto";
+
 type EventInfoProps = {
   invitation?: any;
 };
+
 export default function EventInfo({
   invitation = defaultInvitation,
 }: EventInfoProps) {
@@ -93,7 +100,7 @@ export default function EventInfo({
               text-[var(--primary)]
             "
           >
-            {invitation.eventDate}
+            {formatDate(invitation.eventDate)}
           </h2>
 
         </div>
@@ -149,18 +156,16 @@ export default function EventInfo({
             {invitation.church}
           </h2>
 
-          <p
-            className="
-              mb-5
-              text-sm
-              leading-relaxed
-              text-[var(--text)]
-            "
-          >
-            {invitation.churchTime}
-            <br />
-            {invitation.city}
-          </p>
+         <p
+  className="
+    mb-5
+    text-sm
+    leading-relaxed
+    text-[var(--text)]
+  "
+>
+  {formatTime(invitation.churchTime)}
+</p>
 
           <button
             className="
@@ -234,18 +239,16 @@ export default function EventInfo({
             
           </h2>
 
-          <p
-            className="
-              mb-5
-              text-sm
-              leading-relaxed
-              text-[var(--text)]
-            "
-          >
-            {invitation.receptionTime}
-            <br />
-            {invitation.city}
-          </p>
+        <p
+  className="
+    mb-5
+    text-sm
+    leading-relaxed
+    text-[var(--text)]
+  "
+>
+  {formatTime(invitation.receptionTime)}
+</p>
 
           <button
             className="

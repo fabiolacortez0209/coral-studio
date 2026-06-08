@@ -14,8 +14,7 @@ type EditorContextType = {
   fecha: string;
   setFecha: (value: string) => void;
 
-  hora: string;
-  setHora: (value: string) => void;
+  
 
   lugar: string;
   setLugar: (value: string) => void;
@@ -24,9 +23,9 @@ setChurch: (value: string) => void;
 
 churchTime: string;
 setChurchTime: (value: string) => void;
+receptionTime: string;
+setReceptionTime: (value: string) => void;
 
-city: string;
-setCity: (value: string) => void;
 
 dresscode: string;
 setDresscode: (value: string) => void;
@@ -70,11 +69,10 @@ export function EditorProvider({
   const [nombre, setNombre] =
     useState("Valentina");
 
-  const [fecha, setFecha] =
-    useState("26 Septiembre 2026");
+const [fecha, setFecha] =
+  useState("2026-09-26");
 
-  const [hora, setHora] =
-    useState("5:00 PM");
+
 
   const [lugar, setLugar] =
     useState("Salón Encanto");
@@ -82,10 +80,10 @@ const [church, setChurch] =
   useState("Parroquia San José");
 
 const [churchTime, setChurchTime] =
-  useState("5:00 PM");
+  useState("17:00");
+  const [receptionTime, setReceptionTime] =
+  useState("20:00");
 
-const [city, setCity] =
-  useState("La Paz, BCS");
 
 const [dresscode, setDresscode] =
   useState("Formal");
@@ -124,8 +122,9 @@ reception: lugar,
 church,
 
 churchTime,
+receptionTime,
 
-city,
+
 
 dresscode,
 
@@ -169,8 +168,7 @@ godparents,
         fecha,
         setFecha,
 
-        hora,
-        setHora,
+      
 
         lugar,
         setLugar,
@@ -180,8 +178,8 @@ setChurch,
 churchTime,
 setChurchTime,
 
-city,
-setCity,
+receptionTime,
+setReceptionTime,
 
 dresscode,
 setDresscode,

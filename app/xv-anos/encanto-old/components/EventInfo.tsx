@@ -1,23 +1,34 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { invitation } from "../../../../data/encanto";
+import {
+  formatDate,
+  formatTime,
+} from "@/app/lib/formatters";
 
-export default function EventInfo() {
+import { motion } from "framer-motion";
+import { invitation as defaultInvitation } from "../../../../data/encanto";
+
+type EventInfoProps = {
+  invitation?: any;
+};
+
+export default function EventInfo({
+  invitation = defaultInvitation,
+}: EventInfoProps) {
 
   return (
 
     <motion.section
-    style={{
-  ["--primary" as any]:
-    invitation.theme.primary,
+      style={{
+        ["--primary" as any]:
+          invitation.theme.primary,
 
-  ["--secondary" as any]:
-    invitation.theme.secondary,
+        ["--secondary" as any]:
+          invitation.theme.secondary,
 
-  ["--text" as any]:
-    invitation.theme.text,
-}}
+        ["--text" as any]:
+          invitation.theme.text,
+      }}
       initial={{
         opacity: 0,
         y: 60,
@@ -89,7 +100,7 @@ export default function EventInfo() {
               text-[var(--primary)]
             "
           >
-            {invitation.eventDate}
+            {formatDate(invitation.eventDate)}
           </h2>
 
         </div>
@@ -139,7 +150,7 @@ export default function EventInfo() {
               mb-2
               text-4xl
               leading-none
-             text-[var(--primary)]
+              text-[var(--primary)]
             "
           >
             {invitation.church}
@@ -153,9 +164,7 @@ export default function EventInfo() {
               text-[var(--text)]
             "
           >
-            {invitation.churchTime}
-            <br />
-            {invitation.city}
+            {formatTime(invitation.churchTime)}
           </p>
 
           <button
@@ -226,8 +235,8 @@ export default function EventInfo() {
               leading-none
               text-[var(--primary)]
             "
-          >{invitation.reception}
-            
+          >
+            {invitation.reception}
           </h2>
 
           <p
@@ -238,9 +247,7 @@ export default function EventInfo() {
               text-[var(--text)]
             "
           >
-            {invitation.receptionTime}
-            <br />
-            {invitation.city}
+            {formatTime(invitation.receptionTime)}
           </p>
 
           <button
@@ -312,7 +319,7 @@ export default function EventInfo() {
               text-[var(--primary)]
             "
           >
-             {invitation.dresscode}
+            {invitation.dresscode}
           </h2>
 
           <p

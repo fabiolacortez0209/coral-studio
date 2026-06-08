@@ -5,19 +5,68 @@ import { invitation as defaultInvitation } from "../../../../data/encanto";
 
 type CountdownProps = {
   invitation?: any;
-  dias: number;
-  horas: number;
-  minutos: number;
-  segundos: number;
+  dias?: number;
+  horas?: number;
+  minutos?: number;
+  segundos?: number;
 };
-
+import { useEffect, useState } from "react";
 export default function Countdown({
   invitation = defaultInvitation,
-  dias,
-  horas,
-  minutos,
-  segundos,
+  dias = 120,
+  horas = 10,
+  minutos = 35,
+  segundos = 20,
 }: CountdownProps) {
+  const [timeLeft, setTimeLeft] = useState({
+  dias: 0,
+  horas: 0,
+  minutos: 0,
+  segundos: 0,
+});
+useEffect(() => {
+ console.log(invitation.churchTime);
+const targetDate = new Date(
+  `${invitation.eventDate}T${invitation.churchTime}`
+);
+console.log(
+  invitation.eventDate,
+  invitation.churchTime
+);
+
+  const interval = setInterval(() => {
+    const now = new Date().getTime();
+
+    const difference =
+      targetDate.getTime() - now;
+
+    setTimeLeft({
+      dias: Math.floor(
+        difference / (1000 * 60 * 60 * 24)
+      ),
+
+      horas: Math.floor(
+        (difference %
+          (1000 * 60 * 60 * 24)) /
+          (1000 * 60 * 60)
+      ),
+
+      minutos: Math.floor(
+        (difference %
+          (1000 * 60 * 60)) /
+          (1000 * 60)
+      ),
+
+      segundos: Math.floor(
+        (difference %
+          (1000 * 60)) /
+          1000
+      ),
+    });
+  }, 1000);
+
+  return () => clearInterval(interval);
+}, [invitation.eventDate]);
 
   return (
 
@@ -137,10 +186,10 @@ export default function Countdown({
         >
 
           {[
-            [dias, "DÍAS"],
-            [horas, "HORAS"],
-            [minutos, "MIN"],
-            [segundos, "SEG"],
+            [timeLeft.dias, "DÍAS"],
+[timeLeft.horas, "HORAS"],
+[timeLeft.minutos, "MIN"],
+[timeLeft.segundos, "SEG"],
           ].map((item, index) => (
 
             <motion.div
