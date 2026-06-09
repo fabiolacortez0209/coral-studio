@@ -159,10 +159,10 @@ export default function RoyalPage() {
   <button
     onClick={toggleMusic}
     className="
-      fixed
+      absolute
       top-4
       right-4
-      z-[9999]
+      z-50
       flex
       h-12
       w-12
