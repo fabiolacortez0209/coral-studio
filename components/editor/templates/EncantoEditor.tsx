@@ -12,6 +12,7 @@ import { useEditor } from "../EditorContext";
 
 export default function EncantoEditor() {
   const { invitationData } = useEditor();
+  console.log("FUENTES:", invitationData.fonts);
   console.log("MUSICA EDITOR:", invitationData.music);
 
   const audioRef = useRef<HTMLAudioElement>(null);

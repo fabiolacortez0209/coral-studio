@@ -150,7 +150,7 @@ console.log(
 
         <h2
           style={{
-            fontFamily: invitation.fonts.title,
+           fontFamily: invitation.fonts.names,
           }}
           className="
             mb-2
