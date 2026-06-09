@@ -23,15 +23,23 @@ export default function Countdown({
   });
 
   useEffect(() => {
-    const targetDate = new Date(
-      `${invitation.eventDate}T${invitation.churchTime}`
-    );
+   const targetDate =
+  invitation.eventDate &&
+  invitation.churchTime
+    ? new Date(
+        `${invitation.eventDate}T${invitation.churchTime}`
+      )
+    : new Date("2026-09-26T17:00");
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
 
-      const difference =
-        targetDate.getTime() - now;
+    if (isNaN(targetDate.getTime())) {
+  return;
+}
+
+const difference =
+  targetDate.getTime() - now;
 
       setTimeLeft({
         dias: Math.floor(
