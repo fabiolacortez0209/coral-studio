@@ -186,22 +186,35 @@ export default function RoyalPage() {
           <>
   <Hero onOpen={openInvitation} />
 
-  <div className="mt-6 flex justify-center px-6">
-    <Link
-      href="/editor/encanto"
-      className="
-        rounded-full
-        bg-[#d6a3a1]
-        px-8
-        py-4
-        text-sm
-        text-white
-        shadow-lg
-      "
-    >
-      ✨ Personalizar esta plantilla
-    </Link>
-  </div>
+ <div
+  className="
+    fixed
+    bottom-6
+    left-1/2
+    z-[9999]
+    -translate-x-1/2
+  "
+>
+  <Link
+    href="/editor/encanto"
+    className="
+      flex
+      items-center
+      gap-2
+      rounded-full
+      bg-white/90
+      px-6
+      py-3
+      text-sm
+      font-medium
+      text-[#d6a3a1]
+      shadow-xl
+      backdrop-blur-xl
+    "
+  >
+    ✨ Personalizar
+  </Link>
+</div>
 </>
 
         )}
