@@ -12,6 +12,7 @@ import { useEditor } from "../EditorContext";
 
 export default function EncantoEditor() {
   const { invitationData } = useEditor();
+  console.log("MUSICA EDITOR:", invitationData.music);
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -36,16 +37,13 @@ export default function EncantoEditor() {
   return (
     <div className="bg-white">
       <audio
-        ref={audioRef}
-        loop
-        onPlay={() => setIsPlaying(true)}
-        onPause={() => setIsPlaying(false)}
-      >
-        <source
-          src={invitationData.music}
-          type="audio/mpeg"
-        />
-      </audio>
+  key={invitationData.music}
+  ref={audioRef}
+  loop
+  onPlay={() => setIsPlaying(true)}
+  onPause={() => setIsPlaying(false)}
+  src={invitationData.music}
+/>
 
       <button
         onClick={toggleAudio}
