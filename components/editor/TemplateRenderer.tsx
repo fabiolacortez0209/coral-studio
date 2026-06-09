@@ -1,4 +1,5 @@
 "use client";
+
 import EncantoEditor from "./templates/EncantoEditor";
 import { useEditor } from "./EditorContext";
 
@@ -8,19 +9,21 @@ export default function TemplateRenderer() {
   return (
     <div
       className="
-        w-[360px]
-        h-[720px]
-        overflow-y-auto
-        rounded-[40px]
-        border-[8px]
-        border-black
-        shadow-2xl
+        w-full
         bg-white
+
+        lg:w-[360px]
+        lg:h-[720px]
+        lg:overflow-y-auto
+        lg:rounded-[40px]
+        lg:border-[8px]
+        lg:border-black
+        lg:shadow-2xl
       "
     >
-     {template === "encanto" && (
-  <EncantoEditor />
-)}
+      {template === "encanto" && (
+        <EncantoEditor />
+      )}
 
       {template === "carmin" && (
         <div className="p-10">

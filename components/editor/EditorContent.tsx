@@ -146,8 +146,8 @@ export default function EditorContent() {
           </button>
         </div>
 
-        {/* PANEL MOVIL */}
-        <div className="mt-6 lg:hidden rounded-3xl bg-white p-4 shadow-lg">
+       {/* PANEL MOVIL */}
+<div className="mt-4 mb-24 lg:hidden rounded-3xl bg-white p-4 shadow-lg">
           {tab === "informacion" && <EditorInformation />}
           {tab === "diseno" && <EditorStyle />}
           {tab === "fotos" && <EditorPhotos />}
