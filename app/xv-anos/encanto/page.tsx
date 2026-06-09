@@ -186,35 +186,7 @@ export default function RoyalPage() {
           <>
   <Hero onOpen={openInvitation} />
 
- <div
-  className="
-    fixed
-    bottom-6
-    left-1/2
-    z-[9999]
-    -translate-x-1/2
-  "
->
-  <Link
-    href="/editor/encanto"
-    className="
-      flex
-      items-center
-      gap-2
-      rounded-full
-      bg-white/90
-      px-6
-      py-3
-      text-sm
-      font-medium
-      text-[#d6a3a1]
-      shadow-xl
-      backdrop-blur-xl
-    "
-  >
-    ✨ Personalizar
-  </Link>
-</div>
+ 
 </>
 
         )}
@@ -255,7 +227,35 @@ export default function RoyalPage() {
         </AnimatePresence>
 
       </div>
-
+<div
+  className="
+    fixed
+    bottom-6
+    left-1/2
+    z-[9999]
+    -translate-x-1/2
+  "
+>
+  <Link
+    href="/editor/encanto"
+    className="
+      flex
+      items-center
+      gap-2
+      rounded-full
+      bg-white/90
+      px-6
+      py-3
+      text-sm
+      font-medium
+      text-[#d6a3a1]
+      shadow-xl
+      backdrop-blur-xl
+    "
+  >
+    ✨ Personalizar
+  </Link>
+</div>
     </main>
 
   );
