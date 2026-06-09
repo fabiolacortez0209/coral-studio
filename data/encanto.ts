@@ -11,7 +11,7 @@ export const invitation = {
 
   date: "26 / 09 / 26",
 
-  eventDate: "2026-09-26"
+  eventDate: "2026-09-26",
 
   church: "Catedral",
 
