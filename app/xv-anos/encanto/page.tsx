@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
@@ -183,7 +183,26 @@ export default function RoyalPage() {
 
         {!loading && (
 
-          <Hero onOpen={openInvitation} />
+          <>
+  <Hero onOpen={openInvitation} />
+
+  <div className="mt-6 flex justify-center px-6">
+    <Link
+      href="/editor/encanto"
+      className="
+        rounded-full
+        bg-[#d6a3a1]
+        px-8
+        py-4
+        text-sm
+        text-white
+        shadow-lg
+      "
+    >
+      ✨ Personalizar esta plantilla
+    </Link>
+  </div>
+</>
 
         )}
 
