@@ -128,11 +128,11 @@ export default function Parents({
               invitation.fonts.names,
           }}
           className="
-            mb-10
-            text-6xl
-            leading-none
-            text-[var(--primary)]
-          "
+  mb-10
+  text-4xl
+  leading-tight
+  text-[var(--primary)]
+"
         >
           {invitation.parents}
         </motion.h2>

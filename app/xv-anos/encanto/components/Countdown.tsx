@@ -26,6 +26,16 @@ export default function Countdown({
 });
 useEffect(() => {
  console.log(invitation.churchTime);
+console.log(
+  "FECHA:",
+  invitation.eventDate
+);
+
+console.log(
+  "HORA:",
+  invitation.churchTime
+);
+
 const targetDate = new Date("2026-09-26T17:00:00");
 console.log(
   invitation.eventDate,
