@@ -15,6 +15,7 @@ import EditorSummary from "./EditorSummary";
 
 export default function EditorContent() {
   const [tab, setTab] = useState("informacion");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const { plan } = useEditor();
 
@@ -26,6 +27,20 @@ export default function EditorContent() {
         <h1 className="mb-8 text-center text-4xl font-light">
           Personaliza tu invitación
         </h1>
+        <div className="mb-8 flex justify-center">
+  <button
+    onClick={() => setMenuOpen(!menuOpen)}
+    className="
+      rounded-full
+      bg-white
+      px-6
+      py-3
+      shadow-lg
+    "
+  >
+    👤 🎨 📷 🎵 🔤 ✨
+  </button>
+</div>
 
         <div className="grid gap-8 lg:grid-cols-[280px_1fr_280px]">
 
