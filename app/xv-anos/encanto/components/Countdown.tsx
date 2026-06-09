@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { invitation as defaultInvitation } from "../../../../data/encanto";
 
@@ -10,77 +11,71 @@ type CountdownProps = {
   minutos?: number;
   segundos?: number;
 };
-import { useEffect, useState } from "react";
+
 export default function Countdown({
   invitation = defaultInvitation,
-  dias = 120,
-  horas = 10,
-  minutos = 35,
-  segundos = 20,
 }: CountdownProps) {
   const [timeLeft, setTimeLeft] = useState({
-  dias: 0,
-  horas: 0,
-  minutos: 0,
-  segundos: 0,
-});
-useEffect(() => {
- console.log(invitation.churchTime);
-const targetDate = new Date(
-  `${invitation.eventDate}T${invitation.churchTime}`
-);
-console.log(
-  invitation.eventDate,
-  invitation.churchTime
-);
+    dias: 0,
+    horas: 0,
+    minutos: 0,
+    segundos: 0,
+  });
 
-  const interval = setInterval(() => {
-    const now = new Date().getTime();
+  useEffect(() => {
+    const targetDate = new Date(
+      `${invitation.eventDate}T${invitation.churchTime}`
+    );
 
-    const difference =
-      targetDate.getTime() - now;
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
 
-    setTimeLeft({
-      dias: Math.floor(
-        difference / (1000 * 60 * 60 * 24)
-      ),
+      const difference =
+        targetDate.getTime() - now;
 
-      horas: Math.floor(
-        (difference %
-          (1000 * 60 * 60 * 24)) /
-          (1000 * 60 * 60)
-      ),
+      setTimeLeft({
+        dias: Math.floor(
+          difference / (1000 * 60 * 60 * 24)
+        ),
 
-      minutos: Math.floor(
-        (difference %
-          (1000 * 60 * 60)) /
-          (1000 * 60)
-      ),
+        horas: Math.floor(
+          (difference %
+            (1000 * 60 * 60 * 24)) /
+            (1000 * 60 * 60)
+        ),
 
-      segundos: Math.floor(
-        (difference %
-          (1000 * 60)) /
-          1000
-      ),
-    });
-  }, 1000);
+        minutos: Math.floor(
+          (difference %
+            (1000 * 60 * 60)) /
+            (1000 * 60)
+        ),
 
-  return () => clearInterval(interval);
-}, [invitation.eventDate]);
+        segundos: Math.floor(
+          (difference %
+            (1000 * 60)) /
+            1000
+        ),
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [
+    invitation.eventDate,
+    invitation.churchTime,
+  ]);
 
   return (
-
     <motion.section
-    style={{
-  ["--primary" as any]:
-    invitation.theme.primary,
+      style={{
+        ["--primary" as any]:
+          invitation.theme.primary,
 
-  ["--secondary" as any]:
-    invitation.theme.secondary,
+        ["--secondary" as any]:
+          invitation.theme.secondary,
 
-  ["--text" as any]:
-    invitation.theme.text,
-}}
+        ["--text" as any]:
+          invitation.theme.text,
+      }}
       initial={{
         opacity: 0,
         y: 60,
@@ -101,7 +96,6 @@ console.log(
         pb-16
       "
     >
-
       {/* FOTO */}
 
       <div
@@ -114,7 +108,6 @@ console.log(
           shadow-xl
         "
       >
-
         <img
           src={invitation.photos.foto1}
           alt=""
@@ -123,7 +116,6 @@ console.log(
             object-cover
           "
         />
-
       </div>
 
       {/* TEXTO */}
@@ -135,8 +127,11 @@ console.log(
           text-center
         "
       >
-
         <p
+          style={{
+            fontFamily:
+              invitation.fonts.titles,
+          }}
           className="
             mb-3
             text-[10px]
@@ -150,7 +145,8 @@ console.log(
 
         <h2
           style={{
-            fontFamily: invitation.fonts.title,
+            fontFamily:
+              invitation.fonts.names,
           }}
           className="
             mb-2
@@ -163,6 +159,10 @@ console.log(
         </h2>
 
         <p
+          style={{
+            fontFamily:
+              invitation.fonts.body,
+          }}
           className="
             mb-10
             text-[11px]
@@ -170,8 +170,8 @@ console.log(
             tracking-[0.35em]
             text-[var(--text)]
           "
-        >{invitation.lastname}
-          
+        >
+          Cuenta regresiva para mi gran día
         </p>
 
         {/* COUNTDOWN */}
@@ -184,14 +184,12 @@ console.log(
             gap-2
           "
         >
-
           {[
             [timeLeft.dias, "DÍAS"],
-[timeLeft.horas, "HORAS"],
-[timeLeft.minutos, "MIN"],
-[timeLeft.segundos, "SEG"],
+            [timeLeft.horas, "HORAS"],
+            [timeLeft.minutos, "MIN"],
+            [timeLeft.segundos, "SEG"],
           ].map((item, index) => (
-
             <motion.div
               key={index}
               initial={{
@@ -215,8 +213,11 @@ console.log(
                 shadow-sm
               "
             >
-
               <h3
+                style={{
+                  fontFamily:
+                    invitation.fonts.body,
+                }}
                 className="
                   text-[26px]
                   font-light
@@ -227,6 +228,10 @@ console.log(
               </h3>
 
               <p
+                style={{
+                  fontFamily:
+                    invitation.fonts.body,
+                }}
                 className="
                   mt-1
                   text-[8px]
@@ -237,16 +242,10 @@ console.log(
               >
                 {item[1]}
               </p>
-
             </motion.div>
-
           ))}
-
         </div>
-
       </div>
-
     </motion.section>
-
   );
 }

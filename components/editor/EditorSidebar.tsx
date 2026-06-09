@@ -8,8 +8,7 @@ export default function EditorSidebar() {
     setNombre,
     fecha,
     setFecha,
-    hora,
-    setHora,
+    
     lugar,
     setLugar,
   } = useEditor();
@@ -57,19 +56,7 @@ export default function EditorSidebar() {
           "
         />
 
-        <input
-          value={hora}
-          onChange={(e) =>
-            setHora(e.target.value)
-          }
-          placeholder="Hora"
-          className="
-            w-full
-            rounded-xl
-            border
-            p-3
-          "
-        />
+        
 
         <input
           value={lugar}

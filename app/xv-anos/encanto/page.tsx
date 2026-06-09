@@ -130,20 +130,20 @@ export default function RoyalPage() {
         )}
 
       </AnimatePresence>
+<div
+  className="
+    relative
+    w-full
 
-      <div
-        className="
-          w-full
-
-          md:mx-auto
-          md:max-w-[430px]
-          md:overflow-hidden
-          md:rounded-[40px]
-          md:shadow-2xl
-          md:my-10
-          md:bg-white
-        "
-      >
+    md:mx-auto
+    md:max-w-[430px]
+    md:overflow-hidden
+    md:rounded-[40px]
+    md:shadow-2xl
+    md:my-10
+    md:bg-white
+  "
+>
 
         {opened && <Particles />}
 
@@ -156,30 +156,30 @@ export default function RoyalPage() {
 
         {opened && (
 
-          <button
-            onClick={toggleMusic}
-            className="
-              fixed
-              right-5
-              top-5
-              z-50
-              flex
-              h-12
-              w-12
-              items-center
-              justify-center
-              rounded-full
-              bg-white/80
-              text-xl
-              text-[#d6a3a1]
-              backdrop-blur-xl
-              shadow-lg
-            "
-          >
-            {playing ? "❚❚" : "♪"}
-          </button>
+  <button
+    onClick={toggleMusic}
+    className="
+      fixed
+      top-4
+      right-4
+      z-[9999]
+      flex
+      h-12
+      w-12
+      items-center
+      justify-center
+      rounded-full
+      bg-white/80
+      text-xl
+      text-[#d6a3a1]
+      backdrop-blur-xl
+      shadow-lg
+    "
+  >
+    {playing ? "❚❚" : "♪"}
+  </button>
 
-        )}
+)}
 
         {!loading && (
 

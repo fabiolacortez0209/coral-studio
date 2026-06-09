@@ -2,26 +2,26 @@
 
 import { motion } from "framer-motion";
 import { invitation as defaultInvitation } from "../../../../data/encanto";
+
 type RSVPProps = {
   invitation?: any;
 };
+
 export default function RSVP({
   invitation = defaultInvitation,
 }: RSVPProps) {
-
   return (
-
     <motion.section
-    style={{
-  ["--primary" as any]:
-    invitation.theme.primary,
+      style={{
+        ["--primary" as any]:
+          invitation.theme.primary,
 
-  ["--secondary" as any]:
-    invitation.theme.secondary,
+        ["--secondary" as any]:
+          invitation.theme.secondary,
 
-  ["--text" as any]:
-    invitation.theme.text,
-}}
+        ["--text" as any]:
+          invitation.theme.text,
+      }}
       initial={{
         opacity: 0,
         y: 60,
@@ -41,7 +41,6 @@ export default function RSVP({
         pb-28
       "
     >
-
       {/* FOTO */}
 
       <div
@@ -54,7 +53,6 @@ export default function RSVP({
           shadow-xl
         "
       >
-
         <motion.img
           initial={{
             scale: 1.04,
@@ -75,7 +73,6 @@ export default function RSVP({
             object-cover
           "
         />
-
       </div>
 
       {/* RSVP */}
@@ -87,8 +84,11 @@ export default function RSVP({
           text-center
         "
       >
-
         <p
+          style={{
+            fontFamily:
+              invitation.fonts.titles,
+          }}
           className="
             mb-3
             text-[10px]
@@ -102,7 +102,8 @@ export default function RSVP({
 
         <h2
           style={{
-            fontFamily: invitation.fonts.title,
+            fontFamily:
+              invitation.fonts.names,
           }}
           className="
             mb-6
@@ -115,6 +116,10 @@ export default function RSVP({
         </h2>
 
         <p
+          style={{
+            fontFamily:
+              invitation.fonts.body,
+          }}
           className="
             mb-10
             text-sm
@@ -134,51 +139,66 @@ export default function RSVP({
             gap-4
           "
         >
+         <button
+  onClick={() =>
+    window.open(
+      `https://wa.me/${invitation.whatsapp}`,
+      "_blank"
+    )
+  }
+  style={{
+    fontFamily:
+      invitation.fonts.body,
+  }}
+  className="
+    rounded-full
+    bg-[var(--primary)]
+    px-8
+    py-4
+    text-[11px]
+    uppercase
+    tracking-[0.3em]
+    text-white
+    shadow-lg
+    shadow-[#d6a3a1]/30
+    transition
+    hover:scale-[1.02]
+  "
+>
+  Confirmar asistencia
+</button>
 
           <button
-            className="
-              rounded-full
-              bg-[var(--primary)]
-              px-8
-              py-4
-              text-[11px]
-              uppercase
-              tracking-[0.3em]
-              text-white
-              shadow-lg
-              shadow-[#d6a3a1]/30
-              transition
-              hover:scale-[1.02]
-            "
-          >
-            Confirmar asistencia
-          </button>
-
-          <button
-            className="
-              rounded-full
-              border
-              border-[var(--secondary)]
-              bg-white
-              px-8
-              py-4
-              text-[11px]
-              uppercase
-              tracking-[0.3em]
-              text-[var(--secondary)]
-              transition
-              bg-[var(--primary)]
-              hover:text-white
-            "
-          >
-            Ver ubicación
-          </button>
-
+  onClick={() =>
+    window.open(
+      invitation.receptionMaps,
+      "_blank"
+    )
+  }
+  style={{
+    fontFamily:
+      invitation.fonts.body,
+  }}
+  className="
+    rounded-full
+    border
+    border-[var(--secondary)]
+    bg-white
+    px-8
+    py-4
+    text-[11px]
+    uppercase
+    tracking-[0.3em]
+    text-[var(--secondary)]
+    transition
+    bg-[var(--primary)]
+    hover:text-white
+  "
+>
+  Ver ubicación
+</button>
         </div>
-
       </div>
-
     </motion.section>
-
   );
 }

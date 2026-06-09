@@ -25,7 +25,16 @@ churchTime: string;
 setChurchTime: (value: string) => void;
 receptionTime: string;
 setReceptionTime: (value: string) => void;
+whatsapp: string;
+setWhatsapp: (value: string) => void;
 
+churchMaps: string;
+setChurchMaps: (value: string) => void;
+
+receptionMaps: string;
+setReceptionMaps: (value: string) => void;
+music: string;
+setMusic: (value: string) => void;
 
 dresscode: string;
 setDresscode: (value: string) => void;
@@ -88,7 +97,16 @@ const [churchTime, setChurchTime] =
   useState("17:00");
   const [receptionTime, setReceptionTime] =
   useState("20:00");
+const [whatsapp, setWhatsapp] =
+  useState("6121234567");
 
+const [churchMaps, setChurchMaps] =
+  useState("");
+
+const [receptionMaps, setReceptionMaps] =
+  useState("");
+  const [music, setMusic] =
+  useState("/music.mp3");
 
 const [dresscode, setDresscode] =
   useState("Formal");
@@ -135,13 +153,20 @@ churchTime,
 receptionTime,
 
 
-
 dresscode,
 
 gift,
+
 parents,
 
 godparents,
+
+whatsapp,
+
+churchMaps,
+
+receptionMaps,
+music,
 
     photos: {
       portada:
@@ -173,63 +198,74 @@ fonts: {
   return (
     <EditorContext.Provider
       value={{
-        nombre,
-        setNombre,
+  nombre,
+  setNombre,
 
-        fecha,
-        setFecha,
+  fecha,
+  setFecha,
 
-      
+  lugar,
+  setLugar,
 
-        lugar,
-        setLugar,
-church,
-setChurch,
+  church,
+  setChurch,
 
-churchTime,
-setChurchTime,
+  churchTime,
+  setChurchTime,
 
-receptionTime,
-setReceptionTime,
+  receptionTime,
+  setReceptionTime,
 
-dresscode,
-setDresscode,
+  whatsapp,
+  setWhatsapp,
 
-gift,
-setGift,
+  churchMaps,
+  setChurchMaps,
 
-parents,
-setParents,
+  receptionMaps,
+  setReceptionMaps,
 
-godparents,
-setGodparents,
+  music,
+  setMusic,
 
-plan,
-        setPlan,
+  dresscode,
+  setDresscode,
 
-        extras,
-        setExtras,
+  gift,
+  setGift,
 
-        color,
-        setColor,
+  parents,
+  setParents,
 
- nameFont,
-setNameFont,
+  godparents,
+  setGodparents,
 
-titleFont,
-setTitleFont,
+  plan,
+  setPlan,
 
-bodyFont,
-setBodyFont,
+  extras,
+  setExtras,
 
-        photos,
-        setPhotos,
+  color,
+  setColor,
 
-        template,
-        setTemplate,
+  nameFont,
+  setNameFont,
 
-        invitationData,
-      }}
+  titleFont,
+  setTitleFont,
+
+  bodyFont,
+  setBodyFont,
+
+  photos,
+  setPhotos,
+
+  template,
+  setTemplate,
+
+  invitationData,
+}}
     >
       {children}
     </EditorContext.Provider>

@@ -32,11 +32,22 @@ export default function EditorInformation() {
 
     godparents,
     setGodparents,
+plan,
+setPlan,
 
-    plan,
-    setPlan,
-    setExtras,
-  } = useEditor();
+whatsapp,
+setWhatsapp,
+
+churchMaps,
+setChurchMaps,
+
+receptionMaps,
+setReceptionMaps,
+music,
+setMusic,
+
+setExtras,
+} = useEditor();
 
   return (
     <div className="space-y-4">
@@ -141,18 +152,75 @@ export default function EditorInformation() {
           className="w-full rounded-xl border p-3"
         />
       </div>
+      <div>
+  <label className="mb-2 block text-sm">
+    WhatsApp
+  </label>
+
+  <input
+    value={whatsapp}
+    onChange={(e) =>
+      setWhatsapp(e.target.value)
+    }
+    className="w-full rounded-xl border p-3"
+  />
+</div>
+
+<div>
+  <label className="mb-2 block text-sm">
+    Link Google Maps Iglesia
+  </label>
+
+  <input
+    value={churchMaps}
+    onChange={(e) =>
+      setChurchMaps(e.target.value)
+    }
+    className="w-full rounded-xl border p-3"
+  />
+</div>
+
+<div>
+  <label className="mb-2 block text-sm">
+    Link Google Maps Recepción
+  </label>
+
+  <input
+    value={receptionMaps}
+    onChange={(e) =>
+      setReceptionMaps(e.target.value)
+    }
+    className="w-full rounded-xl border p-3"
+  />
+</div>
+
+<div>
+  <label className="mb-2 block text-sm">
+    URL Música MP3
+  </label>
+
+  <input
+    value={music}
+    onChange={(e) =>
+      setMusic(e.target.value)
+    }
+    className="w-full rounded-xl border p-3"
+  />
+</div>
 
       <div>
-        <label className="mb-2 block text-sm">
-          Código de vestimenta
-        </label>
+  <label className="mb-2 block text-sm">
+    Código de vestimenta
+  </label>
 
-        <input
-          value={dresscode}
-          onChange={(e) => setDresscode(e.target.value)}
-          className="w-full rounded-xl border p-3"
-        />
-      </div>
+  <input
+    value={dresscode}
+    onChange={(e) =>
+      setDresscode(e.target.value)
+    }
+    className="w-full rounded-xl border p-3"
+  />
+</div>
 
       <div>
         <label className="mb-2 block text-sm">

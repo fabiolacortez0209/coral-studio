@@ -2,26 +2,26 @@
 
 import { motion } from "framer-motion";
 import { invitation as defaultInvitation } from "../../../../data/encanto";
+
 type ParentsProps = {
   invitation?: any;
 };
+
 export default function Parents({
   invitation = defaultInvitation,
 }: ParentsProps) {
-
   return (
-
     <motion.section
-    style={{
-  ["--primary" as any]:
-    invitation.theme.primary,
+      style={{
+        ["--primary" as any]:
+          invitation.theme.primary,
 
-  ["--secondary" as any]:
-    invitation.theme.secondary,
+        ["--secondary" as any]:
+          invitation.theme.secondary,
 
-  ["--text" as any]:
-    invitation.theme.text,
-}}
+        ["--text" as any]:
+          invitation.theme.text,
+      }}
       initial={{
         opacity: 0,
         y: 60,
@@ -41,7 +41,6 @@ export default function Parents({
         pb-20
       "
     >
-
       {/* FOTO */}
 
       <div
@@ -54,7 +53,6 @@ export default function Parents({
           shadow-xl
         "
       >
-
         <motion.img
           initial={{
             scale: 1.04,
@@ -75,7 +73,6 @@ export default function Parents({
             object-cover
           "
         />
-
       </div>
 
       {/* PADRES */}
@@ -87,7 +84,6 @@ export default function Parents({
           text-center
         "
       >
-
         <motion.p
           initial={{
             opacity: 0,
@@ -99,6 +95,10 @@ export default function Parents({
           }}
           transition={{
             delay: 0.1,
+          }}
+          style={{
+            fontFamily:
+              invitation.fonts.titles,
           }}
           className="
             mb-3
@@ -124,7 +124,8 @@ export default function Parents({
             delay: 0.2,
           }}
           style={{
-            fontFamily: invitation.fonts.title,
+            fontFamily:
+              invitation.fonts.names,
           }}
           className="
             mb-10
@@ -150,6 +151,10 @@ export default function Parents({
           transition={{
             delay: 0.3,
           }}
+          style={{
+            fontFamily:
+              invitation.fonts.titles,
+          }}
           className="
             mb-3
             text-[10px]
@@ -174,7 +179,8 @@ export default function Parents({
             delay: 0.4,
           }}
           style={{
-            fontFamily: invitation.fonts.title,
+            fontFamily:
+              invitation.fonts.names,
           }}
           className="
             text-6xl
@@ -184,7 +190,6 @@ export default function Parents({
         >
           {invitation.godparents}
         </motion.h2>
-
       </div>
 
       {/* FOTO FINAL */}
@@ -199,7 +204,6 @@ export default function Parents({
           shadow-xl
         "
       >
-
         <motion.img
           initial={{
             scale: 1.04,
@@ -220,10 +224,7 @@ export default function Parents({
             object-cover
           "
         />
-
       </div>
-
     </motion.section>
-
   );
 }

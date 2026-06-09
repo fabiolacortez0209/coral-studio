@@ -15,6 +15,8 @@ type EventInfoProps = {
 export default function EventInfo({
   invitation = defaultInvitation,
 }: EventInfoProps) {
+  console.log("IGLESIA:", invitation.churchMaps);
+console.log("RECEPCION:", invitation.receptionMaps);
 
   return (
 
@@ -167,24 +169,30 @@ export default function EventInfo({
   {formatTime(invitation.churchTime)}
 </p>
 
-          <button
-            className="
-              rounded-full
-              border
-              border-[var(--secondary)]
-              px-6
-              py-2.5
-              text-[10px]
-              uppercase
-              tracking-[0.25em]
-              text-[var(--secondary)]
-              transition
-              bg-[var(--primary)]
-              hover:text-white
-            "
-          >
-            Cómo llegar
-          </button>
+        <button
+  onClick={() =>
+    window.open(
+      invitation.churchMaps,
+      "_blank"
+    )
+  }
+  className="
+    rounded-full
+    border
+    border-[var(--secondary)]
+    px-6
+    py-2.5
+    text-[10px]
+    uppercase
+    tracking-[0.25em]
+    text-[var(--secondary)]
+    transition
+    bg-[var(--primary)]
+    hover:text-white
+  "
+>
+  Cómo llegar
+</button>
 
         </div>
 
@@ -250,24 +258,30 @@ export default function EventInfo({
   {formatTime(invitation.receptionTime)}
 </p>
 
-          <button
-            className="
-              rounded-full
-              border
-              border-[var(--secondary)]
-              px-6
-              py-2.5
-              text-[10px]
-              uppercase
-              tracking-[0.25em]
-              text-[var(--secondary)]
-              transition
-              bg-[var(--primary)]
-              hover:text-white
-            "
-          >
-            Cómo llegar
-          </button>
+         <button
+  onClick={() =>
+    window.open(
+      invitation.receptionMaps,
+      "_blank"
+    )
+  }
+  className="
+    rounded-full
+    border
+    border-[var(--secondary)]
+    px-6
+    py-2.5
+    text-[10px]
+    uppercase
+    tracking-[0.25em]
+    text-[var(--secondary)]
+    transition
+    bg-[var(--primary)]
+    hover:text-white
+  "
+>
+  Cómo llegar
+</button>
 
         </div>
 
