@@ -39,12 +39,10 @@ gift: "Lluvia de Sobres",
   theme: themes.rose,
 
 
-  fonts: {
-
-  title: "Allura",
-
+fonts: {
+  titles: "Playfair Display",
+  names: "Allura",
   body: "Montserrat",
-
 },
 
 };
