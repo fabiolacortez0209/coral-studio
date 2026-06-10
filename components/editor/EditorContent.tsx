@@ -38,75 +38,75 @@ const precio =
 <div
   className="
     fixed
-    top-3
+    top-0
     left-1/2
     -translate-x-1/2
     z-[99999]
-    flex
-    items-center
-    gap-3
-    rounded-full
+    w-[360px]
+    max-w-[95vw]
     bg-white/95
-    px-4
-    py-3
-    shadow-xl
     backdrop-blur-xl
+    shadow-xl
+    rounded-b-[28px]
   "
 >
-  <button
-    onClick={() => router.back()}
+  <div
     className="
       flex
-      h-10
-      w-10
       items-center
-      justify-center
-      rounded-full
-      bg-[#d8a3a7]
-      text-white
+      justify-between
+      px-6
+      py-4
     "
   >
-    ←
-  </button>
-
-  <button
-    className="
-      flex
-      h-10
-      w-10
-      items-center
-      justify-center
-      rounded-full
-      bg-[#d8a3a7]
-      text-white
-    "
-  >
-    ♪
-  </button>
-
-  <button
-    onClick={() => setShowSummary(true)}
-    className="flex items-center gap-2"
-  >
-    <div
+    <button
+      onClick={() => router.back()}
       className="
-        flex
-        h-10
-        w-10
-        items-center
-        justify-center
-        rounded-full
-        bg-[#d8a3a7]
-        text-white
+        text-3xl
+        font-light
+        text-[#d8a3a7]
       "
     >
-      🛒
-    </div>
+      ←
+    </button>
 
-    <span className="font-medium text-[#3b3b3b]">
-      ${precio}
-    </span>
-  </button>
+    <button
+      className="
+        text-3xl
+        text-[#d8a3a7]
+      "
+    >
+      ♪
+    </button>
+
+    <button
+      onClick={() => setShowSummary(true)}
+      className="
+        flex
+        items-center
+        gap-2
+      "
+    >
+      <span
+        className="
+          text-2xl
+          text-[#d8a3a7]
+        "
+      >
+        🛒
+      </span>
+
+      <span
+        className="
+          text-lg
+          font-semibold
+          text-[#3b3b3b]
+        "
+      >
+        ${precio}
+      </span>
+    </button>
+  </div>
 </div>
  
   
