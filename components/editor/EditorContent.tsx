@@ -30,7 +30,7 @@ const precio =
 
   return (
     <div className="min-h-screen bg-[#faf7f5]">
-     <div className="mx-auto max-w-7xl px-0 pt-24 pb-8">
+     <div className="mx-auto max-w-7xl px-0 pt-0 pb-8">
        
 
       <div className="mb-8 flex justify-center">
@@ -113,7 +113,7 @@ max-w-[98vw]
         </div>
 
         <div
-  className={`grid gap-8 ${
+  className={`grid gap-0 ${
     menuOpen
       ? "lg:grid-cols-[280px_1fr_280px]"
       : "lg:grid-cols-[1fr_280px]"
