@@ -30,7 +30,7 @@ const precio =
 
   return (
     <div className="min-h-screen bg-[#faf7f5]">
-     <div className="mx-auto max-w-7xl px-6 pt-24 pb-8">
+     <div className="mx-auto max-w-7xl px-0 pt-24 pb-8">
        
 
       <div className="mb-8 flex justify-center">
@@ -42,8 +42,8 @@ const precio =
     left-1/2
     -translate-x-1/2
     z-[99999]
-    w-[360px]
-    max-w-[95vw]
+   w-[390px]
+max-w-[98vw]
     bg-white/95
     backdrop-blur-xl
     shadow-xl
@@ -55,14 +55,14 @@ const precio =
       flex
       items-center
       justify-between
-      px-6
-      py-4
+      px-8
+      py-2
     "
   >
     <button
       onClick={() => router.back()}
       className="
-        text-3xl
+        text-4xl
         font-light
         text-[#d8a3a7]
       "
@@ -72,7 +72,7 @@ const precio =
 
     <button
       className="
-        text-3xl
+        text-4xl
         text-[#d8a3a7]
       "
     >
