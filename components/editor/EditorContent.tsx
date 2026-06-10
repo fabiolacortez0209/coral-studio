@@ -38,6 +38,27 @@ export default function EditorContent() {
           >
             👤 🎨 📷 🎵 🔤 ✨
           </button>
+<button
+  className="
+    fixed
+    bottom-6
+    right-6
+    z-50
+    flex
+    h-14
+    w-14
+    items-center
+    justify-center
+    rounded-full
+    bg-[#d8a3a7]
+    text-white
+    shadow-[0_10px_30px_rgba(0,0,0,0.15)]
+    transition
+    hover:scale-105
+  "
+>
+  🛒
+</button>
         </div>
 
         <div
@@ -123,7 +144,7 @@ export default function EditorContent() {
 
           <TemplateRenderer />
 
-          <EditorSummary />
+          
 
         </div>
       </div>
