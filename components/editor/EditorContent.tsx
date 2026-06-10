@@ -29,12 +29,10 @@ const precio =
 
   return (
     <div className="min-h-screen bg-[#faf7f5]">
-      <div className="mx-auto max-w-7xl px-6 py-8">
-        <h1 className="mb-8 text-center text-4xl font-light">
-          Personaliza tu invitación
-        </h1>
+     <div className="mx-auto max-w-7xl px-6 pt-24 pb-8">
+       
 
-        <div className="mb-8 flex justify-center">
+       <div className="hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="
@@ -50,7 +48,7 @@ const precio =
 <div
   className="
     fixed
-    top-4
+    top-1
     left-1/2
     z-[99999]
     flex
