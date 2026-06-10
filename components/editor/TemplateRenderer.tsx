@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import EncantoEditor from "./templates/EncantoEditor";
 import { useEditor } from "./EditorContext";
 
@@ -14,11 +16,13 @@ export default function TemplateRenderer() {
 
         lg:w-[360px]
         lg:h-[720px]
-        lg:overflow-y-auto
+        lg:overflow-y-scroll
+        scrollbar-hide
         lg:rounded-[40px]
         lg:border-[8px]
         lg:border-black
         lg:shadow-2xl
+        lg:mx-auto
       "
     >
       {template === "encanto" && (

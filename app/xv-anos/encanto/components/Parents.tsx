@@ -10,6 +10,49 @@ type ParentsProps = {
 export default function Parents({
   invitation = defaultInvitation,
 }: ParentsProps) {
+  
+  const dividirNombre = (texto: string) => {
+  const palabras = texto.trim().split(" ");
+
+  const mitad = Math.ceil(
+    palabras.length / 2
+  );
+
+  return {
+    linea1: palabras
+      .slice(0, mitad)
+      .join(" "),
+
+    linea2: palabras
+      .slice(mitad)
+      .join(" "),
+  };
+};
+
+const padres =
+  invitation.parents.split("&");
+
+const padre =
+  dividirNombre(
+    padres[0] || ""
+  );
+
+const madre =
+  dividirNombre(
+    padres[1] || ""
+  );
+  const padrinos =
+  invitation.godparents.split("&");
+
+const padrino =
+  dividirNombre(
+    padrinos[0] || ""
+  );
+
+const madrina =
+  dividirNombre(
+    padrinos[1] || ""
+  );
   return (
     <motion.section
       style={{
@@ -111,32 +154,45 @@ export default function Parents({
           Con la bendición de mis padres
         </motion.p>
 
-        <motion.h2
-          initial={{
-            opacity: 0,
-            y: 15,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            delay: 0.2,
-          }}
-          style={{
-            fontFamily:
-              invitation.fonts.names,
-          }}
-          className="
-  mb-10
-  text-4xl
-  leading-tight
-  text-[var(--primary)]
-"
-        >
-          {invitation.parents}
-        </motion.h2>
+       <motion.h2
+  initial={{
+    opacity: 0,
+    y: 15,
+  }}
+  whileInView={{
+    opacity: 1,
+    y: 0,
+  }}
+  transition={{
+    delay: 0.2,
+  }}
+  style={{
+    fontFamily:
+      invitation.fonts.names,
+  }}
+  className="
+    mb-10
+    text-4xl
+    leading-tight
+    text-[var(--primary)]
+  "
+>
+  <div className="max-w-[400px] mx-auto px-2">
+    <div>
+  <div>{padre.linea1}</div>
+  <div>{padre.linea2}</div>
+</div>
 
+<div className="my-1 text-3xl">
+  &
+</div>
+
+<div>
+  <div>{madre.linea1}</div>
+  <div>{madre.linea2}</div>
+</div>
+  </div>
+</motion.h2>
         {/* PADRINOS */}
 
         <motion.p
@@ -182,13 +238,28 @@ export default function Parents({
             fontFamily:
               invitation.fonts.names,
           }}
-          className="
-            text-6xl
-            leading-none
-            text-[var(--primary)]
+      className="
+  text-4xl
+  leading-tight
+  text-[var(--primary)]
+
           "
         >
-          {invitation.godparents}
+     <div className="max-w-[400px] mx-auto px-2">
+  <div>
+    <div>{padrino.linea1}</div>
+    <div>{padrino.linea2}</div>
+  </div>
+
+  <div className="my-1 text-3xl">
+    &
+  </div>
+
+  <div>
+    <div>{madrina.linea1}</div>
+    <div>{madrina.linea2}</div>
+  </div>
+</div>
         </motion.h2>
       </div>
 

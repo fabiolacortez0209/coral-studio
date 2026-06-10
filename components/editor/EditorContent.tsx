@@ -40,7 +40,13 @@ export default function EditorContent() {
           </button>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-[280px_1fr_280px]">
+        <div
+  className={`grid gap-8 ${
+    menuOpen
+      ? "lg:grid-cols-[280px_1fr_280px]"
+      : "lg:grid-cols-[1fr_280px]"
+  }`}
+>
 
           {menuOpen && (
             <div className="rounded-3xl bg-white p-6 shadow-lg">

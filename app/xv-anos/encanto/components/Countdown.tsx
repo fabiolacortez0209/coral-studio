@@ -36,7 +36,9 @@ console.log(
   invitation.churchTime
 );
 
-const targetDate = new Date("2026-09-26T17:00:00");
+const targetDate = new Date(
+  `${invitation.eventDate}T${invitation.churchTime}`
+);
 console.log(
   invitation.eventDate,
   invitation.churchTime
@@ -74,7 +76,10 @@ console.log(
   }, 1000);
 
   return () => clearInterval(interval);
-}, [invitation.eventDate]);
+}, [
+  invitation.eventDate,
+  invitation.churchTime,
+]);
 
   return (
 
@@ -162,7 +167,7 @@ console.log(
           }}
           className="
             mb-2
-            text-7xl
+            text-5xl
             leading-none
             text-[var(--primary)]
           "
