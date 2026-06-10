@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { useEditor } from "./EditorContext";
 
@@ -19,7 +20,7 @@ export default function EditorContent() {
     useState(false);
 
  const { plan } = useEditor();
-
+const router = useRouter();
 const precio =
   plan === "basico"
     ? 199
@@ -37,11 +38,11 @@ const precio =
 <div
   className="
     fixed
-    top-1
+    top-3
     left-1/2
+    -translate-x-1/2
     z-[99999]
     flex
-    -translate-x-1/2
     items-center
     gap-3
     rounded-full
@@ -52,20 +53,59 @@ const precio =
     backdrop-blur-xl
   "
 >
-  <button>
-    ⬅️
-  </button>
-
-  <button>
-    ▶️
+  <button
+    onClick={() => router.back()}
+    className="
+      flex
+      h-10
+      w-10
+      items-center
+      justify-center
+      rounded-full
+      bg-[#d8a3a7]
+      text-white
+    "
+  >
+    ←
   </button>
 
   <button
-    onClick={() =>
-      setShowSummary(true)
-    }
+    className="
+      flex
+      h-10
+      w-10
+      items-center
+      justify-center
+      rounded-full
+      bg-[#d8a3a7]
+      text-white
+    "
   >
-    🛒 ${precio}
+    ♪
+  </button>
+
+  <button
+    onClick={() => setShowSummary(true)}
+    className="flex items-center gap-2"
+  >
+    <div
+      className="
+        flex
+        h-10
+        w-10
+        items-center
+        justify-center
+        rounded-full
+        bg-[#d8a3a7]
+        text-white
+      "
+    >
+      🛒
+    </div>
+
+    <span className="font-medium text-[#3b3b3b]">
+      ${precio}
+    </span>
   </button>
 </div>
  
