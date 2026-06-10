@@ -32,19 +32,8 @@ const precio =
      <div className="mx-auto max-w-7xl px-6 pt-24 pb-8">
        
 
-       <div className="hidden">
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="
-              rounded-full
-              bg-white
-              px-6
-              py-3
-              shadow-lg
-            "
-          >
-            👤 🎨 📷 🎵 🔤 ✨
-          </button>
+      <div className="mb-8 flex justify-center">
+       
 <div
   className="
     fixed
