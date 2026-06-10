@@ -11,12 +11,21 @@ import EditorStyle from "./EditorStyle";
 import EditorPhotos from "./EditorPhotos";
 import EditorExtras from "./EditorExtras";
 import EditorSummary from "./EditorSummary";
-
 export default function EditorContent() {
   const [tab, setTab] = useState("informacion");
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const { plan } = useEditor();
+  const [showSummary, setShowSummary] =
+    useState(false);
+
+ const { plan } = useEditor();
+
+const precio =
+  plan === "basico"
+    ? 199
+    : plan === "premium"
+    ? 599
+    : 999;
 
   return (
     <div className="min-h-screen bg-[#faf7f5]">
@@ -39,10 +48,13 @@ export default function EditorContent() {
             👤 🎨 📷 🎵 🔤 ✨
           </button>
 <button
+  onClick={() =>
+    setShowSummary(true)
+  }
   className="
     fixed
-    bottom-6
-    right-6
+    bottom-14
+    right-20
     z-50
     flex
     h-14
@@ -57,7 +69,16 @@ export default function EditorContent() {
     hover:scale-105
   "
 >
-  🛒
+ 
+  <div className="flex flex-col items-center leading-none">
+    <span className="text-lg">
+      🛒
+    </span>
+
+    <span className="mt-1 text-[10px] font-medium">
+      ${precio}
+    </span>
+  </div>
 </button>
         </div>
 
@@ -143,7 +164,63 @@ export default function EditorContent() {
           )}
 
           <TemplateRenderer />
+{showSummary && (
+  <div
+    className="
+      fixed
+      inset-0
+      z-[99999]
+      flex
+      items-center
+      justify-center
+    bg-black/30
+backdrop-blur-sm
+    "
+    onClick={() =>
+      setShowSummary(false)
+    }
+  >
+    <div
+      onClick={(e) =>
+        e.stopPropagation()
+      }
+      className="
+        w-[90%]
+        max-w-md
+        rounded-3xl
+        bg-white
+        p-6
+        shadow-2xl
+      "
+    >
+   <div className="mb-4 flex items-center justify-between">
+  <h2 className="text-2xl font-semibold">
+    🛒 Resumen de compra
+  </h2>
 
+  <button
+    onClick={() =>
+      setShowSummary(false)
+    }
+    className="
+      flex
+      h-10
+      w-10
+      items-center
+      justify-center
+      rounded-full
+      bg-[#f5f1ef]
+      text-xl
+    "
+  >
+    ✕
+  </button>
+</div>
+
+<EditorSummary />
+    </div>
+  </div>
+)}
           
 
         </div>

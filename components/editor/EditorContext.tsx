@@ -113,11 +113,11 @@ const [dresscode, setDresscode] =
 
 const [gift, setGift] =
   useState("Lluvia de sobres");
-  const [parents, setParents] =
-  useState("Juan Pérez y María López");
+ const [parents, setParents] =
+  useState("Ricardo Flores & María López");
 
 const [godparents, setGodparents] =
-  useState("Carlos Pérez y Ana Torres");
+  useState("Carlos Pérez & Monica Torres");
   const [plan, setPlan] =
     useState("premium");
 
