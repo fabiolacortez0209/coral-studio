@@ -13,7 +13,7 @@ import EditorPhotos from "./EditorPhotos";
 import EditorExtras from "./EditorExtras";
 import EditorSummary from "./EditorSummary";
 export default function EditorContent() {
-  const [tab, setTab] = useState("");
+  const [tab, setTab] = useState("informacion");
  const menuOpen = false;
 
   const [showSummary, setShowSummary] =
@@ -216,119 +216,41 @@ const precio =
     left-1/2
     -translate-x-1/2
     z-[99999]
-
+    flex
     w-[430px]
-    max-w-[100vw]
-
+    max-w-full
+    items-center
+    justify-around
+    rounded-t-[28px]
     bg-white/95
+    py-3
+    shadow-[0_-10px_30px_rgba(0,0,0,0.08)]
     backdrop-blur-xl
-
-    shadow-[0_-12px_35px_rgba(0,0,0,0.10)]
-
-    rounded-t-[36px]
-
-    border-t
-    border-white/50
-  "
->  </div>
-</div>
-  <div
-    className="
-      flex
-      items-center
-      justify-around
-      py-4
-    "
-  >
-  <button
-  onClick={() => setTab("informacion")}
-  className="
-    flex
-    flex-col
-    items-center
-    gap-1
-    text-[#d8a3a7]
-    transition
-    hover:scale-110
   "
 >
-  <span className="text-xl">👤</span>
-</button>
+  <button onClick={() => setTab("informacion")}>
+    👤
+  </button>
 
-  <button
-  onClick={() => setTab("informacion")}
-  className="
-    flex
-    flex-col
-    items-center
-    gap-1
-    text-[#d8a3a7]
-    transition
-    hover:scale-110
-  "
->
-  <span className="text-xl">👤</span>
-</button>
+  <button onClick={() => setTab("diseno")}>
+    🎨
+  </button>
 
-  <button
-  onClick={() => setTab("informacion")}
-  className="
-    flex
-    flex-col
-    items-center
-    gap-1
-    text-[#d8a3a7]
-    transition
-    hover:scale-110
-  "
->
-  <span className="text-xl">👤</span>
-</button>
+  <button onClick={() => setTab("fotos")}>
+    📷
+  </button>
 
- <button
-  onClick={() => setTab("informacion")}
-  className="
-    flex
-    flex-col
-    items-center
-    gap-1
-    text-[#d8a3a7]
-    transition
-    hover:scale-110
-  "
->
-  <span className="text-xl">👤</span>
-</button>
+  <button onClick={() => setTab("informacion")}>
+    🎵
+  </button>
 
- <button
-  onClick={() => setTab("informacion")}
-  className="
-    flex
-    flex-col
-    items-center
-    gap-1
-    text-[#d8a3a7]
-    transition
-    hover:scale-110
-  "
->
-  <span className="text-xl">👤</span>
-</button>
+  <button onClick={() => setTab("diseno")}>
+    Aa
+  </button>
 
- <button
-  onClick={() => setTab("informacion")}
-  className="
-    flex
-    flex-col
-    items-center
-    gap-1
-    text-[#d8a3a7]
-    transition
-    hover:scale-110
-  "
->
-  <span className="text-xl">👤</span>
-</button>
+  <button onClick={() => setTab("extras")}>
+    ✨
+  </button>
 </div>
 </div>
 {tab === "informacion" && (
@@ -361,7 +283,6 @@ const precio =
     </div>
   </div>
 )}
-
 
 {tab === "diseno" && (
   <div className="fixed inset-0 z-[99998] bg-transparent">
@@ -454,7 +375,6 @@ const precio =
       <EditorExtras />
     </div>
   </div>
-  
 )}
 {showSummary && (
   <div
@@ -517,6 +437,6 @@ backdrop-blur-sm
 
         </div>
       </div>
-    
+    </div>
   );
 }
