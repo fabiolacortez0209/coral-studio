@@ -46,28 +46,7 @@ export default function EncantoEditor() {
   src={invitationData.music}
 />
 
-  <button
-  onClick={toggleAudio}
-  className="
-    fixed
-top-24
-right-4
-    z-[9999]
-    flex
-    h-14
-    w-14
-    items-center
-    justify-center
-    rounded-full
-    bg-[#d8a3a7]
-    text-white
-    shadow-[0_10px_30px_rgba(0,0,0,0.15)]
-    transition
-    hover:scale-105
-  "
->
-  {isPlaying ? "⏸️" : "▶️"}
-</button>
+  
 
       <Hero
         invitation={invitationData}
