@@ -13,7 +13,7 @@ import EditorPhotos from "./EditorPhotos";
 import EditorExtras from "./EditorExtras";
 import EditorSummary from "./EditorSummary";
 export default function EditorContent() {
-  const [tab, setTab] = useState("informacion");
+  const [tab, setTab] = useState("");
  const menuOpen = false;
 
   const [showSummary, setShowSummary] =
