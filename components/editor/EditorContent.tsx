@@ -33,17 +33,16 @@ const precio =
      <div className="mx-auto max-w-7xl px-0 pt-0 pb-8">
        
 
-      <div className="mb-8 flex justify-center">
+     <div className="mb-8 flex justify-center relative">
        
 <div
   className="
-    fixed
+    absolute
     top-0
-    left-1/2
-    -translate-x-1/2
+    
     z-[99999]
-   w-[390px]
-max-w-[98vw]
+  w-full
+
     bg-white/95
     backdrop-blur-xl
     shadow-xl
@@ -116,7 +115,7 @@ max-w-[98vw]
   className={`grid gap-0 ${
     menuOpen
       ? "lg:grid-cols-[280px_1fr_280px]"
-      : "lg:grid-cols-[1fr_280px]"
+     : "lg:grid-cols-[1fr]"
   }`}
 >
 
@@ -193,7 +192,9 @@ max-w-[98vw]
             </div>
           )}
 
-          <TemplateRenderer />
+          <div className="flex justify-center">
+  <TemplateRenderer />
+</div>
 {showSummary && (
   <div
     className="

@@ -19,7 +19,7 @@ export default function EncantoEditor() {
 
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const toggleAudio = async () => {
+const toggleAudio = async () => {
     if (!audioRef.current) return;
 
     if (audioRef.current.paused) {
@@ -46,7 +46,7 @@ export default function EncantoEditor() {
   src={invitationData.music}
 />
 
-  
+
 
       <Hero
         invitation={invitationData}

@@ -22,7 +22,7 @@ export default function TemplateRenderer() {
         lg:border-[8px]
         lg:border-black
         lg:shadow-2xl
-        lg:mx-auto
+       
       "
     >
       {template === "encanto" && (
