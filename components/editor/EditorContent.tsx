@@ -268,7 +268,7 @@ const precio =
         backdrop-blur-xl
         p-6
         shadow-xl
-        max-h-[70vh]
+       max-h-[40vh]
         overflow-y-auto
       "
     >
@@ -299,7 +299,7 @@ const precio =
         backdrop-blur-xl
         p-6
         shadow-xl
-        max-h-[70vh]
+        max-h-[60vh]
         overflow-y-auto
       "
     >
@@ -330,7 +330,7 @@ const precio =
         backdrop-blur-xl
         p-6
         shadow-xl
-        max-h-[70vh]
+       max-h-[60vh]
         overflow-y-auto
       "
     >
@@ -361,7 +361,7 @@ const precio =
         backdrop-blur-xl
         p-6
         shadow-xl
-        max-h-[70vh]
+       max-h-[60vh]
         overflow-y-auto
       "
     >
@@ -369,6 +369,9 @@ const precio =
         onClick={() => setTab("")}
         className="mb-4 text-2xl"
       >
+        <div className="mb-4 flex justify-center">
+  <div className="h-1.5 w-12 rounded-full bg-gray-300" />
+</div>
         ✕
       </button>
 
