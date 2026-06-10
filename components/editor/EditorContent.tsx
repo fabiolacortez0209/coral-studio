@@ -47,39 +47,42 @@ const precio =
           >
             👤 🎨 📷 🎵 🔤 ✨
           </button>
-<button
-  onClick={() =>
-    setShowSummary(true)
-  }
+<div
   className="
     fixed
-top-40
-right-4
-    z-50
+    top-4
+    left-1/2
+    z-[99999]
     flex
-    h-14
-    w-14
+    -translate-x-1/2
     items-center
-    justify-center
+    gap-3
     rounded-full
-    bg-[#d8a3a7]
-    text-white
-    shadow-[0_10px_30px_rgba(0,0,0,0.15)]
-    transition
-    hover:scale-105
+    bg-white/95
+    px-4
+    py-3
+    shadow-xl
+    backdrop-blur-xl
   "
 >
- 
-  <div className="flex flex-col items-center leading-none">
-    <span className="text-lg">
-      🛒
-    </span>
+  <button>
+    ⬅️
+  </button>
 
-    <span className="mt-1 text-[10px] font-medium">
-      ${precio}
-    </span>
-  </div>
-</button>
+  <button>
+    ▶️
+  </button>
+
+  <button
+    onClick={() =>
+      setShowSummary(true)
+    }
+  >
+    🛒 ${precio}
+  </button>
+</div>
+ 
+  
         </div>
 
         <div
