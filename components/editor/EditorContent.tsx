@@ -13,7 +13,7 @@ import EditorPhotos from "./EditorPhotos";
 import EditorExtras from "./EditorExtras";
 import EditorSummary from "./EditorSummary";
 export default function EditorContent() {
-  const [tab, setTab] = useState("informacion");
+  const [tab, setTab] = useState("");
  const menuOpen = false;
 
   const [showSummary, setShowSummary] =
@@ -216,60 +216,179 @@ const precio =
     left-1/2
     -translate-x-1/2
     z-[99999]
-    flex
+
     w-[430px]
-    max-w-full
-    items-center
-    justify-around
-    rounded-t-[28px]
+    max-w-[100vw]
+
     bg-white/95
-    py-3
-    shadow-[0_-10px_30px_rgba(0,0,0,0.08)]
     backdrop-blur-xl
+
+    shadow-[0_-12px_35px_rgba(0,0,0,0.10)]
+
+    rounded-t-[36px]
+
+    border-t
+    border-white/50
+  "
+>  </div>
+</div>
+  <div
+    className="
+      flex
+      items-center
+      justify-around
+      py-4
+    "
+  >
+  <button
+  onClick={() => setTab("informacion")}
+  className="
+    flex
+    flex-col
+    items-center
+    gap-1
+    text-[#d8a3a7]
+    transition
+    hover:scale-110
   "
 >
-  <button onClick={() => setTab("informacion")}>
-    👤
-  </button>
+  <span className="text-xl">👤</span>
+</button>
 
-  <button onClick={() => setTab("diseno")}>
-    🎨
-  </button>
+  <button
+  onClick={() => setTab("informacion")}
+  className="
+    flex
+    flex-col
+    items-center
+    gap-1
+    text-[#d8a3a7]
+    transition
+    hover:scale-110
+  "
+>
+  <span className="text-xl">👤</span>
+</button>
 
-  <button onClick={() => setTab("fotos")}>
-    📷
-  </button>
+  <button
+  onClick={() => setTab("informacion")}
+  className="
+    flex
+    flex-col
+    items-center
+    gap-1
+    text-[#d8a3a7]
+    transition
+    hover:scale-110
+  "
+>
+  <span className="text-xl">👤</span>
+</button>
 
-  <button onClick={() => setTab("informacion")}>
-    🎵
-  </button>
+ <button
+  onClick={() => setTab("informacion")}
+  className="
+    flex
+    flex-col
+    items-center
+    gap-1
+    text-[#d8a3a7]
+    transition
+    hover:scale-110
+  "
+>
+  <span className="text-xl">👤</span>
+</button>
 
-  <button onClick={() => setTab("diseno")}>
-    Aa
-  </button>
+ <button
+  onClick={() => setTab("informacion")}
+  className="
+    flex
+    flex-col
+    items-center
+    gap-1
+    text-[#d8a3a7]
+    transition
+    hover:scale-110
+  "
+>
+  <span className="text-xl">👤</span>
+</button>
 
-  <button onClick={() => setTab("extras")}>
-    ✨
-  </button>
+ <button
+  onClick={() => setTab("informacion")}
+  className="
+    flex
+    flex-col
+    items-center
+    gap-1
+    text-[#d8a3a7]
+    transition
+    hover:scale-110
+  "
+>
+  <span className="text-xl">👤</span>
+</button>
 </div>
 </div>
 {tab === "informacion" && (
   <div className="fixed inset-0 z-[99998] bg-transparent">
-    <div className="absolute bottom-[72px] left-1/2 w-[430px] max-w-[95vw] -translate-x-1/2 rounded-t-[28px] bg-white/95
-backdrop-blur-xl
-p-6
-shadow-xl max-h-[70vh] overflow-y-auto">
+    <div
+      className="
+        absolute
+        bottom-[72px]
+        left-1/2
+        w-[430px]
+        max-w-[95vw]
+        -translate-x-1/2
+        rounded-t-[28px]
+        bg-white/95
+        backdrop-blur-xl
+        p-6
+        shadow-xl
+        max-h-[70vh]
+        overflow-y-auto
+      "
+    >
+      <button
+        onClick={() => setTab("")}
+        className="mb-4 text-2xl"
+      >
+        ✕
+      </button>
+
       <EditorInformation />
     </div>
   </div>
 )}
 
+
 {tab === "diseno" && (
   <div className="fixed inset-0 z-[99998] bg-transparent">
-    <div className="absolute bottom-[72px] left-1/2 w-[430px] max-w-[95vw] -translate-x-1/2 rounded-t-[28px] bg-white/95
-backdrop-blur-xl
-p-6
-shadow-xl max-h-[70vh] overflow-y-auto">
+    <div
+      className="
+        absolute
+        bottom-[72px]
+        left-1/2
+        w-[430px]
+        max-w-[95vw]
+        -translate-x-1/2
+        rounded-t-[28px]
+        bg-white/95
+        backdrop-blur-xl
+        p-6
+        shadow-xl
+        max-h-[70vh]
+        overflow-y-auto
+      "
+    >
+      <button
+        onClick={() => setTab("")}
+        className="mb-4 text-2xl"
+      >
+        ✕
+      </button>
+
       <EditorStyle />
     </div>
   </div>
@@ -277,10 +396,30 @@ shadow-xl max-h-[70vh] overflow-y-auto">
 
 {tab === "fotos" && (
   <div className="fixed inset-0 z-[99998] bg-transparent">
-    <div className="absolute bottom-[72px] left-1/2 w-[430px] max-w-[95vw] -translate-x-1/2 rounded-t-[28px] bg-white/95
-backdrop-blur-xl
-p-6
-shadow-xl max-h-[70vh] overflow-y-auto">
+    <div
+      className="
+        absolute
+        bottom-[72px]
+        left-1/2
+        w-[430px]
+        max-w-[95vw]
+        -translate-x-1/2
+        rounded-t-[28px]
+        bg-white/95
+        backdrop-blur-xl
+        p-6
+        shadow-xl
+        max-h-[70vh]
+        overflow-y-auto
+      "
+    >
+      <button
+        onClick={() => setTab("")}
+        className="mb-4 text-2xl"
+      >
+        ✕
+      </button>
+
       <EditorPhotos />
     </div>
   </div>
@@ -288,13 +427,34 @@ shadow-xl max-h-[70vh] overflow-y-auto">
 
 {tab === "extras" && (
   <div className="fixed inset-0 z-[99998] bg-transparent">
-    <div className="absolute bottom-[72px] left-1/2 w-[430px] max-w-[95vw] -translate-x-1/2 rounded-t-[28px] bg-white/95
-backdrop-blur-xl
-p-6
-shadow-xl max-h-[70vh] overflow-y-auto">
+    <div
+      className="
+        absolute
+        bottom-[72px]
+        left-1/2
+        w-[430px]
+        max-w-[95vw]
+        -translate-x-1/2
+        rounded-t-[28px]
+        bg-white/95
+        backdrop-blur-xl
+        p-6
+        shadow-xl
+        max-h-[70vh]
+        overflow-y-auto
+      "
+    >
+      <button
+        onClick={() => setTab("")}
+        className="mb-4 text-2xl"
+      >
+        ✕
+      </button>
+
       <EditorExtras />
     </div>
   </div>
+  
 )}
 {showSummary && (
   <div
@@ -357,6 +517,6 @@ backdrop-blur-sm
 
         </div>
       </div>
-    </div>
+    
   );
 }
