@@ -229,9 +229,11 @@ right-4
       </div>
 <div
   className="
-   fixed
-bottom-6
+  fixed
+bottom-4
 left-1/2
+-translate-x-1/2
+z-[9999]
 -ztranslate-x-1/2
 z-[9999]
   "

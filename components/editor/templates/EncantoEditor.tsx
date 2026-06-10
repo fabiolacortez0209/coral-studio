@@ -50,8 +50,8 @@ export default function EncantoEditor() {
   onClick={toggleAudio}
   className="
     fixed
-    bottom-32
-    right-28
+top-24
+right-4
     z-[9999]
     flex
     h-14

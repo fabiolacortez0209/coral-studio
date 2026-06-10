@@ -14,8 +14,8 @@ export default function TemplateRenderer() {
         w-full
         bg-white
 
-        lg:w-[360px]
-        lg:h-[720px]
+       lg:w-[430px]
+       lg:h-[860px]
         lg:overflow-y-scroll
         scrollbar-hide
         lg:rounded-[40px]

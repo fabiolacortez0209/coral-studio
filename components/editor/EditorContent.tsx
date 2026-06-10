@@ -53,8 +53,8 @@ const precio =
   }
   className="
     fixed
-    bottom-14
-    right-20
+top-40
+right-4
     z-50
     flex
     h-14
