@@ -18,8 +18,22 @@ export default function EditorContent() {
 
   const [showSummary, setShowSummary] =
     useState(false);
+const [isPlaying, setIsPlaying] = useState(false);
+ const { plan, music } = useEditor();
 
- const { plan } = useEditor();
+const toggleAudio = () => {
+  const audio = document.querySelector("audio");
+
+  if (!audio) return;
+
+  if (audio.paused) {
+    audio.play();
+    setIsPlaying(true);
+  } else {
+    audio.pause();
+    setIsPlaying(false);
+  }
+};
 const router = useRouter();
 const precio =
   plan === "basico"
@@ -69,14 +83,15 @@ const precio =
       ←
     </button>
 
-    <button
-      className="
-        text-4xl
-        text-[#d8a3a7]
-      "
-    >
-      ♪
-    </button>
+   <button
+  onClick={toggleAudio}
+  className="
+    text-4xl
+    text-[#d8a3a7]
+  "
+>
+  {isPlaying ? "⏸" : "♪"}
+</button>
 
     <button
       onClick={() => setShowSummary(true)}

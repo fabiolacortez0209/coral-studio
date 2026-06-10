@@ -52,7 +52,7 @@ export default function Hero({
           inset-0
           h-full
           w-full
-          object-cover
+         object-cover object-center
         "
       />
 
