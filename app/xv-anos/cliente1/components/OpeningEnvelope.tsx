@@ -52,8 +52,7 @@ export default function OpeningEnvelope({
           }}
           className="
             relative
-            w-[78vw]
-            max-w-[360px]
+           w-[92vw] max-w-[430px]
           "
         >
           {/* SOBRE */}
