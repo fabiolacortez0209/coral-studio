@@ -141,8 +141,8 @@ export default function Cliente1Page() {
               <p
                 className={`
                   ${cormorant.className}
-                  text-[12px]
-                  font-semibold
+                  text-[16px]
+                  font-bold
                   uppercase
                   tracking-[0.30em]
                   drop-shadow-[0_2px_7px_rgba(0,0,0,0.85)]
@@ -239,8 +239,8 @@ export default function Cliente1Page() {
                   className={`
                     ${cormorant.className}
                     mt-4
-                    text-[11px]
-                    font-semibold
+                    text-[15px]
+                    font-bold
                     uppercase
                     tracking-[0.28em]
                     drop-shadow-[0_2px_7px_rgba(0,0,0,0.85)]
@@ -273,8 +273,8 @@ export default function Cliente1Page() {
               <span
                 className={`
                   ${cormorant.className}
-                  text-[10px]
-                  font-semibold
+                  text-[12px]
+                  font-bold
                   uppercase
                   tracking-[0.35em]
                   drop-shadow-[0_2px_5px_rgba(0,0,0,0.85)]
