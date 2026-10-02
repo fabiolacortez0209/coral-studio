@@ -168,23 +168,34 @@ churchMaps,
 receptionMaps,
 music,
 
-    photos: {
-      portada:
-        photos[0] || "/portada.png",
+photos: {
+  portada:
+    photos[0] || "/portada.png",
 
-      foto1:
-        photos[0] || "/foto1.png",
+  foto1:
+    photos[1] || "/foto1.png",
 
-      foto2:
-        photos[1] || "/foto2.png",
+  foto2:
+    photos[2] || "/foto2.png",
 
-      foto3:
-        photos[2] || "/foto3.png",
+  foto3:
+    photos[3] || "/foto3.png",
 
-      foto4:
-        photos[3] || "/foto4.png",
-    },
+  foto4:
+    photos[4] || "/foto4.png",
 
+  foto5:
+    photos[5] || "/foto5.png",
+
+  foto6:
+    photos[6] || "/foto6.png",
+
+  foto7:
+    photos[7] || "/foto7.png",
+
+  foto8:
+    photos[8] || "/foto8.png",
+},
 fonts: {
   names: nameFont,
   titles: titleFont,

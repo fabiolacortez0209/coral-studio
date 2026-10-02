@@ -12,6 +12,7 @@ import EditorStyle from "./EditorStyle";
 import EditorPhotos from "./EditorPhotos";
 import EditorExtras from "./EditorExtras";
 import EditorSummary from "./EditorSummary";
+import EditorFonts from "./EditorFonts";
 export default function EditorContent() {
   const [tab, setTab] = useState("");
  const menuOpen = false;
@@ -19,8 +20,13 @@ export default function EditorContent() {
   const [showSummary, setShowSummary] =
     useState(false);
 const [isPlaying, setIsPlaying] = useState(false);
- const { plan, music } = useEditor();
 
+const {
+  plan,
+  setPlan,
+  music,
+  setMusic,
+} = useEditor();
 const toggleAudio = () => {
   const audio = document.querySelector("audio");
 
@@ -82,7 +88,35 @@ const precio =
     >
       ←
     </button>
+<select
+  value={plan}
+  onChange={(e) =>
+    setPlan(e.target.value)
+  }
+  className="
+    rounded-full
+    border
+    border-[#e7d8d8]
+    bg-white
+    px-3
+    py-1
+    text-sm
+    font-medium
+    text-[#d8a3a7]
+  "
+>
+  <option value="basico">
+    🥉 Básico
+  </option>
 
+  <option value="premium">
+    🥈 Premium
+  </option>
+
+  <option value="exclusivo">
+    🥇 Exclusivo
+  </option>
+</select>
    <button
   onClick={toggleAudio}
   className="
@@ -212,7 +246,7 @@ const precio =
   <div
   className="
     fixed
-    bottom-0
+    bottom-4
     left-1/2
     -translate-x-1/2
     z-[99999]
@@ -228,29 +262,77 @@ const precio =
     backdrop-blur-xl
   "
 >
-  <button onClick={() => setTab("informacion")}>
-    👤
-  </button>
+<button
+  onClick={() => setTab("informacion")}
+  className={`flex flex-col items-center ${
+    tab === "informacion"
+      ? "text-[#d8a3a7]"
+      : "text-gray-400"
+  }`}
+>
+  <span>👤</span>
+  <span className="text-[10px]">Info</span>
+</button>
 
-  <button onClick={() => setTab("diseno")}>
-    🎨
-  </button>
+<button
+  onClick={() => setTab("diseno")}
+  className={`flex flex-col items-center ${
+    tab === "diseno"
+      ? "text-[#d8a3a7]"
+      : "text-gray-400"
+  }`}
+>
+  <span>🎨</span>
+  <span className="text-[10px]">Diseño</span>
+</button>
 
-  <button onClick={() => setTab("fotos")}>
-    📷
-  </button>
+<button
+  onClick={() => setTab("fotos")}
+  className={`flex flex-col items-center ${
+    tab === "fotos"
+      ? "text-[#d8a3a7]"
+      : "text-gray-400"
+  }`}
+>
+  <span>📷</span>
+  <span className="text-[10px]">Fotos</span>
+</button>
 
-  <button onClick={() => setTab("informacion")}>
-    🎵
-  </button>
+<button
+  onClick={() => setTab("musica")}
+  className={`flex flex-col items-center ${
+    tab === "musica"
+      ? "text-[#d8a3a7]"
+      : "text-gray-400"
+  }`}
+>
+  <span>🎵</span>
+  <span className="text-[10px]">Música</span>
+</button>
 
-  <button onClick={() => setTab("diseno")}>
-    Aa
-  </button>
+<button
+  onClick={() => setTab("fuentes")}
+  className={`flex flex-col items-center ${
+    tab === "fuentes"
+      ? "text-[#d8a3a7]"
+      : "text-gray-400"
+  }`}
+>
+  <span>Aa</span>
+  <span className="text-[10px]">Fuentes</span>
+</button>
 
-  <button onClick={() => setTab("extras")}>
-    ✨
-  </button>
+<button
+  onClick={() => setTab("extras")}
+  className={`flex flex-col items-center ${
+    tab === "extras"
+      ? "text-[#d8a3a7]"
+      : "text-gray-400"
+  }`}
+>
+  <span>✨</span>
+  <span className="text-[10px]">Extras</span>
+</button>
 </div>
 </div>
 {tab === "informacion" && (
@@ -273,11 +355,25 @@ const precio =
       "
     >
       <button
-        onClick={() => setTab("")}
-        className="mb-4 text-2xl"
-      >
-        ✕
-      </button>
+  onClick={() => setTab("")}
+  className="
+    sticky
+    top-0
+    z-10
+    ml-auto
+    flex
+    h-10
+    w-10
+    items-center
+    justify-center
+    rounded-full
+    bg-white
+    shadow-md
+    text-xl
+  "
+>
+  ✕
+</button>
 
       <EditorInformation />
     </div>
@@ -314,7 +410,60 @@ const precio =
     </div>
   </div>
 )}
+{tab === "fuentes" && (
+  <div className="fixed inset-0 z-[99998] bg-transparent">
+    <div className="absolute bottom-[80px] left-1/2 w-[430px] max-w-[95vw] -translate-x-1/2 rounded-t-[28px] bg-white/95 backdrop-blur-xl p-6 shadow-xl max-h-[45vh] overflow-y-auto">
+      <button
+        onClick={() => setTab("")}
+        className="mb-4 text-2xl"
+      >
+        ✕
+      </button>
 
+      <EditorFonts />
+    </div>
+  </div>
+)}
+{tab === "musica" && (
+  <div className="fixed inset-0 z-[99998] bg-transparent">
+    <div
+      className="
+        absolute
+        bottom-[90px]
+        left-1/2
+        w-[430px]
+        max-w-[95vw]
+        -translate-x-1/2
+        rounded-t-[28px]
+        bg-white/95
+        backdrop-blur-xl
+        p-6
+        shadow-xl
+        max-h-[45vh]
+        overflow-y-auto
+      "
+    >
+      <button
+        onClick={() => setTab("")}
+        className="mb-4 text-2xl"
+      >
+        ✕
+      </button>
+
+      <div>
+        <label className="mb-2 block text-sm">
+          URL Música MP3
+        </label>
+
+        <input
+          value={music}
+          onChange={(e) => setMusic(e.target.value)}
+          className="w-full rounded-xl border p-3"
+        />
+      </div>
+    </div>
+  </div>
+)}
 {tab === "fotos" && (
   <div className="fixed inset-0 z-[99998] bg-transparent">
     <div
@@ -374,6 +523,7 @@ const precio =
 </div>
         ✕
       </button>
+      
 
       <EditorExtras />
     </div>

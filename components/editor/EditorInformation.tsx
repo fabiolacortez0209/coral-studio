@@ -32,8 +32,7 @@ export default function EditorInformation() {
 
     godparents,
     setGodparents,
-plan,
-setPlan,
+
 
 whatsapp,
 setWhatsapp,
@@ -194,19 +193,7 @@ setExtras,
   />
 </div>
 
-<div>
-  <label className="mb-2 block text-sm">
-    URL Música MP3
-  </label>
 
-  <input
-    value={music}
-    onChange={(e) =>
-      setMusic(e.target.value)
-    }
-    className="w-full rounded-xl border p-3"
-  />
-</div>
 
       <div>
   <label className="mb-2 block text-sm">
@@ -222,49 +209,7 @@ setExtras,
   />
 </div>
 
-      <div>
-        <label className="mb-2 block text-sm">
-          Regalo sugerido
-        </label>
-
-        <input
-          value={gift}
-          onChange={(e) => setGift(e.target.value)}
-          className="w-full rounded-xl border p-3"
-        />
-      </div>
-
-      <div>
-        <label className="mb-2 block text-sm">
-          Plan
-        </label>
-
-        <select
-          value={plan}
-          onChange={(e) => {
-            const nuevoPlan = e.target.value;
-
-            setPlan(nuevoPlan);
-
-            if (nuevoPlan === "basico") {
-              setExtras([]);
-            }
-          }}
-          className="w-full rounded-xl border p-3"
-        >
-          <option value="basico">
-            🥉 Básico - $199
-          </option>
-
-          <option value="premium">
-            🥈 Premium - $599
-          </option>
-
-          <option value="exclusivo">
-            🥇 Exclusivo - Desde $999
-          </option>
-        </select>
-      </div>
+      
 
     </div>
   );
