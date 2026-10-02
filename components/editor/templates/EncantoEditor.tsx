@@ -7,8 +7,7 @@ import Countdown from "@/app/xv-anos/encanto/components/Countdown";
 import EventInfo from "@/app/xv-anos/encanto/components/EventInfo";
 import Parents from "@/app/xv-anos/encanto/components/Parents";
 import RSVP from "@/app/xv-anos/encanto/components/RSVP";
-import GallerySection from "../components/GallerySection";
-import { useEditor } from "../EditorContext";
+import GallerySection from "../../../app/editor/components/GallerySection";import { useEditor } from "../EditorContext";
 
 export default function EncantoEditor() {
   const { invitationData, extras } = useEditor();
