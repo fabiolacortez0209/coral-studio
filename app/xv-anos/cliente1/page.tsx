@@ -94,7 +94,6 @@ export default function Cliente1Page() {
 
           {/* =================================================
               BOTÓN DE MÚSICA FLOTANTE
-              APARECE EN TODAS LAS PANTALLAS
           ================================================= */}
           <button
             type="button"
@@ -155,7 +154,7 @@ export default function Cliente1Page() {
             "
           >
 
-            {/* FOTO PRINCIPAL */}
+            {/* FOTO */}
             <img
               src="/cliente1/hero-xv.jpg"
               alt="Ivanna"
@@ -171,7 +170,7 @@ export default function Cliente1Page() {
               "
             />
 
-            {/* OSCURECIDO SUAVE */}
+            {/* OSCURECIDO */}
             <div
               className="
                 absolute
@@ -211,7 +210,6 @@ export default function Cliente1Page() {
                 "
               >
 
-                {/* UNA NOCHE ESPECIAL */}
                 <p
                   className={`
                     ${cormorant.className}
@@ -226,7 +224,6 @@ export default function Cliente1Page() {
                   Una noche especial
                 </p>
 
-                {/* MIS XV AÑOS */}
                 <h1
                   className={`
                     ${cormorant.className}
@@ -243,7 +240,6 @@ export default function Cliente1Page() {
                   Mis XV Años
                 </h1>
 
-                {/* DETALLE */}
                 <div
                   className="
                     mt-3
@@ -288,7 +284,6 @@ export default function Cliente1Page() {
                   "
                 >
 
-                  {/* IVANNA */}
                   <h2
                     className={`
                       ${greatVibes.className}
@@ -306,7 +301,6 @@ export default function Cliente1Page() {
                     Ivanna
                   </h2>
 
-                  {/* FECHA */}
                   <p
                     className={`
                       ${cormorant.className}
@@ -398,120 +392,297 @@ export default function Cliente1Page() {
             style={{
               background: `
                 radial-gradient(
-                  circle at 7% 8%,
-                  rgba(232, 174, 183, 0.32) 0%,
-                  rgba(232, 174, 183, 0.15) 17%,
-                  rgba(232, 174, 183, 0.05) 29%,
-                  transparent 43%
-                ),
-                radial-gradient(
-                  circle at 94% 14%,
-                  rgba(242, 194, 201, 0.36) 0%,
-                  rgba(242, 194, 201, 0.15) 18%,
-                  rgba(242, 194, 201, 0.04) 30%,
-                  transparent 44%
-                ),
-                radial-gradient(
-                  circle at 4% 91%,
-                  rgba(228, 169, 180, 0.28) 0%,
-                  rgba(228, 169, 180, 0.12) 19%,
-                  rgba(228, 169, 180, 0.04) 31%,
+                  ellipse at 0% 0%,
+                  rgba(235, 108, 143, 0.24) 0%,
+                  rgba(235, 108, 143, 0.13) 15%,
+                  rgba(235, 108, 143, 0.04) 29%,
                   transparent 45%
                 ),
                 radial-gradient(
-                  circle at 97% 94%,
-                  rgba(239, 190, 198, 0.32) 0%,
-                  rgba(239, 190, 198, 0.12) 20%,
-                  rgba(239, 190, 198, 0.04) 32%,
+                  ellipse at 100% 5%,
+                  rgba(244, 128, 157, 0.23) 0%,
+                  rgba(244, 128, 157, 0.12) 17%,
+                  rgba(244, 128, 157, 0.04) 30%,
                   transparent 46%
                 ),
                 radial-gradient(
-                  circle at 50% 45%,
-                  rgba(255, 255, 255, 1) 0%,
-                  rgba(255, 253, 253, 0.98) 55%,
-                  rgba(255, 250, 251, 0.95) 100%
-                )
+                  ellipse at 0% 100%,
+                  rgba(228, 83, 126, 0.19) 0%,
+                  rgba(228, 83, 126, 0.09) 18%,
+                  transparent 43%
+                ),
+                radial-gradient(
+                  ellipse at 100% 100%,
+                  rgba(241, 105, 145, 0.20) 0%,
+                  rgba(241, 105, 145, 0.08) 20%,
+                  transparent 44%
+                ),
+                #fffdfd
               `,
             }}
           >
 
             {/* =================================================
-                MANCHAS DE ACUARELA SUAVES
+                FLORES DORADAS — SUPERIOR IZQUIERDA
+            ================================================= */}
+            <svg
+              className="
+                pointer-events-none
+                absolute
+                -left-2
+                -top-2
+                h-[180px]
+                w-[155px]
+                opacity-55
+              "
+              viewBox="0 0 180 200"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+
+              {/* TALLO PRINCIPAL */}
+              <path
+                d="M8 188 C34 145 48 108 48 70 C48 40 63 18 91 7"
+                stroke="#B9964A"
+                strokeWidth="1.1"
+              />
+
+              {/* RAMA */}
+              <path
+                d="M42 100 C69 93 85 78 93 57"
+                stroke="#B9964A"
+                strokeWidth="1"
+              />
+
+              {/* HOJAS */}
+              <path
+                d="M47 113 C34 101 24 93 19 79"
+                stroke="#B9964A"
+                strokeWidth="0.9"
+              />
+
+              <path
+                d="M49 88 C62 77 70 66 73 53"
+                stroke="#B9964A"
+                strokeWidth="0.9"
+              />
+
+              <ellipse
+                cx="27"
+                cy="88"
+                rx="4"
+                ry="10"
+                transform="rotate(-48 27 88)"
+                stroke="#B9964A"
+                strokeWidth="0.9"
+              />
+
+              <ellipse
+                cx="66"
+                cy="69"
+                rx="4"
+                ry="10"
+                transform="rotate(45 66 69)"
+                stroke="#B9964A"
+                strokeWidth="0.9"
+              />
+
+              <ellipse
+                cx="50"
+                cy="117"
+                rx="4"
+                ry="10"
+                transform="rotate(55 50 117)"
+                stroke="#B9964A"
+                strokeWidth="0.9"
+              />
+
+              {/* FLOR */}
+              <circle
+                cx="91"
+                cy="25"
+                r="7"
+                stroke="#B9964A"
+                strokeWidth="0.9"
+              />
+
+              <circle
+                cx="91"
+                cy="25"
+                r="2"
+                fill="#B9964A"
+              />
+
+              <path
+                d="M91 18 C86 12 79 14 80 20 C80 24 85 26 91 25"
+                stroke="#B9964A"
+                strokeWidth="0.8"
+              />
+
+              <path
+                d="M91 18 C96 12 103 14 102 20 C102 24 97 26 91 25"
+                stroke="#B9964A"
+                strokeWidth="0.8"
+              />
+
+              <path
+                d="M91 32 C86 38 79 36 80 30 C80 26 85 24 91 25"
+                stroke="#B9964A"
+                strokeWidth="0.8"
+              />
+
+              <path
+                d="M91 32 C96 38 103 36 102 30 C102 26 97 24 91 25"
+                stroke="#B9964A"
+                strokeWidth="0.8"
+              />
+
+            </svg>
+
+
+            {/* =================================================
+                FLORES DORADAS — INFERIOR DERECHA
+            ================================================= */}
+            <svg
+              className="
+                pointer-events-none
+                absolute
+                -bottom-4
+                -right-3
+                h-[190px]
+                w-[165px]
+                rotate-180
+                opacity-55
+              "
+              viewBox="0 0 180 200"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+
+              <path
+                d="M8 188 C34 145 48 108 48 70 C48 40 63 18 91 7"
+                stroke="#B9964A"
+                strokeWidth="1.1"
+              />
+
+              <path
+                d="M42 100 C69 93 85 78 93 57"
+                stroke="#B9964A"
+                strokeWidth="1"
+              />
+
+              <path
+                d="M47 113 C34 101 24 93 19 79"
+                stroke="#B9964A"
+                strokeWidth="0.9"
+              />
+
+              <path
+                d="M49 88 C62 77 70 66 73 53"
+                stroke="#B9964A"
+                strokeWidth="0.9"
+              />
+
+              <ellipse
+                cx="27"
+                cy="88"
+                rx="4"
+                ry="10"
+                transform="rotate(-48 27 88)"
+                stroke="#B9964A"
+                strokeWidth="0.9"
+              />
+
+              <ellipse
+                cx="66"
+                cy="69"
+                rx="4"
+                ry="10"
+                transform="rotate(45 66 69)"
+                stroke="#B9964A"
+                strokeWidth="0.9"
+              />
+
+              <ellipse
+                cx="50"
+                cy="117"
+                rx="4"
+                ry="10"
+                transform="rotate(55 50 117)"
+                stroke="#B9964A"
+                strokeWidth="0.9"
+              />
+
+              <circle
+                cx="91"
+                cy="25"
+                r="7"
+                stroke="#B9964A"
+                strokeWidth="0.9"
+              />
+
+              <circle
+                cx="91"
+                cy="25"
+                r="2"
+                fill="#B9964A"
+              />
+
+              <path
+                d="M91 18 C86 12 79 14 80 20 C80 24 85 26 91 25"
+                stroke="#B9964A"
+                strokeWidth="0.8"
+              />
+
+              <path
+                d="M91 18 C96 12 103 14 102 20 C102 24 97 26 91 25"
+                stroke="#B9964A"
+                strokeWidth="0.8"
+              />
+
+              <path
+                d="M91 32 C86 38 79 36 80 30 C80 26 85 24 91 25"
+                stroke="#B9964A"
+                strokeWidth="0.8"
+              />
+
+              <path
+                d="M91 32 C96 38 103 36 102 30 C102 26 97 24 91 25"
+                stroke="#B9964A"
+                strokeWidth="0.8"
+              />
+
+            </svg>
+
+
+            {/* =================================================
+                PEQUEÑAS MANCHAS ROSA/FUCSIA
             ================================================= */}
 
-            {/* MANCHA SUPERIOR IZQUIERDA */}
             <div
               className="
                 pointer-events-none
                 absolute
-                -left-20
-                -top-16
-                h-64
-                w-64
+                -left-16
+                top-[35%]
+                h-52
+                w-52
                 rounded-full
-                bg-[#e9b5bd]/20
+                bg-[#ef7197]/10
                 blur-3xl
               "
             />
 
-            {/* MANCHA SUPERIOR DERECHA */}
             <div
               className="
                 pointer-events-none
                 absolute
-                -right-24
-                top-10
-                h-72
-                w-72
+                -right-16
+                top-[55%]
+                h-56
+                w-56
                 rounded-full
-                bg-[#f1c8cd]/25
-                blur-3xl
-              "
-            />
-
-            {/* MANCHA CENTRAL MUY TENUE */}
-            <div
-              className="
-                pointer-events-none
-                absolute
-                left-1/2
-                top-1/2
-                h-80
-                w-80
-                -translate-x-1/2
-                -translate-y-1/2
-                rounded-full
-                bg-white/70
-                blur-3xl
-              "
-            />
-
-            {/* MANCHA INFERIOR IZQUIERDA */}
-            <div
-              className="
-                pointer-events-none
-                absolute
-                -bottom-24
-                -left-20
-                h-72
-                w-72
-                rounded-full
-                bg-[#e7afb9]/20
-                blur-3xl
-              "
-            />
-
-            {/* MANCHA INFERIOR DERECHA */}
-            <div
-              className="
-                pointer-events-none
-                absolute
-                -bottom-24
-                -right-20
-                h-72
-                w-72
-                rounded-full
-                bg-[#efc0c7]/23
+                bg-[#f27c9e]/10
                 blur-3xl
               "
             />
@@ -535,7 +706,7 @@ export default function Cliente1Page() {
             >
 
               {/* =================================================
-                  TEXTO PRINCIPAL
+                  MENSAJE
               ================================================= */}
               <div
                 className={`
@@ -544,7 +715,7 @@ export default function Cliente1Page() {
                   text-[21px]
                   font-medium
                   leading-[1.65]
-                  text-[#2b2929]
+                  text-[#222222]
                 `}
               >
 
@@ -563,7 +734,7 @@ export default function Cliente1Page() {
 
 
               {/* =================================================
-                  DETALLE ENTRE MENSAJE Y NOMBRE
+                  DETALLE DORADO
               ================================================= */}
               <div
                 className="
@@ -574,19 +745,19 @@ export default function Cliente1Page() {
                 "
               >
 
-                <span className="h-px w-12 bg-[#dba0aa]/60" />
+                <span className="h-px w-12 bg-[#B9964A]/45" />
 
-                <span className="text-[11px] text-[#d79ba6]">
+                <span className="text-[10px] text-[#B9964A]/75">
                   ✦
                 </span>
 
-                <span className="h-px w-12 bg-[#dba0aa]/60" />
+                <span className="h-px w-12 bg-[#B9964A]/45" />
 
               </div>
 
 
               {/* =================================================
-                  MIS XV AÑOS
+                  MIS XV AÑOS — NEGRO
               ================================================= */}
               <h2
                 className={`
@@ -594,7 +765,7 @@ export default function Cliente1Page() {
                   mt-9
                   text-[58px]
                   leading-none
-                  text-[#d49aa3]
+                  text-[#171717]
                 `}
               >
                 Mis XV Años
@@ -602,7 +773,7 @@ export default function Cliente1Page() {
 
 
               {/* =================================================
-                  IVANNA LOAEZA
+                  IVANNA LOAEZA — ROSA FUCSIA
               ================================================= */}
               <p
                 className={`
@@ -610,7 +781,7 @@ export default function Cliente1Page() {
                   mt-5
                   text-[49px]
                   leading-none
-                  text-[#272525]
+                  text-[#df668d]
                 `}
               >
                 Ivanna Loaeza
