@@ -33,7 +33,7 @@ export default function Cliente1Page() {
   ========================================================= */
   useEffect(() => {
     const fechaObjetivo = new Date(
-      "2026-10-24T00:00:00"
+      "2026-10-24T17:00:00"
     ).getTime();
 
     const actualizarCuenta = () => {
