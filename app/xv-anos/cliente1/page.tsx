@@ -1577,7 +1577,7 @@ export default function Cliente1Page() {
     <div
       className={`
         ${greatVibes.className}
-        mt-5
+        mt-
         text-[39px]
         leading-[1.15]
         text-[#df668d]
@@ -1600,6 +1600,673 @@ export default function Cliente1Page() {
       <p>
         Sonia Silva
       </p>
+    </div>
+
+  </div>
+
+</section>
+{/* =================================================
+    PANTALLA 5 — DETALLES DEL EVENTO
+================================================= */}
+<section
+  className="
+    relative
+    flex
+    min-h-[100dvh]
+    w-full
+    items-center
+    justify-center
+    overflow-hidden
+    px-6
+    py-12
+    text-center
+  "
+  style={{
+    background: `
+      radial-gradient(
+        ellipse at 0% 0%,
+        rgba(235, 108, 143, 0.20) 0%,
+        rgba(235, 108, 143, 0.09) 18%,
+        transparent 43%
+      ),
+      radial-gradient(
+        ellipse at 100% 0%,
+        rgba(244, 128, 157, 0.18) 0%,
+        rgba(244, 128, 157, 0.08) 19%,
+        transparent 44%
+      ),
+      radial-gradient(
+        ellipse at 0% 100%,
+        rgba(228, 83, 126, 0.16) 0%,
+        rgba(228, 83, 126, 0.06) 20%,
+        transparent 45%
+      ),
+      radial-gradient(
+        ellipse at 100% 100%,
+        rgba(241, 105, 145, 0.16) 0%,
+        rgba(241, 105, 145, 0.06) 20%,
+        transparent 45%
+      ),
+      #fffdfd
+    `,
+  }}
+>
+
+  {/* =================================================
+      DETALLES DECORATIVOS DORADOS
+  ================================================= */}
+
+  <div
+    className="
+      pointer-events-none
+      absolute
+      left-1/2
+      top-7
+      flex
+      -translate-x-1/2
+      items-center
+      gap-3
+    "
+  >
+    <span className="h-px w-16 bg-[#B9964A]/45" />
+
+    <span className="text-[12px] text-[#B9964A]">
+      ✦
+    </span>
+
+    <span className="h-px w-16 bg-[#B9964A]/45" />
+  </div>
+
+
+  {/* =================================================
+      MANCHAS ROSA MUY SUAVES
+  ================================================= */}
+
+  <div
+    className="
+      pointer-events-none
+      absolute
+      -left-24
+      top-[18%]
+      h-64
+      w-64
+      rounded-full
+      bg-[#ef7197]/10
+      blur-3xl
+    "
+  />
+
+  <div
+    className="
+      pointer-events-none
+      absolute
+      -right-24
+      bottom-[15%]
+      h-64
+      w-64
+      rounded-full
+      bg-[#f27c9e]/10
+      blur-3xl
+    "
+  />
+
+
+  {/* =================================================
+      CONTENIDO
+  ================================================= */}
+
+  <div
+    className="
+      relative
+      z-10
+      flex
+      w-full
+      max-w-[430px]
+      flex-col
+      items-center
+    "
+  >
+
+    {/* =================================================
+        FECHA
+    ================================================= */}
+
+    <div className="flex flex-col items-center">
+
+      <p
+        className={`
+          ${cormorant.className}
+          text-[15px]
+          font-semibold
+          uppercase
+          tracking-[0.28em]
+          text-[#222222]
+        `}
+      >
+        Sábado
+      </p>
+
+      <p
+        className={`
+          ${cormorant.className}
+          mt-1
+          text-[82px]
+          font-medium
+          leading-none
+          text-[#df668d]
+        `}
+      >
+        24
+      </p>
+
+      <p
+        className={`
+          ${cormorant.className}
+          mt-1
+          text-[20px]
+          font-semibold
+          uppercase
+          tracking-[0.25em]
+          text-[#222222]
+        `}
+      >
+        de Octubre
+      </p>
+
+    </div>
+
+
+    {/* =================================================
+        SEPARADOR
+    ================================================= */}
+
+    <div
+      className="
+        mt-7
+        flex
+        items-center
+        gap-3
+      "
+    >
+      <span className="h-px w-16 bg-[#B9964A]/45" />
+
+      <span className="text-[11px] text-[#B9964A]">
+        ✦
+      </span>
+
+      <span className="h-px w-16 bg-[#B9964A]/45" />
+    </div>
+
+
+    {/* =================================================
+        CEREMONIA
+    ================================================= */}
+
+    <div className="mt-8 flex flex-col items-center">
+
+      {/* ICONO IGLESIA */}
+      <div
+        className="
+          mb-4
+          flex
+          h-16
+          w-16
+          items-center
+          justify-center
+          rounded-full
+          border
+          border-[#B9964A]/50
+          text-[#B9964A]
+        "
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 64 64"
+          className="h-9 w-9"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M12 56V29L32 16L52 29V56" />
+          <path d="M25 56V40C25 36 28 33 32 33C36 33 39 36 39 40V56" />
+          <path d="M8 56H56" />
+          <path d="M32 16V7" />
+          <path d="M27 11H37" />
+          <path d="M20 31H26" />
+          <path d="M38 31H44" />
+        </svg>
+      </div>
+
+      <h2
+        className={`
+          ${cormorant.className}
+          text-[35px]
+          font-semibold
+          uppercase
+          tracking-[0.10em]
+          text-[#df668d]
+        `}
+      >
+        Ceremonia
+      </h2>
+
+      <p
+        className={`
+          ${cormorant.className}
+          mt-2
+          text-[30px]
+          font-semibold
+          tracking-[0.08em]
+          text-[#171717]
+        `}
+      >
+        5:00 PM
+      </p>
+
+      <p
+        className={`
+          ${cormorant.className}
+          mt-1
+          text-[17px]
+          font-semibold
+          uppercase
+          tracking-[0.10em]
+          text-[#222222]
+        `}
+      >
+        Santuario de Guadalupe
+      </p>
+
+      {/* BOTÓN UBICACIÓN */}
+      <button
+        type="button"
+        className="
+          mt-5
+          flex
+          items-center
+          justify-center
+          gap-2
+          rounded-full
+          border
+          border-[#B9964A]
+          bg-white/30
+          px-7
+          py-2.5
+          text-[#222222]
+          shadow-sm
+          backdrop-blur-sm
+          transition
+          duration-200
+          active:scale-95
+        "
+      >
+        <span className="text-[18px] text-[#df668d]">
+          ●
+        </span>
+
+        <span
+          className={`
+            ${cormorant.className}
+            text-[13px]
+            font-semibold
+            uppercase
+            tracking-[0.18em]
+          `}
+        >
+          Ver ubicación
+        </span>
+      </button>
+
+    </div>
+
+
+    {/* =================================================
+        SEPARADOR
+    ================================================= */}
+
+    <div
+      className="
+        mt-7
+        flex
+        items-center
+        gap-3
+      "
+    >
+      <span className="h-px w-16 bg-[#B9964A]/45" />
+
+      <span className="text-[11px] text-[#B9964A]">
+        ✦
+      </span>
+
+      <span className="h-px w-16 bg-[#B9964A]/45" />
+    </div>
+
+
+    {/* =================================================
+        RECEPCIÓN
+    ================================================= */}
+
+    <div className="mt-7 flex flex-col items-center">
+
+      {/* ICONO SALÓN */}
+      <div
+        className="
+          mb-4
+          flex
+          h-16
+          w-16
+          items-center
+          justify-center
+          rounded-full
+          border
+          border-[#B9964A]/50
+          text-[#B9964A]
+        "
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 64 64"
+          className="h-9 w-9"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M8 56H56" />
+          <path d="M12 56V27H52V56" />
+          <path d="M8 27L32 12L56 27" />
+          <path d="M25 56V39H39V56" />
+          <path d="M22 27V21" />
+          <path d="M42 27V21" />
+          <path d="M27 21H37" />
+        </svg>
+      </div>
+
+      <h2
+        className={`
+          ${cormorant.className}
+          text-[35px]
+          font-semibold
+          uppercase
+          tracking-[0.10em]
+          text-[#df668d]
+        `}
+      >
+        Recepción
+      </h2>
+
+      <p
+        className={`
+          ${cormorant.className}
+          mt-2
+          text-[30px]
+          font-semibold
+          tracking-[0.08em]
+          text-[#171717]
+        `}
+      >
+        7:00 PM
+      </p>
+
+      <p
+        className={`
+          ${cormorant.className}
+          mt-1
+          text-[17px]
+          font-semibold
+          uppercase
+          tracking-[0.08em]
+          text-[#222222]
+        `}
+      >
+        Salon de Eventos Victorious
+      </p>
+
+      {/* BOTÓN UBICACIÓN */}
+      <button
+        type="button"
+        className="
+          mt-5
+          flex
+          items-center
+          justify-center
+          gap-2
+          rounded-full
+          border
+          border-[#B9964A]
+          bg-white/30
+          px-7
+          py-2.5
+          text-[#222222]
+          shadow-sm
+          backdrop-blur-sm
+          transition
+          duration-200
+          active:scale-95
+        "
+      >
+        <span className="text-[18px] text-[#df668d]">
+          ●
+        </span>
+
+        <span
+          className={`
+            ${cormorant.className}
+            text-[13px]
+            font-semibold
+            uppercase
+            tracking-[0.18em]
+          `}
+        >
+          Ver ubicación
+        </span>
+      </button>
+
+    </div>
+
+
+    {/* =================================================
+        SEPARADOR
+    ================================================= */}
+
+    <div
+      className="
+        mt-7
+        flex
+        items-center
+        gap-3
+      "
+    >
+      <span className="h-px w-16 bg-[#B9964A]/45" />
+
+      <span className="text-[11px] text-[#B9964A]">
+        ✦
+      </span>
+
+      <span className="h-px w-16 bg-[#B9964A]/45" />
+    </div>
+
+
+    {/* =================================================
+        VESTIMENTA
+    ================================================= */}
+
+    <div
+      className="
+        mt-7
+        flex
+        w-full
+        items-center
+        justify-center
+        gap-5
+      "
+    >
+
+      <div
+        className="
+          flex
+          h-14
+          w-14
+          shrink-0
+          items-center
+          justify-center
+          rounded-full
+          border
+          border-[#B9964A]/50
+          text-[#B9964A]
+        "
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 64 64"
+          className="h-8 w-8"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M25 9L32 15L39 9L45 17L40 27L46 54H18L24 27L19 17L25 9Z" />
+          <path d="M24 27H40" />
+          <path d="M27 15H37" />
+        </svg>
+      </div>
+
+      <div className="text-left">
+
+        <p
+          className={`
+            ${cormorant.className}
+            text-[19px]
+            font-semibold
+            uppercase
+            tracking-[0.10em]
+            text-[#df668d]
+          `}
+        >
+          Vestimenta
+        </p>
+
+        <p
+          className={`
+            ${cormorant.className}
+            mt-1
+            text-[15px]
+            font-medium
+            uppercase
+            tracking-[0.08em]
+            text-[#222222]
+          `}
+        >
+          Evitar tonos rosas
+        </p>
+
+      </div>
+
+    </div>
+
+
+    {/* =================================================
+        REGALO
+    ================================================= */}
+
+    <div
+      className="
+        mt-6
+        flex
+        w-full
+        items-center
+        justify-center
+        gap-5
+      "
+    >
+
+      <div
+        className="
+          flex
+          h-14
+          w-14
+          shrink-0
+          items-center
+          justify-center
+          rounded-full
+          border
+          border-[#B9964A]/50
+          text-[#B9964A]
+        "
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 64 64"
+          className="h-8 w-8"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <rect x="9" y="25" width="46" height="30" rx="2" />
+          <path d="M32 25V55" />
+          <path d="M9 34H55" />
+          <path d="M32 25C26 25 18 22 18 17C18 13 22 11 26 13C30 15 32 25 32 25Z" />
+          <path d="M32 25C38 25 46 22 46 17C46 13 42 11 38 13C34 15 32 25 32 25Z" />
+        </svg>
+      </div>
+
+      <div className="text-left">
+
+        <p
+          className={`
+            ${cormorant.className}
+            text-[19px]
+            font-semibold
+            uppercase
+            tracking-[0.08em]
+            text-[#df668d]
+          `}
+        >
+          Regalo sugerido
+        </p>
+
+        <p
+          className={`
+            ${cormorant.className}
+            mt-1
+            text-[15px]
+            font-medium
+            uppercase
+            tracking-[0.10em]
+            text-[#222222]
+          `}
+        >
+          Efectivo
+        </p>
+
+      </div>
+
+    </div>
+
+
+    {/* DETALLE FINAL */}
+
+    <div
+      className="
+        mt-8
+        flex
+        items-center
+        gap-3
+      "
+    >
+      <span className="h-px w-16 bg-[#B9964A]/45" />
+
+      <span className="text-[11px] text-[#B9964A]">
+        ✦
+      </span>
+
+      <span className="h-px w-16 bg-[#B9964A]/45" />
     </div>
 
   </div>
