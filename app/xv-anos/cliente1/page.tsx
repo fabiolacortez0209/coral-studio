@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Great_Vibes, Cormorant_Garamond } from "next/font/google";
 
 import OpeningEnvelope from "./components/OpeningEnvelope";
@@ -19,10 +19,74 @@ export default function Cliente1Page() {
   const [abierta, setAbierta] = useState(false);
   const [musicaActiva, setMusicaActiva] = useState(false);
 
+  const [tiempo, setTiempo] = useState({
+    dias: 0,
+    horas: 0,
+    minutos: 0,
+    segundos: 0,
+  });
+
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   /* =========================================================
-     INICIAR MÚSICA AL ABRIR
+     CUENTA REGRESIVA
+  ========================================================= */
+  useEffect(() => {
+    const fechaObjetivo = new Date(
+      "2026-10-24T00:00:00"
+    ).getTime();
+
+    const actualizarCuenta = () => {
+      const ahora = new Date().getTime();
+      const diferencia = fechaObjetivo - ahora;
+
+      if (diferencia <= 0) {
+        setTiempo({
+          dias: 0,
+          horas: 0,
+          minutos: 0,
+          segundos: 0,
+        });
+
+        return;
+      }
+
+      const dias = Math.floor(
+        diferencia / (1000 * 60 * 60 * 24)
+      );
+
+      const horas = Math.floor(
+        (diferencia / (1000 * 60 * 60)) % 24
+      );
+
+      const minutos = Math.floor(
+        (diferencia / (1000 * 60)) % 60
+      );
+
+      const segundos = Math.floor(
+        (diferencia / 1000) % 60
+      );
+
+      setTiempo({
+        dias,
+        horas,
+        minutos,
+        segundos,
+      });
+    };
+
+    actualizarCuenta();
+
+    const intervalo = setInterval(
+      actualizarCuenta,
+      1000
+    );
+
+    return () => clearInterval(intervalo);
+  }, []);
+
+  /* =========================================================
+     INICIAR MÚSICA
   ========================================================= */
   const iniciarMusica = async () => {
     if (!audioRef.current) return;
@@ -32,7 +96,11 @@ export default function Cliente1Page() {
       await audioRef.current.play();
       setMusicaActiva(true);
     } catch (error) {
-      console.error("No se pudo reproducir la música:", error);
+      console.error(
+        "No se pudo reproducir la música:",
+        error
+      );
+
       setMusicaActiva(false);
     }
   };
@@ -45,7 +113,7 @@ export default function Cliente1Page() {
   };
 
   /* =========================================================
-     BOTÓN DE MÚSICA
+     CONTROL DE MÚSICA
   ========================================================= */
   const alternarMusica = async () => {
     if (!audioRef.current) return;
@@ -59,8 +127,18 @@ export default function Cliente1Page() {
         setMusicaActiva(false);
       }
     } catch (error) {
-      console.error("No se pudo controlar la música:", error);
+      console.error(
+        "No se pudo controlar la música:",
+        error
+      );
     }
+  };
+
+  /* =========================================================
+     FORMATO DE NÚMEROS
+  ========================================================= */
+  const dosDigitos = (numero: number) => {
+    return String(numero).padStart(2, "0");
   };
 
   return (
@@ -77,7 +155,7 @@ export default function Cliente1Page() {
       />
 
       {/* =====================================================
-          SOBRE DE APERTURA
+          SOBRE
       ====================================================== */}
       {!abierta && (
         <OpeningEnvelope
@@ -154,7 +232,6 @@ export default function Cliente1Page() {
             "
           >
 
-            {/* FOTO */}
             <img
               src="/cliente1/hero-xv.jpg"
               alt="Ivanna"
@@ -170,7 +247,6 @@ export default function Cliente1Page() {
               "
             />
 
-            {/* OSCURECIDO */}
             <div
               className="
                 absolute
@@ -192,9 +268,7 @@ export default function Cliente1Page() {
               "
             >
 
-              {/* =================================================
-                  PARTE SUPERIOR
-              ================================================= */}
+              {/* PARTE SUPERIOR */}
               <div
                 className="
                   absolute
@@ -261,9 +335,7 @@ export default function Cliente1Page() {
               </div>
 
 
-              {/* =================================================
-                  IVANNA + FECHA
-              ================================================= */}
+              {/* IVANNA */}
               <div
                 className="
                   absolute
@@ -320,9 +392,7 @@ export default function Cliente1Page() {
               </div>
 
 
-              {/* =================================================
-                  DESLIZA
-              ================================================= */}
+              {/* DESLIZA */}
               <div
                 className="
                   absolute
@@ -440,21 +510,18 @@ export default function Cliente1Page() {
               xmlns="http://www.w3.org/2000/svg"
             >
 
-              {/* TALLO PRINCIPAL */}
               <path
                 d="M8 188 C34 145 48 108 48 70 C48 40 63 18 91 7"
                 stroke="#B9964A"
                 strokeWidth="1.1"
               />
 
-              {/* RAMA */}
               <path
                 d="M42 100 C69 93 85 78 93 57"
                 stroke="#B9964A"
                 strokeWidth="1"
               />
 
-              {/* HOJAS */}
               <path
                 d="M47 113 C34 101 24 93 19 79"
                 stroke="#B9964A"
@@ -497,7 +564,6 @@ export default function Cliente1Page() {
                 strokeWidth="0.9"
               />
 
-              {/* FLOR */}
               <circle
                 cx="91"
                 cy="25"
@@ -655,10 +721,7 @@ export default function Cliente1Page() {
             </svg>
 
 
-            {/* =================================================
-                PEQUEÑAS MANCHAS ROSA/FUCSIA
-            ================================================= */}
-
+            {/* MANCHAS SUAVES */}
             <div
               className="
                 pointer-events-none
@@ -705,9 +768,7 @@ export default function Cliente1Page() {
               "
             >
 
-              {/* =================================================
-                  MENSAJE
-              ================================================= */}
+              {/* MENSAJE */}
               <div
                 className={`
                   ${cormorant.className}
@@ -733,9 +794,7 @@ export default function Cliente1Page() {
               </div>
 
 
-              {/* =================================================
-                  DETALLE DORADO
-              ================================================= */}
+              {/* DETALLE */}
               <div
                 className="
                   mt-10
@@ -756,9 +815,7 @@ export default function Cliente1Page() {
               </div>
 
 
-              {/* =================================================
-                  MIS XV AÑOS — NEGRO
-              ================================================= */}
+              {/* MIS XV AÑOS */}
               <h2
                 className={`
                   ${greatVibes.className}
@@ -772,9 +829,7 @@ export default function Cliente1Page() {
               </h2>
 
 
-              {/* =================================================
-                  IVANNA LOAEZA — ROSA FUCSIA
-              ================================================= */}
+              {/* IVANNA LOAEZA */}
               <p
                 className={`
                   ${greatVibes.className}
@@ -786,6 +841,446 @@ export default function Cliente1Page() {
               >
                 Ivanna Loaeza
               </p>
+
+            </div>
+
+          </section>
+
+
+          {/* =================================================
+              PANTALLA 3 — CUENTA REGRESIVA
+          ================================================= */}
+          <section
+            className="
+              relative
+              flex
+              min-h-[100dvh]
+              w-full
+              items-center
+              justify-center
+              overflow-hidden
+              px-6
+              py-20
+              text-center
+            "
+            style={{
+              background: `
+                radial-gradient(
+                  ellipse at 0% 0%,
+                  rgba(235, 108, 143, 0.22) 0%,
+                  rgba(235, 108, 143, 0.11) 18%,
+                  transparent 43%
+                ),
+                radial-gradient(
+                  ellipse at 100% 0%,
+                  rgba(244, 128, 157, 0.22) 0%,
+                  rgba(244, 128, 157, 0.10) 19%,
+                  transparent 44%
+                ),
+                radial-gradient(
+                  ellipse at 0% 100%,
+                  rgba(228, 83, 126, 0.18) 0%,
+                  rgba(228, 83, 126, 0.07) 20%,
+                  transparent 45%
+                ),
+                radial-gradient(
+                  ellipse at 100% 100%,
+                  rgba(241, 105, 145, 0.18) 0%,
+                  rgba(241, 105, 145, 0.07) 20%,
+                  transparent 45%
+                ),
+                #fffdfd
+              `,
+            }}
+          >
+
+            {/* =================================================
+                FLORES DORADAS SUTILES
+            ================================================= */}
+
+            <svg
+              className="
+                pointer-events-none
+                absolute
+                -left-5
+                -top-3
+                h-[210px]
+                w-[175px]
+                opacity-45
+              "
+              viewBox="0 0 180 210"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+
+              <path
+                d="M10 205 C35 163 48 125 45 87 C42 48 58 22 90 7"
+                stroke="#B9964A"
+                strokeWidth="1"
+              />
+
+              <path
+                d="M45 115 C68 105 81 89 87 67"
+                stroke="#B9964A"
+                strokeWidth="0.9"
+              />
+
+              <path
+                d="M45 94 C29 84 21 71 20 56"
+                stroke="#B9964A"
+                strokeWidth="0.9"
+              />
+
+              <ellipse
+                cx="28"
+                cy="76"
+                rx="4"
+                ry="11"
+                transform="rotate(-48 28 76)"
+                stroke="#B9964A"
+                strokeWidth="0.8"
+              />
+
+              <ellipse
+                cx="68"
+                cy="94"
+                rx="4"
+                ry="11"
+                transform="rotate(54 68 94)"
+                stroke="#B9964A"
+                strokeWidth="0.8"
+              />
+
+              <circle
+                cx="91"
+                cy="25"
+                r="6"
+                stroke="#B9964A"
+                strokeWidth="0.8"
+              />
+
+              <circle
+                cx="91"
+                cy="25"
+                r="2"
+                fill="#B9964A"
+              />
+
+            </svg>
+
+
+            <svg
+              className="
+                pointer-events-none
+                absolute
+                -bottom-4
+                -right-5
+                h-[210px]
+                w-[175px]
+                rotate-180
+                opacity-45
+              "
+              viewBox="0 0 180 210"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+
+              <path
+                d="M10 205 C35 163 48 125 45 87 C42 48 58 22 90 7"
+                stroke="#B9964A"
+                strokeWidth="1"
+              />
+
+              <path
+                d="M45 115 C68 105 81 89 87 67"
+                stroke="#B9964A"
+                strokeWidth="0.9"
+              />
+
+              <path
+                d="M45 94 C29 84 21 71 20 56"
+                stroke="#B9964A"
+                strokeWidth="0.9"
+              />
+
+              <ellipse
+                cx="28"
+                cy="76"
+                rx="4"
+                ry="11"
+                transform="rotate(-48 28 76)"
+                stroke="#B9964A"
+                strokeWidth="0.8"
+              />
+
+              <ellipse
+                cx="68"
+                cy="94"
+                rx="4"
+                ry="11"
+                transform="rotate(54 68 94)"
+                stroke="#B9964A"
+                strokeWidth="0.8"
+              />
+
+              <circle
+                cx="91"
+                cy="25"
+                r="6"
+                stroke="#B9964A"
+                strokeWidth="0.8"
+              />
+
+              <circle
+                cx="91"
+                cy="25"
+                r="2"
+                fill="#B9964A"
+              />
+
+            </svg>
+
+
+            {/* =================================================
+                MANCHAS ROSA
+            ================================================= */}
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                -left-20
+                top-[28%]
+                h-64
+                w-64
+                rounded-full
+                bg-[#ef7197]/10
+                blur-3xl
+              "
+            />
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                -right-20
+                bottom-[25%]
+                h-64
+                w-64
+                rounded-full
+                bg-[#f27c9e]/10
+                blur-3xl
+              "
+            />
+
+
+            {/* =================================================
+                CONTENIDO DE CUENTA
+            ================================================= */}
+            <div
+              className="
+                relative
+                z-10
+                flex
+                w-full
+                max-w-[500px]
+                flex-col
+                items-center
+              "
+            >
+
+              {/* SOLO FALTAN */}
+              <h2
+                className={`
+                  ${cormorant.className}
+                  text-[25px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.28em]
+                  text-[#171717]
+                `}
+              >
+                Solo faltan
+              </h2>
+
+
+              {/* DETALLE DORADO */}
+              <div
+                className="
+                  mt-5
+                  flex
+                  items-center
+                  gap-3
+                "
+              >
+
+                <span className="h-px w-12 bg-[#B9964A]/45" />
+
+                <span className="text-[10px] text-[#B9964A]">
+                  ✦
+                </span>
+
+                <span className="h-px w-12 bg-[#B9964A]/45" />
+
+              </div>
+
+
+              {/* =================================================
+                  NÚMEROS
+              ================================================= */}
+              <div
+                className="
+                  mt-12
+                  grid
+                  w-full
+                  grid-cols-4
+                  gap-2
+                "
+              >
+
+                {/* DÍAS */}
+                <div className="flex flex-col items-center">
+
+                  <span
+                    className={`
+                      ${cormorant.className}
+                      text-[43px]
+                      font-semibold
+                      leading-none
+                      text-[#171717]
+                      sm:text-[52px]
+                    `}
+                  >
+                    {dosDigitos(tiempo.dias)}
+                  </span>
+
+                  <span
+                    className={`
+                      ${cormorant.className}
+                      mt-3
+                      text-[10px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.16em]
+                      text-[#df668d]
+                    `}
+                  >
+                    Días
+                  </span>
+
+                </div>
+
+
+                {/* HORAS */}
+                <div className="flex flex-col items-center">
+
+                  <span
+                    className={`
+                      ${cormorant.className}
+                      text-[43px]
+                      font-semibold
+                      leading-none
+                      text-[#171717]
+                      sm:text-[52px]
+                    `}
+                  >
+                    {dosDigitos(tiempo.horas)}
+                  </span>
+
+                  <span
+                    className={`
+                      ${cormorant.className}
+                      mt-3
+                      text-[10px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.16em]
+                      text-[#df668d]
+                    `}
+                  >
+                    Horas
+                  </span>
+
+                </div>
+
+
+                {/* MINUTOS */}
+                <div className="flex flex-col items-center">
+
+                  <span
+                    className={`
+                      ${cormorant.className}
+                      text-[43px]
+                      font-semibold
+                      leading-none
+                      text-[#171717]
+                      sm:text-[52px]
+                    `}
+                  >
+                    {dosDigitos(tiempo.minutos)}
+                  </span>
+
+                  <span
+                    className={`
+                      ${cormorant.className}
+                      mt-3
+                      text-[10px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.10em]
+                      text-[#df668d]
+                    `}
+                  >
+                    Minutos
+                  </span>
+
+                </div>
+
+
+                {/* SEGUNDOS */}
+                <div className="flex flex-col items-center">
+
+                  <span
+                    className={`
+                      ${cormorant.className}
+                      text-[43px]
+                      font-semibold
+                      leading-none
+                      text-[#171717]
+                      sm:text-[52px]
+                    `}
+                  >
+                    {dosDigitos(tiempo.segundos)}
+                  </span>
+
+                  <span
+                    className={`
+                      ${cormorant.className}
+                      mt-3
+                      text-[10px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.08em]
+                      text-[#df668d]
+                    `}
+                  >
+                    Segundos
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              {/* LÍNEA DECORATIVA */}
+              <div
+                className="
+                  mt-12
+                  h-px
+                  w-24
+                  bg-[#B9964A]/45
+                "
+              />
 
             </div>
 
