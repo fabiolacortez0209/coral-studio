@@ -32,9 +32,9 @@ export default function Cliente1Page() {
      CUENTA REGRESIVA
   ========================================================= */
   useEffect(() => {
-    const fechaObjetivo = new Date(
-      "2026-10-24T17:00:00"
-    ).getTime();
+   const fechaObjetivo = new Date(
+  "2026-10-24T17:00:00"
+).getTime();
 
     const actualizarCuenta = () => {
       const ahora = new Date().getTime();
@@ -1285,7 +1285,326 @@ export default function Cliente1Page() {
             </div>
 
           </section>
+{/* =================================================
+    PANTALLA 4 — PADRES Y PADRINOS
+================================================= */}
+<section
+  className="
+    relative
+    flex
+    min-h-[100dvh]
+    w-full
+    items-center
+    justify-center
+    overflow-hidden
+    px-7
+    py-20
+    text-center
+  "
+  style={{
+    background: `
+      radial-gradient(
+        ellipse at 0% 0%,
+        rgba(235, 108, 143, 0.22) 0%,
+        rgba(235, 108, 143, 0.11) 18%,
+        transparent 43%
+      ),
+      radial-gradient(
+        ellipse at 100% 0%,
+        rgba(244, 128, 157, 0.22) 0%,
+        rgba(244, 128, 157, 0.10) 19%,
+        transparent 44%
+      ),
+      radial-gradient(
+        ellipse at 0% 100%,
+        rgba(228, 83, 126, 0.18) 0%,
+        rgba(228, 83, 126, 0.07) 20%,
+        transparent 45%
+      ),
+      radial-gradient(
+        ellipse at 100% 100%,
+        rgba(241, 105, 145, 0.18) 0%,
+        rgba(241, 105, 145, 0.07) 20%,
+        transparent 45%
+      ),
+      #fffdfd
+    `,
+  }}
+>
 
+  {/* =================================================
+      FLORES DORADAS — SUPERIOR IZQUIERDA
+  ================================================= */}
+  <svg
+    className="
+      pointer-events-none
+      absolute
+      -left-5
+      -top-3
+      h-[210px]
+      w-[175px]
+      opacity-45
+    "
+    viewBox="0 0 180 210"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M10 205 C35 163 48 125 45 87 C42 48 58 22 90 7"
+      stroke="#B9964A"
+      strokeWidth="1"
+    />
+
+    <path
+      d="M45 115 C68 105 81 89 87 67"
+      stroke="#B9964A"
+      strokeWidth="0.9"
+    />
+
+    <path
+      d="M45 94 C29 84 21 71 20 56"
+      stroke="#B9964A"
+      strokeWidth="0.9"
+    />
+
+    <ellipse
+      cx="28"
+      cy="76"
+      rx="4"
+      ry="11"
+      transform="rotate(-48 28 76)"
+      stroke="#B9964A"
+      strokeWidth="0.8"
+    />
+
+    <ellipse
+      cx="68"
+      cy="94"
+      rx="4"
+      ry="11"
+      transform="rotate(54 68 94)"
+      stroke="#B9964A"
+      strokeWidth="0.8"
+    />
+
+    <circle
+      cx="91"
+      cy="25"
+      r="6"
+      stroke="#B9964A"
+      strokeWidth="0.8"
+    />
+
+    <circle
+      cx="91"
+      cy="25"
+      r="2"
+      fill="#B9964A"
+    />
+  </svg>
+
+
+  {/* =================================================
+      FLORES DORADAS — INFERIOR DERECHA
+  ================================================= */}
+  <svg
+    className="
+      pointer-events-none
+      absolute
+      -bottom-4
+      -right-5
+      h-[210px]
+      w-[175px]
+      rotate-180
+      opacity-45
+    "
+    viewBox="0 0 180 210"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M10 205 C35 163 48 125 45 87 C42 48 58 22 90 7"
+      stroke="#B9964A"
+      strokeWidth="1"
+    />
+
+    <path
+      d="M45 115 C68 105 81 89 87 67"
+      stroke="#B9964A"
+      strokeWidth="0.9"
+    />
+
+    <path
+      d="M45 94 C29 84 21 71 20 56"
+      stroke="#B9964A"
+      strokeWidth="0.9"
+    />
+
+    <ellipse
+      cx="28"
+      cy="76"
+      rx="4"
+      ry="11"
+      transform="rotate(-48 28 76)"
+      stroke="#B9964A"
+      strokeWidth="0.8"
+    />
+
+    <ellipse
+      cx="68"
+      cy="94"
+      rx="4"
+      ry="11"
+      transform="rotate(54 68 94)"
+      stroke="#B9964A"
+      strokeWidth="0.8"
+    />
+
+    <circle
+      cx="91"
+      cy="25"
+      r="6"
+      stroke="#B9964A"
+      strokeWidth="0.8"
+    />
+
+    <circle
+      cx="91"
+      cy="25"
+      r="2"
+      fill="#B9964A"
+    />
+  </svg>
+
+
+  {/* =================================================
+      CONTENIDO
+  ================================================= */}
+  <div
+    className="
+      relative
+      z-10
+      flex
+      w-full
+      max-w-[500px]
+      flex-col
+      items-center
+    "
+  >
+
+    {/* ===============================================
+        PADRES
+    ================================================ */}
+    <p
+      className={`
+        ${cormorant.className}
+        text-[17px]
+        font-semibold
+        uppercase
+        tracking-[0.12em]
+        text-[#222222]
+      `}
+    >
+      Con la bendición de mis padres
+    </p>
+
+    <div
+      className={`
+        ${greatVibes.className}
+        mt-7
+        text-[39px]
+        leading-[1.15]
+        text-[#df668d]
+      `}
+    >
+      <p>
+        Iván Loaeza Sandoval
+      </p>
+
+      <p
+        className="
+          my-2
+          text-[22px]
+          text-[#B9964A]
+        "
+      >
+        &
+      </p>
+
+      <p>
+        Anna Leticia Higuera Amador
+      </p>
+    </div>
+
+
+    {/* ===============================================
+        SEPARADOR
+    ================================================ */}
+    <div
+      className="
+        my-12
+        flex
+        items-center
+        gap-3
+      "
+    >
+      <span className="h-px w-14 bg-[#B9964A]/45" />
+
+      <span className="text-[10px] text-[#B9964A]">
+        ✦
+      </span>
+
+      <span className="h-px w-14 bg-[#B9964A]/45" />
+    </div>
+
+
+    {/* ===============================================
+        PADRINOS
+    ================================================ */}
+    <p
+      className={`
+        ${cormorant.className}
+        text-[17px]
+        font-semibold
+        uppercase
+        tracking-[0.12em]
+        text-[#222222]
+      `}
+    >
+      Y la compañía de mis padrinos
+    </p>
+
+    <div
+      className={`
+        ${greatVibes.className}
+        mt-7
+        text-[39px]
+        leading-[1.15]
+        text-[#df668d]
+      `}
+    >
+      <p>
+        Max Salvador
+      </p>
+
+      <p
+        className="
+          my-2
+          text-[22px]
+          text-[#B9964A]
+        "
+      >
+        &
+      </p>
+
+      <p>
+        Sonia Silva
+      </p>
+    </div>
+
+  </div>
+
+</section>
         </div>
       )}
 
