@@ -456,7 +456,7 @@ export default function Cliente1Page() {
               w-full
               overflow-hidden
               px-7
-              py-20
+              py-10
               text-center
             "
             style={{
@@ -860,7 +860,7 @@ export default function Cliente1Page() {
               justify-center
               overflow-hidden
               px-6
-              py-20
+              py-10
               text-center
             "
             style={{
@@ -1298,7 +1298,7 @@ export default function Cliente1Page() {
     justify-center
     overflow-hidden
     px-7
-    py-20
+    py-10
     text-center
   "
   style={{
@@ -1542,7 +1542,7 @@ export default function Cliente1Page() {
     ================================================ */}
     <div
       className="
-        my-12
+        my-8
         flex
         items-center
         gap-3
@@ -1577,7 +1577,7 @@ export default function Cliente1Page() {
     <div
       className={`
         ${greatVibes.className}
-        mt-7
+        mt-5
         text-[39px]
         leading-[1.15]
         text-[#df668d]
