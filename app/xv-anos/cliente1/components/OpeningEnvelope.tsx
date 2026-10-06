@@ -90,7 +90,7 @@ export default function OpeningEnvelope({
               className="
                 pointer-events-none
                 absolute
-                bottom-[13%]
+                bottom-[20%]
                 left-1/2
                 z-20
                 flex
