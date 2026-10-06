@@ -1905,25 +1905,8 @@ animate={{
 
               
 
-              <div className="mt-8 flex flex-col items-center">
+              
 
-                <div
-                  className="
-                    flex
-                    h-14
-                    w-14
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-[#B9964A]/50
-                    text-[#B9964A]
-                  "
-                >
-                  <PlateIcon />
-                </div>
-
-              </div>
 
             </motion.div>
 
