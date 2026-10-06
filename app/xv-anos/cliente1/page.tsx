@@ -5,6 +5,7 @@ import { motion, type Variants } from "framer-motion";
 import {
   Great_Vibes,
   Cormorant_Garamond,
+  Allura,
 } from "next/font/google";
 
 import OpeningEnvelope from "./components/OpeningEnvelope";
@@ -22,7 +23,10 @@ const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
 });
-
+const allura = Allura({
+  subsets: ["latin"],
+  weight: ["400"],
+});
 /* =========================================================
    DATOS
 ========================================================= */
@@ -1440,10 +1444,9 @@ animate={{
                   &
                 </p>
 
-                <p>
-                  Anna Leticia Higuera Amador
-                </p>
-
+               <p>
+  <span className={allura.className}>A</span>nna Leticia Higuera <span className={allura.className}>A</span>mador
+</p>
               </div>
 
               <Separator />
