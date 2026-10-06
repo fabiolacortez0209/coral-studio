@@ -496,25 +496,41 @@ const [pasesSeleccionados, setPasesSeleccionados] =
      LEER ?pases=1 ... ?pases=5
   ========================================================= */
 
-  useEffect(() => {
-    const parametros =
-      new URLSearchParams(
-        window.location.search
-      );
+ useEffect(() => {
+  const parametros = new URLSearchParams(
+    window.location.search
+  );
 
-    const valor =
-      Number(parametros.get("pases"));
+  let valor = Number(parametros.get("pases"));
+
+  // Si viene por el enlace corto /Ivanna/2
+  if (
+    !Number.isInteger(valor) ||
+    valor < 1 ||
+    valor > 5
+  ) {
+    const partes = window.location.pathname.split("/");
+    const ultimo = Number(partes[partes.length - 1]);
 
     if (
-      Number.isInteger(valor) &&
-      valor >= 1 &&
-      valor <= 5
+      Number.isInteger(ultimo) &&
+      ultimo >= 1 &&
+      ultimo <= 5
     ) {
-      setPases(valor);
-    } else {
-      setPases(1);
+      valor = ultimo;
     }
-  }, []);
+  }
+
+  if (
+    Number.isInteger(valor) &&
+    valor >= 1 &&
+    valor <= 5
+  ) {
+    setPases(valor);
+  } else {
+    setPases(1);
+  }
+}, []);
 
   /* =========================================================
      CUENTA REGRESIVA
@@ -2095,7 +2111,19 @@ animate={{
     >
 
       {/* PASES RESERVADOS */}
-
+<p
+  className={`
+    ${cormorant.className}
+    mb-2
+    text-center
+    text-[20px]
+    italic
+    tracking-[0.08em]
+    text-[#777777]
+  `}
+>
+  Hemos reservado
+</p>
       <div
         className="
           flex
