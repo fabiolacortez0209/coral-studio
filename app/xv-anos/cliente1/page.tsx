@@ -921,9 +921,10 @@ export default function Cliente1Page() {
                   delay: 1,
                   duration: 0.8,
                 }}
-                className="
+         className="
+  relative
+  top-[18vh]
   flex
-  translate-y-[18vh]
   flex-col
   items-center
   text-center
@@ -1314,13 +1315,13 @@ export default function Cliente1Page() {
                 className={`
                   ${cormorant.className}
                   mt-6
-                  text-[13px]
+                  text-[16px]
                   uppercase
                   tracking-[0.25em]
                   text-[#B9964A]
                 `}
               >
-                Con amor
+                Celebremos juntos
               </p>
 
             </motion.div>
