@@ -872,7 +872,7 @@ export default function Cliente1Page() {
                 transition={{
                   delay: 0.25,
                 }}
-                className="flex flex-col items-center text-center"
+                className="flex translate-y-[12vh] flex-col items-center text-center"
               >
 
                 <h2
