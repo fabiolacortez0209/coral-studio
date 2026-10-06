@@ -913,10 +913,10 @@ export default function Cliente1Page() {
     opacity: 0,
     y: 15,
   }}
-  animate={{
-    opacity: [1, 0.25, 1],
-    y: 0,
-  }}
+animate={{
+  opacity: [1, 0, 1],
+  y: 0,
+}}
   transition={{
     delay: 1,
     duration: 1.3,
