@@ -1684,149 +1684,175 @@ animate={{
 
               <Separator />
 
-              {/* RECEPCIÓN */}
+             {/* RECEPCIÓN */}
 
-              <div className="flex flex-col items-center">
+<div className="flex flex-col items-center">
 
-                <div
-                  className="
-                    mb-4
-                    flex
-                    h-16
-                    w-16
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-[#B9964A]/50
-                    text-[#B9964A]
-                  "
-                >
+  <div
+    className="
+      mb-4
+      flex
+      h-16
+      w-16
+      items-center
+      justify-center
+      rounded-full
+      border
+      border-[#B9964A]/50
+      text-[#B9964A]
+    "
+  >
 
-                  <svg
-                    viewBox="0 0 64 64"
-                    className="h-9 w-9"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M8 56H56" />
+    <svg
+      viewBox="0 0 64 64"
+      className="h-9 w-9"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      {/* Arco */}
+      <path d="M12 56V20C12 12 21 7 32 7C43 7 52 12 52 20V56" />
 
-                    <path d="M12 56V27H52V56" />
+      {/* Telas */}
+      <path d="M12 20C16 25 20 29 25 31" />
+      <path d="M52 20C48 25 44 29 39 31" />
 
-                    <path d="M8 27L32 12L56 27" />
+      {/* Flores */}
+      <circle cx="14" cy="22" r="3" />
+      <circle cx="50" cy="22" r="3" />
 
-                    <path d="M25 56V39H39V56" />
+      <path d="M11 22L8 19" />
+      <path d="M17 22L20 19" />
+      <path d="M47 22L44 19" />
+      <path d="M53 22L56 19" />
 
-                    <path d="M22 27V21" />
+      {/* Mesa */}
+      <path d="M22 39H42" />
+      <path d="M23 39L25 56" />
+      <path d="M41 39L39 56" />
+      <path d="M25 56H39" />
 
-                    <path d="M42 27V21" />
+      {/* Centro de mesa */}
+      <path d="M32 39V34" />
+      <circle cx="32" cy="32" r="2" />
+      <path d="M32 32L28 29" />
+      <path d="M32 32L36 29" />
 
-                    <path d="M27 21H37" />
-                  </svg>
+      {/* Sillas */}
+      <path d="M19 40C16 40 15 43 15 47V56" />
+      <path d="M15 47H21V56" />
+      <path d="M45 40C48 40 49 43 49 47V56" />
+      <path d="M43 47H49V56" />
 
-                </div>
+      <path d="M15 56H21" />
+      <path d="M43 56H49" />
+    </svg>
 
-                <h2
-                  className={`
-                    ${cormorant.className}
-                    text-[32px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.10em]
-                    text-[#df668d]
-                  `}
-                >
-                  Recepción
-                </h2>
+  </div>
 
-                <p
-                  className={`
-                    ${cormorant.className}
-                    mt-2
-                    text-[29px]
-                    font-semibold
-                    text-[#171717]
-                  `}
-                >
-                  7:00 PM
-                </p>
+  <h2
+    className={`
+      ${cormorant.className}
+      text-[32px]
+      font-semibold
+      uppercase
+      tracking-[0.10em]
+      text-[#df668d]
+    `}
+  >
+    Recepción
+  </h2>
 
-                <p
-                  className={`
-                    ${cormorant.className}
-                    mt-1
-                    max-w-[320px]
-                    text-[17px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.06em]
-                    text-[#222222]
-                  `}
-                >
-                  Salón de Eventos Victorious
-                </p>
+  <p
+    className={`
+      ${cormorant.className}
+      mt-2
+      text-[29px]
+      font-semibold
+      text-[#171717]
+    `}
+  >
+    7:00 PM
+  </p>
 
-                <LocationButton
-                  url={MAPS_RECEPCION}
-                />
+  <p
+    className={`
+      ${cormorant.className}
+      mt-1
+      max-w-[320px]
+      text-[17px]
+      font-semibold
+      uppercase
+      tracking-[0.06em]
+      text-[#222222]
+    `}
+  >
+    Salón de Eventos Victorious
+  </p>
 
-              </div>
+  <LocationButton
+    url={MAPS_RECEPCION}
+  />
 
-              <Separator />
+</div>
 
-              {/* VESTIMENTA */}
+<Separator />
+{/* VESTIMENTA */}
 
-              <div className="flex flex-col items-center">
+<div className="flex flex-col items-center">
 
-                <div
-                  className="
-                    flex
-                    h-14
-                    w-14
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-[#B9964A]/50
-                    text-[#B9964A]
-                  "
-                >
-                  <DressIcon />
-                </div>
+  <div
+    className="
+      flex
+      h-24
+      w-24
+      items-center
+      justify-center
+    "
+  >
+    <img
+      src="/cliente1/Vestimenta.png"
+      alt="Vestimenta"
+      className="
+        h-15
+        w-15
+        object-contain
+      "
+      draggable={false}
+    />
+  </div>
 
-                <p
-                  className={`
-                    ${cormorant.className}
-                    mt-4
-                    text-[20px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.10em]
-                    text-[#df668d]
-                  `}
-                >
-                  Vestimenta
-                </p>
+  <p
+    className={`
+      ${cormorant.className}
+      mt-4
+      text-[20px]
+      font-semibold
+      uppercase
+      tracking-[0.10em]
+      text-[#df668d]
+    `}
+  >
+    Vestimenta
+  </p>
 
-                <p
-                  className={`
-                    ${cormorant.className}
-                    mt-1
-                    text-[15px]
-                    font-medium
-                    uppercase
-                    tracking-[0.08em]
-                    text-[#222222]
-                  `}
-                >
-                  Evitar tonos rosas
-                </p>
+  <p
+    className={`
+      ${cormorant.className}
+      mt-1
+      text-[15px]
+      font-medium
+      uppercase
+      tracking-[0.08em]
+      text-[#222222]
+    `}
+  >
+    Evitar tonos rosas
+  </p>
 
-              </div>
-
+</div>
               {/* REGALO */}
 
               <div className="mt-7 flex flex-col items-center">
@@ -1877,7 +1903,7 @@ animate={{
 
               </div>
 
-              {/* DETALLE GASTRONÓMICO */}
+              
 
               <div className="mt-8 flex flex-col items-center">
 
