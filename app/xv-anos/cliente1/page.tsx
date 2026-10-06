@@ -925,7 +925,7 @@ animate={{
   }}
          className="
   relative
-  top-[18vh]
+  z-30
   flex
   flex-col
   items-center
