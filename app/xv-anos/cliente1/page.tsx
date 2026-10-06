@@ -909,18 +909,20 @@ export default function Cliente1Page() {
               </motion.div>
 
               <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 15,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  delay: 1,
-                  duration: 0.8,
-                }}
+  initial={{
+    opacity: 0,
+    y: 15,
+  }}
+  animate={{
+    opacity: [1, 0.25, 1],
+    y: 0,
+  }}
+  transition={{
+    delay: 1,
+    duration: 1.3,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
          className="
   relative
   top-[18vh]
