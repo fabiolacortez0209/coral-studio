@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { Great_Vibes, Cormorant_Garamond } from "next/font/google";
-
 import OpeningEnvelope from "./components/OpeningEnvelope";
 
 const greatVibes = Great_Vibes({
@@ -15,9 +15,262 @@ const cormorant = Cormorant_Garamond({
   weight: ["400", "500", "600"],
 });
 
+/* =========================================================
+   DATOS
+========================================================= */
+
+const WHATSAPP = "526131053146";
+
+const MAPS_CEREMONIA =
+  "https://maps.app.goo.gl/ntHJ4B5UKWXznyUAA";
+
+const MAPS_RECEPCION =
+  "https://maps.app.goo.gl/pMTSphBSCt5zy7Wq8";
+
+/* =========================================================
+   ANIMACIONES
+========================================================= */
+
+const fadeUp = {
+  hidden: {
+    opacity: 0,
+    y: 45,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+const fromLeft = {
+  hidden: {
+    opacity: 0,
+    x: -70,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.85,
+      ease: "easeOut",
+    },
+  },
+};
+
+const fromRight = {
+  hidden: {
+    opacity: 0,
+    x: 70,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.85,
+      ease: "easeOut",
+    },
+  },
+};
+
+/* =========================================================
+   BRILLOS
+========================================================= */
+
+function Sparkles() {
+  const sparkles = [
+    { left: "8%", delay: 0, duration: 7, size: 4 },
+    { left: "18%", delay: 2, duration: 9, size: 3 },
+    { left: "30%", delay: 4, duration: 8, size: 5 },
+    { left: "43%", delay: 1, duration: 10, size: 3 },
+    { left: "56%", delay: 3, duration: 8, size: 4 },
+    { left: "68%", delay: 5, duration: 9, size: 3 },
+    { left: "80%", delay: 2, duration: 7, size: 4 },
+    { left: "91%", delay: 4, duration: 10, size: 3 },
+  ];
+
+  return (
+    <div className="pointer-events-none absolute inset-0 z-[2] overflow-hidden">
+      {sparkles.map((sparkle, index) => (
+        <motion.span
+          key={index}
+          className="absolute top-[-20px] rounded-full bg-[#d8b66a] shadow-[0_0_8px_rgba(216,182,106,0.75)]"
+          style={{
+            left: sparkle.left,
+            width: sparkle.size,
+            height: sparkle.size,
+          }}
+          animate={{
+            y: ["0vh", "115vh"],
+            opacity: [0, 1, 0.8, 0],
+            rotate: [0, 90, 180],
+          }}
+          transition={{
+            duration: sparkle.duration,
+            delay: sparkle.delay,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+/* =========================================================
+   FONDO GENERAL
+========================================================= */
+
+function ElegantBackground({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <section
+      className={`
+        relative
+        w-full
+        overflow-hidden
+        bg-[#fffdfd]
+        px-6
+        py-20
+        text-center
+        ${className}
+      `}
+    >
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: `
+            radial-gradient(
+              ellipse at 0% 0%,
+              rgba(235,108,143,0.18) 0%,
+              rgba(235,108,143,0.07) 20%,
+              transparent 45%
+            ),
+            radial-gradient(
+              ellipse at 100% 5%,
+              rgba(244,128,157,0.16) 0%,
+              rgba(244,128,157,0.06) 22%,
+              transparent 46%
+            ),
+            radial-gradient(
+              ellipse at 0% 100%,
+              rgba(228,83,126,0.13) 0%,
+              rgba(228,83,126,0.04) 20%,
+              transparent 45%
+            ),
+            radial-gradient(
+              ellipse at 100% 100%,
+              rgba(241,105,145,0.14) 0%,
+              rgba(241,105,145,0.04) 20%,
+              transparent 45%
+            ),
+            #fffdfd
+          `,
+        }}
+      />
+
+      <div className="pointer-events-none absolute -left-24 top-[20%] h-64 w-64 rounded-full bg-[#ef7197]/10 blur-3xl" />
+
+      <div className="pointer-events-none absolute -right-24 bottom-[15%] h-64 w-64 rounded-full bg-[#f27c9e]/10 blur-3xl" />
+
+      <Sparkles />
+
+      <div className="relative z-10 mx-auto w-full max-w-[520px]">
+        {children}
+      </div>
+    </section>
+  );
+}
+
+/* =========================================================
+   SEPARADOR
+========================================================= */
+
+function Separator() {
+  return (
+    <div className="my-9 flex items-center justify-center gap-3">
+      <span className="h-px w-14 bg-[#B9964A]/45" />
+
+      <span className="text-[11px] text-[#B9964A]">
+        ✦
+      </span>
+
+      <span className="h-px w-14 bg-[#B9964A]/45" />
+    </div>
+  );
+}
+
+/* =========================================================
+   BOTÓN UBICACIÓN
+========================================================= */
+
+function LocationButton({
+  url,
+}: {
+  url: string;
+}) {
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="
+        mt-5
+        inline-flex
+        items-center
+        justify-center
+        gap-2
+        rounded-full
+        border
+        border-[#B9964A]
+        bg-white/50
+        px-7
+        py-2.5
+        text-[#222222]
+        shadow-sm
+        backdrop-blur-sm
+        transition
+        duration-200
+        hover:bg-white
+        active:scale-95
+      "
+    >
+      <span className="text-[17px] text-[#df668d]">
+        ●
+      </span>
+
+      <span
+        className={`
+          ${cormorant.className}
+          text-[13px]
+          font-semibold
+          uppercase
+          tracking-[0.18em]
+        `}
+      >
+        Ver ubicación
+      </span>
+    </a>
+  );
+}
+
+/* =========================================================
+   PÁGINA
+========================================================= */
+
 export default function Cliente1Page() {
   const [abierta, setAbierta] = useState(false);
-  const [musicaActiva, setMusicaActiva] = useState(false);
+
+  const [musicaActiva, setMusicaActiva] =
+    useState(false);
 
   const [tiempo, setTiempo] = useState({
     dias: 0,
@@ -26,19 +279,27 @@ export default function Cliente1Page() {
     segundos: 0,
   });
 
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [nombre, setNombre] = useState("");
+
+  const [personas, setPersonas] = useState(1);
+
+  const audioRef =
+    useRef<HTMLAudioElement | null>(null);
 
   /* =========================================================
      CUENTA REGRESIVA
   ========================================================= */
+
   useEffect(() => {
-   const fechaObjetivo = new Date(
-  "2026-10-24T17:00:00"
-).getTime();
+    const fechaObjetivo = new Date(
+      "2026-10-24T17:00:00"
+    ).getTime();
 
     const actualizarCuenta = () => {
       const ahora = new Date().getTime();
-      const diferencia = fechaObjetivo - ahora;
+
+      const diferencia =
+        fechaObjetivo - ahora;
 
       if (diferencia <= 0) {
         setTiempo({
@@ -52,15 +313,20 @@ export default function Cliente1Page() {
       }
 
       const dias = Math.floor(
-        diferencia / (1000 * 60 * 60 * 24)
+        diferencia /
+          (1000 * 60 * 60 * 24)
       );
 
       const horas = Math.floor(
-        (diferencia / (1000 * 60 * 60)) % 24
+        (diferencia /
+          (1000 * 60 * 60)) %
+          24
       );
 
       const minutos = Math.floor(
-        (diferencia / (1000 * 60)) % 60
+        (diferencia /
+          (1000 * 60)) %
+          60
       );
 
       const segundos = Math.floor(
@@ -82,18 +348,22 @@ export default function Cliente1Page() {
       1000
     );
 
-    return () => clearInterval(intervalo);
+    return () =>
+      clearInterval(intervalo);
   }, []);
 
   /* =========================================================
-     INICIAR MÚSICA
+     MÚSICA
   ========================================================= */
+
   const iniciarMusica = async () => {
     if (!audioRef.current) return;
 
     try {
       audioRef.current.currentTime = 0;
+
       await audioRef.current.play();
+
       setMusicaActiva(true);
     } catch (error) {
       console.error(
@@ -105,25 +375,17 @@ export default function Cliente1Page() {
     }
   };
 
-  /* =========================================================
-     ABRIR INVITACIÓN
-  ========================================================= */
-  const abrirInvitacion = () => {
-    setAbierta(true);
-  };
-
-  /* =========================================================
-     CONTROL DE MÚSICA
-  ========================================================= */
   const alternarMusica = async () => {
     if (!audioRef.current) return;
 
     try {
       if (audioRef.current.paused) {
         await audioRef.current.play();
+
         setMusicaActiva(true);
       } else {
         audioRef.current.pause();
+
         setMusicaActiva(false);
       }
     } catch (error) {
@@ -135,10 +397,42 @@ export default function Cliente1Page() {
   };
 
   /* =========================================================
-     FORMATO DE NÚMEROS
+     ABRIR INVITACIÓN
   ========================================================= */
+
+  const abrirInvitacion = () => {
+    setAbierta(true);
+  };
+
+  /* =========================================================
+     NÚMEROS
+  ========================================================= */
+
   const dosDigitos = (numero: number) => {
     return String(numero).padStart(2, "0");
+  };
+
+  /* =========================================================
+     WHATSAPP
+  ========================================================= */
+
+  const confirmarWhatsApp = () => {
+    const nombreFinal =
+      nombre.trim() || "Invitado";
+
+    const mensaje =
+      `Hola, confirmo mi asistencia a los XV años de Ivanna Loaeza.%0A%0A` +
+      `Nombre: ${nombreFinal}%0A` +
+      `Número de personas: ${personas}`;
+
+    const url =
+      `https://wa.me/${WHATSAPP}?text=${mensaje}`;
+
+    window.open(
+      url,
+      "_blank",
+      "noopener,noreferrer"
+    );
   };
 
   return (
@@ -147,6 +441,7 @@ export default function Cliente1Page() {
       {/* =====================================================
           AUDIO
       ====================================================== */}
+
       <audio
         ref={audioRef}
         src="/cliente1/cuenta-regresiva.mp3"
@@ -157,6 +452,7 @@ export default function Cliente1Page() {
       {/* =====================================================
           SOBRE
       ====================================================== */}
+
       {!abierta && (
         <OpeningEnvelope
           onStart={iniciarMusica}
@@ -167,12 +463,14 @@ export default function Cliente1Page() {
       {/* =====================================================
           INVITACIÓN
       ====================================================== */}
+
       {abierta && (
         <div className="relative w-full">
 
           {/* =================================================
-              BOTÓN DE MÚSICA FLOTANTE
+              BOTÓN MÚSICA
           ================================================= */}
+
           <button
             type="button"
             onClick={alternarMusica}
@@ -201,10 +499,6 @@ export default function Cliente1Page() {
               transition
               duration-200
               active:scale-90
-              sm:right-6
-              sm:top-6
-              sm:h-12
-              sm:w-12
             "
           >
             {musicaActiva ? (
@@ -218,10 +512,10 @@ export default function Cliente1Page() {
             )}
           </button>
 
-
           {/* =================================================
-              PANTALLA 1 — PORTADA
+              FOTO 1 — PORTADA
           ================================================= */}
+
           <section
             className="
               relative
@@ -233,7 +527,7 @@ export default function Cliente1Page() {
           >
 
             <img
-              src="/cliente1/hero-xv.jpg"
+              src="/cliente1/FOTO 1.jpg"
               alt="Ivanna"
               draggable={false}
               className="
@@ -242,7 +536,7 @@ export default function Cliente1Page() {
                 h-full
                 w-full
                 object-cover
-                object-[center_38%]
+                object-center
                 select-none
               "
             />
@@ -252,9 +546,9 @@ export default function Cliente1Page() {
                 absolute
                 inset-0
                 bg-gradient-to-b
-                from-black/35
+                from-black/45
                 via-transparent
-                to-black/50
+                to-black/60
               "
             />
 
@@ -262,28 +556,24 @@ export default function Cliente1Page() {
               className="
                 relative
                 z-10
+                flex
                 min-h-[100dvh]
                 w-full
+                flex-col
+                items-center
+                justify-between
+                px-5
+                py-[8vh]
                 text-white
               "
             >
 
-              {/* PARTE SUPERIOR */}
-              <div
-                className="
-                  absolute
-                  left-0
-                  right-0
-                  top-0
-                  flex
-                  flex-col
-                  items-center
-                  px-5
-                  pt-[7vh]
-                  text-center
-                "
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={fadeUp}
+                className="text-center"
               >
-
                 <p
                   className={`
                     ${cormorant.className}
@@ -292,7 +582,6 @@ export default function Cliente1Page() {
                     uppercase
                     tracking-[0.30em]
                     drop-shadow-[0_2px_7px_rgba(0,0,0,0.85)]
-                    sm:text-[15px]
                   `}
                 >
                   Una noche especial
@@ -308,105 +597,80 @@ export default function Cliente1Page() {
                     leading-none
                     tracking-[0.07em]
                     drop-shadow-[0_3px_9px_rgba(0,0,0,0.85)]
-                    sm:text-[43px]
                   `}
                 >
                   Mis XV Años
                 </h1>
 
-                <div
-                  className="
-                    mt-3
-                    flex
-                    items-center
-                    justify-center
-                    gap-3
-                  "
-                >
-                  <span className="h-px w-8 bg-white/80 sm:w-10" />
+                <div className="mt-3 flex items-center justify-center gap-3">
+                  <span className="h-px w-8 bg-white/80" />
 
-                  <span className="text-[11px] font-bold text-white">
+                  <span className="text-[11px]">
                     ✦
                   </span>
 
-                  <span className="h-px w-8 bg-white/80 sm:w-10" />
+                  <span className="h-px w-8 bg-white/80" />
                 </div>
+              </motion.div>
 
-              </div>
-
-
-              {/* IVANNA */}
-              <div
-                className="
-                  absolute
-                  inset-0
-                  flex
-                  items-center
-                  justify-center
-                  px-5
-                  text-center
-                "
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={fadeUp}
+                transition={{
+                  delay: 0.25,
+                }}
+                className="flex flex-col items-center text-center"
               >
-                <div
-                  className="
-                    flex
-                    translate-y-[3vh]
-                    flex-col
-                    items-center
-                  "
+
+                <h2
+                  className={`
+                    ${greatVibes.className}
+                    text-[clamp(68px,21vw,92px)]
+                    font-normal
+                    leading-none
+                    whitespace-nowrap
+                    drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)]
+                  `}
+                  style={{
+                    WebkitTextStroke:
+                      "1.2px rgba(255,255,255,0.95)",
+                  }}
                 >
+                  Ivanna
+                </h2>
 
-                  <h2
-                    className={`
-                      ${greatVibes.className}
-                      text-[clamp(68px,21vw,92px)]
-                      font-normal
-                      leading-none
-                      whitespace-nowrap
-                      drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)]
-                    `}
-                    style={{
-                      WebkitTextStroke:
-                        "1.2px rgba(255,255,255,0.95)",
-                    }}
-                  >
-                    Ivanna
-                  </h2>
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-4
+                    text-[13px]
+                    font-bold
+                    uppercase
+                    tracking-[0.28em]
+                    drop-shadow-[0_2px_7px_rgba(0,0,0,0.85)]
+                  `}
+                >
+                  24 · OCTUBRE · 2026
+                </p>
 
-                  <p
-                    className={`
-                      ${cormorant.className}
-                      mt-4
-                      text-[13px]
-                      font-bold
-                      uppercase
-                      tracking-[0.28em]
-                      drop-shadow-[0_2px_7px_rgba(0,0,0,0.85)]
-                      sm:text-[16px]
-                    `}
-                  >
-                    24 · OCTUBRE · 2026
-                  </p>
+              </motion.div>
 
-                </div>
-              </div>
-
-
-              {/* DESLIZA */}
-              <div
-                className="
-                  absolute
-                  bottom-0
-                  left-0
-                  right-0
-                  flex
-                  flex-col
-                  items-center
-                  pb-[4vh]
-                  text-center
-                "
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 15,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  delay: 1,
+                  duration: 0.8,
+                }}
+                className="flex flex-col items-center"
               >
-
                 <span
                   className={`
                     ${cormorant.className}
@@ -434,344 +698,35 @@ export default function Cliente1Page() {
                     text-[13px]
                     font-bold
                     text-white
-                    drop-shadow-[0_2px_5px_rgba(0,0,0,0.8)]
                   "
                 >
                   ↓
                 </div>
-
-              </div>
+              </motion.div>
 
             </div>
           </section>
 
-
           {/* =================================================
-              PANTALLA 2 — MENSAJE
+              MENSAJE
           ================================================= */}
-          <section
-            className="
-              relative
-              min-h-[100dvh]
-              w-full
-              overflow-hidden
-              px-7
-              py-10
-              text-center
-            "
-            style={{
-              background: `
-                radial-gradient(
-                  ellipse at 0% 0%,
-                  rgba(235, 108, 143, 0.24) 0%,
-                  rgba(235, 108, 143, 0.13) 15%,
-                  rgba(235, 108, 143, 0.04) 29%,
-                  transparent 45%
-                ),
-                radial-gradient(
-                  ellipse at 100% 5%,
-                  rgba(244, 128, 157, 0.23) 0%,
-                  rgba(244, 128, 157, 0.12) 17%,
-                  rgba(244, 128, 157, 0.04) 30%,
-                  transparent 46%
-                ),
-                radial-gradient(
-                  ellipse at 0% 100%,
-                  rgba(228, 83, 126, 0.19) 0%,
-                  rgba(228, 83, 126, 0.09) 18%,
-                  transparent 43%
-                ),
-                radial-gradient(
-                  ellipse at 100% 100%,
-                  rgba(241, 105, 145, 0.20) 0%,
-                  rgba(241, 105, 145, 0.08) 20%,
-                  transparent 44%
-                ),
-                #fffdfd
-              `,
-            }}
-          >
 
-            {/* =================================================
-                FLORES DORADAS — SUPERIOR IZQUIERDA
-            ================================================= */}
-            <svg
-              className="
-                pointer-events-none
-                absolute
-                -left-2
-                -top-2
-                h-[180px]
-                w-[155px]
-                opacity-55
-              "
-              viewBox="0 0 180 200"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+          <ElegantBackground>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+                amount: 0.25,
+              }}
+              variants={fromLeft}
             >
 
-              <path
-                d="M8 188 C34 145 48 108 48 70 C48 40 63 18 91 7"
-                stroke="#B9964A"
-                strokeWidth="1.1"
-              />
-
-              <path
-                d="M42 100 C69 93 85 78 93 57"
-                stroke="#B9964A"
-                strokeWidth="1"
-              />
-
-              <path
-                d="M47 113 C34 101 24 93 19 79"
-                stroke="#B9964A"
-                strokeWidth="0.9"
-              />
-
-              <path
-                d="M49 88 C62 77 70 66 73 53"
-                stroke="#B9964A"
-                strokeWidth="0.9"
-              />
-
-              <ellipse
-                cx="27"
-                cy="88"
-                rx="4"
-                ry="10"
-                transform="rotate(-48 27 88)"
-                stroke="#B9964A"
-                strokeWidth="0.9"
-              />
-
-              <ellipse
-                cx="66"
-                cy="69"
-                rx="4"
-                ry="10"
-                transform="rotate(45 66 69)"
-                stroke="#B9964A"
-                strokeWidth="0.9"
-              />
-
-              <ellipse
-                cx="50"
-                cy="117"
-                rx="4"
-                ry="10"
-                transform="rotate(55 50 117)"
-                stroke="#B9964A"
-                strokeWidth="0.9"
-              />
-
-              <circle
-                cx="91"
-                cy="25"
-                r="7"
-                stroke="#B9964A"
-                strokeWidth="0.9"
-              />
-
-              <circle
-                cx="91"
-                cy="25"
-                r="2"
-                fill="#B9964A"
-              />
-
-              <path
-                d="M91 18 C86 12 79 14 80 20 C80 24 85 26 91 25"
-                stroke="#B9964A"
-                strokeWidth="0.8"
-              />
-
-              <path
-                d="M91 18 C96 12 103 14 102 20 C102 24 97 26 91 25"
-                stroke="#B9964A"
-                strokeWidth="0.8"
-              />
-
-              <path
-                d="M91 32 C86 38 79 36 80 30 C80 26 85 24 91 25"
-                stroke="#B9964A"
-                strokeWidth="0.8"
-              />
-
-              <path
-                d="M91 32 C96 38 103 36 102 30 C102 26 97 24 91 25"
-                stroke="#B9964A"
-                strokeWidth="0.8"
-              />
-
-            </svg>
-
-
-            {/* =================================================
-                FLORES DORADAS — INFERIOR DERECHA
-            ================================================= */}
-            <svg
-              className="
-                pointer-events-none
-                absolute
-                -bottom-4
-                -right-3
-                h-[190px]
-                w-[165px]
-                rotate-180
-                opacity-55
-              "
-              viewBox="0 0 180 200"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-
-              <path
-                d="M8 188 C34 145 48 108 48 70 C48 40 63 18 91 7"
-                stroke="#B9964A"
-                strokeWidth="1.1"
-              />
-
-              <path
-                d="M42 100 C69 93 85 78 93 57"
-                stroke="#B9964A"
-                strokeWidth="1"
-              />
-
-              <path
-                d="M47 113 C34 101 24 93 19 79"
-                stroke="#B9964A"
-                strokeWidth="0.9"
-              />
-
-              <path
-                d="M49 88 C62 77 70 66 73 53"
-                stroke="#B9964A"
-                strokeWidth="0.9"
-              />
-
-              <ellipse
-                cx="27"
-                cy="88"
-                rx="4"
-                ry="10"
-                transform="rotate(-48 27 88)"
-                stroke="#B9964A"
-                strokeWidth="0.9"
-              />
-
-              <ellipse
-                cx="66"
-                cy="69"
-                rx="4"
-                ry="10"
-                transform="rotate(45 66 69)"
-                stroke="#B9964A"
-                strokeWidth="0.9"
-              />
-
-              <ellipse
-                cx="50"
-                cy="117"
-                rx="4"
-                ry="10"
-                transform="rotate(55 50 117)"
-                stroke="#B9964A"
-                strokeWidth="0.9"
-              />
-
-              <circle
-                cx="91"
-                cy="25"
-                r="7"
-                stroke="#B9964A"
-                strokeWidth="0.9"
-              />
-
-              <circle
-                cx="91"
-                cy="25"
-                r="2"
-                fill="#B9964A"
-              />
-
-              <path
-                d="M91 18 C86 12 79 14 80 20 C80 24 85 26 91 25"
-                stroke="#B9964A"
-                strokeWidth="0.8"
-              />
-
-              <path
-                d="M91 18 C96 12 103 14 102 20 C102 24 97 26 91 25"
-                stroke="#B9964A"
-                strokeWidth="0.8"
-              />
-
-              <path
-                d="M91 32 C86 38 79 36 80 30 C80 26 85 24 91 25"
-                stroke="#B9964A"
-                strokeWidth="0.8"
-              />
-
-              <path
-                d="M91 32 C96 38 103 36 102 30 C102 26 97 24 91 25"
-                stroke="#B9964A"
-                strokeWidth="0.8"
-              />
-
-            </svg>
-
-
-            {/* MANCHAS SUAVES */}
-            <div
-              className="
-                pointer-events-none
-                absolute
-                -left-16
-                top-[35%]
-                h-52
-                w-52
-                rounded-full
-                bg-[#ef7197]/10
-                blur-3xl
-              "
-            />
-
-            <div
-              className="
-                pointer-events-none
-                absolute
-                -right-16
-                top-[55%]
-                h-56
-                w-56
-                rounded-full
-                bg-[#f27c9e]/10
-                blur-3xl
-              "
-            />
-
-
-            {/* =================================================
-                CONTENIDO
-            ================================================= */}
-            <div
-              className="
-                relative
-                z-10
-                mx-auto
-                flex
-                min-h-[calc(100dvh-10rem)]
-                max-w-[500px]
-                flex-col
-                items-center
-                justify-center
-              "
-            >
-
-              {/* MENSAJE */}
-              <div
+              <p
                 className={`
                   ${cormorant.className}
+                  mx-auto
                   max-w-[360px]
                   text-[21px]
                   font-medium
@@ -779,367 +734,135 @@ export default function Cliente1Page() {
                   text-[#222222]
                 `}
               >
-
-                <p>
-                  Hoy comienza un capítulo muy especial
-                  de mi vida.
-                </p>
-
-                <p className="mt-7">
-                  Con mucha ilusión y alegría quiero
-                  compartir contigo este día tan especial
-                  para mí.
-                </p>
-
-              </div>
-
-
-              {/* DETALLE */}
-              <div
-                className="
-                  mt-10
-                  flex
-                  items-center
-                  gap-3
-                "
-              >
-
-                <span className="h-px w-12 bg-[#B9964A]/45" />
-
-                <span className="text-[10px] text-[#B9964A]/75">
-                  ✦
-                </span>
-
-                <span className="h-px w-12 bg-[#B9964A]/45" />
-
-              </div>
-
-
-              {/* MIS XV AÑOS */}
-              <h2
-                className={`
-                  ${greatVibes.className}
-                  mt-9
-                  text-[58px]
-                  leading-none
-                  text-[#171717]
-                `}
-              >
-                Mis XV Años
-              </h2>
-
-
-              {/* IVANNA LOAEZA */}
-              <p
-                className={`
-                  ${greatVibes.className}
-                  mt-5
-                  text-[49px]
-                  leading-none
-                  text-[#df668d]
-                `}
-              >
-                Ivanna Loaeza
+                Hoy comienza un capítulo
+                muy especial de mi vida.
               </p>
 
-            </div>
+            </motion.div>
 
-          </section>
+            <motion.p
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+                amount: 0.25,
+              }}
+              variants={fromRight}
+              className={`
+                ${cormorant.className}
+                mx-auto
+                mt-7
+                max-w-[360px]
+                text-[21px]
+                font-medium
+                leading-[1.65]
+                text-[#222222]
+              `}
+            >
+              Con mucha ilusión y alegría
+              quiero compartir contigo este
+              día tan especial para mí.
+            </motion.p>
 
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+              }}
+              variants={fadeUp}
+            >
+              <Separator />
+            </motion.div>
+
+            <motion.h2
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+              }}
+              variants={fromLeft}
+              className={`
+                ${greatVibes.className}
+                text-[58px]
+                leading-none
+                text-[#171717]
+              `}
+            >
+              Mis XV Años
+            </motion.h2>
+
+            <motion.p
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+              }}
+              variants={fromRight}
+              className={`
+                ${greatVibes.className}
+                mt-5
+                text-[49px]
+                leading-none
+                text-[#df668d]
+              `}
+            >
+              Ivanna Loaeza
+            </motion.p>
+
+          </ElegantBackground>
 
           {/* =================================================
-              PANTALLA 3 — CUENTA REGRESIVA
+              CUENTA REGRESIVA
           ================================================= */}
-          <section
-            className="
-              relative
-              flex
-              min-h-[100dvh]
-              w-full
-              items-center
-              justify-center
-              overflow-hidden
-              px-6
-              py-10
-              text-center
-            "
-            style={{
-              background: `
-                radial-gradient(
-                  ellipse at 0% 0%,
-                  rgba(235, 108, 143, 0.22) 0%,
-                  rgba(235, 108, 143, 0.11) 18%,
-                  transparent 43%
-                ),
-                radial-gradient(
-                  ellipse at 100% 0%,
-                  rgba(244, 128, 157, 0.22) 0%,
-                  rgba(244, 128, 157, 0.10) 19%,
-                  transparent 44%
-                ),
-                radial-gradient(
-                  ellipse at 0% 100%,
-                  rgba(228, 83, 126, 0.18) 0%,
-                  rgba(228, 83, 126, 0.07) 20%,
-                  transparent 45%
-                ),
-                radial-gradient(
-                  ellipse at 100% 100%,
-                  rgba(241, 105, 145, 0.18) 0%,
-                  rgba(241, 105, 145, 0.07) 20%,
-                  transparent 45%
-                ),
-                #fffdfd
-              `,
-            }}
-          >
 
-            {/* =================================================
-                FLORES DORADAS SUTILES
-            ================================================= */}
+          <ElegantBackground className="py-24">
 
-            <svg
-              className="
-                pointer-events-none
-                absolute
-                -left-5
-                -top-3
-                h-[210px]
-                w-[175px]
-                opacity-45
-              "
-              viewBox="0 0 180 210"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <motion.h2
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+              }}
+              variants={fadeUp}
+              className={`
+                ${cormorant.className}
+                text-[25px]
+                font-semibold
+                uppercase
+                tracking-[0.28em]
+                text-[#171717]
+              `}
             >
+              Solo faltan
+            </motion.h2>
 
-              <path
-                d="M10 205 C35 163 48 125 45 87 C42 48 58 22 90 7"
-                stroke="#B9964A"
-                strokeWidth="1"
-              />
+            <Separator />
 
-              <path
-                d="M45 115 C68 105 81 89 87 67"
-                stroke="#B9964A"
-                strokeWidth="0.9"
-              />
-
-              <path
-                d="M45 94 C29 84 21 71 20 56"
-                stroke="#B9964A"
-                strokeWidth="0.9"
-              />
-
-              <ellipse
-                cx="28"
-                cy="76"
-                rx="4"
-                ry="11"
-                transform="rotate(-48 28 76)"
-                stroke="#B9964A"
-                strokeWidth="0.8"
-              />
-
-              <ellipse
-                cx="68"
-                cy="94"
-                rx="4"
-                ry="11"
-                transform="rotate(54 68 94)"
-                stroke="#B9964A"
-                strokeWidth="0.8"
-              />
-
-              <circle
-                cx="91"
-                cy="25"
-                r="6"
-                stroke="#B9964A"
-                strokeWidth="0.8"
-              />
-
-              <circle
-                cx="91"
-                cy="25"
-                r="2"
-                fill="#B9964A"
-              />
-
-            </svg>
-
-
-            <svg
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+              }}
+              variants={fadeUp}
               className="
-                pointer-events-none
-                absolute
-                -bottom-4
-                -right-5
-                h-[210px]
-                w-[175px]
-                rotate-180
-                opacity-45
-              "
-              viewBox="0 0 180 210"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-
-              <path
-                d="M10 205 C35 163 48 125 45 87 C42 48 58 22 90 7"
-                stroke="#B9964A"
-                strokeWidth="1"
-              />
-
-              <path
-                d="M45 115 C68 105 81 89 87 67"
-                stroke="#B9964A"
-                strokeWidth="0.9"
-              />
-
-              <path
-                d="M45 94 C29 84 21 71 20 56"
-                stroke="#B9964A"
-                strokeWidth="0.9"
-              />
-
-              <ellipse
-                cx="28"
-                cy="76"
-                rx="4"
-                ry="11"
-                transform="rotate(-48 28 76)"
-                stroke="#B9964A"
-                strokeWidth="0.8"
-              />
-
-              <ellipse
-                cx="68"
-                cy="94"
-                rx="4"
-                ry="11"
-                transform="rotate(54 68 94)"
-                stroke="#B9964A"
-                strokeWidth="0.8"
-              />
-
-              <circle
-                cx="91"
-                cy="25"
-                r="6"
-                stroke="#B9964A"
-                strokeWidth="0.8"
-              />
-
-              <circle
-                cx="91"
-                cy="25"
-                r="2"
-                fill="#B9964A"
-              />
-
-            </svg>
-
-
-            {/* =================================================
-                MANCHAS ROSA
-            ================================================= */}
-
-            <div
-              className="
-                pointer-events-none
-                absolute
-                -left-20
-                top-[28%]
-                h-64
-                w-64
-                rounded-full
-                bg-[#ef7197]/10
-                blur-3xl
-              "
-            />
-
-            <div
-              className="
-                pointer-events-none
-                absolute
-                -right-20
-                bottom-[25%]
-                h-64
-                w-64
-                rounded-full
-                bg-[#f27c9e]/10
-                blur-3xl
-              "
-            />
-
-
-            {/* =================================================
-                CONTENIDO DE CUENTA
-            ================================================= */}
-            <div
-              className="
-                relative
-                z-10
-                flex
-                w-full
-                max-w-[500px]
-                flex-col
-                items-center
+                grid
+                grid-cols-4
+                gap-2
               "
             >
 
-              {/* SOLO FALTAN */}
-              <h2
-                className={`
-                  ${cormorant.className}
-                  text-[25px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.28em]
-                  text-[#171717]
-                `}
-              >
-                Solo faltan
-              </h2>
-
-
-              {/* DETALLE DORADO */}
-              <div
-                className="
-                  mt-5
-                  flex
-                  items-center
-                  gap-3
-                "
-              >
-
-                <span className="h-px w-12 bg-[#B9964A]/45" />
-
-                <span className="text-[10px] text-[#B9964A]">
-                  ✦
-                </span>
-
-                <span className="h-px w-12 bg-[#B9964A]/45" />
-
-              </div>
-
-
-              {/* =================================================
-                  NÚMEROS
-              ================================================= */}
-              <div
-                className="
-                  mt-12
-                  grid
-                  w-full
-                  grid-cols-4
-                  gap-2
-                "
-              >
-
-                {/* DÍAS */}
-                <div className="flex flex-col items-center">
+              {[
+                ["dias", "Días"],
+                ["horas", "Horas"],
+                ["minutos", "Minutos"],
+                ["segundos", "Segundos"],
+              ].map(([key, label]) => (
+                <div
+                  key={key}
+                  className="flex flex-col items-center"
+                >
 
                   <span
                     className={`
@@ -1148,1130 +871,935 @@ export default function Cliente1Page() {
                       font-semibold
                       leading-none
                       text-[#171717]
-                      sm:text-[52px]
                     `}
                   >
-                    {dosDigitos(tiempo.dias)}
+                    {dosDigitos(
+                      tiempo[
+                        key as keyof typeof tiempo
+                      ]
+                    )}
                   </span>
 
                   <span
                     className={`
                       ${cormorant.className}
                       mt-3
-                      text-[10px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.16em]
-                      text-[#df668d]
-                    `}
-                  >
-                    Días
-                  </span>
-
-                </div>
-
-
-                {/* HORAS */}
-                <div className="flex flex-col items-center">
-
-                  <span
-                    className={`
-                      ${cormorant.className}
-                      text-[43px]
-                      font-semibold
-                      leading-none
-                      text-[#171717]
-                      sm:text-[52px]
-                    `}
-                  >
-                    {dosDigitos(tiempo.horas)}
-                  </span>
-
-                  <span
-                    className={`
-                      ${cormorant.className}
-                      mt-3
-                      text-[10px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.16em]
-                      text-[#df668d]
-                    `}
-                  >
-                    Horas
-                  </span>
-
-                </div>
-
-
-                {/* MINUTOS */}
-                <div className="flex flex-col items-center">
-
-                  <span
-                    className={`
-                      ${cormorant.className}
-                      text-[43px]
-                      font-semibold
-                      leading-none
-                      text-[#171717]
-                      sm:text-[52px]
-                    `}
-                  >
-                    {dosDigitos(tiempo.minutos)}
-                  </span>
-
-                  <span
-                    className={`
-                      ${cormorant.className}
-                      mt-3
-                      text-[10px]
+                      text-[9px]
                       font-semibold
                       uppercase
                       tracking-[0.10em]
                       text-[#df668d]
                     `}
                   >
-                    Minutos
+                    {label}
                   </span>
 
                 </div>
+              ))}
 
+            </motion.div>
 
-                {/* SEGUNDOS */}
-                <div className="flex flex-col items-center">
+            <div className="mx-auto mt-12 h-px w-24 bg-[#B9964A]/45" />
 
-                  <span
-                    className={`
-                      ${cormorant.className}
-                      text-[43px]
-                      font-semibold
-                      leading-none
-                      text-[#171717]
-                      sm:text-[52px]
-                    `}
-                  >
-                    {dosDigitos(tiempo.segundos)}
-                  </span>
+          </ElegantBackground>
 
-                  <span
-                    className={`
-                      ${cormorant.className}
-                      mt-3
-                      text-[10px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.08em]
-                      text-[#df668d]
-                    `}
-                  >
-                    Segundos
-                  </span>
+          {/* =================================================
+              PAPÁS Y PADRINOS
+          ================================================= */}
+
+          <ElegantBackground className="py-24">
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+                amount: 0.2,
+              }}
+              variants={fadeUp}
+              className="
+                mx-auto
+                max-w-[430px]
+              "
+            >
+
+              <p
+                className={`
+                  ${cormorant.className}
+                  text-[16px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.12em]
+                  text-[#222222]
+                `}
+              >
+                Con la bendición de mis padres
+              </p>
+
+              <div
+                className={`
+                  ${greatVibes.className}
+                  mt-7
+                  text-[38px]
+                  leading-[1.15]
+                  text-[#df668d]
+                `}
+              >
+                <p>
+                  Iván Loaeza Sandoval
+                </p>
+
+                <p className="my-2 text-[22px] text-[#B9964A]">
+                  &
+                </p>
+
+                <p>
+                  Anna Leticia Higuera Amador
+                </p>
+              </div>
+
+              <Separator />
+
+              <p
+                className={`
+                  ${cormorant.className}
+                  text-[16px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.12em]
+                  text-[#222222]
+                `}
+              >
+                Y la compañía de mis padrinos
+              </p>
+
+              <div
+                className={`
+                  ${greatVibes.className}
+                  mt-7
+                  text-[38px]
+                  leading-[1.15]
+                  text-[#df668d]
+                `}
+              >
+                <p>
+                  Max Salvador
+                </p>
+
+                <p className="my-2 text-[22px] text-[#B9964A]">
+                  &
+                </p>
+
+                <p>
+                  Sonia Silva
+                </p>
+              </div>
+
+            </motion.div>
+
+            {/* =================================================
+                FOTO 2 — ARCO SEMICIRCULAR
+            ================================================= */}
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 60,
+                scale: 0.96,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.2,
+              }}
+              transition={{
+                duration: 0.9,
+                ease: "easeOut",
+              }}
+              className="mt-14"
+            >
+
+              <div
+                className="
+                  mx-auto
+                  w-[88%]
+                  max-w-[360px]
+                  overflow-hidden
+                  rounded-t-[50%]
+                  border
+                  border-[#B9964A]/60
+                  bg-white
+                  p-2
+                  shadow-[0_12px_35px_rgba(0,0,0,0.10)]
+                "
+              >
+
+                <div className="overflow-hidden rounded-t-[48%]">
+
+                  <img
+                    src="/cliente1/FOTO 2.jpg"
+                    alt="Ivanna"
+                    className="
+                      block
+                      aspect-[4/5]
+                      w-full
+                      object-cover
+                    "
+                  />
 
                 </div>
 
               </div>
 
+              <p
+                className={`
+                  ${cormorant.className}
+                  mt-6
+                  text-[13px]
+                  uppercase
+                  tracking-[0.25em]
+                  text-[#B9964A]
+                `}
+              >
+                Con amor
+              </p>
 
-              {/* LÍNEA DECORATIVA */}
+            </motion.div>
+
+          </ElegantBackground>
+
+          {/* =================================================
+              DETALLES DEL EVENTO
+          ================================================= */}
+
+          <ElegantBackground className="py-24">
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+                amount: 0.15,
+              }}
+              variants={fadeUp}
+            >
+
+              <div className="flex flex-col items-center">
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    text-[15px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.28em]
+                    text-[#222222]
+                  `}
+                >
+                  Sábado
+                </p>
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-1
+                    text-[82px]
+                    font-medium
+                    leading-none
+                    text-[#df668d]
+                  `}
+                >
+                  24
+                </p>
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-1
+                    text-[20px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.25em]
+                    text-[#222222]
+                  `}
+                >
+                  de Octubre
+                </p>
+
+              </div>
+
+              <Separator />
+
+              {/* CEREMONIA */}
+
+              <div className="flex flex-col items-center">
+
+                <div
+                  className="
+                    mb-4
+                    flex
+                    h-16
+                    w-16
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-[#B9964A]/50
+                    text-[#B9964A]
+                  "
+                >
+
+                  <svg
+                    viewBox="0 0 64 64"
+                    className="h-9 w-9"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M12 56V29L32 16L52 29V56" />
+                    <path d="M25 56V40C25 36 28 33 32 33C36 33 39 36 39 40V56" />
+                    <path d="M8 56H56" />
+                    <path d="M32 16V7" />
+                    <path d="M27 11H37" />
+                  </svg>
+
+                </div>
+
+                <h2
+                  className={`
+                    ${cormorant.className}
+                    text-[32px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.10em]
+                    text-[#df668d]
+                  `}
+                >
+                  Ceremonia
+                </h2>
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-2
+                    text-[29px]
+                    font-semibold
+                    text-[#171717]
+                  `}
+                >
+                  5:00 PM
+                </p>
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-1
+                    max-w-[300px]
+                    text-[17px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.08em]
+                    text-[#222222]
+                  `}
+                >
+                  Santuario de Guadalupe
+                </p>
+
+                <LocationButton
+                  url={MAPS_CEREMONIA}
+                />
+
+              </div>
+
+              <Separator />
+
+              {/* RECEPCIÓN */}
+
+              <div className="flex flex-col items-center">
+
+                <div
+                  className="
+                    mb-4
+                    flex
+                    h-16
+                    w-16
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-[#B9964A]/50
+                    text-[#B9964A]
+                  "
+                >
+
+                  <svg
+                    viewBox="0 0 64 64"
+                    className="h-9 w-9"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M8 56H56" />
+                    <path d="M12 56V27H52V56" />
+                    <path d="M8 27L32 12L56 27" />
+                    <path d="M25 56V39H39V56" />
+                  </svg>
+
+                </div>
+
+                <h2
+                  className={`
+                    ${cormorant.className}
+                    text-[32px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.10em]
+                    text-[#df668d]
+                  `}
+                >
+                  Recepción
+                </h2>
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-2
+                    text-[29px]
+                    font-semibold
+                    text-[#171717]
+                  `}
+                >
+                  7:00 PM
+                </p>
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-1
+                    max-w-[320px]
+                    text-[17px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.06em]
+                    text-[#222222]
+                  `}
+                >
+                  Salón de Eventos Victorious
+                </p>
+
+                <LocationButton
+                  url={MAPS_RECEPCION}
+                />
+
+              </div>
+
+              <Separator />
+
+              {/* VESTIMENTA */}
+
+              <div className="flex flex-col items-center">
+
+                <div
+                  className="
+                    flex
+                    h-14
+                    w-14
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-[#B9964A]/50
+                    text-[#B9964A]
+                  "
+                >
+                  👗
+                </div>
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-4
+                    text-[20px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.10em]
+                    text-[#df668d]
+                  `}
+                >
+                  Vestimenta
+                </p>
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-1
+                    text-[15px]
+                    font-medium
+                    uppercase
+                    tracking-[0.08em]
+                    text-[#222222]
+                  `}
+                >
+                  Evitar tonos rosas
+                </p>
+
+              </div>
+
+              {/* REGALO */}
+
+              <div className="mt-7 flex flex-col items-center">
+
+                <div
+                  className="
+                    flex
+                    h-14
+                    w-14
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-[#B9964A]/50
+                    text-[#B9964A]
+                  "
+                >
+                  🎁
+                </div>
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-4
+                    text-[20px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.10em]
+                    text-[#df668d]
+                  `}
+                >
+                  Regalo sugerido
+                </p>
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-1
+                    text-[15px]
+                    font-medium
+                    uppercase
+                    tracking-[0.10em]
+                    text-[#222222]
+                  `}
+                >
+                  Efectivo
+                </p>
+
+              </div>
+
+            </motion.div>
+
+          </ElegantBackground>
+
+          {/* =================================================
+              FOTO 3
+          ================================================= */}
+
+          <section
+            className="
+              relative
+              w-full
+              overflow-hidden
+              bg-[#fffdfd]
+              px-6
+              py-20
+            "
+          >
+
+            <Sparkles />
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                scale: 0.94,
+              }}
+              whileInView={{
+                opacity: 1,
+                scale: 1,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.2,
+              }}
+              transition={{
+                duration: 0.9,
+              }}
+              className="
+                relative
+                z-10
+                mx-auto
+                max-w-[500px]
+              "
+            >
+
               <div
                 className="
-                  mt-12
-                  h-px
-                  w-24
-                  bg-[#B9964A]/45
+                  overflow-hidden
+                  rounded-[35px]
+                  border
+                  border-[#B9964A]/50
+                  bg-white
+                  p-2
+                  shadow-[0_15px_40px_rgba(0,0,0,0.10)]
                 "
-              />
+              >
+
+                <img
+                  src="/cliente1/FOTO 3.jpg"
+                  alt="Ivanna"
+                  className="
+                    block
+                    w-full
+                    rounded-[28px]
+                    object-cover
+                  "
+                />
+
+              </div>
+
+            </motion.div>
+
+          </section>
+
+          {/* =================================================
+              CONFIRMACIÓN
+          ================================================= */}
+
+          <ElegantBackground className="py-24">
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+                amount: 0.2,
+              }}
+              variants={fadeUp}
+            >
+
+              <p
+                className={`
+                  ${cormorant.className}
+                  text-[14px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.30em]
+                  text-[#B9964A]
+                `}
+              >
+                Será un honor contar contigo
+              </p>
+
+              <h2
+                className={`
+                  ${greatVibes.className}
+                  mt-4
+                  text-[58px]
+                  leading-none
+                  text-[#df668d]
+                `}
+              >
+                Confirma tu asistencia
+              </h2>
+
+              <p
+                className={`
+                  ${cormorant.className}
+                  mx-auto
+                  mt-5
+                  max-w-[330px]
+                  text-[18px]
+                  leading-[1.6]
+                  text-[#333333]
+                `}
+              >
+                Ayúdanos confirmando tu
+                asistencia antes del evento.
+              </p>
+
+            </motion.div>
+
+            {/* FORMULARIO */}
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 40,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                delay: 0.15,
+                duration: 0.7,
+              }}
+              className="
+                mx-auto
+                mt-10
+                max-w-[390px]
+              "
+            >
+
+              {/* NOMBRE */}
+
+              <div className="text-left">
+
+                <label
+                  className={`
+                    ${cormorant.className}
+                    text-[15px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.10em]
+                    text-[#222222]
+                  `}
+                >
+                  Tu nombre
+                </label>
+
+                <input
+                  type="text"
+                  value={nombre}
+                  onChange={(e) =>
+                    setNombre(e.target.value)
+                  }
+                  placeholder="Escribe tu nombre"
+                  className={`
+                    ${cormorant.className}
+                    mt-2
+                    w-full
+                    rounded-2xl
+                    border
+                    border-[#B9964A]/50
+                    bg-white/70
+                    px-5
+                    py-3
+                    text-[17px]
+                    text-[#222222]
+                    outline-none
+                    placeholder:text-[#999999]
+                    focus:border-[#df668d]
+                  `}
+                />
+
+              </div>
+
+              {/* PERSONAS */}
+
+              <div className="mt-7">
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    text-[15px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.10em]
+                    text-[#222222]
+                  `}
+                >
+                  Número de personas
+                </p>
+
+                <div className="mt-3 flex items-center justify-center gap-5">
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setPersonas(
+                        Math.max(1, personas - 1)
+                      )
+                    }
+                    className="
+                      flex
+                      h-10
+                      w-10
+                      items-center
+                      justify-center
+                      rounded-full
+                      border
+                      border-[#B9964A]
+                      bg-white
+                      text-[22px]
+                      text-[#df668d]
+                      active:scale-90
+                    "
+                  >
+                    −
+                  </button>
+
+                  <span
+                    className={`
+                      ${cormorant.className}
+                      min-w-[35px]
+                      text-center
+                      text-[30px]
+                      font-semibold
+                      text-[#222222]
+                    `}
+                  >
+                    {personas}
+                  </span>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setPersonas(
+                        Math.min(
+                          10,
+                          personas + 1
+                        )
+                      )
+                    }
+                    className="
+                      flex
+                      h-10
+                      w-10
+                      items-center
+                      justify-center
+                      rounded-full
+                      border
+                      border-[#B9964A]
+                      bg-white
+                      text-[22px]
+                      text-[#df668d]
+                      active:scale-90
+                    "
+                  >
+                    +
+                  </button>
+
+                </div>
+
+              </div>
+
+              {/* WHATSAPP */}
+
+              <button
+                type="button"
+                onClick={confirmarWhatsApp}
+                className="
+                  mt-9
+                  flex
+                  w-full
+                  items-center
+                  justify-center
+                  gap-3
+                  rounded-full
+                  bg-[#df668d]
+                  px-6
+                  py-4
+                  text-white
+                  shadow-[0_8px_25px_rgba(223,102,141,0.30)]
+                  transition
+                  duration-200
+                  hover:scale-[1.02]
+                  active:scale-95
+                "
+              >
+
+                <span className="text-[20px]">
+                  ◉
+                </span>
+
+                <span
+                  className={`
+                    ${cormorant.className}
+                    text-[15px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.16em]
+                  `}
+                >
+                  Confirmar por WhatsApp
+                </span>
+
+              </button>
+
+            </motion.div>
+
+            <Separator />
+
+            <motion.p
+              initial={{
+                opacity: 0,
+              }}
+              whileInView={{
+                opacity: 1,
+              }}
+              viewport={{
+                once: true,
+              }}
+              className={`
+                ${greatVibes.className}
+                text-[38px]
+                text-[#df668d]
+              `}
+            >
+              Ivanna Loaeza
+            </motion.p>
+
+          </ElegantBackground>
+
+          {/* =================================================
+              FINAL
+          ================================================= */}
+
+          <section className="relative overflow-hidden bg-[#fffdfd] px-6 py-16 text-center">
+
+            <div className="mx-auto max-w-[400px]">
+
+              <div className="mx-auto mb-5 h-px w-24 bg-[#B9964A]/45" />
+
+              <p
+                className={`
+                  ${cormorant.className}
+                  text-[13px]
+                  uppercase
+                  tracking-[0.25em]
+                  text-[#555555]
+                `}
+              >
+                Gracias por acompañarme
+              </p>
+
+              <p
+                className={`
+                  ${greatVibes.className}
+                  mt-4
+                  text-[45px]
+                  text-[#df668d]
+                `}
+              >
+                Mis XV Años
+              </p>
+
+              <div className="mx-auto mt-5 h-px w-24 bg-[#B9964A]/45" />
 
             </div>
 
           </section>
-{/* =================================================
-    PANTALLA 4 — PADRES Y PADRINOS
-================================================= */}
-<section
-  className="
-    relative
-    flex
-    min-h-[100dvh]
-    w-full
-    items-center
-    justify-center
-    overflow-hidden
-    px-7
-    py-10
-    text-center
-  "
-  style={{
-    background: `
-      radial-gradient(
-        ellipse at 0% 0%,
-        rgba(235, 108, 143, 0.22) 0%,
-        rgba(235, 108, 143, 0.11) 18%,
-        transparent 43%
-      ),
-      radial-gradient(
-        ellipse at 100% 0%,
-        rgba(244, 128, 157, 0.22) 0%,
-        rgba(244, 128, 157, 0.10) 19%,
-        transparent 44%
-      ),
-      radial-gradient(
-        ellipse at 0% 100%,
-        rgba(228, 83, 126, 0.18) 0%,
-        rgba(228, 83, 126, 0.07) 20%,
-        transparent 45%
-      ),
-      radial-gradient(
-        ellipse at 100% 100%,
-        rgba(241, 105, 145, 0.18) 0%,
-        rgba(241, 105, 145, 0.07) 20%,
-        transparent 45%
-      ),
-      #fffdfd
-    `,
-  }}
->
 
-  {/* =================================================
-      FLORES DORADAS — SUPERIOR IZQUIERDA
-  ================================================= */}
-  <svg
-    className="
-      pointer-events-none
-      absolute
-      -left-5
-      -top-3
-      h-[210px]
-      w-[175px]
-      opacity-45
-    "
-    viewBox="0 0 180 210"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M10 205 C35 163 48 125 45 87 C42 48 58 22 90 7"
-      stroke="#B9964A"
-      strokeWidth="1"
-    />
-
-    <path
-      d="M45 115 C68 105 81 89 87 67"
-      stroke="#B9964A"
-      strokeWidth="0.9"
-    />
-
-    <path
-      d="M45 94 C29 84 21 71 20 56"
-      stroke="#B9964A"
-      strokeWidth="0.9"
-    />
-
-    <ellipse
-      cx="28"
-      cy="76"
-      rx="4"
-      ry="11"
-      transform="rotate(-48 28 76)"
-      stroke="#B9964A"
-      strokeWidth="0.8"
-    />
-
-    <ellipse
-      cx="68"
-      cy="94"
-      rx="4"
-      ry="11"
-      transform="rotate(54 68 94)"
-      stroke="#B9964A"
-      strokeWidth="0.8"
-    />
-
-    <circle
-      cx="91"
-      cy="25"
-      r="6"
-      stroke="#B9964A"
-      strokeWidth="0.8"
-    />
-
-    <circle
-      cx="91"
-      cy="25"
-      r="2"
-      fill="#B9964A"
-    />
-  </svg>
-
-
-  {/* =================================================
-      FLORES DORADAS — INFERIOR DERECHA
-  ================================================= */}
-  <svg
-    className="
-      pointer-events-none
-      absolute
-      -bottom-4
-      -right-5
-      h-[210px]
-      w-[175px]
-      rotate-180
-      opacity-45
-    "
-    viewBox="0 0 180 210"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M10 205 C35 163 48 125 45 87 C42 48 58 22 90 7"
-      stroke="#B9964A"
-      strokeWidth="1"
-    />
-
-    <path
-      d="M45 115 C68 105 81 89 87 67"
-      stroke="#B9964A"
-      strokeWidth="0.9"
-    />
-
-    <path
-      d="M45 94 C29 84 21 71 20 56"
-      stroke="#B9964A"
-      strokeWidth="0.9"
-    />
-
-    <ellipse
-      cx="28"
-      cy="76"
-      rx="4"
-      ry="11"
-      transform="rotate(-48 28 76)"
-      stroke="#B9964A"
-      strokeWidth="0.8"
-    />
-
-    <ellipse
-      cx="68"
-      cy="94"
-      rx="4"
-      ry="11"
-      transform="rotate(54 68 94)"
-      stroke="#B9964A"
-      strokeWidth="0.8"
-    />
-
-    <circle
-      cx="91"
-      cy="25"
-      r="6"
-      stroke="#B9964A"
-      strokeWidth="0.8"
-    />
-
-    <circle
-      cx="91"
-      cy="25"
-      r="2"
-      fill="#B9964A"
-    />
-  </svg>
-
-
-  {/* =================================================
-      CONTENIDO
-  ================================================= */}
-  <div
-    className="
-      relative
-      z-10
-      flex
-      w-full
-      max-w-[500px]
-      flex-col
-      items-center
-    "
-  >
-
-    {/* ===============================================
-        PADRES
-    ================================================ */}
-    <p
-      className={`
-        ${cormorant.className}
-        text-[17px]
-        font-semibold
-        uppercase
-        tracking-[0.12em]
-        text-[#222222]
-      `}
-    >
-      Con la bendición de mis padres
-    </p>
-
-    <div
-      className={`
-        ${greatVibes.className}
-        mt-7
-        text-[39px]
-        leading-[1.15]
-        text-[#df668d]
-      `}
-    >
-      <p>
-        Iván Loaeza Sandoval
-      </p>
-
-      <p
-        className="
-          my-2
-          text-[22px]
-          text-[#B9964A]
-        "
-      >
-        &
-      </p>
-
-      <p>
-        Anna Leticia Higuera Amador
-      </p>
-    </div>
-
-
-    {/* ===============================================
-        SEPARADOR
-    ================================================ */}
-    <div
-      className="
-        my-8
-        flex
-        items-center
-        gap-3
-      "
-    >
-      <span className="h-px w-14 bg-[#B9964A]/45" />
-
-      <span className="text-[10px] text-[#B9964A]">
-        ✦
-      </span>
-
-      <span className="h-px w-14 bg-[#B9964A]/45" />
-    </div>
-
-
-    {/* ===============================================
-        PADRINOS
-    ================================================ */}
-    <p
-      className={`
-        ${cormorant.className}
-        text-[17px]
-        font-semibold
-        uppercase
-        tracking-[0.12em]
-        text-[#222222]
-      `}
-    >
-      Y la compañía de mis padrinos
-    </p>
-
-    <div
-      className={`
-        ${greatVibes.className}
-        mt-
-        text-[39px]
-        leading-[1.15]
-        text-[#df668d]
-      `}
-    >
-      <p>
-        Max Salvador
-      </p>
-
-      <p
-        className="
-          my-2
-          text-[22px]
-          text-[#B9964A]
-        "
-      >
-        &
-      </p>
-
-      <p>
-        Sonia Silva
-      </p>
-    </div>
-
-  </div>
-
-</section>
-{/* =================================================
-    PANTALLA 5 — DETALLES DEL EVENTO
-================================================= */}
-<section
-  className="
-    relative
-    flex
-    min-h-[100dvh]
-    w-full
-    items-center
-    justify-center
-    overflow-hidden
-    px-6
-    py-12
-    text-center
-  "
-  style={{
-    background: `
-      radial-gradient(
-        ellipse at 0% 0%,
-        rgba(235, 108, 143, 0.20) 0%,
-        rgba(235, 108, 143, 0.09) 18%,
-        transparent 43%
-      ),
-      radial-gradient(
-        ellipse at 100% 0%,
-        rgba(244, 128, 157, 0.18) 0%,
-        rgba(244, 128, 157, 0.08) 19%,
-        transparent 44%
-      ),
-      radial-gradient(
-        ellipse at 0% 100%,
-        rgba(228, 83, 126, 0.16) 0%,
-        rgba(228, 83, 126, 0.06) 20%,
-        transparent 45%
-      ),
-      radial-gradient(
-        ellipse at 100% 100%,
-        rgba(241, 105, 145, 0.16) 0%,
-        rgba(241, 105, 145, 0.06) 20%,
-        transparent 45%
-      ),
-      #fffdfd
-    `,
-  }}
->
-
-  {/* =================================================
-      DETALLES DECORATIVOS DORADOS
-  ================================================= */}
-
-  <div
-    className="
-      pointer-events-none
-      absolute
-      left-1/2
-      top-7
-      flex
-      -translate-x-1/2
-      items-center
-      gap-3
-    "
-  >
-    <span className="h-px w-16 bg-[#B9964A]/45" />
-
-    <span className="text-[12px] text-[#B9964A]">
-      ✦
-    </span>
-
-    <span className="h-px w-16 bg-[#B9964A]/45" />
-  </div>
-
-
-  {/* =================================================
-      MANCHAS ROSA MUY SUAVES
-  ================================================= */}
-
-  <div
-    className="
-      pointer-events-none
-      absolute
-      -left-24
-      top-[18%]
-      h-64
-      w-64
-      rounded-full
-      bg-[#ef7197]/10
-      blur-3xl
-    "
-  />
-
-  <div
-    className="
-      pointer-events-none
-      absolute
-      -right-24
-      bottom-[15%]
-      h-64
-      w-64
-      rounded-full
-      bg-[#f27c9e]/10
-      blur-3xl
-    "
-  />
-
-
-  {/* =================================================
-      CONTENIDO
-  ================================================= */}
-
-  <div
-    className="
-      relative
-      z-10
-      flex
-      w-full
-      max-w-[430px]
-      flex-col
-      items-center
-    "
-  >
-
-    {/* =================================================
-        FECHA
-    ================================================= */}
-
-    <div className="flex flex-col items-center">
-
-      <p
-        className={`
-          ${cormorant.className}
-          text-[15px]
-          font-semibold
-          uppercase
-          tracking-[0.28em]
-          text-[#222222]
-        `}
-      >
-        Sábado
-      </p>
-
-      <p
-        className={`
-          ${cormorant.className}
-          mt-1
-          text-[82px]
-          font-medium
-          leading-none
-          text-[#df668d]
-        `}
-      >
-        24
-      </p>
-
-      <p
-        className={`
-          ${cormorant.className}
-          mt-1
-          text-[20px]
-          font-semibold
-          uppercase
-          tracking-[0.25em]
-          text-[#222222]
-        `}
-      >
-        de Octubre
-      </p>
-
-    </div>
-
-
-    {/* =================================================
-        SEPARADOR
-    ================================================= */}
-
-    <div
-      className="
-        mt-7
-        flex
-        items-center
-        gap-3
-      "
-    >
-      <span className="h-px w-16 bg-[#B9964A]/45" />
-
-      <span className="text-[11px] text-[#B9964A]">
-        ✦
-      </span>
-
-      <span className="h-px w-16 bg-[#B9964A]/45" />
-    </div>
-
-
-    {/* =================================================
-        CEREMONIA
-    ================================================= */}
-
-    <div className="mt-8 flex flex-col items-center">
-
-      {/* ICONO IGLESIA */}
-      <div
-        className="
-          mb-4
-          flex
-          h-16
-          w-16
-          items-center
-          justify-center
-          rounded-full
-          border
-          border-[#B9964A]/50
-          text-[#B9964A]
-        "
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 64 64"
-          className="h-9 w-9"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M12 56V29L32 16L52 29V56" />
-          <path d="M25 56V40C25 36 28 33 32 33C36 33 39 36 39 40V56" />
-          <path d="M8 56H56" />
-          <path d="M32 16V7" />
-          <path d="M27 11H37" />
-          <path d="M20 31H26" />
-          <path d="M38 31H44" />
-        </svg>
-      </div>
-
-      <h2
-        className={`
-          ${cormorant.className}
-          text-[35px]
-          font-semibold
-          uppercase
-          tracking-[0.10em]
-          text-[#df668d]
-        `}
-      >
-        Ceremonia
-      </h2>
-
-      <p
-        className={`
-          ${cormorant.className}
-          mt-2
-          text-[30px]
-          font-semibold
-          tracking-[0.08em]
-          text-[#171717]
-        `}
-      >
-        5:00 PM
-      </p>
-
-      <p
-        className={`
-          ${cormorant.className}
-          mt-1
-          text-[17px]
-          font-semibold
-          uppercase
-          tracking-[0.10em]
-          text-[#222222]
-        `}
-      >
-        Santuario de Guadalupe
-      </p>
-
-      {/* BOTÓN UBICACIÓN */}
-      <button
-        type="button"
-        className="
-          mt-5
-          flex
-          items-center
-          justify-center
-          gap-2
-          rounded-full
-          border
-          border-[#B9964A]
-          bg-white/30
-          px-7
-          py-2.5
-          text-[#222222]
-          shadow-sm
-          backdrop-blur-sm
-          transition
-          duration-200
-          active:scale-95
-        "
-      >
-        <span className="text-[18px] text-[#df668d]">
-          ●
-        </span>
-
-        <span
-          className={`
-            ${cormorant.className}
-            text-[13px]
-            font-semibold
-            uppercase
-            tracking-[0.18em]
-          `}
-        >
-          Ver ubicación
-        </span>
-      </button>
-
-    </div>
-
-
-    {/* =================================================
-        SEPARADOR
-    ================================================= */}
-
-    <div
-      className="
-        mt-7
-        flex
-        items-center
-        gap-3
-      "
-    >
-      <span className="h-px w-16 bg-[#B9964A]/45" />
-
-      <span className="text-[11px] text-[#B9964A]">
-        ✦
-      </span>
-
-      <span className="h-px w-16 bg-[#B9964A]/45" />
-    </div>
-
-
-    {/* =================================================
-        RECEPCIÓN
-    ================================================= */}
-
-    <div className="mt-7 flex flex-col items-center">
-
-      {/* ICONO SALÓN */}
-      <div
-        className="
-          mb-4
-          flex
-          h-16
-          w-16
-          items-center
-          justify-center
-          rounded-full
-          border
-          border-[#B9964A]/50
-          text-[#B9964A]
-        "
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 64 64"
-          className="h-9 w-9"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M8 56H56" />
-          <path d="M12 56V27H52V56" />
-          <path d="M8 27L32 12L56 27" />
-          <path d="M25 56V39H39V56" />
-          <path d="M22 27V21" />
-          <path d="M42 27V21" />
-          <path d="M27 21H37" />
-        </svg>
-      </div>
-
-      <h2
-        className={`
-          ${cormorant.className}
-          text-[35px]
-          font-semibold
-          uppercase
-          tracking-[0.10em]
-          text-[#df668d]
-        `}
-      >
-        Recepción
-      </h2>
-
-      <p
-        className={`
-          ${cormorant.className}
-          mt-2
-          text-[30px]
-          font-semibold
-          tracking-[0.08em]
-          text-[#171717]
-        `}
-      >
-        7:00 PM
-      </p>
-
-      <p
-        className={`
-          ${cormorant.className}
-          mt-1
-          text-[17px]
-          font-semibold
-          uppercase
-          tracking-[0.08em]
-          text-[#222222]
-        `}
-      >
-        Salon de Eventos Victorious
-      </p>
-
-      {/* BOTÓN UBICACIÓN */}
-      <button
-        type="button"
-        className="
-          mt-5
-          flex
-          items-center
-          justify-center
-          gap-2
-          rounded-full
-          border
-          border-[#B9964A]
-          bg-white/30
-          px-7
-          py-2.5
-          text-[#222222]
-          shadow-sm
-          backdrop-blur-sm
-          transition
-          duration-200
-          active:scale-95
-        "
-      >
-        <span className="text-[18px] text-[#df668d]">
-          ●
-        </span>
-
-        <span
-          className={`
-            ${cormorant.className}
-            text-[13px]
-            font-semibold
-            uppercase
-            tracking-[0.18em]
-          `}
-        >
-          Ver ubicación
-        </span>
-      </button>
-
-    </div>
-
-
-    {/* =================================================
-        SEPARADOR
-    ================================================= */}
-
-    <div
-      className="
-        mt-7
-        flex
-        items-center
-        gap-3
-      "
-    >
-      <span className="h-px w-16 bg-[#B9964A]/45" />
-
-      <span className="text-[11px] text-[#B9964A]">
-        ✦
-      </span>
-
-      <span className="h-px w-16 bg-[#B9964A]/45" />
-    </div>
-
-
-    {/* =================================================
-        VESTIMENTA
-    ================================================= */}
-
-    <div
-      className="
-        mt-7
-        flex
-        w-full
-        items-center
-        justify-center
-        gap-5
-      "
-    >
-
-      <div
-        className="
-          flex
-          h-14
-          w-14
-          shrink-0
-          items-center
-          justify-center
-          rounded-full
-          border
-          border-[#B9964A]/50
-          text-[#B9964A]
-        "
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 64 64"
-          className="h-8 w-8"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M25 9L32 15L39 9L45 17L40 27L46 54H18L24 27L19 17L25 9Z" />
-          <path d="M24 27H40" />
-          <path d="M27 15H37" />
-        </svg>
-      </div>
-
-      <div className="text-left">
-
-        <p
-          className={`
-            ${cormorant.className}
-            text-[19px]
-            font-semibold
-            uppercase
-            tracking-[0.10em]
-            text-[#df668d]
-          `}
-        >
-          Vestimenta
-        </p>
-
-        <p
-          className={`
-            ${cormorant.className}
-            mt-1
-            text-[15px]
-            font-medium
-            uppercase
-            tracking-[0.08em]
-            text-[#222222]
-          `}
-        >
-          Evitar tonos rosas
-        </p>
-
-      </div>
-
-    </div>
-
-
-    {/* =================================================
-        REGALO
-    ================================================= */}
-
-    <div
-      className="
-        mt-6
-        flex
-        w-full
-        items-center
-        justify-center
-        gap-5
-      "
-    >
-
-      <div
-        className="
-          flex
-          h-14
-          w-14
-          shrink-0
-          items-center
-          justify-center
-          rounded-full
-          border
-          border-[#B9964A]/50
-          text-[#B9964A]
-        "
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 64 64"
-          className="h-8 w-8"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <rect x="9" y="25" width="46" height="30" rx="2" />
-          <path d="M32 25V55" />
-          <path d="M9 34H55" />
-          <path d="M32 25C26 25 18 22 18 17C18 13 22 11 26 13C30 15 32 25 32 25Z" />
-          <path d="M32 25C38 25 46 22 46 17C46 13 42 11 38 13C34 15 32 25 32 25Z" />
-        </svg>
-      </div>
-
-      <div className="text-left">
-
-        <p
-          className={`
-            ${cormorant.className}
-            text-[19px]
-            font-semibold
-            uppercase
-            tracking-[0.08em]
-            text-[#df668d]
-          `}
-        >
-          Regalo sugerido
-        </p>
-
-        <p
-          className={`
-            ${cormorant.className}
-            mt-1
-            text-[15px]
-            font-medium
-            uppercase
-            tracking-[0.10em]
-            text-[#222222]
-          `}
-        >
-          Efectivo
-        </p>
-
-      </div>
-
-    </div>
-
-
-    {/* DETALLE FINAL */}
-
-    <div
-      className="
-        mt-8
-        flex
-        items-center
-        gap-3
-      "
-    >
-      <span className="h-px w-16 bg-[#B9964A]/45" />
-
-      <span className="text-[11px] text-[#B9964A]">
-        ✦
-      </span>
-
-      <span className="h-px w-16 bg-[#B9964A]/45" />
-    </div>
-
-  </div>
-
-</section>
         </div>
       )}
 
