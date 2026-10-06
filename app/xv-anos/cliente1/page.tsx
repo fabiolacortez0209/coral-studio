@@ -976,16 +976,18 @@ animate={{
           ================================================= */}
 
           <ElegantBackground>
-
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{
-                once: true,
-                amount: 0.25,
-              }}
-              variants={fromLeft}
-            >
+<motion.div
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{
+    once: true,
+    amount: 0.25,
+  }}
+  transition={{
+    duration: 1.5,
+    ease: "easeOut",
+  }}
+>
 
               <p
                 className={`
@@ -1005,13 +1007,16 @@ animate={{
             </motion.div>
 
             <motion.p
-              initial="hidden"
-              whileInView="visible"
-              viewport={{
-                once: true,
-                amount: 0.25,
-              }}
-              variants={fromRight}
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{
+    once: true,
+    amount: 0.25,
+  }}
+  transition={{
+    duration: 1.5,
+    ease: "easeOut",
+  }}
               className={`
                 ${cormorant.className}
                 mx-auto
@@ -1039,7 +1044,7 @@ animate={{
               variants={fromLeft}
               className={`
                 ${greatVibes.className}
-                text-[58px]
+                text-[46px]
                 leading-none
                 text-[#171717]
               `}
@@ -1071,7 +1076,7 @@ animate={{
               CUENTA REGRESIVA
           ================================================= */}
 
-          <ElegantBackground className="py-24">
+          <ElegantBackground className="pt-24 pb-0">
 
             <motion.h2
               initial="hidden"
@@ -1102,10 +1107,16 @@ animate={{
               }}
               variants={fadeUp}
               className="
-                grid
-                grid-cols-4
-                gap-2
-              "
+  grid
+  grid-cols-4
+  gap-2
+  w-full
+  rounded-xl
+  border
+  border-[#B9964A]/70
+  px-3
+  py-5
+"
             >
 
               {[
@@ -1154,7 +1165,194 @@ animate={{
 
             </motion.div>
 
-            <div className="mx-auto mt-12 h-px w-24 bg-[#B9964A]/45" />
+            <div className="mt-5 flex items-center justify-center">
+  <svg
+    width="170"
+    height="45"
+    viewBox="0 0 170 45"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    {/* Línea izquierda */}
+    <path
+      d="M12 25 C27 25 35 23 46 17"
+      stroke="#B9964A"
+      strokeWidth="0.7"
+      strokeLinecap="round"
+    />
+
+    {/* Línea derecha */}
+    <path
+      d="M158 25 C143 25 135 23 124 17"
+      stroke="#B9964A"
+      strokeWidth="0.7"
+      strokeLinecap="round"
+    />
+
+    {/* FLORECITA IZQUIERDA */}
+    <g transform="translate(52 14)">
+      <ellipse
+        cx="0"
+        cy="-5"
+        rx="2.7"
+        ry="5"
+        stroke="#B9964A"
+        strokeWidth="0.8"
+      />
+      <ellipse
+        cx="5"
+        cy="0"
+        rx="2.7"
+        ry="5"
+        transform="rotate(90 5 0)"
+        stroke="#B9964A"
+        strokeWidth="0.8"
+      />
+      <ellipse
+        cx="0"
+        cy="5"
+        rx="2.7"
+        ry="5"
+        stroke="#B9964A"
+        strokeWidth="0.8"
+      />
+      <ellipse
+        cx="-5"
+        cy="0"
+        rx="2.7"
+        ry="5"
+        transform="rotate(90 -5 0)"
+        stroke="#B9964A"
+        strokeWidth="0.8"
+      />
+      <circle
+        cx="0"
+        cy="0"
+        r="1.7"
+        fill="#B9964A"
+      />
+    </g>
+
+    {/* FLORECITA CENTRAL */}
+    <g transform="translate(85 17)">
+      <ellipse
+        cx="0"
+        cy="-7"
+        rx="3"
+        ry="6"
+        stroke="#B9964A"
+        strokeWidth="0.9"
+      />
+      <ellipse
+        cx="6"
+        cy="-2"
+        rx="3"
+        ry="6"
+        transform="rotate(55 6 -2)"
+        stroke="#B9964A"
+        strokeWidth="0.9"
+      />
+      <ellipse
+        cx="4"
+        cy="5"
+        rx="3"
+        ry="6"
+        transform="rotate(115 4 5)"
+        stroke="#B9964A"
+        strokeWidth="0.9"
+      />
+      <ellipse
+        cx="-4"
+        cy="5"
+        rx="3"
+        ry="6"
+        transform="rotate(-115 -4 5)"
+        stroke="#B9964A"
+        strokeWidth="0.9"
+      />
+      <ellipse
+        cx="-6"
+        cy="-2"
+        rx="3"
+        ry="6"
+        transform="rotate(-55 -6 -2)"
+        stroke="#B9964A"
+        strokeWidth="0.9"
+      />
+      <circle
+        cx="0"
+        cy="0"
+        r="2"
+        fill="#B9964A"
+      />
+    </g>
+
+    {/* FLORECITA DERECHA */}
+    <g transform="translate(118 14)">
+      <ellipse
+        cx="0"
+        cy="-5"
+        rx="2.7"
+        ry="5"
+        stroke="#B9964A"
+        strokeWidth="0.8"
+      />
+      <ellipse
+        cx="5"
+        cy="0"
+        rx="2.7"
+        ry="5"
+        transform="rotate(90 5 0)"
+        stroke="#B9964A"
+        strokeWidth="0.8"
+      />
+      <ellipse
+        cx="0"
+        cy="5"
+        rx="2.7"
+        ry="5"
+        stroke="#B9964A"
+        strokeWidth="0.8"
+      />
+      <ellipse
+        cx="-5"
+        cy="0"
+        rx="2.7"
+        ry="5"
+        transform="rotate(90 -5 0)"
+        stroke="#B9964A"
+        strokeWidth="0.8"
+      />
+      <circle
+        cx="0"
+        cy="0"
+        r="1.7"
+        fill="#B9964A"
+      />
+    </g>
+
+    {/* Hojitas */}
+    <ellipse
+      cx="36"
+      cy="20"
+      rx="2.5"
+      ry="5"
+      transform="rotate(-45 36 20)"
+      stroke="#B9964A"
+      strokeWidth="0.7"
+    />
+
+    <ellipse
+      cx="134"
+      cy="20"
+      rx="2.5"
+      ry="5"
+      transform="rotate(45 134 20)"
+      stroke="#B9964A"
+      strokeWidth="0.7"
+    />
+  </svg>
+</div>
 
           </ElegantBackground>
 
@@ -1162,8 +1360,7 @@ animate={{
               PAPÁS Y PADRINOS
           ================================================= */}
 
-          <ElegantBackground className="py-24">
-
+          <ElegantBackground className="!pt-10 !pb-10">
             <motion.div
               initial="hidden"
               whileInView="visible"
