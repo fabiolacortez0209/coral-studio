@@ -923,7 +923,7 @@ export default function Cliente1Page() {
                 }}
                 className="
   flex
-  translate-y-[10vh]
+  translate-y-[18vh]
   flex-col
   items-center
   text-center
