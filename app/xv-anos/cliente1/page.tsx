@@ -1988,177 +1988,436 @@ animate={{
               CONFIRMACIÓN
           ================================================= */}
 
-          <ElegantBackground className="py-24">
+          <ElegantBackground className="pt-20 pb-24">
 
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{
-                once: true,
-                amount: 0.2,
-              }}
-              variants={fadeUp}
+  {/* ENCABEZADO */}
+
+  <motion.div
+    initial={{ opacity: 0, y: 15 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8 }}
+    className="text-center"
+  >
+
+    <p
+      className={`
+        ${cormorant.className}
+        text-[14px]
+        font-semibold
+        uppercase
+        tracking-[0.28em]
+        text-[#B9964A]
+      `}
+    >
+      Será un honor contar con tu presencia
+    </p>
+
+    <h2
+      className={`
+        ${greatVibes.className}
+        mt-4
+        text-[50px]
+        leading-none
+        text-[#df668d]
+      `}
+    >
+      Confirma tu asistencia
+    </h2>
+
+  </motion.div>
+
+
+  {/* TARJETA DE CONFIRMACIÓN */}
+
+  <motion.div
+    initial={{ opacity: 0, y: 25 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8, delay: 0.15 }}
+    className="
+      mx-auto
+      mt-10
+      max-w-[390px]
+    "
+  >
+
+    <div
+      className="
+        rounded-[28px]
+        border
+        border-[#B9964A]/55
+        bg-white/80
+        px-5
+        py-7
+        shadow-[0_10px_30px_rgba(185,150,74,0.10)]
+      "
+    >
+
+      {/* PASES RESERVADOS */}
+
+      <div
+        className="
+          flex
+          items-center
+          justify-center
+          gap-3
+          rounded-full
+          border
+          border-[#B9964A]/50
+          bg-[#fffafc]
+          px-5
+          py-3
+        "
+      >
+
+        <svg
+          viewBox="0 0 24 24"
+          className="h-5 w-5 text-[#B9964A]"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M4 7.5V6a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v1.5" />
+          <path d="M4 16.5V18a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-1.5" />
+          <path d="M4 7.5C6 7.5 6 10 4 10s-2 2.5 0 2.5-2 2.5 0 2.5" />
+          <path d="M20 7.5c-2 0-2 2.5 0 2.5s2 2.5 0 2.5-2 2.5 0 2.5" />
+          <path d="M9 12h6" />
+        </svg>
+
+        <p
+          className={`
+            ${cormorant.className}
+            text-[14px]
+            font-semibold
+            uppercase
+            tracking-[0.16em]
+            text-[#222222]
+          `}
+        >
+          {textoReserva}
+        </p>
+
+      </div>
+
+
+      {/* TEXTO */}
+
+      <p
+        className={`
+          ${cormorant.className}
+          mt-7
+          text-[18px]
+          italic
+          leading-[1.5]
+          text-[#555555]
+        `}
+      >
+        A continuación selecciona los que necesitarás.
+      </p>
+
+
+      {/* ¿ASISTIRÁS? */}
+
+      <div className="mt-8">
+
+        <p
+          className={`
+            ${cormorant.className}
+            mb-3
+            text-left
+            text-[14px]
+            font-semibold
+            uppercase
+            tracking-[0.18em]
+            text-[#222222]
+          `}
+        >
+          ¿Asistirás?
+        </p>
+
+
+        <div className="grid grid-cols-2 gap-3">
+
+          {/* SÍ */}
+
+          <div
+            className="
+              flex
+              min-h-[92px]
+              flex-col
+              items-center
+              justify-center
+              rounded-[18px]
+              border
+              border-[#B9964A]
+              bg-[#fffaf2]
+              px-3
+              py-4
+            "
+          >
+
+            <svg
+              viewBox="0 0 32 32"
+              className="h-7 w-7 text-[#B9964A]"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
+              <path d="M16 27s-10-6-10-13a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 7-8 13-8 13Z" />
+              <path d="M12 16l3 3 6-7" />
+            </svg>
+
+            <span
+              className={`
+                ${cormorant.className}
+                mt-2
+                text-[15px]
+                font-semibold
+                uppercase
+                tracking-[0.06em]
+                text-[#B9964A]
+              `}
+            >
+              Sí, ahí estaré
+            </span>
+
+          </div>
+
+
+          {/* NO */}
+
+          <div
+            className="
+              flex
+              min-h-[92px]
+              flex-col
+              items-center
+              justify-center
+              rounded-[18px]
+              border
+              border-[#B9964A]/25
+              bg-white/60
+              px-3
+              py-4
+            "
+          >
+
+            <svg
+              viewBox="0 0 32 32"
+              className="h-7 w-7 text-[#777777]"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M16 27s-10-6-10-13a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 7-8 13-8 13Z" />
+              <path d="M12 12l8 8" />
+              <path d="M20 12l-8 8" />
+            </svg>
+
+            <span
+              className={`
+                ${cormorant.className}
+                mt-2
+                text-[15px]
+                font-semibold
+                uppercase
+                tracking-[0.06em]
+                text-[#777777]
+              `}
+            >
+              No podré asistir
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      {/* PASES A TU NOMBRE */}
+
+      <div className="mt-8">
+
+        <p
+          className={`
+            ${cormorant.className}
+            mb-3
+            text-left
+            text-[14px]
+            font-semibold
+            uppercase
+            tracking-[0.18em]
+            text-[#222222]
+          `}
+        >
+          Pases a tu nombre
+        </p>
+
+
+        <div
+          className="
+            rounded-[18px]
+            border
+            border-[#B9964A]
+            bg-[#fffaf2]
+            px-5
+            py-5
+          "
+        >
+
+          <div className="flex items-center justify-center gap-4">
+
+            <svg
+              viewBox="0 0 40 40"
+              className="h-9 w-9 text-[#B9964A]"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="20" cy="12" r="5" />
+              <path d="M10 31c0-6 4-10 10-10s10 4 10 10" />
+            </svg>
+
+            <div className="text-left">
 
               <p
                 className={`
                   ${cormorant.className}
-                  text-[14px]
+                  text-[27px]
                   font-semibold
-                  uppercase
-                  tracking-[0.30em]
-                  text-[#B9964A]
-                `}
-              >
-                Será un honor contar contigo
-              </p>
-
-              <h2
-                className={`
-                  ${greatVibes.className}
-                  mt-4
-                  text-[55px]
                   leading-none
                   text-[#df668d]
                 `}
               >
-                Confirma tu asistencia
-              </h2>
+                {pases}
+              </p>
 
-            </motion.div>
-
-            {/* =================================================
-                RESERVA DINÁMICA
-            ================================================= */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 40,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.8,
-              }}
-              className="
-                mx-auto
-                mt-12
-                max-w-[390px]
-              "
-            >
-
-              <div
-                className="
-                  rounded-[30px]
-                  border
-                  border-[#B9964A]/50
-                  bg-white/70
-                  px-6
-                  py-9
-                  shadow-[0_12px_35px_rgba(0,0,0,0.08)]
-                  backdrop-blur-sm
-                "
+              <p
+                className={`
+                  ${cormorant.className}
+                  mt-1
+                  text-[14px]
+                  uppercase
+                  tracking-[0.12em]
+                  text-[#555555]
+                `}
               >
+                {pases === 1 ? "pase reservado" : "pases reservados"}
+              </p>
 
-                <p
-                  className={`
-                    ${cormorant.className}
-                    text-[15px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.28em]
-                    text-[#222222]
-                  `}
-                >
-                  Hemos reservado
-                </p>
+            </div>
 
-                <p
-                  className={`
-                    ${cormorant.className}
-                    mt-4
-                    text-[28px]
-                    font-semibold
-                    uppercase
-                    leading-[1.25]
-                    tracking-[0.08em]
-                    text-[#df668d]
-                  `}
-                >
-                  {textoReserva}
-                </p>
+          </div>
 
-                <div className="mx-auto my-7 h-px w-20 bg-[#B9964A]/50" />
+        </div>
 
-                <button
-                  type="button"
-                  onClick={
-                    confirmarAsistencia
-                  }
-                  className="
-                    flex
-                    w-full
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#df668d]
-                    px-6
-                    py-4
-                    text-white
-                    shadow-[0_8px_25px_rgba(223,102,141,0.30)]
-                    transition
-                    duration-200
-                    hover:scale-[1.02]
-                    active:scale-95
-                  "
-                >
+      </div>
 
-                  <span
-                    className={`
-                      ${cormorant.className}
-                      text-[15px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.16em]
-                    `}
-                  >
-                    Confirmar mi asistencia
-                  </span>
 
-                </button>
+      {/* SEPARADOR */}
 
-              </div>
+      <div className="mx-auto my-8 flex items-center justify-center gap-3">
 
-            </motion.div>
+        <span className="h-px w-12 bg-[#B9964A]/45" />
 
-            <Separator />
+        <span className="text-[11px] text-[#B9964A]">
+          ✦
+        </span>
 
-            <motion.p
-              initial={{
-                opacity: 0,
-              }}
-              whileInView={{
-                opacity: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              className={`
-                ${greatVibes.className}
-                text-[38px]
-                text-[#df668d]
-              `}
-            >
-              Ivanna Loaeza
-            </motion.p>
+        <span className="h-px w-12 bg-[#B9964A]/45" />
 
-          </ElegantBackground>
+      </div>
+
+
+      {/* BOTÓN WHATSAPP */}
+
+      <button
+        type="button"
+        onClick={confirmarAsistencia}
+        className="
+          flex
+          w-full
+          items-center
+          justify-center
+          gap-3
+          rounded-full
+          bg-[#df668d]
+          px-6
+          py-4
+          text-white
+          shadow-[0_8px_25px_rgba(223,102,141,0.25)]
+          transition
+          duration-200
+          hover:scale-[1.02]
+          active:scale-95
+        "
+      >
+
+        <svg
+          viewBox="0 0 24 24"
+          className="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4A8 8 0 1 1 20 11.5Z" />
+          <path d="M9 9c.3 1.3 1.4 2.7 2.8 3.7 1.4 1 2.8 1.3 3.9.8" />
+        </svg>
+
+        <span
+          className={`
+            ${cormorant.className}
+            text-[15px]
+            font-semibold
+            uppercase
+            tracking-[0.14em]
+          `}
+        >
+          Confirmar mi asistencia
+        </span>
+
+      </button>
+
+    </div>
+
+  </motion.div>
+
+
+  <Separator />
+
+
+  <motion.p
+    initial={{
+      opacity: 0,
+    }}
+    whileInView={{
+      opacity: 1,
+    }}
+    viewport={{
+      once: true,
+    }}
+    className={`
+      ${greatVibes.className}
+      text-[38px]
+      text-[#df668d]
+    `}
+  >
+    Ivanna Loaeza
+  </motion.p>
+
+</ElegantBackground>
 
           {/* =================================================
               FINAL
