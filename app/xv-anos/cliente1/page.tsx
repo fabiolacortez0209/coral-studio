@@ -659,7 +659,7 @@ const [pasesSeleccionados, setPasesSeleccionados] =
   const confirmarAsistencia =
     () => {
       const mensaje =
-        "Hola, confirmo mi asistencia a los XV años de Ivanna Loaeza.";
+        "Hola, confirmo mi asistencia a los XV años de Ivanna Loaeza, 1 PASE.";
 
       const url =
         `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
@@ -2091,19 +2091,36 @@ animate={{
           <path d="M9 12h6" />
         </svg>
 
-        <p
-          className={`
-            ${cormorant.className}
-            text-[18px]
-            font-semibold
-            uppercase
-            leading-none
-            tracking-[0.12em]
-            text-[#222222]
-          `}
-        >
-          {textoReserva}
-        </p>
+ <div className="flex items-center justify-center gap-2">
+
+  <span
+    className="
+      text-[22px]
+      font-medium
+      leading-none
+      text-[#B9964A]
+    "
+  >
+    {pases}
+  </span>
+
+  <span
+    className={`
+      ${cormorant.className}
+      text-[18px]
+      font-semibold
+      uppercase
+      leading-none
+      tracking-[0.10em]
+      text-[#222222]
+    `}
+  >
+    {pases === 1
+      ? "LUGAR EN TU HONOR"
+      : "LUGARES EN SU HONOR"}
+  </span>
+
+</div>
 
       </div>
 
@@ -2424,73 +2441,79 @@ animate={{
   </motion.div>
 
 
-  <Separator />
-
-  <motion.p
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 1 }}
-    className={`
-      ${greatVibes.className}
-      mt-4
-      text-center
-      text-[36px]
-      text-[#df668d]
-    `}
-  >
-    Ivanna Loaeza
-  </motion.p>
+  
 
 </ElegantBackground>
+          
           {/* =================================================
-              FINAL
-          ================================================= */}
+    FINAL
+================================================= */}
 
-          <section
-            className="
-              relative
-              overflow-hidden
-              bg-[#fffdfd]
-              px-6
-              py-16
-              text-center
-            "
-          >
+<section
+  className="
+    relative
+    overflow-hidden
+    bg-[#fffdfd]
+    px-6
+    py-16
+    text-center
+  "
+>
 
-            <div className="mx-auto max-w-[400px]">
+  <div className="mx-auto max-w-[400px]">
 
-              <div className="mx-auto mb-5 h-px w-24 bg-[#B9964A]/45" />
+    <div className="mx-auto mb-5 h-px w-24 bg-[#B9964A]/45" />
 
-              <p
-                className={`
-                  ${cormorant.className}
-                  text-[13px]
-                  uppercase
-                  tracking-[0.25em]
-                  text-[#555555]
-                `}
-              >
-                Gracias por acompañarme
-              </p>
+    {/* CON CARIÑO */}
 
-              <p
-                className={`
-                  ${greatVibes.className}
-                  mt-4
-                  text-[45px]
-                  text-[#df668d]
-                `}
-              >
-                Mis XV Años
-              </p>
+    <p
+      className={`
+        ${cormorant.className}
+        text-[13px]
+        uppercase
+        tracking-[0.25em]
+        text-[#B9964A]
+      `}
+    >
+      Con cariño:
+    </p>
 
-              <div className="mx-auto mt-5 h-px w-24 bg-[#B9964A]/45" />
+    {/* NOMBRE */}
 
-            </div>
+    <p
+      className={`
+        ${greatVibes.className}
+        mt-3
+        text-[45px]
+        leading-none
+        text-[#df668d]
+      `}
+    >
+      Ivanna Loaeza
+    </p>
 
-          </section>
+    {/* MENSAJE */}
 
+    <p
+      className={`
+        ${cormorant.className}
+        mx-auto
+        mt-8
+        max-w-[330px]
+        text-[18px]
+        italic
+        leading-[1.5]
+        text-[#555555]
+      `}
+    >
+      «Tu compañía hace que este día sea aún más especial.»
+    </p>
+
+    <div className="mx-auto mt-7 h-px w-24 bg-[#B9964A]/45" />
+
+  </div>
+
+</section>
         </div>
       )}
 
