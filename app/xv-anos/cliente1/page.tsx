@@ -921,7 +921,13 @@ export default function Cliente1Page() {
                   delay: 1,
                   duration: 0.8,
                 }}
-                className="flex flex-col items-center"
+                className="
+  flex
+  translate-y-[10vh]
+  flex-col
+  items-center
+  text-center
+"
               >
 
                 <span
