@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Great_Vibes, Cormorant_Garamond } from "next/font/google";
 import OpeningEnvelope from "./components/OpeningEnvelope";
 
@@ -31,7 +31,7 @@ const MAPS_RECEPCION =
    ANIMACIONES
 ========================================================= */
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: {
     opacity: 0,
     y: 45,
@@ -46,7 +46,7 @@ const fadeUp = {
   },
 };
 
-const fromLeft = {
+const fromLeft: Variants = {
   hidden: {
     opacity: 0,
     x: -70,
@@ -61,7 +61,7 @@ const fromLeft = {
   },
 };
 
-const fromRight = {
+const fromRight: Variants = {
   hidden: {
     opacity: 0,
     x: 70,
