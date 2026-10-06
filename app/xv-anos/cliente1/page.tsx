@@ -656,23 +656,51 @@ const [pasesSeleccionados, setPasesSeleccionados] =
      SOLO ENVÍA EL MENSAJE DEFINIDO.
   ========================================================= */
 
-  const confirmarAsistencia =
-    () => {
-      const mensaje =
-        "Hola, confirmo mi asistencia a los XV años de Ivanna Loaeza, 1 PASE.";
+  const confirmarAsistencia = () => {
 
-      const url =
-        `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
-          mensaje
-        )}`;
+  if (asistencia === "no") {
 
-      window.open(
-        url,
-        "_blank",
-        "noopener,noreferrer"
-      );
-    };
+    const mensaje =
+      "NO PODRÉ ASISTIR A LOS XV DE IVANNA.";
 
+    const url =
+      `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
+        mensaje
+      )}`;
+
+    window.open(
+      url,
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+    return;
+  }
+
+  if (asistencia === "si") {
+
+    const mensaje =
+      `CONFIRMO MI ASISTENCIA A LOS XV DE IVANNA — ${pasesSeleccionados} ${
+        pasesSeleccionados === 1
+          ? "PASE"
+          : "PASES"
+      }`;
+
+    const url =
+      `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
+        mensaje
+      )}`;
+
+    window.open(
+      url,
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+    return;
+  }
+
+};
   /* =========================================================
      TEXTO DE RESERVA
   ========================================================= */
@@ -2012,8 +2040,8 @@ animate={{
     <p
       className={`
         ${cormorant.className}
-        text-[14px]
-        font-semibold
+        text-[17px]
+        font-bold
         uppercase
         tracking-[0.28em]
         text-[#B9964A]
