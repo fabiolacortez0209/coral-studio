@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/Ivanna/:pases",
-        destination: "/xv-anos/Ivanna?pases=:pases",
+      destination: "/xv-anos/Ivanna/:pases",
       },
     ];
   },
