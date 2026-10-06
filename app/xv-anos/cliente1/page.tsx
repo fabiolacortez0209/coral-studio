@@ -1040,40 +1040,44 @@ animate={{
 
             <Separator />
 
-            <motion.h2
-              initial="hidden"
-              whileInView="visible"
-              viewport={{
-                once: true,
-              }}
-              variants={fromLeft}
-              className={`
-                ${greatVibes.className}
-                text-[46px]
-                leading-none
-                text-[#171717]
-              `}
-            >
-              Mis XV Años
-            </motion.h2>
+           <div className="translate-y-16">
 
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              viewport={{
-                once: true,
-              }}
-              variants={fromRight}
-              className={`
-                ${greatVibes.className}
-                mt-5
-                text-[49px]
-                leading-none
-                text-[#df668d]
-              `}
-            >
-              Ivanna Loaeza
-            </motion.p>
+  <motion.h2
+    initial="hidden"
+    whileInView="visible"
+    viewport={{
+      once: true,
+    }}
+    variants={fromLeft}
+    className={`
+      ${greatVibes.className}
+      text-[46px]
+      leading-none
+      text-[#171717]
+    `}
+  >
+    Mis XV Años
+  </motion.h2>
+
+  <motion.p
+    initial="hidden"
+    whileInView="visible"
+    viewport={{
+      once: true,
+    }}
+    variants={fromRight}
+    className={`
+      ${greatVibes.className}
+      mt-5
+      text-[49px]
+      leading-none
+      text-[#df668d]
+    `}
+  >
+    Ivanna Loaeza
+  </motion.p>
+
+</div>
 
           </ElegantBackground>
 
