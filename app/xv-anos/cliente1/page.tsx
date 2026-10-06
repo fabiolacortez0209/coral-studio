@@ -479,7 +479,12 @@ export default function Cliente1Page() {
   });
 
   const [pases, setPases] = useState(1);
+const [asistencia, setAsistencia] = useState<
+  "si" | "no" | null
+>(null);
 
+const [pasesSeleccionados, setPasesSeleccionados] =
+  useState(1);
   const audioRef =
     useRef<HTMLAudioElement | null>(null);
 
@@ -1983,12 +1988,11 @@ animate={{
             </motion.div>
 
           </section>
+{/* =================================================
+    CONFIRMACIÓN DE ASISTENCIA
+================================================= */}
 
-          {/* =================================================
-              CONFIRMACIÓN
-          ================================================= */}
-
-          <ElegantBackground className="pt-20 pb-24">
+<ElegantBackground className="pt-20 pb-24">
 
   {/* ENCABEZADO */}
 
@@ -2028,7 +2032,7 @@ animate={{
   </motion.div>
 
 
-  {/* TARJETA DE CONFIRMACIÓN */}
+  {/* TARJETA */}
 
   <motion.div
     initial={{ opacity: 0, y: 25 }}
@@ -2067,13 +2071,13 @@ animate={{
           border-[#B9964A]/50
           bg-[#fffafc]
           px-5
-          py-3
+          py-4
         "
       >
 
         <svg
           viewBox="0 0 24 24"
-          className="h-5 w-5 text-[#B9964A]"
+          className="h-6 w-6 shrink-0 text-[#B9964A]"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.6"
@@ -2090,10 +2094,11 @@ animate={{
         <p
           className={`
             ${cormorant.className}
-            text-[14px]
+            text-[18px]
             font-semibold
             uppercase
-            tracking-[0.16em]
+            leading-none
+            tracking-[0.12em]
             text-[#222222]
           `}
         >
@@ -2101,22 +2106,6 @@ animate={{
         </p>
 
       </div>
-
-
-      {/* TEXTO */}
-
-      <p
-        className={`
-          ${cormorant.className}
-          mt-7
-          text-[18px]
-          italic
-          leading-[1.5]
-          text-[#555555]
-        `}
-      >
-        A continuación selecciona los que necesitarás.
-      </p>
 
 
       {/* ¿ASISTIRÁS? */}
@@ -2143,25 +2132,40 @@ animate={{
 
           {/* SÍ */}
 
-          <div
-            className="
+          <button
+            type="button"
+            onClick={() => setAsistencia("si")}
+            className={`
               flex
               min-h-[92px]
               flex-col
               items-center
               justify-center
               rounded-[18px]
-              border
-              border-[#B9964A]
-              bg-[#fffaf2]
               px-3
               py-4
-            "
+              transition
+              duration-200
+              active:scale-95
+              ${
+                asistencia === "si"
+                  ? "border border-[#B9964A] bg-[#fffaf2]"
+                  : "border border-[#B9964A]/25 bg-white/60"
+              }
+            `}
           >
 
             <svg
               viewBox="0 0 32 32"
-              className="h-7 w-7 text-[#B9964A]"
+              className={`
+                h-7
+                w-7
+                ${
+                  asistencia === "si"
+                    ? "text-[#B9964A]"
+                    : "text-[#999999]"
+                }
+              `}
               fill="none"
               stroke="currentColor"
               strokeWidth="1.5"
@@ -2180,36 +2184,55 @@ animate={{
                 font-semibold
                 uppercase
                 tracking-[0.06em]
-                text-[#B9964A]
+                ${
+                  asistencia === "si"
+                    ? "text-[#B9964A]"
+                    : "text-[#777777]"
+                }
               `}
             >
               Sí, ahí estaré
             </span>
 
-          </div>
+          </button>
 
 
           {/* NO */}
 
-          <div
-            className="
+          <button
+            type="button"
+            onClick={() => setAsistencia("no")}
+            className={`
               flex
               min-h-[92px]
               flex-col
               items-center
               justify-center
               rounded-[18px]
-              border
-              border-[#B9964A]/25
-              bg-white/60
               px-3
               py-4
-            "
+              transition
+              duration-200
+              active:scale-95
+              ${
+                asistencia === "no"
+                  ? "border border-[#B9964A] bg-[#fffaf2]"
+                  : "border border-[#B9964A]/25 bg-white/60"
+              }
+            `}
           >
 
             <svg
               viewBox="0 0 32 32"
-              className="h-7 w-7 text-[#777777]"
+              className={`
+                h-7
+                w-7
+                ${
+                  asistencia === "no"
+                    ? "text-[#B9964A]"
+                    : "text-[#777777]"
+                }
+              `}
               fill="none"
               stroke="currentColor"
               strokeWidth="1.5"
@@ -2229,20 +2252,24 @@ animate={{
                 font-semibold
                 uppercase
                 tracking-[0.06em]
-                text-[#777777]
+                ${
+                  asistencia === "no"
+                    ? "text-[#B9964A]"
+                    : "text-[#777777]"
+                }
               `}
             >
               No podré asistir
             </span>
 
-          </div>
+          </button>
 
         </div>
 
       </div>
 
 
-      {/* PASES A TU NOMBRE */}
+      {/* ¿CUÁNTOS ASISTIRÁN? */}
 
       <div className="mt-8">
 
@@ -2258,66 +2285,56 @@ animate={{
             text-[#222222]
           `}
         >
-          Pases a tu nombre
+          ¿Cuántos asistirán?
         </p>
 
 
-        <div
-          className="
-            rounded-[18px]
-            border
-            border-[#B9964A]
-            bg-[#fffaf2]
-            px-5
-            py-5
-          "
-        >
+        <div className="grid grid-cols-5 gap-2">
 
-          <div className="flex items-center justify-center gap-4">
+          {Array.from(
+            { length: pases },
+            (_, index) => index + 1
+          ).map((numero) => (
 
-            <svg
-              viewBox="0 0 40 40"
-              className="h-9 w-9 text-[#B9964A]"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+            <button
+              key={numero}
+              type="button"
+              disabled={asistencia === "no"}
+              onClick={() =>
+                setPasesSeleccionados(numero)
+              }
+              className={`
+                flex
+                h-12
+                items-center
+                justify-center
+                rounded-full
+                border
+                transition
+                duration-200
+                active:scale-90
+                ${
+                  pasesSeleccionados === numero &&
+                  asistencia !== "no"
+                    ? "border-[#B9964A] bg-[#fffaf2] text-[#df668d]"
+                    : "border-[#B9964A]/30 bg-white/60 text-[#777777]"
+                }
+              `}
             >
-              <circle cx="20" cy="12" r="5" />
-              <path d="M10 31c0-6 4-10 10-10s10 4 10 10" />
-            </svg>
 
-            <div className="text-left">
-
-              <p
+              <span
                 className={`
                   ${cormorant.className}
-                  text-[27px]
+                  text-[20px]
                   font-semibold
-                  leading-none
-                  text-[#df668d]
                 `}
               >
-                {pases}
-              </p>
+                {numero}
+              </span>
 
-              <p
-                className={`
-                  ${cormorant.className}
-                  mt-1
-                  text-[14px]
-                  uppercase
-                  tracking-[0.12em]
-                  text-[#555555]
-                `}
-              >
-                {pases === 1 ? "pase reservado" : "pases reservados"}
-              </p>
+            </button>
 
-            </div>
-
-          </div>
+          ))}
 
         </div>
 
@@ -2326,7 +2343,16 @@ animate={{
 
       {/* SEPARADOR */}
 
-      <div className="mx-auto my-8 flex items-center justify-center gap-3">
+      <div
+        className="
+          mx-auto
+          my-8
+          flex
+          items-center
+          justify-center
+          gap-3
+        "
+      >
 
         <span className="h-px w-12 bg-[#B9964A]/45" />
 
@@ -2344,23 +2370,26 @@ animate={{
       <button
         type="button"
         onClick={confirmarAsistencia}
-        className="
+        disabled={asistencia === null}
+        className={`
           flex
           w-full
           items-center
           justify-center
           gap-3
           rounded-full
-          bg-[#df668d]
           px-6
           py-4
           text-white
           shadow-[0_8px_25px_rgba(223,102,141,0.25)]
           transition
           duration-200
-          hover:scale-[1.02]
-          active:scale-95
-        "
+          ${
+            asistencia === null
+              ? "cursor-not-allowed bg-[#df668d]/40"
+              : "bg-[#df668d] hover:scale-[1.02] active:scale-95"
+          }
+        `}
       >
 
         <svg
@@ -2397,20 +2426,16 @@ animate={{
 
   <Separator />
 
-
   <motion.p
-    initial={{
-      opacity: 0,
-    }}
-    whileInView={{
-      opacity: 1,
-    }}
-    viewport={{
-      once: true,
-    }}
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 1 }}
     className={`
       ${greatVibes.className}
-      text-[38px]
+      mt-4
+      text-center
+      text-[36px]
       text-[#df668d]
     `}
   >
@@ -2418,7 +2443,6 @@ animate={{
   </motion.p>
 
 </ElegantBackground>
-
           {/* =================================================
               FINAL
           ================================================= */}
