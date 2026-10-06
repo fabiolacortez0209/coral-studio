@@ -1513,7 +1513,7 @@ animate={{
               <p
                 className={`
                   ${cormorant.className}
-                  mt-6
+                  mt-14
                   text-[16px]
                   uppercase
                   tracking-[0.25em]
@@ -1531,7 +1531,7 @@ animate={{
               DETALLES DEL EVENTO
           ================================================= */}
 
-          <ElegantBackground className="py-24">
+          <ElegantBackground className="pt-2 pb-24">
 
             <motion.div
               initial="hidden"
