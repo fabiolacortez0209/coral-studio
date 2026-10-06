@@ -2,9 +2,16 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
-import { Great_Vibes, Cormorant_Garamond } from "next/font/google";
+import {
+  Great_Vibes,
+  Cormorant_Garamond,
+} from "next/font/google";
 
 import OpeningEnvelope from "./components/OpeningEnvelope";
+
+/* =========================================================
+   FUENTES
+========================================================= */
 
 const greatVibes = Great_Vibes({
   subsets: ["latin"],
@@ -16,12 +23,16 @@ const cormorant = Cormorant_Garamond({
   weight: ["400", "500", "600"],
 });
 
+/* =========================================================
+   DATOS
+========================================================= */
+
 const WHATSAPP = "526131053146";
 
-const CEREMONY_MAPS =
+const MAPS_CEREMONIA =
   "https://maps.app.goo.gl/ntHJ4B5UKWXznyUAA";
 
-const RECEPTION_MAPS =
+const MAPS_RECEPCION =
   "https://maps.app.goo.gl/pMTSphBSCt5zy7Wq8";
 
 /* =========================================================
@@ -31,13 +42,15 @@ const RECEPTION_MAPS =
 const fadeUp: Variants = {
   hidden: {
     opacity: 0,
-    y: 35,
+    y: 45,
   },
+
   visible: {
     opacity: 1,
     y: 0,
+
     transition: {
-      duration: 0.9,
+      duration: 0.8,
       ease: "easeOut",
     },
   },
@@ -46,13 +59,15 @@ const fadeUp: Variants = {
 const fromLeft: Variants = {
   hidden: {
     opacity: 0,
-    x: -45,
+    x: -70,
   },
+
   visible: {
     opacity: 1,
     x: 0,
+
     transition: {
-      duration: 0.9,
+      duration: 0.85,
       ease: "easeOut",
     },
   },
@@ -61,74 +76,143 @@ const fromLeft: Variants = {
 const fromRight: Variants = {
   hidden: {
     opacity: 0,
-    x: 45,
+    x: 70,
   },
+
   visible: {
     opacity: 1,
     x: 0,
+
     transition: {
-      duration: 0.9,
+      duration: 0.85,
       ease: "easeOut",
     },
   },
 };
 
 /* =========================================================
-   DESTELLOS
+   BRILLOS
 ========================================================= */
 
 function Sparkles() {
+  const sparkles = [
+    {
+      left: "8%",
+      delay: 0,
+      duration: 7,
+      size: 4,
+    },
+
+    {
+      left: "18%",
+      delay: 2,
+      duration: 9,
+      size: 3,
+    },
+
+    {
+      left: "30%",
+      delay: 4,
+      duration: 8,
+      size: 5,
+    },
+
+    {
+      left: "43%",
+      delay: 1,
+      duration: 10,
+      size: 3,
+    },
+
+    {
+      left: "56%",
+      delay: 3,
+      duration: 8,
+      size: 4,
+    },
+
+    {
+      left: "68%",
+      delay: 5,
+      duration: 9,
+      size: 3,
+    },
+
+    {
+      left: "80%",
+      delay: 2,
+      duration: 7,
+      size: 4,
+    },
+
+    {
+      left: "91%",
+      delay: 4,
+      duration: 10,
+      size: 3,
+    },
+  ];
+
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <span className="absolute left-[10%] top-[12%] h-1.5 w-1.5 rounded-full bg-[#B9964A]/50" />
-      <span className="absolute right-[12%] top-[20%] h-1 w-1 rounded-full bg-[#B9964A]/60" />
-      <span className="absolute left-[18%] top-[48%] h-1 w-1 rounded-full bg-[#B9964A]/40" />
-      <span className="absolute right-[18%] top-[62%] h-1.5 w-1.5 rounded-full bg-[#B9964A]/45" />
-      <span className="absolute left-[30%] bottom-[20%] h-1 w-1 rounded-full bg-[#B9964A]/50" />
-      <span className="absolute right-[30%] bottom-[12%] h-1.5 w-1.5 rounded-full bg-[#B9964A]/40" />
-
-      <span className="absolute left-[7%] top-[30%] text-[11px] text-[#B9964A]/45">
-        ✦
-      </span>
-
-      <span className="absolute right-[8%] top-[45%] text-[9px] text-[#B9964A]/50">
-        ✦
-      </span>
-
-      <span className="absolute left-[12%] bottom-[30%] text-[8px] text-[#B9964A]/40">
-        ✦
-      </span>
-
-      <span className="absolute right-[15%] bottom-[25%] text-[10px] text-[#B9964A]/45">
-        ✦
-      </span>
+    <div className="pointer-events-none absolute inset-0 z-[2] overflow-hidden">
+      {sparkles.map((sparkle, index) => (
+        <motion.span
+          key={index}
+          className="
+            absolute
+            top-[-20px]
+            rounded-full
+            bg-[#d8b66a]
+            shadow-[0_0_8px_rgba(216,182,106,0.75)]
+          "
+          style={{
+            left: sparkle.left,
+            width: sparkle.size,
+            height: sparkle.size,
+          }}
+          animate={{
+            y: ["0vh", "115vh"],
+            opacity: [0, 1, 0.8, 0],
+            rotate: [0, 90, 180],
+          }}
+          transition={{
+            duration: sparkle.duration,
+            delay: sparkle.delay,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+      ))}
     </div>
   );
 }
 
 /* =========================================================
-   FONDO
+   FONDO DE SECCIONES
 ========================================================= */
 
 function ElegantBackground({
   children,
+  className = "",
 }: {
   children: React.ReactNode;
+  className?: string;
 }) {
   return (
     <section
-      className="
+      className={`
         relative
+        w-full
         overflow-hidden
         bg-[#fffdfd]
-      "
+        px-6
+        py-20
+        text-center
+        ${className}
+      `}
     >
       <div
-        className="
-          absolute
-          inset-0
-          pointer-events-none
-        "
+        className="pointer-events-none absolute inset-0"
         style={{
           background: `
             radial-gradient(
@@ -138,30 +222,59 @@ function ElegantBackground({
               transparent 45%
             ),
             radial-gradient(
-              ellipse at 100% 0%,
-              rgba(244,128,157,0.17) 0%,
-              rgba(244,128,157,0.06) 20%,
-              transparent 45%
+              ellipse at 100% 5%,
+              rgba(244,128,157,0.16) 0%,
+              rgba(244,128,157,0.06) 22%,
+              transparent 46%
             ),
             radial-gradient(
               ellipse at 0% 100%,
               rgba(228,83,126,0.13) 0%,
-              rgba(228,83,126,0.05) 20%,
+              rgba(228,83,126,0.04) 20%,
               transparent 45%
             ),
             radial-gradient(
               ellipse at 100% 100%,
-              rgba(241,105,145,0.13) 0%,
-              rgba(241,105,145,0.05) 20%,
+              rgba(241,105,145,0.14) 0%,
+              rgba(241,105,145,0.04) 20%,
               transparent 45%
-            )
+            ),
+            #fffdfd
           `,
         }}
       />
 
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -left-24
+          top-[20%]
+          h-64
+          w-64
+          rounded-full
+          bg-[#ef7197]/10
+          blur-3xl
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -right-24
+          bottom-[15%]
+          h-64
+          w-64
+          rounded-full
+          bg-[#f27c9e]/10
+          blur-3xl
+        "
+      />
+
       <Sparkles />
 
-      <div className="relative z-10">
+      <div className="relative z-10 mx-auto w-full max-w-[520px]">
         {children}
       </div>
     </section>
@@ -174,212 +287,176 @@ function ElegantBackground({
 
 function Separator() {
   return (
-    <div className="flex items-center justify-center gap-3">
-      <span className="h-px w-12 bg-[#B9964A]/45" />
+    <div className="my-9 flex items-center justify-center gap-3">
+      <span className="h-px w-14 bg-[#B9964A]/45" />
 
-      <span className="text-[10px] text-[#B9964A]">
+      <span className="text-[11px] text-[#B9964A]">
         ✦
       </span>
 
-      <span className="h-px w-12 bg-[#B9964A]/45" />
+      <span className="h-px w-14 bg-[#B9964A]/45" />
     </div>
   );
 }
 
 /* =========================================================
-   BOTÓN DE UBICACIÓN
+   BOTÓN UBICACIÓN
 ========================================================= */
 
 function LocationButton({
-  href,
+  url,
 }: {
-  href: string;
+  url: string;
 }) {
   return (
     <a
-      href={href}
+      href={url}
       target="_blank"
       rel="noopener noreferrer"
       className="
-        mt-4
+        mt-5
         inline-flex
         items-center
         justify-center
+        gap-2
         rounded-full
         border
-        border-[#B9964A]/60
-        px-6
+        border-[#B9964A]
+        bg-white/50
+        px-7
         py-2.5
-        text-[12px]
-        font-semibold
-        uppercase
-        tracking-[0.16em]
-        text-[#8c7134]
+        text-[#222222]
+        shadow-sm
+        backdrop-blur-sm
         transition
-        hover:bg-[#B9964A]/10
+        duration-200
+        hover:bg-white
+        active:scale-95
       "
     >
-      Ver ubicación
+      <span className="text-[17px] text-[#df668d]">
+        ●
+      </span>
+
+      <span
+        className={`
+          ${cormorant.className}
+          text-[13px]
+          font-semibold
+          uppercase
+          tracking-[0.18em]
+        `}
+      >
+        Ver ubicación
+      </span>
     </a>
   );
 }
 
 /* =========================================================
    ICONO VESTIMENTA
+   MISMO ESTILO LINEAL DE CEREMONIA / RECEPCIÓN
 ========================================================= */
 
 function DressIcon() {
   return (
     <svg
-      width="44"
-      height="44"
-      viewBox="0 0 48 48"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 64 64"
+      className="h-8 w-8"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
-      <path
-        d="M18 8C18 12 20.5 15 24 15C27.5 15 30 12 30 8"
-        stroke="#B9964A"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-      />
+      <path d="M25 9L32 15L39 9L45 17L40 27L46 54H18L24 27L19 17L25 9Z" />
 
-      <path
-        d="M19 14L13 21L18 25L11 40H37L30 25L35 21L29 14"
-        stroke="#B9964A"
-        strokeWidth="1.4"
-        strokeLinejoin="round"
-      />
+      <path d="M24 27H40" />
 
-      <path
-        d="M18 25H30"
-        stroke="#B9964A"
-        strokeWidth="1.2"
-      />
+      <path d="M27 15H37" />
     </svg>
   );
 }
 
 /* =========================================================
    ICONO REGALO
+   MISMO ESTILO LINEAL
 ========================================================= */
 
 function GiftIcon() {
   return (
     <svg
-      width="44"
-      height="44"
-      viewBox="0 0 48 48"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 64 64"
+      className="h-8 w-8"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <rect
         x="9"
-        y="19"
-        width="30"
-        height="21"
+        y="25"
+        width="46"
+        height="30"
         rx="2"
-        stroke="#B9964A"
-        strokeWidth="1.4"
       />
 
-      <path
-        d="M7 19H41V24H7V19Z"
-        stroke="#B9964A"
-        strokeWidth="1.4"
-      />
+      <path d="M32 25V55" />
 
-      <path
-        d="M24 19V40"
-        stroke="#B9964A"
-        strokeWidth="1.4"
-      />
+      <path d="M9 34H55" />
 
-      <path
-        d="M24 19C24 14 21 10 17.5 10C15.5 10 14 11.5 14 13.5C14 17 19 19 24 19Z"
-        stroke="#B9964A"
-        strokeWidth="1.4"
-      />
+      <path d="M32 25C26 25 18 22 18 17C18 13 22 11 26 13C30 15 32 25 32 25Z" />
 
-      <path
-        d="M24 19C24 14 27 10 30.5 10C32.5 10 34 11.5 34 13.5C34 17 29 19 24 19Z"
-        stroke="#B9964A"
-        strokeWidth="1.4"
-      />
+      <path d="M32 25C38 25 46 22 46 17C46 13 42 11 38 13C34 15 32 25 32 25Z" />
     </svg>
   );
 }
 
 /* =========================================================
-   ICONO PLATO + CUBIERTOS
+   ICONO PLATO / CUBIERTOS
+   PARA DAR EL DETALLE GASTRONÓMICO
 ========================================================= */
 
 function PlateIcon() {
   return (
     <svg
-      width="44"
-      height="44"
-      viewBox="0 0 48 48"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 64 64"
+      className="h-8 w-8"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <circle
-        cx="24"
-        cy="25"
-        r="12"
-        stroke="#B9964A"
-        strokeWidth="1.4"
+        cx="31"
+        cy="32"
+        r="17"
       />
 
       <circle
-        cx="24"
-        cy="25"
-        r="8"
-        stroke="#B9964A"
-        strokeWidth="1"
+        cx="31"
+        cy="32"
+        r="12"
       />
 
-      <path
-        d="M8 10V22"
-        stroke="#B9964A"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-      />
+      <path d="M54 13V51" />
 
-      <path
-        d="M11 10V22"
-        stroke="#B9964A"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-      />
+      <path d="M50 13V25" />
 
-      <path
-        d="M14 10V22"
-        stroke="#B9964A"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-      />
+      <path d="M54 25H50" />
 
-      <path
-        d="M11 22V39"
-        stroke="#B9964A"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-      />
+      <path d="M10 13V25" />
 
-      <path
-        d="M39 10V39"
-        stroke="#B9964A"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-      />
+      <path d="M14 13V25" />
 
-      <path
-        d="M39 10C35 15 35 20 39 23"
-        stroke="#B9964A"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-      />
+      <path d="M10 19H14" />
+
+      <path d="M12 25V51" />
     </svg>
   );
 }
@@ -390,7 +467,9 @@ function PlateIcon() {
 
 export default function Cliente1Page() {
   const [abierta, setAbierta] = useState(false);
-  const [musicaActiva, setMusicaActiva] = useState(false);
+
+  const [musicaActiva, setMusicaActiva] =
+    useState(false);
 
   const [tiempo, setTiempo] = useState({
     dias: 0,
@@ -401,17 +480,27 @@ export default function Cliente1Page() {
 
   const [pases, setPases] = useState(1);
 
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioRef =
+    useRef<HTMLAudioElement | null>(null);
 
   /* =========================================================
-     LEER PASES DE LA URL
+     LEER ?pases=1 ... ?pases=5
   ========================================================= */
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const valor = Number(params.get("pases"));
+    const parametros =
+      new URLSearchParams(
+        window.location.search
+      );
 
-    if (valor >= 1 && valor <= 5) {
+    const valor =
+      Number(parametros.get("pases"));
+
+    if (
+      Number.isInteger(valor) &&
+      valor >= 1 &&
+      valor <= 5
+    ) {
       setPases(valor);
     } else {
       setPases(1);
@@ -428,8 +517,11 @@ export default function Cliente1Page() {
     ).getTime();
 
     const actualizarCuenta = () => {
-      const ahora = new Date().getTime();
-      const diferencia = fechaObjetivo - ahora;
+      const ahora =
+        new Date().getTime();
+
+      const diferencia =
+        fechaObjetivo - ahora;
 
       if (diferencia <= 0) {
         setTiempo({
@@ -443,15 +535,20 @@ export default function Cliente1Page() {
       }
 
       const dias = Math.floor(
-        diferencia / (1000 * 60 * 60 * 24)
+        diferencia /
+          (1000 * 60 * 60 * 24)
       );
 
       const horas = Math.floor(
-        (diferencia / (1000 * 60 * 60)) % 24
+        (diferencia /
+          (1000 * 60 * 60)) %
+          24
       );
 
       const minutos = Math.floor(
-        (diferencia / (1000 * 60)) % 60
+        (diferencia /
+          (1000 * 60)) %
+          60
       );
 
       const segundos = Math.floor(
@@ -468,16 +565,18 @@ export default function Cliente1Page() {
 
     actualizarCuenta();
 
-    const intervalo = setInterval(
-      actualizarCuenta,
-      1000
-    );
+    const intervalo =
+      setInterval(
+        actualizarCuenta,
+        1000
+      );
 
-    return () => clearInterval(intervalo);
+    return () =>
+      clearInterval(intervalo);
   }, []);
 
   /* =========================================================
-     INICIAR MÚSICA
+     MÚSICA
   ========================================================= */
 
   const iniciarMusica = async () => {
@@ -485,7 +584,9 @@ export default function Cliente1Page() {
 
     try {
       audioRef.current.currentTime = 0;
+
       await audioRef.current.play();
+
       setMusicaActiva(true);
     } catch (error) {
       console.error(
@@ -497,27 +598,19 @@ export default function Cliente1Page() {
     }
   };
 
-  /* =========================================================
-     ABRIR INVITACIÓN
-  ========================================================= */
-
-  const abrirInvitacion = () => {
-    setAbierta(true);
-  };
-
-  /* =========================================================
-     CONTROL DE MÚSICA
-  ========================================================= */
-
   const alternarMusica = async () => {
     if (!audioRef.current) return;
 
     try {
-      if (audioRef.current.paused) {
+      if (
+        audioRef.current.paused
+      ) {
         await audioRef.current.play();
+
         setMusicaActiva(true);
       } else {
         audioRef.current.pause();
+
         setMusicaActiva(false);
       }
     } catch (error) {
@@ -529,38 +622,57 @@ export default function Cliente1Page() {
   };
 
   /* =========================================================
-     FORMATO DE NÚMEROS
+     ABRIR
   ========================================================= */
 
-  const dosDigitos = (numero: number) => {
-    return String(numero).padStart(2, "0");
+  const abrirInvitacion = () => {
+    setAbierta(true);
   };
 
   /* =========================================================
-     CONFIRMAR ASISTENCIA
+     FORMATO
   ========================================================= */
 
-  const confirmarAsistencia = () => {
-    const mensaje =
-      "Hola, confirmo mi asistencia a los XV años de Ivanna Loaeza.";
-
-    const url =
-      `https://wa.me/${WHATSAPP}?text=` +
-      encodeURIComponent(mensaje);
-
-    window.open(url, "_blank");
+  const dosDigitos = (
+    numero: number
+  ) => {
+    return String(numero).padStart(
+      2,
+      "0"
+    );
   };
 
   /* =========================================================
-     TEXTO DE PASES
+     WHATSAPP
+     
+     IMPORTANTE:
+     NO ENVÍA NÚMERO DE PASES.
+     NO ENVÍA NOMBRE.
+     SOLO ENVÍA EL MENSAJE DEFINIDO.
+  ========================================================= */
+
+  const confirmarAsistencia =
+    () => {
+      const mensaje =
+        "Hola, confirmo mi asistencia a los XV años de Ivanna Loaeza.";
+
+      const url =
+        `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
+          mensaje
+        )}`;
+
+      window.open(
+        url,
+        "_blank",
+        "noopener,noreferrer"
+      );
+    };
+
+  /* =========================================================
+     TEXTO DE RESERVA
   ========================================================= */
 
   const textoReserva =
-    pases === 1
-      ? "HEMOS RESERVADO"
-      : "HEMOS RESERVADO";
-
-  const cantidadReserva =
     pases === 1
       ? "1 LUGAR EN TU HONOR"
       : `${pases} LUGARES EN SU HONOR`;
@@ -570,7 +682,7 @@ export default function Cliente1Page() {
 
       {/* =====================================================
           AUDIO
-      ===================================================== */}
+      ====================================================== */}
 
       <audio
         ref={audioRef}
@@ -579,10 +691,9 @@ export default function Cliente1Page() {
         preload="auto"
       />
 
-
       {/* =====================================================
           SOBRE
-      ===================================================== */}
+      ====================================================== */}
 
       {!abierta && (
         <OpeningEnvelope
@@ -591,12 +702,15 @@ export default function Cliente1Page() {
         />
       )}
 
+      {/* =====================================================
+          INVITACIÓN
+      ====================================================== */}
 
       {abierta && (
         <div className="relative w-full">
 
           {/* =================================================
-              BOTÓN DE MÚSICA
+              BOTÓN MÚSICA
           ================================================= */}
 
           <button
@@ -627,10 +741,6 @@ export default function Cliente1Page() {
               transition
               duration-200
               active:scale-90
-              sm:right-6
-              sm:top-6
-              sm:h-12
-              sm:w-12
             "
           >
             {musicaActiva ? (
@@ -644,9 +754,11 @@ export default function Cliente1Page() {
             )}
           </button>
 
-
           {/* =================================================
-              PANTALLA 1 — PORTADA
+              FOTO 1 — PORTADA
+              
+              EAGER + HIGH PRIORITY
+              para que cargue primero.
           ================================================= */}
 
           <section
@@ -658,8 +770,6 @@ export default function Cliente1Page() {
               bg-black
             "
           >
-
-            {/* FOTO 1 */}
 
             <img
               src="/cliente1/FOTO 1.jpg"
@@ -679,16 +789,14 @@ export default function Cliente1Page() {
               "
             />
 
-            {/* OSCURECIDO */}
-
             <div
               className="
                 absolute
                 inset-0
                 bg-gradient-to-b
-                from-black/35
+                from-black/45
                 via-transparent
-                to-black/50
+                to-black/60
               "
             />
 
@@ -696,29 +804,23 @@ export default function Cliente1Page() {
               className="
                 relative
                 z-10
+                flex
                 min-h-[100dvh]
                 w-full
+                flex-col
+                items-center
+                justify-between
+                px-5
+                py-[8vh]
                 text-white
               "
             >
 
-              {/* =================================================
-                  PARTE SUPERIOR
-              ================================================= */}
-
-              <div
-                className="
-                  absolute
-                  left-0
-                  right-0
-                  top-0
-                  flex
-                  flex-col
-                  items-center
-                  px-5
-                  pt-[7vh]
-                  text-center
-                "
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={fadeUp}
+                className="text-center"
               >
 
                 <p
@@ -729,12 +831,10 @@ export default function Cliente1Page() {
                     uppercase
                     tracking-[0.30em]
                     drop-shadow-[0_2px_7px_rgba(0,0,0,0.85)]
-                    sm:text-[15px]
                   `}
                 >
                   Una noche especial
                 </p>
-
 
                 <h1
                   className={`
@@ -746,114 +846,89 @@ export default function Cliente1Page() {
                     leading-none
                     tracking-[0.07em]
                     drop-shadow-[0_3px_9px_rgba(0,0,0,0.85)]
-                    sm:text-[43px]
                   `}
                 >
                   Mis XV Años
                 </h1>
 
+                <div className="mt-3 flex items-center justify-center gap-3">
 
-                <div
-                  className="
-                    mt-3
-                    flex
-                    items-center
-                    justify-center
-                    gap-3
-                  "
-                >
-                  <span className="h-px w-8 bg-white/80 sm:w-10" />
+                  <span className="h-px w-8 bg-white/80" />
 
-                  <span className="text-[11px] font-bold text-white">
+                  <span className="text-[11px]">
                     ✦
                   </span>
 
-                  <span className="h-px w-8 bg-white/80 sm:w-10" />
+                  <span className="h-px w-8 bg-white/80" />
+
                 </div>
 
-              </div>
+              </motion.div>
 
-
-              {/* =================================================
-                  IVANNA + FECHA
-                  SOLO ESTE BLOQUE ESTÁ MÁS ABAJO
-              ================================================= */}
-
-              <div
-                className="
-                  absolute
-                  inset-0
-                  flex
-                  items-center
-                  justify-center
-                  px-5
-                  text-center
-                "
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={fadeUp}
+                transition={{
+                  delay: 0.25,
+                }}
+                className="flex flex-col items-center text-center"
               >
 
-                <div
-                  className="
-                    flex
-                    translate-y-[20vh]
-                    flex-col
-                    items-center
-                  "
+                <h2
+                  className={`
+                    ${greatVibes.className}
+                    text-[clamp(68px,21vw,92px)]
+                    font-normal
+                    leading-none
+                    whitespace-nowrap
+                    drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)]
+                  `}
+                  style={{
+                    WebkitTextStroke:
+                      "1.2px rgba(255,255,255,0.95)",
+                  }}
                 >
+                  Ivanna
+                </h2>
 
-                  <h2
-                    className={`
-                      ${greatVibes.className}
-                      text-[clamp(68px,21vw,92px)]
-                      font-normal
-                      leading-none
-                      whitespace-nowrap
-                      drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)]
-                    `}
-                    style={{
-                      WebkitTextStroke:
-                        "1.2px rgba(255,255,255,0.95)",
-                    }}
-                  >
-                    Ivanna
-                  </h2>
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-4
+                    text-[13px]
+                    font-bold
+                    uppercase
+                    tracking-[0.28em]
+                    drop-shadow-[0_2px_7px_rgba(0,0,0,0.85)]
+                  `}
+                >
+                  24 · OCTUBRE · 2026
+                </p>
 
+              </motion.div>
 
-                  <p
-                    className={`
-                      ${cormorant.className}
-                      mt-4
-                      text-[13px]
-                      font-bold
-                      uppercase
-                      tracking-[0.28em]
-                      drop-shadow-[0_2px_7px_rgba(0,0,0,0.85)]
-                      sm:text-[16px]
-                    `}
-                  >
-                    24 · OCTUBRE · 2026
-                  </p>
-
-                </div>
-
-              </div>
-
-
-              {/* =================================================
-                  DESLIZA
-              ================================================= */}
-
-              <div
-                className="
-                  absolute
-                  bottom-0
-                  left-0
-                  right-0
-                  flex
-                  flex-col
-                  items-center
-                  pb-[4vh]
-                  text-center
-                "
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 15,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  delay: 1,
+                  duration: 0.8,
+                }}
+         className="
+  relative
+  top-[18vh]
+  flex
+  flex-col
+  items-center
+  text-center
+"
               >
 
                 <span
@@ -869,7 +944,6 @@ export default function Cliente1Page() {
                   Desliza
                 </span>
 
-
                 <div
                   className="
                     mt-2
@@ -881,18 +955,19 @@ export default function Cliente1Page() {
                     rounded-full
                     border
                     border-white/80
+                    text-[13px]
+                    font-bold
+                    text-white
                   "
                 >
-                  <span className="text-[18px] leading-none">
-                    ↓
-                  </span>
+                  ↓
                 </div>
 
-              </div>
+              </motion.div>
 
             </div>
-          </section>
 
+          </section>
 
           {/* =================================================
               MENSAJE
@@ -900,427 +975,756 @@ export default function Cliente1Page() {
 
           <ElegantBackground>
 
-            <section
-              className="
-                relative
-                px-6
-                py-20
-                text-center
-              "
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+                amount: 0.25,
+              }}
+              variants={fromLeft}
             >
 
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{
-                  once: true,
-                  amount: 0.25,
-                }}
-                variants={fadeUp}
-                className="
+              <p
+                className={`
+                  ${cormorant.className}
                   mx-auto
-                  max-w-[390px]
-                "
+                  max-w-[360px]
+                  text-[21px]
+                  font-medium
+                  leading-[1.65]
+                  text-[#222222]
+                `}
               >
+                Hoy comienza un capítulo
+                muy especial de mi vida.
+              </p>
 
-                <div
-                  className={`
-                    ${cormorant.className}
-                    text-[21px]
-                    font-medium
-                    leading-[1.65]
-                    text-[#222222]
-                  `}
-                >
+            </motion.div>
 
-                  <p>
-                    Hoy comienza un capítulo muy especial
-                    de mi vida.
-                  </p>
+            <motion.p
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+                amount: 0.25,
+              }}
+              variants={fromRight}
+              className={`
+                ${cormorant.className}
+                mx-auto
+                mt-7
+                max-w-[360px]
+                text-[21px]
+                font-medium
+                leading-[1.65]
+                text-[#222222]
+              `}
+            >
+              Con mucha ilusión y alegría
+              quiero compartir contigo este
+              día tan especial para mí.
+            </motion.p>
 
-                  <p className="mt-7">
-                    Con mucha ilusión y alegría quiero
-                    compartir contigo este día tan especial
-                    para mí.
-                  </p>
+            <Separator />
 
-                </div>
+            <motion.h2
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+              }}
+              variants={fromLeft}
+              className={`
+                ${greatVibes.className}
+                text-[58px]
+                leading-none
+                text-[#171717]
+              `}
+            >
+              Mis XV Años
+            </motion.h2>
 
-
-                <div className="my-10">
-                  <Separator />
-                </div>
-
-
-                <h2
-                  className={`
-                    ${greatVibes.className}
-                    text-[58px]
-                    leading-none
-                    text-[#171717]
-                  `}
-                >
-                  Mis XV Años
-                </h2>
-
-
-                <p
-                  className={`
-                    ${greatVibes.className}
-                    mt-5
-                    text-[49px]
-                    leading-none
-                    text-[#df668d]
-                  `}
-                >
-                  Ivanna Loaeza
-                </p>
-
-              </motion.div>
-
-            </section>
+            <motion.p
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+              }}
+              variants={fromRight}
+              className={`
+                ${greatVibes.className}
+                mt-5
+                text-[49px]
+                leading-none
+                text-[#df668d]
+              `}
+            >
+              Ivanna Loaeza
+            </motion.p>
 
           </ElegantBackground>
-
 
           {/* =================================================
               CUENTA REGRESIVA
           ================================================= */}
 
-          <ElegantBackground>
+          <ElegantBackground className="py-24">
 
-            <section
+            <motion.h2
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+              }}
+              variants={fadeUp}
+              className={`
+                ${cormorant.className}
+                text-[25px]
+                font-semibold
+                uppercase
+                tracking-[0.28em]
+                text-[#171717]
+              `}
+            >
+              Solo faltan
+            </motion.h2>
+
+            <Separator />
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+              }}
+              variants={fadeUp}
               className="
-                relative
-                px-6
-                py-16
-                text-center
+                grid
+                grid-cols-4
+                gap-2
               "
             >
 
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{
-                  once: true,
-                  amount: 0.25,
-                }}
-                variants={fadeUp}
-                className="mx-auto max-w-[430px]"
+              {[
+                ["dias", "Días"],
+                ["horas", "Horas"],
+                ["minutos", "Minutos"],
+                ["segundos", "Segundos"],
+              ].map(([key, label]) => (
+                <div
+                  key={key}
+                  className="flex flex-col items-center"
+                >
+
+                  <span
+                    className={`
+                      ${cormorant.className}
+                      text-[43px]
+                      font-semibold
+                      leading-none
+                      text-[#171717]
+                    `}
+                  >
+                    {dosDigitos(
+                      tiempo[
+                        key as keyof typeof tiempo
+                      ]
+                    )}
+                  </span>
+
+                  <span
+                    className={`
+                      ${cormorant.className}
+                      mt-3
+                      text-[9px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.10em]
+                      text-[#df668d]
+                    `}
+                  >
+                    {label}
+                  </span>
+
+                </div>
+              ))}
+
+            </motion.div>
+
+            <div className="mx-auto mt-12 h-px w-24 bg-[#B9964A]/45" />
+
+          </ElegantBackground>
+
+          {/* =================================================
+              PAPÁS Y PADRINOS
+          ================================================= */}
+
+          <ElegantBackground className="py-24">
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+                amount: 0.2,
+              }}
+              variants={fadeUp}
+              className="mx-auto max-w-[430px]"
+            >
+
+              <p
+                className={`
+                  ${cormorant.className}
+                  text-[16px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.12em]
+                  text-[#222222]
+                `}
               >
+                Con la bendición de mis padres
+              </p>
+
+              <div
+                className={`
+                  ${greatVibes.className}
+                  mt-7
+                  text-[38px]
+                  leading-[1.15]
+                  text-[#df668d]
+                `}
+              >
+
+                <p>
+                  Iván Loaeza Sandoval
+                </p>
+
+                <p className="my-2 text-[22px] text-[#B9964A]">
+                  &
+                </p>
+
+                <p>
+                  Anna Leticia Higuera Amador
+                </p>
+
+              </div>
+
+              <Separator />
+
+              <p
+                className={`
+                  ${cormorant.className}
+                  text-[16px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.12em]
+                  text-[#222222]
+                `}
+              >
+                Y la compañía de mis padrinos
+              </p>
+
+              <div
+                className={`
+                  ${greatVibes.className}
+                  mt-7
+                  text-[38px]
+                  leading-[1.15]
+                  text-[#df668d]
+                `}
+              >
+
+                <p>
+                  Max Salvador
+                </p>
+
+                <p className="my-2 text-[22px] text-[#B9964A]">
+                  &
+                </p>
+
+                <p>
+                  Sonia Silva
+                </p>
+
+              </div>
+
+            </motion.div>
+
+            {/* =================================================
+                FOTO 2 — SEMICÍRCULO / ARCO
+            ================================================= */}
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 60,
+                scale: 0.96,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.2,
+              }}
+              transition={{
+                duration: 0.9,
+                ease: "easeOut",
+              }}
+              className="mt-14"
+            >
+
+              <div
+                className="
+                  mx-auto
+                  w-[88%]
+                  max-w-[360px]
+                  overflow-hidden
+                  rounded-t-[50%]
+                  border
+                  border-[#B9964A]/60
+                  bg-white
+                  p-2
+                  shadow-[0_12px_35px_rgba(0,0,0,0.10)]
+                "
+              >
+
+                <div className="overflow-hidden rounded-t-[48%]">
+
+                  <img
+                    src="/cliente1/FOTO 2.jpg"
+                    alt="Fotografía de Ivanna"
+                    loading="lazy"
+                    decoding="async"
+                    className="
+                      block
+                      aspect-[4/5]
+                      w-full
+                      object-cover
+                    "
+                  />
+
+                </div>
+
+              </div>
+
+              <p
+                className={`
+                  ${cormorant.className}
+                  mt-6
+                  text-[16px]
+                  uppercase
+                  tracking-[0.25em]
+                  text-[#B9964A]
+                `}
+              >
+                Celebremos juntos
+              </p>
+
+            </motion.div>
+
+          </ElegantBackground>
+
+          {/* =================================================
+              DETALLES DEL EVENTO
+          ================================================= */}
+
+          <ElegantBackground className="py-24">
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+                amount: 0.15,
+              }}
+              variants={fadeUp}
+            >
+
+              {/* FECHA */}
+
+              <div className="flex flex-col items-center">
 
                 <p
                   className={`
                     ${cormorant.className}
-                    text-[16px]
+                    text-[15px]
                     font-semibold
                     uppercase
-                    tracking-[0.20em]
+                    tracking-[0.28em]
                     text-[#222222]
                   `}
                 >
-                  Falta muy poco
+                  Sábado
                 </p>
 
-
-                <h2
+                <p
                   className={`
-                    ${greatVibes.className}
-                    mt-4
-                    text-[58px]
+                    ${cormorant.className}
+                    mt-1
+                    text-[82px]
+                    font-medium
                     leading-none
                     text-[#df668d]
                   `}
                 >
-                  Para celebrar
-                </h2>
+                  24
+                </p>
 
-
-                <div
-                  className="
-                    mt-10
-                    grid
-                    grid-cols-4
-                    gap-2
-                  "
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-1
+                    text-[20px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.25em]
+                    text-[#222222]
+                  `}
                 >
-
-                  <div>
-                    <div
-                      className={`
-                        ${cormorant.className}
-                        text-[35px]
-                        font-semibold
-                        text-[#222222]
-                      `}
-                    >
-                      {dosDigitos(tiempo.dias)}
-                    </div>
-
-                    <div
-                      className={`
-                        ${cormorant.className}
-                        text-[11px]
-                        uppercase
-                        tracking-[0.15em]
-                        text-[#777777]
-                      `}
-                    >
-                      Días
-                    </div>
-                  </div>
-
-
-                  <div>
-                    <div
-                      className={`
-                        ${cormorant.className}
-                        text-[35px]
-                        font-semibold
-                        text-[#222222]
-                      `}
-                    >
-                      {dosDigitos(tiempo.horas)}
-                    </div>
-
-                    <div
-                      className={`
-                        ${cormorant.className}
-                        text-[11px]
-                        uppercase
-                        tracking-[0.15em]
-                        text-[#777777]
-                      `}
-                    >
-                      Horas
-                    </div>
-                  </div>
-
-
-                  <div>
-                    <div
-                      className={`
-                        ${cormorant.className}
-                        text-[35px]
-                        font-semibold
-                        text-[#222222]
-                      `}
-                    >
-                      {dosDigitos(tiempo.minutos)}
-                    </div>
-
-                    <div
-                      className={`
-                        ${cormorant.className}
-                        text-[11px]
-                        uppercase
-                        tracking-[0.15em]
-                        text-[#777777]
-                      `}
-                    >
-                      Minutos
-                    </div>
-                  </div>
-
-
-                  <div>
-                    <div
-                      className={`
-                        ${cormorant.className}
-                        text-[35px]
-                        font-semibold
-                        text-[#222222]
-                      `}
-                    >
-                      {dosDigitos(tiempo.segundos)}
-                    </div>
-
-                    <div
-                      className={`
-                        ${cormorant.className}
-                        text-[11px]
-                        uppercase
-                        tracking-[0.15em]
-                        text-[#777777]
-                      `}
-                    >
-                      Segundos
-                    </div>
-                  </div>
-
-                </div>
-
-              </motion.div>
-
-            </section>
-
-          </ElegantBackground>
-
-
-          {/* =================================================
-              PADRES Y PADRINOS
-          ================================================= */}
-
-          <ElegantBackground>
-
-            <section
-              className="
-                relative
-                px-6
-                py-20
-                text-center
-              "
-            >
-
-              <div className="mx-auto max-w-[500px]">
-
-                {/* PADRES */}
-
-                <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{
-                    once: true,
-                    amount: 0.25,
-                  }}
-                  variants={fromLeft}
-                >
-
-                  <p
-                    className={`
-                      ${cormorant.className}
-                      text-[17px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.12em]
-                      text-[#222222]
-                    `}
-                  >
-                    Con la bendición de mis padres
-                  </p>
-
-
-                  <div
-                    className={`
-                      ${greatVibes.className}
-                      mt-7
-                      text-[39px]
-                      leading-[1.15]
-                      text-[#df668d]
-                    `}
-                  >
-
-                    <p>
-                      Iván Loaeza Sandoval
-                    </p>
-
-                    <p
-                      className="
-                        my-2
-                        text-[22px]
-                        text-[#B9964A]
-                      "
-                    >
-                      &
-                    </p>
-
-                    <p>
-                      Anna Leticia Higuera Amador
-                    </p>
-
-                  </div>
-
-                </motion.div>
-
-
-                <div className="my-10">
-                  <Separator />
-                </div>
-
-
-                {/* PADRINOS */}
-
-                <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{
-                    once: true,
-                    amount: 0.25,
-                  }}
-                  variants={fromRight}
-                >
-
-                  <p
-                    className={`
-                      ${cormorant.className}
-                      text-[17px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.12em]
-                      text-[#222222]
-                    `}
-                  >
-                    Y la compañía de mis padrinos
-                  </p>
-
-
-                  <div
-                    className={`
-                      ${greatVibes.className}
-                      mt-7
-                      text-[39px]
-                      leading-[1.15]
-                      text-[#df668d]
-                    `}
-                  >
-
-                    <p>
-                      Max Salvador
-                    </p>
-
-                    <p
-                      className="
-                        my-2
-                        text-[22px]
-                        text-[#B9964A]
-                      "
-                    >
-                      &
-                    </p>
-
-                    <p>
-                      Sonia Silva
-                    </p>
-
-                  </div>
-
-                </motion.div>
+                  de Octubre
+                </p>
 
               </div>
 
-            </section>
+              <Separator />
+
+              {/* CEREMONIA */}
+
+              <div className="flex flex-col items-center">
+
+                <div
+                  className="
+                    mb-4
+                    flex
+                    h-16
+                    w-16
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-[#B9964A]/50
+                    text-[#B9964A]
+                  "
+                >
+
+                  <svg
+                    viewBox="0 0 64 64"
+                    className="h-9 w-9"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M12 56V29L32 16L52 29V56" />
+
+                    <path d="M25 56V40C25 36 28 33 32 33C36 33 39 36 39 40V56" />
+
+                    <path d="M8 56H56" />
+
+                    <path d="M32 16V7" />
+
+                    <path d="M27 11H37" />
+
+                    <path d="M20 31H26" />
+
+                    <path d="M38 31H44" />
+                  </svg>
+
+                </div>
+
+                <h2
+                  className={`
+                    ${cormorant.className}
+                    text-[32px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.10em]
+                    text-[#df668d]
+                  `}
+                >
+                  Ceremonia
+                </h2>
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-2
+                    text-[29px]
+                    font-semibold
+                    text-[#171717]
+                  `}
+                >
+                  5:00 PM
+                </p>
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-1
+                    max-w-[300px]
+                    text-[17px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.08em]
+                    text-[#222222]
+                  `}
+                >
+                  Santuario de Guadalupe
+                </p>
+
+                <LocationButton
+                  url={MAPS_CEREMONIA}
+                />
+
+              </div>
+
+              <Separator />
+
+              {/* RECEPCIÓN */}
+
+              <div className="flex flex-col items-center">
+
+                <div
+                  className="
+                    mb-4
+                    flex
+                    h-16
+                    w-16
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-[#B9964A]/50
+                    text-[#B9964A]
+                  "
+                >
+
+                  <svg
+                    viewBox="0 0 64 64"
+                    className="h-9 w-9"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M8 56H56" />
+
+                    <path d="M12 56V27H52V56" />
+
+                    <path d="M8 27L32 12L56 27" />
+
+                    <path d="M25 56V39H39V56" />
+
+                    <path d="M22 27V21" />
+
+                    <path d="M42 27V21" />
+
+                    <path d="M27 21H37" />
+                  </svg>
+
+                </div>
+
+                <h2
+                  className={`
+                    ${cormorant.className}
+                    text-[32px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.10em]
+                    text-[#df668d]
+                  `}
+                >
+                  Recepción
+                </h2>
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-2
+                    text-[29px]
+                    font-semibold
+                    text-[#171717]
+                  `}
+                >
+                  7:00 PM
+                </p>
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-1
+                    max-w-[320px]
+                    text-[17px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.06em]
+                    text-[#222222]
+                  `}
+                >
+                  Salón de Eventos Victorious
+                </p>
+
+                <LocationButton
+                  url={MAPS_RECEPCION}
+                />
+
+              </div>
+
+              <Separator />
+
+              {/* VESTIMENTA */}
+
+              <div className="flex flex-col items-center">
+
+                <div
+                  className="
+                    flex
+                    h-14
+                    w-14
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-[#B9964A]/50
+                    text-[#B9964A]
+                  "
+                >
+                  <DressIcon />
+                </div>
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-4
+                    text-[20px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.10em]
+                    text-[#df668d]
+                  `}
+                >
+                  Vestimenta
+                </p>
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-1
+                    text-[15px]
+                    font-medium
+                    uppercase
+                    tracking-[0.08em]
+                    text-[#222222]
+                  `}
+                >
+                  Evitar tonos rosas
+                </p>
+
+              </div>
+
+              {/* REGALO */}
+
+              <div className="mt-7 flex flex-col items-center">
+
+                <div
+                  className="
+                    flex
+                    h-14
+                    w-14
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-[#B9964A]/50
+                    text-[#B9964A]
+                  "
+                >
+                  <GiftIcon />
+                </div>
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-4
+                    text-[20px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.10em]
+                    text-[#df668d]
+                  `}
+                >
+                  Regalo sugerido
+                </p>
+
+                <p
+                  className={`
+                    ${cormorant.className}
+                    mt-1
+                    text-[15px]
+                    font-medium
+                    uppercase
+                    tracking-[0.10em]
+                    text-[#222222]
+                  `}
+                >
+                  Efectivo
+                </p>
+
+              </div>
+
+              {/* DETALLE GASTRONÓMICO */}
+
+              <div className="mt-8 flex flex-col items-center">
+
+                <div
+                  className="
+                    flex
+                    h-14
+                    w-14
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-[#B9964A]/50
+                    text-[#B9964A]
+                  "
+                >
+                  <PlateIcon />
+                </div>
+
+              </div>
+
+            </motion.div>
 
           </ElegantBackground>
 
-
           {/* =================================================
-              FOTO 2
+              FOTO 3
           ================================================= */}
 
           <section
             className="
               relative
+              w-full
               overflow-hidden
               bg-[#fffdfd]
-              px-5
-              py-12
+              px-6
+              py-20
             "
           >
+
+            <Sparkles />
 
             <motion.div
               initial={{
                 opacity: 0,
-                scale: 0.96,
+                scale: 0.94,
               }}
               whileInView={{
                 opacity: 1,
@@ -1331,487 +1735,126 @@ export default function Cliente1Page() {
                 amount: 0.2,
               }}
               transition={{
-                duration: 1,
+                duration: 0.9,
               }}
               className="
+                relative
+                z-10
                 mx-auto
                 max-w-[500px]
-                overflow-hidden
-                rounded-t-[48%]
-                rounded-b-[12px]
               "
             >
 
-              <img
-                src="/cliente1/FOTO 2.jpg"
-                alt="Ivanna"
-                loading="lazy"
-                decoding="async"
+              <div
                 className="
-                  block
-                  h-auto
-                  w-full
-                  object-cover
+                  overflow-hidden
+                  rounded-[35px]
+                  border
+                  border-[#B9964A]/50
+                  bg-white
+                  p-2
+                  shadow-[0_15px_40px_rgba(0,0,0,0.10)]
                 "
-              />
+              >
+
+                <img
+                  src="/cliente1/FOTO 3.jpg"
+                  alt="Fotografía de Ivanna"
+                  loading="lazy"
+                  decoding="async"
+                  className="
+                    block
+                    w-full
+                    rounded-[28px]
+                    object-cover
+                  "
+                />
+
+              </div>
 
             </motion.div>
 
           </section>
 
-
           {/* =================================================
-              DETALLES DEL EVENTO
+              CONFIRMACIÓN
           ================================================= */}
 
-          <ElegantBackground>
-
-            <section
-              className="
-                relative
-                px-6
-                py-20
-                text-center
-              "
-            >
-
-              <div className="mx-auto max-w-[470px]">
-
-                <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{
-                    once: true,
-                    amount: 0.25,
-                  }}
-                  variants={fadeUp}
-                >
-
-                  <p
-                    className={`
-                      ${cormorant.className}
-                      text-[16px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.20em]
-                      text-[#222222]
-                    `}
-                  >
-                    Sábado
-                  </p>
-
-
-                  <h2
-                    className={`
-                      ${greatVibes.className}
-                      mt-2
-                      text-[58px]
-                      leading-none
-                      text-[#df668d]
-                    `}
-                  >
-                    24 de Octubre
-                  </h2>
-
-
-                  <div className="my-10">
-                    <Separator />
-                  </div>
-
-                </motion.div>
-
-
-                {/* CEREMONIA */}
-
-                <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{
-                    once: true,
-                    amount: 0.25,
-                  }}
-                  variants={fromLeft}
-                  className="mb-12"
-                >
-
-                  <div className="flex justify-center">
-                    <svg
-                      width="52"
-                      height="52"
-                      viewBox="0 0 52 52"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M10 43V21L26 9L42 21V43"
-                        stroke="#B9964A"
-                        strokeWidth="1.4"
-                        strokeLinejoin="round"
-                      />
-
-                      <path
-                        d="M19 43V29H33V43"
-                        stroke="#B9964A"
-                        strokeWidth="1.4"
-                      />
-
-                      <path
-                        d="M6 43H46"
-                        stroke="#B9964A"
-                        strokeWidth="1.4"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </div>
-
-
-                  <p
-                    className={`
-                      ${cormorant.className}
-                      mt-4
-                      text-[16px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.18em]
-                      text-[#222222]
-                    `}
-                  >
-                    Ceremonia
-                  </p>
-
-
-                  <p
-                    className={`
-                      ${greatVibes.className}
-                      mt-2
-                      text-[42px]
-                      text-[#df668d]
-                    `}
-                  >
-                    5:00 PM
-                  </p>
-
-
-                  <p
-                    className={`
-                      ${cormorant.className}
-                      mt-1
-                      text-[18px]
-                      text-[#333333]
-                    `}
-                  >
-                    Santuario de Guadalupe
-                  </p>
-
-
-                  <LocationButton href={CEREMONY_MAPS} />
-
-                </motion.div>
-
-
-                <div className="mb-12">
-                  <Separator />
-                </div>
-
-
-                {/* RECEPCIÓN */}
-
-                <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{
-                    once: true,
-                    amount: 0.25,
-                  }}
-                  variants={fromRight}
-                  className="mb-14"
-                >
-
-                  <div className="flex justify-center">
-                    <svg
-                      width="52"
-                      height="52"
-                      viewBox="0 0 52 52"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect
-                        x="9"
-                        y="17"
-                        width="34"
-                        height="27"
-                        rx="2"
-                        stroke="#B9964A"
-                        strokeWidth="1.4"
-                      />
-
-                      <path
-                        d="M15 17V11"
-                        stroke="#B9964A"
-                        strokeWidth="1.4"
-                        strokeLinecap="round"
-                      />
-
-                      <path
-                        d="M37 17V11"
-                        stroke="#B9964A"
-                        strokeWidth="1.4"
-                        strokeLinecap="round"
-                      />
-
-                      <path
-                        d="M9 24H43"
-                        stroke="#B9964A"
-                        strokeWidth="1.4"
-                      />
-
-                      <path
-                        d="M17 30H35"
-                        stroke="#B9964A"
-                        strokeWidth="1.2"
-                      />
-
-                      <path
-                        d="M17 35H30"
-                        stroke="#B9964A"
-                        strokeWidth="1.2"
-                      />
-                    </svg>
-                  </div>
-
-
-                  <p
-                    className={`
-                      ${cormorant.className}
-                      mt-4
-                      text-[16px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.18em]
-                      text-[#222222]
-                    `}
-                  >
-                    Recepción
-                  </p>
-
-
-                  <p
-                    className={`
-                      ${greatVibes.className}
-                      mt-2
-                      text-[42px]
-                      text-[#df668d]
-                    `}
-                  >
-                    7:00 PM
-                  </p>
-
-
-                  <p
-                    className={`
-                      ${cormorant.className}
-                      mt-1
-                      text-[18px]
-                      text-[#333333]
-                    `}
-                  >
-                    Salón de Eventos Victorious
-                  </p>
-
-
-                  <LocationButton href={RECEPTION_MAPS} />
-
-                </motion.div>
-
-
-                <div className="mb-12">
-                  <Separator />
-                </div>
-
-
-                {/* VESTIMENTA */}
-
-                <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{
-                    once: true,
-                    amount: 0.25,
-                  }}
-                  variants={fromLeft}
-                  className="mb-12"
-                >
-
-                  <div className="flex justify-center">
-                    <DressIcon />
-                  </div>
-
-
-                  <p
-                    className={`
-                      ${cormorant.className}
-                      mt-4
-                      text-[16px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.18em]
-                      text-[#222222]
-                    `}
-                  >
-                    Vestimenta
-                  </p>
-
-
-                  <p
-                    className={`
-                      ${cormorant.className}
-                      mt-2
-                      text-[18px]
-                      text-[#333333]
-                    `}
-                  >
-                    Evitar tonos rosas
-                  </p>
-
-                </motion.div>
-
-
-                <div className="mb-12">
-                  <Separator />
-                </div>
-
-
-                {/* REGALO */}
-
-                <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{
-                    once: true,
-                    amount: 0.25,
-                  }}
-                  variants={fromRight}
-                >
-
-                  <div className="flex justify-center">
-                    <GiftIcon />
-                  </div>
-
-
-                  <p
-                    className={`
-                      ${cormorant.className}
-                      mt-4
-                      text-[16px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.18em]
-                      text-[#222222]
-                    `}
-                  >
-                    Regalo sugerido
-                  </p>
-
-
-                  <p
-                    className={`
-                      ${cormorant.className}
-                      mt-2
-                      text-[18px]
-                      text-[#333333]
-                    `}
-                  >
-                    Efectivo
-                  </p>
-
-
-                  <div className="mt-6 flex justify-center">
-                    <PlateIcon />
-                  </div>
-
-                </motion.div>
-
-              </div>
-
-            </section>
-
-          </ElegantBackground>
-
-
-          {/* =================================================
-              FOTO 3
-          ================================================= */}
-
-          <section
-            className="
-              relative
-              overflow-hidden
-              bg-[#fffdfd]
-              px-5
-              py-12
-            "
-          >
+          <ElegantBackground className="py-24">
 
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{
                 once: true,
-                amount: 0.15,
+                amount: 0.2,
               }}
               variants={fadeUp}
-              className="
-                mx-auto
-                max-w-[500px]
-                overflow-hidden
-                rounded-[24px]
-              "
             >
 
-              <img
-                src="/cliente1/FOTO 3.jpg"
-                alt="Ivanna"
-                loading="lazy"
-                decoding="async"
-                className="
-                  block
-                  h-auto
-                  w-full
-                  object-cover
-                "
-              />
+              <p
+                className={`
+                  ${cormorant.className}
+                  text-[14px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.30em]
+                  text-[#B9964A]
+                `}
+              >
+                Será un honor contar contigo
+              </p>
+
+              <h2
+                className={`
+                  ${greatVibes.className}
+                  mt-4
+                  text-[55px]
+                  leading-none
+                  text-[#df668d]
+                `}
+              >
+                Confirma tu asistencia
+              </h2>
 
             </motion.div>
 
-          </section>
+            {/* =================================================
+                RESERVA DINÁMICA
+            ================================================= */}
 
-
-          {/* =================================================
-              CONFIRMACIÓN DE ASISTENCIA
-          ================================================= */}
-
-          <ElegantBackground>
-
-            <section
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 40,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.8,
+              }}
               className="
-                relative
-                px-6
-                py-20
-                text-center
+                mx-auto
+                mt-12
+                max-w-[390px]
               "
             >
 
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{
-                  once: true,
-                  amount: 0.25,
-                }}
-                variants={fadeUp}
+              <div
                 className="
-                  mx-auto
-                  max-w-[430px]
+                  rounded-[30px]
+                  border
+                  border-[#B9964A]/50
+                  bg-white/70
+                  px-6
+                  py-9
+                  shadow-[0_12px_35px_rgba(0,0,0,0.08)]
+                  backdrop-blur-sm
                 "
               >
 
@@ -1821,121 +1864,96 @@ export default function Cliente1Page() {
                     text-[15px]
                     font-semibold
                     uppercase
-                    tracking-[0.20em]
+                    tracking-[0.28em]
                     text-[#222222]
                   `}
                 >
-                  Confirmación de asistencia
+                  Hemos reservado
                 </p>
-
-
-                <h2
-                  className={`
-                    ${greatVibes.className}
-                    mt-5
-                    text-[56px]
-                    leading-none
-                    text-[#df668d]
-                  `}
-                >
-                  Será un honor
-                </h2>
-
 
                 <p
                   className={`
                     ${cormorant.className}
-                    mx-auto
-                    mt-6
-                    max-w-[340px]
-                    text-[19px]
-                    leading-[1.6]
-                    text-[#333333]
+                    mt-4
+                    text-[28px]
+                    font-semibold
+                    uppercase
+                    leading-[1.25]
+                    tracking-[0.08em]
+                    text-[#df668d]
                   `}
                 >
-                  Esperamos contar contigo para
-                  compartir esta noche tan especial.
+                  {textoReserva}
                 </p>
 
+                <div className="mx-auto my-7 h-px w-20 bg-[#B9964A]/50" />
 
-                {/* RESERVA */}
-
-                <div
+                <button
+                  type="button"
+                  onClick={
+                    confirmarAsistencia
+                  }
                   className="
-                    mt-10
-                    rounded-[24px]
-                    border
-                    border-[#B9964A]/35
-                    bg-white/60
+                    flex
+                    w-full
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-[#df668d]
                     px-6
-                    py-8
-                    shadow-sm
+                    py-4
+                    text-white
+                    shadow-[0_8px_25px_rgba(223,102,141,0.30)]
+                    transition
+                    duration-200
+                    hover:scale-[1.02]
+                    active:scale-95
                   "
                 >
 
-                  <p
+                  <span
                     className={`
                       ${cormorant.className}
                       text-[15px]
                       font-semibold
                       uppercase
-                      tracking-[0.18em]
-                      text-[#333333]
+                      tracking-[0.16em]
                     `}
-                  >
-                    {textoReserva}
-                  </p>
-
-
-                  <p
-                    className={`
-                      ${greatVibes.className}
-                      mt-3
-                      text-[43px]
-                      leading-none
-                      text-[#df668d]
-                    `}
-                  >
-                    {cantidadReserva}
-                  </p>
-
-
-                  <button
-                    type="button"
-                    onClick={confirmarAsistencia}
-                    className="
-                      mt-8
-                      w-full
-                      rounded-full
-                      bg-[#df668d]
-                      px-6
-                      py-3.5
-                      text-[12px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.15em]
-                      text-white
-                      shadow-md
-                      transition
-                      duration-200
-                      hover:brightness-95
-                      active:scale-[0.98]
-                    "
                   >
                     Confirmar mi asistencia
-                  </button>
+                  </span>
 
-                </div>
+                </button>
 
-              </motion.div>
+              </div>
 
-            </section>
+            </motion.div>
+
+            <Separator />
+
+            <motion.p
+              initial={{
+                opacity: 0,
+              }}
+              whileInView={{
+                opacity: 1,
+              }}
+              viewport={{
+                once: true,
+              }}
+              className={`
+                ${greatVibes.className}
+                text-[38px]
+                text-[#df668d]
+              `}
+            >
+              Ivanna Loaeza
+            </motion.p>
 
           </ElegantBackground>
 
-
           {/* =================================================
-              DESPEDIDA
+              FINAL
           ================================================= */}
 
           <section
@@ -1944,70 +1962,41 @@ export default function Cliente1Page() {
               overflow-hidden
               bg-[#fffdfd]
               px-6
-              py-24
+              py-16
               text-center
             "
           >
 
-            <Sparkles />
+            <div className="mx-auto max-w-[400px]">
 
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{
-                once: true,
-                amount: 0.25,
-              }}
-              variants={fadeUp}
-              className="relative z-10"
-            >
+              <div className="mx-auto mb-5 h-px w-24 bg-[#B9964A]/45" />
 
               <p
                 className={`
                   ${cormorant.className}
-                  text-[15px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.22em]
-                  text-[#222222]
-                `}
-              >
-                Gracias por acompañarme
-              </p>
-
-
-              <h2
-                className={`
-                  ${greatVibes.className}
-                  mt-5
-                  text-[68px]
-                  leading-none
-                  text-[#df668d]
-                `}
-              >
-                Ivanna
-              </h2>
-
-
-              <div className="mt-8">
-                <Separator />
-              </div>
-
-
-              <p
-                className={`
-                  ${cormorant.className}
-                  mt-8
-                  text-[15px]
+                  text-[13px]
                   uppercase
                   tracking-[0.25em]
                   text-[#555555]
                 `}
               >
-                24 · OCTUBRE · 2026
+                Gracias por acompañarme
               </p>
 
-            </motion.div>
+              <p
+                className={`
+                  ${greatVibes.className}
+                  mt-4
+                  text-[45px]
+                  text-[#df668d]
+                `}
+              >
+                Mis XV Años
+              </p>
+
+              <div className="mx-auto mt-5 h-px w-24 bg-[#B9964A]/45" />
+
+            </div>
 
           </section>
 
