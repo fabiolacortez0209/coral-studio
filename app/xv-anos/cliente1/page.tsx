@@ -1520,17 +1520,18 @@ animate={{
               </div>
 
               <p
-                className={`
-                  ${cormorant.className}
-                  mt-14
-                  text-[16px]
-                  uppercase
-                  tracking-[0.25em]
-                  text-[#B9964A]
-                `}
-              >
-                Celebremos juntos
-              </p>
+  className={`
+    ${cormorant.className}
+    mt-14
+    text-[19px]
+    font-bold
+    uppercase
+    tracking-[0.25em]
+    text-[#B9964A]
+  `}
+>
+  Celebremos juntos
+</p>
 
             </motion.div>
 
