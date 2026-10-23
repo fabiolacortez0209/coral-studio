@@ -118,12 +118,40 @@ export default function AlbumIvanna() {
     );
   }
 
-  function comprobarClave(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+async function comprobarClave(
+  event: React.FormEvent<HTMLFormElement>
+) {
+  event.preventDefault();
+  setMensajeClave("Verificando contraseña...");
+
+  try {
+    const respuesta = await fetch("/api/recuerdos/descargar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ clave }),
+      cache: "no-store",
+    });
+
+    const resultado = await respuesta.json();
+
+    if (!respuesta.ok || resultado.correcto !== true) {
+      setMensajeClave(
+        resultado.error || "La contraseña es incorrecta."
+      );
+      return;
+    }
+
+    window.location.href =
+      "https://drive.google.com/drive/folders/1FEcYZDtTlrUpLFweECu5R9JY0UgVo9BO";
+  } catch (error) {
+    console.error("Error al verificar contraseña:", error);
     setMensajeClave(
-      "Falta configurar la validación segura de la contraseña en el servidor."
+      "No se pudo verificar la contraseña. Inténtalo nuevamente."
     );
   }
+}
 
   const boton =
     "flex min-h-[88px] flex-col items-center justify-center gap-2 rounded-[22px] border border-[#c89c4c] bg-white/80 px-1 py-3 text-[#a51b60] shadow-sm transition hover:bg-[#fff0f7] sm:min-h-[110px]";
