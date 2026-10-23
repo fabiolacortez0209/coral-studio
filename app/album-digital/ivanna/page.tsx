@@ -12,6 +12,7 @@ type Recuerdo = {
 export default function AlbumIvanna() {
   const [recuerdos, setRecuerdos] = useState<Recuerdo[]>([]);
   
+
 useEffect(() => {
   async function cargarRecuerdos() {
     try {
@@ -25,9 +26,11 @@ useEffect(() => {
 
       const resultado = await respuesta.json();
 
-      if (resultado.estado === "correcto" && Array.isArray(resultado.recuerdos)) {
+      if (
+        resultado.estado === "correcto" &&
+        Array.isArray(resultado.recuerdos)
+      ) {
         setRecuerdos(resultado.recuerdos);
-        setCarrusel(0);
       }
     } catch (error) {
       console.error("Error al cargar los recuerdos:", error);
@@ -35,7 +38,12 @@ useEffect(() => {
   }
 
   cargarRecuerdos();
+
+  const intervalo = window.setInterval(cargarRecuerdos, 5000);
+
+  return () => window.clearInterval(intervalo);
 }, []);
+
 
   const [seccion, setSeccion] = useState<"todos" | "foto" | "video">("todos");
   const [carrusel, setCarrusel] = useState(0);
