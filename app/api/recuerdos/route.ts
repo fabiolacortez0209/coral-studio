@@ -222,12 +222,18 @@ export async function POST(request: Request) {
         tipo,
       },
     });
-  } catch (error) {
-    console.error("Error al subir recuerdo:", error);
+ 
+  } catch (error: unknown) {
+    const detalle = error instanceof Error
+      ? error.message
+      : String(error);
+
+    console.error("Error al subir recuerdo:", detalle);
 
     return NextResponse.json(
       { error: "No se pudo guardar el archivo en Drive." },
       { status: 500 }
     );
   }
+
 }
