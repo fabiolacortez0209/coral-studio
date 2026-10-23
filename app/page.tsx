@@ -1046,49 +1046,65 @@ export default function HomePage() {
     </div>
 
   
-
-    {/* MEMORIES */}
-
-    <div
+</div>
+</section>
+{/* MEMORIES */}
+<div
   className="
     mt-6
     rounded-[40px]
-        border
-        border-[#f1d8d7]
-        bg-white/60
-        p-12
-        text-center
+    border
+    border-[#f1d8d7]
+    bg-white/60
+    p-8
+    text-center
+    md:p-12
+  "
+>
+  <p className="mb-4 text-sm uppercase tracking-[0.35em] text-[#d58e8d]">
+    Recuerdos que duran para siempre
+  </p>
+
+  <h3 className="mb-6 text-3xl md:text-4xl">
+    📸 Coral Studio Memories
+  </h3>
+
+  <p className="mx-auto max-w-2xl text-[#6b6b6b]">
+    Un espacio especial para compartir las fotografías y videos
+    de tus eventos. Reúne todos los recuerdos en una sola galería digital.
+  </p>
+
+  <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
+    <div>✔ Galería colaborativa</div>
+    <div>✔ Subida de fotos</div>
+    <div>✔ Subida de videos</div>
+    <div>✔ Descarga de recuerdos</div>
+    <div>✔ Acceso privado</div>
+  </div>
+
+  <div className="mt-10">
+    <a
+      href="/album-digital"
+      className="
+        inline-flex
+        items-center
+        justify-center
+        rounded-full
+        bg-[#e9a3a3]
+        px-8
+        py-4
+        text-sm
+        font-medium
+        text-white
+        transition
+        hover:bg-[#d58e8d]
       "
     >
-
-      <p className="mb-4 text-sm uppercase tracking-[0.35em] text-[#d58e8d]">
-        Próximamente
-      </p>
-
-      <h3 className="mb-6 text-4xl">
-        📸 Coral Studio Memories
-      </h3>
-
-      <p className="mx-auto max-w-2xl text-[#6b6b6b]">
-        Tus invitados podrán compartir fotos y videos mediante un código QR exclusivo del evento.
-      </p>
-<div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-
-  <div>✔ Galería colaborativa</div>
-
-  <div>✔ Subida de fotos</div>
-
-  <div>✔ Subida de videos</div>
-
-  <div>✔ Descarga de recuerdos</div>
-
-  <div>✔ Acceso privado</div>
-
-</div>
-    </div>
-
+      Conocer Coral Studio Memories
+    </a>
   </div>
-</section>
+</div>
+
 {/* FAQ */}
 
 <section
