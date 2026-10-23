@@ -138,28 +138,27 @@ export default function AlbumIvanna() {
   return (
     <main className="min-h-screen bg-[#fff7fb] text-[#57203d]">
       <div className="mx-auto max-w-5xl px-3 pb-8 pt-3 sm:px-6 sm:pt-6">
+        {/* PORTADA COMPACTA */}
 
-        {/* PORTADA */}
-
-        <section className="relative flex min-h-[470px] flex-col justify-end overflow-hidden rounded-[30px] bg-[#85134e] shadow-lg sm:min-h-[600px]">
+        <section className="relative flex min-h-[340px] flex-col justify-end overflow-hidden rounded-[30px] bg-[#85134e] shadow-lg sm:min-h-[520px]">
           <img
             src="/cliente1/FOTO%202.jpg"
             alt="Ivanna Loaeza"
-            className="absolute inset-0 h-full w-full object-cover object-center"
+            className="absolute inset-0 h-full w-full object-cover object-[center_35%]"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-[#fff7fb] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#fff7fb] via-[#fff7fb]/20 to-transparent" />
 
-          <div className="relative mt-[280px] px-3 pb-6 text-center sm:mt-[380px] sm:px-8 sm:pb-9">
-            <p className="font-serif text-sm uppercase tracking-[0.28em] text-[#8e244d] sm:text-base">
+          <div className="relative mt-[190px] px-3 pb-5 text-center sm:mt-[320px] sm:px-8 sm:pb-8">
+            <p className="font-serif text-xs uppercase tracking-[0.28em] text-[#8e244d] sm:text-base">
               Mis XV
             </p>
 
-            <h1 className="mt-1 font-serif text-4xl font-semibold leading-tight text-[#a51b50] sm:text-6xl">
+            <h1 className="mt-1 font-serif text-3xl font-semibold leading-tight text-[#a51b50] sm:text-6xl">
               Ivanna Loaeza
             </h1>
 
-            <p className="mt-3 text-sm tracking-wide text-[#57203d] sm:text-lg">
+            <p className="mt-2 text-sm tracking-wide text-[#57203d] sm:mt-3 sm:text-lg">
               24 de octubre de 2026
             </p>
           </div>
