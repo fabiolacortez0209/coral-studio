@@ -1,7 +1,7 @@
-
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+
 type Recuerdo = {
   id: string;
   url: string;
@@ -11,50 +11,59 @@ type Recuerdo = {
 
 export default function AlbumIvanna() {
   const [recuerdos, setRecuerdos] = useState<Recuerdo[]>([]);
-  
-
-useEffect(() => {
-  async function cargarRecuerdos() {
-    try {
-      const respuesta = await fetch("/api/recuerdos", {
-        cache: "no-store",
-      });
-
-      if (!respuesta.ok) {
-        throw new Error("No se pudieron cargar los recuerdos.");
-      }
-
-      const resultado = await respuesta.json();
-
-      if (
-        resultado.estado === "correcto" &&
-        Array.isArray(resultado.recuerdos)
-      ) {
-        setRecuerdos(resultado.recuerdos);
-      }
-    } catch (error) {
-      console.error("Error al cargar los recuerdos:", error);
-    }
-  }
-
-  cargarRecuerdos();
-
-  const intervalo = window.setInterval(cargarRecuerdos, 5000);
-
-  return () => window.clearInterval(intervalo);
-}, []);
-
-
   const [seccion, setSeccion] = useState<"todos" | "foto" | "video">("todos");
   const [carrusel, setCarrusel] = useState(0);
+  const [mostrarGaleria, setMostrarGaleria] = useState(false);
+  const [mostrarClave, setMostrarClave] = useState(false);
+  const [clave, setClave] = useState("");
+  const [mensajeClave, setMensajeClave] = useState("");
+  const [cargando, setCargando] = useState(false);
+
   const fotosRef = useRef<HTMLInputElement>(null);
   const videosRef = useRef<HTMLInputElement>(null);
 
-  const visibles = recuerdos.filter((r) =>
-    seccion === "todos" ? true : r.tipo === seccion
+  useEffect(() => {
+    async function cargarRecuerdos() {
+      try {
+        const respuesta = await fetch("/api/recuerdos", {
+          cache: "no-store",
+        });
+
+        if (!respuesta.ok) {
+          throw new Error("No se pudieron cargar los recuerdos.");
+        }
+
+        const resultado = await respuesta.json();
+
+        if (
+          resultado.estado === "correcto" &&
+          Array.isArray(resultado.recuerdos)
+        ) {
+          setRecuerdos(resultado.recuerdos);
+        }
+      } catch (error) {
+        console.error("Error al cargar los recuerdos:", error);
+      }
+    }
+
+    cargarRecuerdos();
+
+    const intervalo = window.setInterval(cargarRecuerdos, 5000);
+
+    return () => window.clearInterval(intervalo);
+  }, []);
+
+  const visibles = recuerdos.filter((recuerdo) =>
+    seccion === "todos" ? true : recuerdo.tipo === seccion
   );
 
- 
+  const ultimosRecuerdos = [...recuerdos].slice(-4).reverse();
+
+  const actual =
+    visibles.length > 0
+      ? visibles[carrusel % visibles.length]
+      : null;
+
   async function agregarArchivos(
     event: React.ChangeEvent<HTMLInputElement>,
     tipo: "foto" | "video"
@@ -80,7 +89,7 @@ useEffect(() => {
           continue;
         }
 
-        const nuevo = {
+        const nuevo: Recuerdo = {
           id: resultado.archivo.id,
           url: URL.createObjectURL(archivo),
           tipo,
@@ -97,215 +106,409 @@ useEffect(() => {
     setCarrusel(0);
   }
 
-  const actual = visibles.length
-    ? visibles[carrusel % visibles.length]
-    : null;
+  function abrirRecuerdo(recuerdo: Recuerdo) {
+    setSeccion("todos");
+
+    const indice = recuerdos.findIndex(
+      (elemento) => elemento.id === recuerdo.id
+    );
+
+    setCarrusel(indice >= 0 ? indice : 0);
+    setMostrarGaleria(true);
+  }
 
   function moverCarrusel(direccion: number) {
-    if (!visibles.length) return;
-    setCarrusel((actual) =>
-      (actual + direccion + visibles.length) % visibles.length
+    if (visibles.length === 0) return;
+
+    setCarrusel(
+      (actual) =>
+        (actual + direccion + visibles.length) % visibles.length
+    );
+  }
+
+  async function comprobarClaveDescarga(
+    event: React.FormEvent<HTMLFormElement>
+  ) {
+    event.preventDefault();
+    setMensajeClave(
+      "La ventana está lista, pero falta configurar la validación segura de la contraseña en el servidor."
     );
   }
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#fff7fb] text-[#57203d]">
-      <header className="border-b border-[#e8c5d3] bg-white/90 px-4 py-4">
-        <div className="mx-auto flex max-w-5xl items-center justify-between">
-          <span className="font-serif text-xl text-[#c21868]">
-            Coral Studio <span className="text-sm text-[#b18a54]">Memories</span>
-          </span>
-          <span className="rounded-full bg-[#fce4ef] px-4 py-2 text-xs text-[#b41460]">
-            Mis XV
-          </span>
-        </div>
-      </header>
+    <main className="min-h-screen bg-[#fff7fb] text-[#57203d]">
+      <div className="mx-auto max-w-5xl px-3 pb-8 pt-3 sm:px-6 sm:pt-6">
 
-      <section className="px-4 pb-8 pt-7 sm:pt-12">
-        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-[30px] border-2 border-[#d7b16b] bg-gradient-to-br from-[#ed80b5] via-[#d92c83] to-[#85134e] px-6 py-12 text-center text-white shadow-xl sm:px-12 sm:py-16">
-          <div className="pointer-events-none absolute -right-12 -top-16 h-64 w-64 rounded-full border border-[#f6d99a]/60" />
-          <div className="pointer-events-none absolute -bottom-24 -left-12 h-64 w-64 rounded-full border border-[#f6d99a]/50" />
+        {/* PORTADA */}
 
-          <p className="relative mb-4 text-xs uppercase tracking-[0.35em] text-[#ffe7b2]">
-            Una noche · Mil recuerdos
-          </p>
+        <section className="relative flex min-h-[470px] flex-col justify-end overflow-hidden rounded-[30px] bg-[#85134e] shadow-lg sm:min-h-[600px]">
+          <img
+            src="/cliente1/FOTO%202.jpg"
+            alt="Ivanna Loaeza"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
 
-          <h1 className="relative font-serif text-4xl font-semibold leading-tight sm:text-6xl">
-            Mis XV
-            <span className="mt-2 block text-[#fff0c9]">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#fff7fb] via-transparent to-transparent" />
+
+          <div className="relative mt-[280px] px-3 pb-6 text-center sm:mt-[380px] sm:px-8 sm:pb-9">
+            <p className="font-serif text-sm uppercase tracking-[0.28em] text-[#8e244d] sm:text-base">
+              Mis XV
+            </p>
+
+            <h1 className="mt-1 font-serif text-4xl font-semibold leading-tight text-[#a51b50] sm:text-6xl">
               Ivanna Loaeza
+            </h1>
+
+            <p className="mt-3 text-sm tracking-wide text-[#57203d] sm:text-lg">
+              24 de octubre de 2026
+            </p>
+          </div>
+        </section>
+
+        {/* CUATRO ACCESOS */}
+
+        <section className="mt-5 grid grid-cols-4 gap-2 sm:mt-7 sm:gap-4">
+
+          <button
+            type="button"
+            onClick={() => setMostrarGaleria(true)}
+            className="flex min-h-[100px] flex-col items-center justify-center gap-2 rounded-[22px] border border-[#e8c5d3] bg-white/80 px-1 py-3 text-[#a51b60] shadow-sm hover:bg-[#fce4ef] sm:min-h-[125px]"
+          >
+            <svg viewBox="0 0 24 24" className="h-8 w-8 sm:h-10 sm:w-10" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <rect x="3" y="3" width="14" height="14" rx="2" />
+              <path d="M7 17v4a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-3" />
+              <circle cx="12" cy="8" r="1.5" />
+              <path d="m5 14 3-3 3 3 2-2 4 4" />
+            </svg>
+            <span className="text-xs font-medium sm:text-base">
+              Recuerdos
             </span>
-          </h1>
+          </button>
 
-          <div className="mx-auto my-6 h-px w-32 bg-[#f4d18a]" />
+          <button
+            type="button"
+            onClick={() => fotosRef.current?.click()}
+            className="flex min-h-[100px] flex-col items-center justify-center gap-2 rounded-[22px] border border-[#e8c5d3] bg-white/80 px-1 py-3 text-[#a51b60] shadow-sm hover:bg-[#fce4ef] sm:min-h-[125px]"
+          >
+            <svg viewBox="0 0 24 24" className="h-8 w-8 sm:h-10 sm:w-10" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <rect x="3" y="4" width="15" height="15" rx="2" />
+              <circle cx="8" cy="9" r="1.5" />
+              <path d="m4 16 4-4 3 3 2-2 4 4M20 13v8m-4-4h8" />
+            </svg>
+            <span className="text-xs font-medium sm:text-base">
+              Fotos +
+            </span>
+          </button>
 
-          <p className="relative mx-auto max-w-md text-base leading-7 text-white/95 sm:text-lg">
-            Comparte los mejores momentos conmigo.
-            <br />
-            ¡Hagamos recuerdos inolvidables!
-          </p>
+          <button
+            type="button"
+            onClick={() => videosRef.current?.click()}
+            className="flex min-h-[100px] flex-col items-center justify-center gap-2 rounded-[22px] border border-[#e8c5d3] bg-white/80 px-1 py-3 text-[#a51b60] shadow-sm hover:bg-[#fce4ef] sm:min-h-[125px]"
+          >
+            <svg viewBox="0 0 24 24" className="h-8 w-8 sm:h-10 sm:w-10" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <rect x="2.5" y="5" width="13" height="14" rx="2" />
+              <path d="m15.5 10 6-3v10l-6-3zM16 20v2m-4-1h8" />
+            </svg>
+            <span className="text-xs font-medium sm:text-base">
+              Videos +
+            </span>
+          </button>
 
-          <div className="relative mt-8 flex flex-wrap justify-center gap-4">
+          <button
+            type="button"
+            onClick={() => {
+              setClave("");
+              setMensajeClave("");
+              setMostrarClave(true);
+            }}
+            className="flex min-h-[100px] flex-col items-center justify-center gap-2 rounded-[22px] border border-[#e8c5d3] bg-white/80 px-1 py-3 text-[#a4773f] shadow-sm hover:bg-[#fff0c9] sm:min-h-[125px]"
+          >
+            <svg viewBox="0 0 24 24" className="h-8 w-8 sm:h-10 sm:w-10" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M12 3v12m-5-5 5 5 5-5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4" />
+            </svg>
+            <span className="text-xs font-medium sm:text-base">
+              Descargar
+            </span>
+          </button>
+
+        </section>
+
+        {/* SELECTORES DE ARCHIVOS */}
+
+        <input
+          ref={fotosRef}
+          type="file"
+          accept="image/*"
+          multiple
+          className="hidden"
+          onChange={(event) => agregarArchivos(event, "foto")}
+        />
+
+        <input
+          ref={videosRef}
+          type="file"
+          accept="video/*"
+          multiple
+          className="hidden"
+          onChange={(event) => agregarArchivos(event, "video")}
+        />
+
+        {/* ÚLTIMOS CUATRO RECUERDOS */}
+
+        <section className="mt-6 sm:mt-8">
+          <div className="mb-3 flex items-center justify-between gap-3 px-1">
+            <h2 className="font-serif text-xl text-[#742347] sm:text-2xl">
+              Últimos recuerdos
+            </h2>
+
             <button
-              onClick={() => fotosRef.current?.click()}
-              className="rounded-full border-2 border-[#e6c477] bg-white px-6 py-3 font-medium text-[#b41460] shadow-lg transition hover:bg-[#fff0c9]"
+              type="button"
+              onClick={() => setMostrarGaleria(true)}
+              className="shrink-0 text-sm font-medium text-[#b41460] sm:text-base"
             >
-              ♡ Agregar foto
-            </button>
-            <button
-              onClick={() => videosRef.current?.click()}
-              className="rounded-full border-2 border-[#e6c477] bg-[#861448]/40 px-6 py-3 font-medium text-white shadow-lg transition hover:bg-[#861448]/70"
-            >
-              ▷ Agregar video
+              Ver todos ›
             </button>
           </div>
 
-          <input
-            ref={fotosRef}
-            type="file"
-            accept="image/*"
-            multiple
-            className="hidden"
-            onChange={(e) => agregarArchivos(e, "foto")}
-          />
-          <input
-            ref={videosRef}
-            type="file"
-            accept="video/*"
-            multiple
-            className="hidden"
-            onChange={(e) => agregarArchivos(e, "video")}
-          />
+          {ultimosRecuerdos.length > 0 ? (
+            <div className="grid grid-cols-4 gap-2 sm:gap-3">
+              {ultimosRecuerdos.map((recuerdo) => (
+                <button
+                  type="button"
+                  key={recuerdo.id}
+                  onClick={() => abrirRecuerdo(recuerdo)}
+                  className="relative aspect-square overflow-hidden rounded-2xl border border-[#e8c5d3] bg-white shadow-sm"
+                  aria-label={`Abrir ${recuerdo.nombre}`}
+                >
+                  {recuerdo.tipo === "foto" ? (
+                    <img
+                      src={recuerdo.url}
+                      alt={recuerdo.nombre}
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-[#f8d5e6] text-3xl text-[#b41460]">
+                      ▶
+                    </div>
+                  )}
 
-          <p className="relative mt-5 text-xs text-white/80">
-            Selecciona tus recuerdos para agregarlos a esta vista.
-          </p>
-        </div>
-      </section>
+                  {recuerdo.tipo === "video" && (
+                    <span className="absolute bottom-1 right-1 rounded-full bg-black/60 px-2 py-1 text-xs text-white">
+                      ▶
+                    </span>
+                  )}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-dashed border-[#dfbd79] bg-white/70 px-4 py-8 text-center">
+              <p className="font-serif text-lg text-[#a62b65]">
+                Aquí comenzarán los recuerdos
+              </p>
+              <p className="mt-1 text-sm text-[#936b7e]">
+                Usa Fotos + o Videos + para compartir el primer recuerdo.
+              </p>
+            </div>
+          )}
+        </section>
 
-      <section className="mx-auto max-w-5xl px-4 pb-16">
-        <div className="mb-6 text-center">
-  <h2 className="font-serif text-3xl text-[#742347] sm:text-4xl">
-    Momentos para recordar
-  </h2>
-</div>
+        {/* GALERÍA COMPLETA */}
 
-        <div className="relative overflow-hidden rounded-3xl border border-[#dfbd79] bg-white p-3 shadow-lg sm:p-5">
-          <div className="relative flex min-h-[280px] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-[#fff0f7] to-[#f8d5e6] sm:min-h-[410px]">
-            {actual ? (
-              actual.tipo === "foto" ? (
-                <img
-                  src={actual.url}
-                  alt={actual.nombre}
-                  className="max-h-[410px] w-full object-contain"
-                />
-              ) : (
-                <video
-                  key={actual.id}
-                  src={actual.url}
-                  controls
-                  playsInline
-                  className="max-h-[410px] w-full"
-                />
-              )
-            ) : (
-              <div className="px-6 py-12 text-center">
-                <div className="mb-4 text-5xl text-[#cc78a0]">♡</div>
-                <h3 className="font-serif text-2xl text-[#a62b65]">
-                  Aquí comienzan los recuerdos
-                </h3>
-                <p className="mt-3 text-sm text-[#936b7e]">
-                  Sé la primera persona en compartir una foto o un video.
+        {mostrarGaleria && (
+          <section className="mt-8 rounded-3xl border border-[#e8c5d3] bg-white/80 p-3 shadow-sm sm:p-5">
+            <div className="flex items-center justify-between gap-3">
+              <h2 className="font-serif text-2xl text-[#742347]">
+                Galería de recuerdos
+              </h2>
+
+              <button
+                type="button"
+                onClick={() => setMostrarGaleria(false)}
+                className="rounded-full border border-[#e8c5d3] px-3 py-1 text-sm text-[#a51b60]"
+              >
+                Cerrar ×
+              </button>
+            </div>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              {[
+                { id: "todos", texto: "Todos" },
+                { id: "foto", texto: "Fotos" },
+                { id: "video", texto: "Videos" },
+              ].map((boton) => (
+                <button
+                  type="button"
+                  key={boton.id}
+                  onClick={() => {
+                    setSeccion(
+                      boton.id as "todos" | "foto" | "video"
+                    );
+                    setCarrusel(0);
+                  }}
+                  className={`rounded-full border px-4 py-2 text-sm ${
+                    seccion === boton.id
+                      ? "border-[#c89c4c] bg-[#c21868] text-white"
+                      : "border-[#dfbd79] bg-white text-[#a51b60]"
+                  }`}
+                >
+                  {boton.texto}
+                </button>
+              ))}
+            </div>
+
+            {actual && (
+              <div className="relative mt-4 overflow-hidden rounded-2xl bg-[#fff0f7]">
+                {actual.tipo === "foto" ? (
+                  <img
+                    src={actual.url}
+                    alt={actual.nombre}
+                    className="max-h-[60vh] w-full object-contain"
+                  />
+                ) : (
+                  <video
+                    key={actual.id}
+                    src={actual.url}
+                    controls
+                    playsInline
+                    className="max-h-[60vh] w-full"
+                  />
+                )}
+
+                {visibles.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => moverCarrusel(-1)}
+                      aria-label="Recuerdo anterior"
+                      className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white/90 px-4 py-2 text-xl text-[#a51b60] shadow"
+                    >
+                      ‹
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => moverCarrusel(1)}
+                      aria-label="Siguiente recuerdo"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white/90 px-4 py-2 text-xl text-[#a51b60] shadow"
+                    >
+                      ›
+                    </button>
+                  </>
+                )}
+
+                <p className="bg-white px-3 py-2 text-center text-xs text-[#a4778c]">
+                  {actual.nombre} · {carrusel + 1} de {visibles.length}
                 </p>
               </div>
             )}
 
-            {visibles.length > 1 && (
-              <>
+            <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5">
+              {visibles.map((recuerdo) => (
                 <button
-                  onClick={() => moverCarrusel(-1)}
-                  aria-label="Recuerdo anterior"
-                  className="absolute left-3 rounded-full border border-[#dfbd79] bg-white/90 px-4 py-3 text-xl text-[#a51b60] shadow"
+                  type="button"
+                  key={recuerdo.id}
+                  onClick={() =>
+                    setCarrusel(
+                      visibles.findIndex((r) => r.id === recuerdo.id)
+                    )
+                  }
+                  className="relative aspect-square overflow-hidden rounded-xl border border-[#dfbd79] bg-white"
                 >
-                  ‹
+                  {recuerdo.tipo === "foto" ? (
+                    <img
+                      src={recuerdo.url}
+                      alt={recuerdo.nombre}
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <div className="flex h-full items-center justify-center bg-[#f8d5e6] text-3xl text-[#b41460]">
+                      ▶
+                    </div>
+                  )}
                 </button>
-                <button
-                  onClick={() => moverCarrusel(1)}
-                  aria-label="Siguiente recuerdo"
-                  className="absolute right-3 rounded-full border border-[#dfbd79] bg-white/90 px-4 py-3 text-xl text-[#a51b60] shadow"
-                >
-                  ›
-                </button>
-              </>
-            )}
-          </div>
+              ))}
+            </div>
+          </section>
+        )}
 
-          <p className="py-3 text-center text-xs text-[#a4778c]">
-            {actual ? actual.nombre : "Con cariño, Ivanna Loaeza"}
-            {visibles.length > 0 && ` · ${carrusel + 1} de ${visibles.length}`}
-          </p>
-        </div>
-
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          {[
-            { id: "todos", texto: "Todos los recuerdos" },
-            { id: "foto", texto: "♡ Fotos" },
-            { id: "video", texto: "▷ Videos" },
-          ].map((boton) => (
-            <button
-              key={boton.id}
-              onClick={() => {
-                setSeccion(boton.id as "todos" | "foto" | "video");
-                setCarrusel(0);
-              }}
-              className={`rounded-full border-2 px-6 py-3 text-sm transition ${
-                seccion === boton.id
-                  ? "border-[#c89c4c] bg-[#c21868] text-white shadow-md"
-                  : "border-[#dfbd79] bg-white text-[#a51b60] hover:bg-[#fff0f7]"
-              }`}
-            >
-              {boton.texto}
-            </button>
-          ))}
-        </div>
-
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
-          {visibles.map((recuerdo) => (
-            <button
-              key={recuerdo.id}
-              onClick={() => setCarrusel(visibles.findIndex((r) => r.id === recuerdo.id))}
-              className="overflow-hidden rounded-2xl border border-[#dfbd79] bg-white p-2 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md"
-            >
-              {recuerdo.tipo === "foto" ? (
-                <img
-                  src={recuerdo.url}
-                  alt={recuerdo.nombre}
-                  className="h-36 w-full rounded-xl object-cover sm:h-44"
-                />
-              ) : (
-                <div className="flex h-36 items-center justify-center rounded-xl bg-[#f8d5e6] text-4xl text-[#b41460] sm:h-44">
-                  ▷
-                </div>
-              )}
-              <p className="mt-2 truncate px-1 text-xs text-[#8b4265]">
-                {recuerdo.nombre}
-              </p>
-            </button>
-          ))}
-        </div>
-
-        <footer className="mt-14 border-t border-[#e8c5d3] pt-6 text-center">
-          <p className="font-serif text-xl text-[#b41460]">
+        <footer className="mt-8 border-t border-[#e8c5d3] pt-5 text-center">
+          <p className="font-serif text-lg text-[#b41460]">
             Mis XV · Ivanna Loaeza
           </p>
-          <p className="mt-2 text-xs text-[#a4778c]">
-            Un recuerdo de hoy, un tesoro para siempre.
-          </p>
-          <p className="mt-4 text-xs text-[#bd8d9f]">
+          <p className="mt-1 text-xs text-[#a4778c]">
             Con amor · Coral Studio Memories
           </p>
         </footer>
-      </section>
+      </div>
+
+      {/* VENTANA DE DESCARGA */}
+
+      {mostrarClave && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="titulo-descarga"
+            className="w-full max-w-sm rounded-3xl border border-[#e8c5d3] bg-[#fff7fb] p-6 shadow-2xl"
+          >
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <h2
+                id="titulo-descarga"
+                className="font-serif text-2xl text-[#742347]"
+              >
+                Descargar recuerdos
+              </h2>
+
+              <button
+                type="button"
+                onClick={() => setMostrarClave(false)}
+                aria-label="Cerrar ventana"
+                className="rounded-full px-3 py-1 text-xl text-[#a51b60]"
+              >
+                ×
+              </button>
+            </div>
+
+            <p className="mb-4 text-sm text-[#936b7e]">
+              Ingresa la contraseña autorizada para acceder a la descarga del álbum.
+            </p>
+
+            <form onSubmit={comprobarClaveDescarga}>
+              <label
+                htmlFor="clave-descarga"
+                className="mb-2 block text-sm font-medium text-[#57203d]"
+              >
+                Contraseña
+              </label>
+
+              <input
+                id="clave-descarga"
+                type="password"
+                autoComplete="current-password"
+                value={clave}
+                onChange={(event) => setClave(event.target.value)}
+                required
+                className="w-full rounded-xl border border-[#dfbd79] bg-white px-4 py-3 outline-none focus:ring-2 focus:ring-[#c21868]"
+                placeholder="Escribe la contraseña"
+              />
+
+              {mensajeClave && (
+                <p role="alert" className="mt-3 text-sm text-[#a51b60]">
+                  {mensajeClave}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={cargando}
+                className="mt-4 w-full rounded-full bg-[#c21868] px-5 py-3 font-medium text-white shadow-md hover:bg-[#a51b60] disabled:opacity-60"
+              >
+                Continuar
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
